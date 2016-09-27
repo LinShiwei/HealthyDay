@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        #if !(arch(i386) || arch(x86_64))
         healthManager.readCurrentStepCount{ [unowned self] (count,error) in
             if count != nil && error == nil{
                 DispatchQueue.main.async {
@@ -52,6 +53,7 @@ class MainViewController: UIViewController {
                 }
             }
         }
+        #endif
     }
 
     override func didReceiveMemoryWarning() {
