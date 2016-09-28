@@ -11,24 +11,24 @@ import HealthKit
 internal class HealthManager{
     fileprivate let store = HKHealthStore()
     
-    func authorize(_ completion: ((_ success:Bool, _ error:Error?) -> Void)?){
+    func authorize(_ completion: @escaping (_ success:Bool, _ error:Error?) -> Void){
         let typesToRead : Set = [
             HKQuantityType.quantityType(forIdentifier: .stepCount)!,
             HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
             ]
         
         if !HKHealthStore.isHealthDataAvailable(){
-            completion?(false, nil)
+            completion(false, nil)
             return
         }
         store.requestAuthorization(toShare: nil, read: typesToRead){(success, error) in
-            completion?(success,error)
+            completion(success,error)
         }
     }
     
-    func readCurrentStepCount(_ completion:((Int?,Error?)->Void)!){
+    func readCurrentStepCount(_ completion: @escaping (Int?,Error?)->Void){
         var stepCount = 0
-        let sampleQuery = currentQuantitySampleQuery(typeIdentifier: .stepCount, completion: {(query, samples, error) in
+        let sampleQuery = currentQuantitySampleQuery(typeIdentifier: .stepCount){(query, samples, error) in
             guard error == nil && samples != nil else{
                 completion(nil,error)
                 return
@@ -39,11 +39,11 @@ internal class HealthManager{
                 
             }
             completion(stepCount,nil)
-        })
+        }
         store.execute(sampleQuery)
     }
     
-    func readDistanceWlakingRunning(_ completion:((Int?,Error?)->Void)!){
+    func readDistanceWlakingRunning(_ completion: @escaping (Int?,Error?)->Void){
         var totalDistance = 0
         let sampleQuery = currentQuantitySampleQuery(typeIdentifier: .distanceWalkingRunning, completion: {(query, samples, error) in
             guard error == nil && samples != nil else{
@@ -60,7 +60,7 @@ internal class HealthManager{
         store.execute(sampleQuery)
     }
     
-    private func currentQuantitySampleQuery(typeIdentifier identifier:HKQuantityTypeIdentifier, completion:((HKSampleQuery,[HKSample]?,Error?)->Void)!)->HKSampleQuery{
+    private func currentQuantitySampleQuery(typeIdentifier identifier:HKQuantityTypeIdentifier, completion:  @escaping (HKSampleQuery,[HKSample]?,Error?)->Void)->HKSampleQuery{
         let nowDate = Date()
         let todayDate : Date = {
             let secondOffset = TimeZone.current.secondsFromGMT()

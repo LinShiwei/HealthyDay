@@ -33,8 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         
         let navigationController = self.window!.rootViewController as! UINavigationController
-        let mainVC = navigationController.topViewController as! MainViewController
-        mainVC.viewWillAppear(false)
+        if let mainVC = navigationController.topViewController as? MainViewController{
+            mainVC.viewWillAppear(false)
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

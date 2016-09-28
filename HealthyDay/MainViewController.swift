@@ -8,24 +8,27 @@
 
 import UIKit
 import HealthKit
-
+import CoreLocation
 
 class MainViewController: UIViewController {
 
     let healthManager = HealthManager()
-    
+   
     @IBOutlet weak var footStepCountLabel: UILabel!
     
     @IBOutlet weak var distanceLabel: UILabel!
     
     @IBAction func buttonTouch(_ sender: UIButton) {
 
-       
+        footStepCountLabel.text = "clear by button"
+        distanceLabel.text = "clear by button"
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        healthManager.authorize(nil)
-
+        healthManager.authorize{(success,error) in
+            print(error)
+            print("HealthKit authorize: \(success)")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

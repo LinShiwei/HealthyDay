@@ -36,8 +36,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSHealthShareUsageDescription</key>
-	<string>lsw healthShare Usage</string>
+	<string>lsw healthShare Usage description</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>lsw healthUpdate Usage</string>
+	<string>lsw healthUpdate Usage description</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>lsw locationWhenInUse description</string>
 </dict>
 </plist>
