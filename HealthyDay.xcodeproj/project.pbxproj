@@ -14,7 +14,9 @@
 		560E1BB31D953D3600B488AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560E1BB11D953D3600B488AE /* LaunchScreen.storyboard */; };
 		560E1BBE1D953D3700B488AE /* HealthyDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E1BBD1D953D3700B488AE /* HealthyDayTests.swift */; };
 		560E1BCB1D953F7F00B488AE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560E1BCA1D953F7F00B488AE /* HealthKit.framework */; };
+		56130D881D9AB4FC005334FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56130D871D9AB4FC005334FF /* MapKit.framework */; };
 		563E06561D98B04000B18DAE /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E06551D98B04000B18DAE /* HealthManager.swift */; };
+		56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56629EA71D9B877000720F0A /* RunningViewController.swift */; };
 		56D631E91D98ECE7008232FA /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D631E81D98ECE7008232FA /* Define.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +43,9 @@
 		560E1BBF1D953D3700B488AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		560E1BC81D953F7E00B488AE /* HealthyDay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthyDay.entitlements; sourceTree = "<group>"; };
 		560E1BCA1D953F7F00B488AE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		56130D871D9AB4FC005334FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		563E06551D98B04000B18DAE /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		56629EA71D9B877000720F0A /* RunningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
 		56D631E81D98ECE7008232FA /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56130D881D9AB4FC005334FF /* MapKit.framework in Frameworks */,
 				560E1BCB1D953F7F00B488AE /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				560E1BAA1D953D3600B488AE /* MainViewController.swift */,
+				56629EA71D9B877000720F0A /* RunningViewController.swift */,
 				563E06551D98B04000B18DAE /* HealthManager.swift */,
 				56492EDC1D960CA3007C3510 /* Support */,
 				56D631E81D98ECE7008232FA /* Define.swift */,
@@ -106,6 +112,7 @@
 		560E1BC91D953F7F00B488AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56130D871D9AB4FC005334FF /* MapKit.framework */,
 				560E1BCA1D953F7F00B488AE /* HealthKit.framework */,
 			);
 			name = Frameworks;
@@ -180,6 +187,9 @@
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
 						};
 					};
 					560E1BB81D953D3700B488AE = {
@@ -235,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				560E1BAB1D953D3600B488AE /* MainViewController.swift in Sources */,
+				56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */,
 				563E06561D98B04000B18DAE /* HealthManager.swift in Sources */,
 				56D631E91D98ECE7008232FA /* Define.swift in Sources */,
 				560E1BA91D953D3600B488AE /* AppDelegate.swift in Sources */,

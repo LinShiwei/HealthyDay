@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -66,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="972" y="37.331334332833585"/>
         </scene>
-        <!--View Controller-->
+        <!--Running View Controller-->
         <scene sceneID="Gih-px-Y8B">
             <objects>
-                <viewController id="x4C-hv-WIR" sceneMemberID="viewController">
+                <viewController id="x4C-hv-WIR" customClass="RunningViewController" customModule="HealthyDay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0mV-xI-nQ9"/>
                         <viewControllerLayoutGuide type="bottom" id="x03-CL-5B4"/>
@@ -83,13 +84,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-mH-y4e"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="d1m-mH-y4e" firstAttribute="top" secondItem="0mV-xI-nQ9" secondAttribute="bottom" constant="8" id="CX1-8h-Ig3"/>
                             <constraint firstItem="0bP-VX-fMk" firstAttribute="centerX" secondItem="fGb-00-Rra" secondAttribute="centerX" id="JGU-h3-980"/>
+                            <constraint firstItem="d1m-mH-y4e" firstAttribute="leading" secondItem="fGb-00-Rra" secondAttribute="leadingMargin" id="af0-4O-QFE"/>
                             <constraint firstItem="0bP-VX-fMk" firstAttribute="centerY" secondItem="fGb-00-Rra" secondAttribute="centerY" id="cXd-7i-Hbr"/>
+                            <constraint firstItem="d1m-mH-y4e" firstAttribute="trailing" secondItem="fGb-00-Rra" secondAttribute="trailingMargin" id="kST-LP-7Gx"/>
+                            <constraint firstItem="0bP-VX-fMk" firstAttribute="top" secondItem="d1m-mH-y4e" secondAttribute="bottom" constant="7.5" id="sQo-jQ-eeA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="d1m-mH-y4e" id="ijK-XZ-C2p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ave-ds-8xV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
