@@ -23,11 +23,26 @@ internal class LocationManager {
             locationManager.requestWhenInUseAuthorization()
         case .authorizedWhenInUse:
             print("authorizedWhenInUse")
+//            stopUpdate()
+            
         default:
             return
         }
         print(CLLocationManager.authorizationStatus().rawValue)
         
         
+    }
+    
+    func startUpdate(){
+        locationManager.startUpdatingLocation()
+    }
+    
+    func stopUpdate(){
+        locationManager.stopUpdatingLocation()
+    }
+    
+    private func initLocatingParameter(){
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 10.0
     }
 }
