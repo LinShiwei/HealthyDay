@@ -22,13 +22,19 @@ class RunningViewController: UIViewController {
     @IBAction func tapToStartRunning(_ sender: UIButton) {
         startRunning = !startRunning
         runningCoordiantes.removeAll()
+        print("running start == \(startRunning)")
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.authorize()
-        mapView.delegate = self
-        mapView.showsUserLocation = true
+        locationManager.authorize{[unowned self] success in
+            if success {
+                self.mapView.delegate = self
+                self.mapView.showsUserLocation = true
+            }else{
+                self.addGPSDisableNotation(toMapView: self.mapView)
+            }
+        }
     }
 
     
@@ -40,6 +46,13 @@ class RunningViewController: UIViewController {
         mapView.add(overlay)
 
         print(mapView.overlays.count)
+    }
+    
+    private func addGPSDisableNotation(toMapView view:MKMapView){
+        let label = UILabel(frame: CGRect(x: 10, y: 10, width: view.frame.width-10, height: view.frame.height/5))
+        label.text = "GPS Disabled"
+        label.sizeToFit()
+        view.addSubview(label)
     }
 }
 

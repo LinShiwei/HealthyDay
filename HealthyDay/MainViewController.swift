@@ -34,28 +34,28 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         #if !(arch(i386) || arch(x86_64))
-        healthManager.readCurrentStepCount{ [unowned self] (count,error) in
-            if count != nil && error == nil{
-                DispatchQueue.main.async {
-                    self.footStepCountLabel.text = "\(count!) Steps"
-                }
-            }else{
-                DispatchQueue.main.async {
-                    self.footStepCountLabel.text = "0 Step"
-                }
-            }
-        }
-        healthManager.readDistanceWlakingRunning{ [unowned self] (distance,error) in
-            if distance != nil && error == nil{
-                DispatchQueue.main.async {
-                    self.distanceLabel.text = "\(distance!) Meters"
-                }
-            }else{
-                DispatchQueue.main.async {
-                    self.distanceLabel.text = "0 Meter"
+            healthManager.readStepCount(periodDataType: .Current){ [unowned self] (counts,error) in
+                if counts != nil && error == nil{
+                    DispatchQueue.main.async {
+                        self.footStepCountLabel.text = "\(counts![0]) Steps"
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.footStepCountLabel.text = "0 Step"
+                    }
                 }
             }
-        }
+            healthManager.readDistanceWalkingRunning(periodDataType:.Current){ [unowned self] (distances,error) in
+                if distances != nil && error == nil{
+                    DispatchQueue.main.async {
+                        self.distanceLabel.text = "\(distances![0]) Meters"
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.distanceLabel.text = "0 Meter"
+                    }
+                }
+            }
         #endif
     }
 

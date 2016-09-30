@@ -12,25 +12,26 @@ import CoreLocation
 internal class LocationManager {
     let locationManager = CLLocationManager()
     
-    func authorize(){
+    func authorize(_ completion: @escaping (_ success:Bool) -> Void){
         guard CLLocationManager.locationServicesEnabled() else{
+            completion(false)
             print("lsw_Location services disabled. locationservicesEnabled is false")
             return
         }
-        
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .authorizedWhenInUse:
-            print("authorizedWhenInUse")
-//            stopUpdate()
-            
+            locationManager.requestAlwaysAuthorization()
+            if CLLocationManager.authorizationStatus() != .authorizedWhenInUse || CLLocationManager.authorizationStatus() != .authorizedAlways{
+                completion(false)
+            }else{
+                completion(true)
+            }
+        case .authorizedWhenInUse, .authorizedAlways:
+            completion(true)
         default:
-            return
+            completion(false)
         }
         print(CLLocationManager.authorizationStatus().rawValue)
-        
-        
     }
     
     func startUpdate(){

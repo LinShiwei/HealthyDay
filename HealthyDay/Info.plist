@@ -20,6 +20,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>lsw healthShare Usage description</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>lsw healthUpdate Usage description</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>lsw locationWhenInUse description</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -32,14 +38,7 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>NSHealthShareUsageDescription</key>
-	<string>lsw healthShare Usage description</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>lsw healthUpdate Usage description</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>lsw locationWhenInUse description</string>
 </dict>
 </plist>
