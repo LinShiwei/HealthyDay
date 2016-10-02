@@ -11,17 +11,13 @@ import HealthKit
 import CoreLocation
 
 class MainViewController: UIViewController {
-
-    let healthManager = HealthManager()
-   
-    @IBOutlet weak var footStepCountLabel: UILabel!
     
-    @IBOutlet weak var distanceLabel: UILabel!
+    private let healthManager = HealthManager()
+    
+    private var mainInfoView : MainInformationView!
     
     @IBAction func buttonTouch(_ sender: UIButton) {
-
-        footStepCountLabel.text = "clear by button"
-        distanceLabel.text = "clear by button"
+        print("tapButton")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +25,15 @@ class MainViewController: UIViewController {
             print(error)
             print("HealthKit authorize: \(success)")
         }
+        
+        mainInfoView = MainInformationView(frame:CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height/3))
+        view.addSubview(mainInfoView)
+        let gestureRecognizer1 = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.swipeRight(_:)))
+        gestureRecognizer1.direction = .right
+        let gestureRecognizer2 = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.swipeLeft(_:)))
+        gestureRecognizer2.direction = .left
+        mainInfoView.addGestureRecognizer(gestureRecognizer1)
+        mainInfoView.addGestureRecognizer(gestureRecognizer2)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,31 +42,40 @@ class MainViewController: UIViewController {
             healthManager.readStepCount(periodDataType: .Current){ [unowned self] (counts,error) in
                 if counts != nil && error == nil{
                     DispatchQueue.main.async {
-                        self.footStepCountLabel.text = "\(counts![0]) Steps"
+                        self.mainInfoView.stepCount = counts![0]
                     }
                 }else{
                     DispatchQueue.main.async {
-                        self.footStepCountLabel.text = "0 Step"
+                        self.mainInfoView.stepCount = 0
                     }
                 }
             }
             healthManager.readDistanceWalkingRunning(periodDataType:.Current){ [unowned self] (distances,error) in
                 if distances != nil && error == nil{
                     DispatchQueue.main.async {
-                        self.distanceLabel.text = "\(distances![0]) Meters"
+                        self.mainInfoView.distance = distances![0]
                     }
                 }else{
                     DispatchQueue.main.async {
-                        self.distanceLabel.text = "0 Meter"
+                        self.mainInfoView.distance = 0
                     }
                 }
             }
         #endif
     }
+        
+    func swipeLeft(_ sender:UISwipeGestureRecognizer){
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState,.curveEaseInOut,.beginFromCurrentState], animations: {[unowned self] in
+            self.mainInfoView.swipeCounterclockwise()
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+            }, completion:  nil)
+    }
+    
+    func swipeRight(_ sender:UISwipeGestureRecognizer){
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState,.curveEaseInOut,.beginFromCurrentState], animations: {[unowned self] in
+            self.mainInfoView.swipeClockwise()
+            
+            }, completion:  nil)
     }
 }
 
