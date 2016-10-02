@@ -23,6 +23,9 @@
 		56629EBB1D9B8EC200720F0A /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56629EB61D9B8D8300720F0A /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56629EBD1D9BB08300720F0A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56629EBC1D9BB08300720F0A /* LocationManager.swift */; };
 		56D631E91D98ECE7008232FA /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D631E81D98ECE7008232FA /* Define.swift */; };
+		72FC50D81D9E00DC00E820A8 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC50D71D9E00DC00E820A8 /* ScrollView.swift */; };
+		72FC50DC1D9E1D0700E820A8 /* FootStepCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC50DB1D9E1D0700E820A8 /* FootStepCountView.swift */; };
+		72FC50DE1D9E1D2900E820A8 /* DistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC50DD1D9E1D2900E820A8 /* DistanceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		56629EB81D9B8D8900720F0A /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		56629EBC1D9BB08300720F0A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		56D631E81D98ECE7008232FA /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
+		72FC50D71D9E00DC00E820A8 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
+		72FC50DB1D9E1D0700E820A8 /* FootStepCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FootStepCountView.swift; sourceTree = "<group>"; };
+		72FC50DD1D9E1D2900E820A8 /* DistanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,9 @@
 		560E1BA71D953D3600B488AE /* HealthyDay */ = {
 			isa = PBXGroup;
 			children = (
+				72FC50DD1D9E1D2900E820A8 /* DistanceView.swift */,
+				72FC50DB1D9E1D0700E820A8 /* FootStepCountView.swift */,
+				72FC50D71D9E00DC00E820A8 /* ScrollView.swift */,
 				560E1BAA1D953D3600B488AE /* MainViewController.swift */,
 				56629EA71D9B877000720F0A /* RunningViewController.swift */,
 				563E06551D98B04000B18DAE /* HealthManager.swift */,
@@ -273,7 +282,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				560E1BAB1D953D3600B488AE /* MainViewController.swift in Sources */,
+				72FC50D81D9E00DC00E820A8 /* ScrollView.swift in Sources */,
+				72FC50DC1D9E1D0700E820A8 /* FootStepCountView.swift in Sources */,
 				56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */,
+				72FC50DE1D9E1D2900E820A8 /* DistanceView.swift in Sources */,
 				56629EBD1D9BB08300720F0A /* LocationManager.swift in Sources */,
 				563E06561D98B04000B18DAE /* HealthManager.swift in Sources */,
 				56D631E91D98ECE7008232FA /* Define.swift in Sources */,
