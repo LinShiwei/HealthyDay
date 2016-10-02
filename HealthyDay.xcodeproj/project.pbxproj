@@ -22,6 +22,8 @@
 		56629EBA1D9B8EC200720F0A /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56629EB81D9B8D8900720F0A /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56629EBB1D9B8EC200720F0A /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56629EB61D9B8D8300720F0A /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56629EBD1D9BB08300720F0A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56629EBC1D9BB08300720F0A /* LocationManager.swift */; };
+		5692025A1DA0F7C500D9DA33 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569202591DA0F7C500D9DA33 /* StepBar.swift */; };
+		56BC4F4C1D9FF2B80074B498 /* StepBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */; };
 		56D631E91D98ECE7008232FA /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D631E81D98ECE7008232FA /* Define.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,8 @@
 		56629EB61D9B8D8300720F0A /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		56629EB81D9B8D8900720F0A /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		56629EBC1D9BB08300720F0A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		569202591DA0F7C500D9DA33 /* StepBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
+		56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBarChartView.swift; sourceTree = "<group>"; };
 		56D631E81D98ECE7008232FA /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +123,8 @@
 				56629EA71D9B877000720F0A /* RunningViewController.swift */,
 				563E06551D98B04000B18DAE /* HealthManager.swift */,
 				56629EBC1D9BB08300720F0A /* LocationManager.swift */,
+				56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */,
+				569202591DA0F7C500D9DA33 /* StepBar.swift */,
 				56492EDC1D960CA3007C3510 /* Support */,
 				56D631E81D98ECE7008232FA /* Define.swift */,
 			);
@@ -273,8 +279,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				560E1BAB1D953D3600B488AE /* MainViewController.swift in Sources */,
+				5692025A1DA0F7C500D9DA33 /* StepBar.swift in Sources */,
 				56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */,
 				56629EBD1D9BB08300720F0A /* LocationManager.swift in Sources */,
+				56BC4F4C1D9FF2B80074B498 /* StepBarChartView.swift in Sources */,
 				563E06561D98B04000B18DAE /* HealthManager.swift in Sources */,
 				56D631E91D98ECE7008232FA /* Define.swift in Sources */,
 				560E1BA91D953D3600B488AE /* AppDelegate.swift in Sources */,
