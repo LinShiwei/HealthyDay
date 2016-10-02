@@ -36,9 +36,7 @@ class RunningViewController: UIViewController {
             }
         }
     }
-
-    
-    
+  
     fileprivate func drawRoute(withCoordiantes coordinates:[CLLocationCoordinate2D]){
         guard coordinates.count > 1 else{return}
         let overlay = MKPolyline(coordinates: coordinates, count: coordinates.count)

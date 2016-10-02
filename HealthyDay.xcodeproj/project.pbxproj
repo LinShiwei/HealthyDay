@@ -15,6 +15,7 @@
 		560E1BBE1D953D3700B488AE /* HealthyDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E1BBD1D953D3700B488AE /* HealthyDayTests.swift */; };
 		560E1BCB1D953F7F00B488AE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560E1BCA1D953F7F00B488AE /* HealthKit.framework */; };
 		56130D881D9AB4FC005334FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56130D871D9AB4FC005334FF /* MapKit.framework */; };
+		562379C51DA128C200525B7C /* MainInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562379C41DA128C200525B7C /* MainInformationView.swift */; };
 		563E06561D98B04000B18DAE /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E06551D98B04000B18DAE /* HealthManager.swift */; };
 		56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56629EA71D9B877000720F0A /* RunningViewController.swift */; };
 		56629EB71D9B8D8300720F0A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56629EB61D9B8D8300720F0A /* Quick.framework */; };
@@ -25,9 +26,6 @@
 		5692025A1DA0F7C500D9DA33 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569202591DA0F7C500D9DA33 /* StepBar.swift */; };
 		56BC4F4C1D9FF2B80074B498 /* StepBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */; };
 		56D631E91D98ECE7008232FA /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D631E81D98ECE7008232FA /* Define.swift */; };
-		72FC50D81D9E00DC00E820A8 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC50D71D9E00DC00E820A8 /* ScrollView.swift */; };
-		72FC50DC1D9E1D0700E820A8 /* FootStepCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC50DB1D9E1D0700E820A8 /* FootStepCountView.swift */; };
-		72FC50DE1D9E1D2900E820A8 /* DistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC50DD1D9E1D2900E820A8 /* DistanceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +66,7 @@
 		560E1BC81D953F7E00B488AE /* HealthyDay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthyDay.entitlements; sourceTree = "<group>"; };
 		560E1BCA1D953F7F00B488AE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		56130D871D9AB4FC005334FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		562379C41DA128C200525B7C /* MainInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInformationView.swift; sourceTree = "<group>"; };
 		563E06551D98B04000B18DAE /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		56629EA71D9B877000720F0A /* RunningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
 		56629EB61D9B8D8300720F0A /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
@@ -76,9 +75,6 @@
 		569202591DA0F7C500D9DA33 /* StepBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBarChartView.swift; sourceTree = "<group>"; };
 		56D631E81D98ECE7008232FA /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
-		72FC50D71D9E00DC00E820A8 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
-		72FC50DB1D9E1D0700E820A8 /* FootStepCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FootStepCountView.swift; sourceTree = "<group>"; };
-		72FC50DD1D9E1D2900E820A8 /* DistanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,15 +121,9 @@
 		560E1BA71D953D3600B488AE /* HealthyDay */ = {
 			isa = PBXGroup;
 			children = (
-				72FC50DD1D9E1D2900E820A8 /* DistanceView.swift */,
-				72FC50DB1D9E1D0700E820A8 /* FootStepCountView.swift */,
-				72FC50D71D9E00DC00E820A8 /* ScrollView.swift */,
-				560E1BAA1D953D3600B488AE /* MainViewController.swift */,
-				56629EA71D9B877000720F0A /* RunningViewController.swift */,
-				563E06551D98B04000B18DAE /* HealthManager.swift */,
-				56629EBC1D9BB08300720F0A /* LocationManager.swift */,
-				56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */,
-				569202591DA0F7C500D9DA33 /* StepBar.swift */,
+				562379C81DA1291D00525B7C /* MainViewController */,
+				562379C71DA1290700525B7C /* DetailViewController */,
+				562379C61DA128E000525B7C /* Helper */,
 				56492EDC1D960CA3007C3510 /* Support */,
 				56D631E81D98ECE7008232FA /* Define.swift */,
 			);
@@ -158,6 +148,34 @@
 				560E1BCA1D953F7F00B488AE /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		562379C61DA128E000525B7C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				56629EBC1D9BB08300720F0A /* LocationManager.swift */,
+				563E06551D98B04000B18DAE /* HealthManager.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		562379C71DA1290700525B7C /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				56629EA71D9B877000720F0A /* RunningViewController.swift */,
+			);
+			name = DetailViewController;
+			sourceTree = "<group>";
+		};
+		562379C81DA1291D00525B7C /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				560E1BAA1D953D3600B488AE /* MainViewController.swift */,
+				562379C41DA128C200525B7C /* MainInformationView.swift */,
+				56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */,
+				569202591DA0F7C500D9DA33 /* StepBar.swift */,
+			);
+			name = MainViewController;
 			sourceTree = "<group>";
 		};
 		56492EDC1D960CA3007C3510 /* Support */ = {
@@ -289,10 +307,8 @@
 			files = (
 				560E1BAB1D953D3600B488AE /* MainViewController.swift in Sources */,
 				5692025A1DA0F7C500D9DA33 /* StepBar.swift in Sources */,
-				72FC50D81D9E00DC00E820A8 /* ScrollView.swift in Sources */,
-				72FC50DC1D9E1D0700E820A8 /* FootStepCountView.swift in Sources */,
 				56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */,
-				72FC50DE1D9E1D2900E820A8 /* DistanceView.swift in Sources */,
+				562379C51DA128C200525B7C /* MainInformationView.swift in Sources */,
 				56629EBD1D9BB08300720F0A /* LocationManager.swift in Sources */,
 				56BC4F4C1D9FF2B80074B498 /* StepBarChartView.swift in Sources */,
 				563E06561D98B04000B18DAE /* HealthManager.swift in Sources */,

@@ -7,4 +7,5 @@
 //
 
 import Foundation
-
+import UIKit
+let windowBounds = UIScreen.main.bounds
