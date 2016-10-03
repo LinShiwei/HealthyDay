@@ -94,7 +94,6 @@ internal class HealthManager{
             }else{
                 counts.append(count)
                 count = Int((sample as! HKQuantitySample).quantity.doubleValue(for: unit))
-                print(perDay)
                 perDay = Date(timeInterval: 24*3600, since: perDay)
             }
         }
