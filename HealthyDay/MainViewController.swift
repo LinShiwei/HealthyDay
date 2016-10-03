@@ -16,26 +16,22 @@ class MainViewController: UIViewController {
     
     private var mainInfoView : MainInformationView!
     
+    @IBOutlet weak var stepBarChartView: UIView!
+    
     @IBAction func buttonTouch(_ sender: UIButton) {
+        
         print("tapButton")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         healthManager.authorize{(success,error) in
-            print(error)
+            print("Error == \(error)")
             print("HealthKit authorize: \(success)")
         }
+        initMainInfoView()
         
-        mainInfoView = MainInformationView(frame:CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height/3))
-        view.addSubview(mainInfoView)
-        let gestureRecognizer1 = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.swipeRight(_:)))
-        gestureRecognizer1.direction = .right
-        let gestureRecognizer2 = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.swipeLeft(_:)))
-        gestureRecognizer2.direction = .left
-        mainInfoView.addGestureRecognizer(gestureRecognizer1)
-        mainInfoView.addGestureRecognizer(gestureRecognizer2)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         #if !(arch(i386) || arch(x86_64))
@@ -63,7 +59,40 @@ class MainViewController: UIViewController {
             }
         #endif
     }
-        
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowStepDetailVC"{
+            guard let stepDetailVC = segue.destination as? StepDetailViewController else {return}
+            #if !(arch(i386) || arch(x86_64))
+                healthManager.readStepCount(periodDataType: .Weekly){ [unowned self] (counts,error) in
+                    if counts != nil && error == nil{
+                        DispatchQueue.main.async {
+                            stepDetailVC.stepCounts = counts!
+                        }
+                    }
+                }
+                healthManager.readDistanceWalkingRunning(periodDataType: .Weekly){ [unowned self] (distances,error) in
+                    if distances != nil && error == nil{
+                        DispatchQueue.main.async {
+                            stepDetailVC.distances = distances!
+                        }
+                    }
+                }
+            #endif
+        }
+    }
+    
+    private func initMainInfoView(){
+        mainInfoView = MainInformationView(frame:CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height/3))
+        view.addSubview(mainInfoView)
+        let rightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.swipeRight(_:)))
+        rightGestureRecognizer.direction = .right
+        let leftgestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.swipeLeft(_:)))
+        leftgestureRecognizer.direction = .left
+        mainInfoView.addGestureRecognizer(rightGestureRecognizer)
+        mainInfoView.addGestureRecognizer(leftgestureRecognizer)
+    }
+    
     func swipeLeft(_ sender:UISwipeGestureRecognizer){
         UIView.animate(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState,.curveEaseInOut,.beginFromCurrentState], animations: {[unowned self] in
             self.mainInfoView.swipeCounterclockwise()
