@@ -35,12 +35,45 @@ class MainViewController: UIViewController {
         initMainInfoView()
      
         runningBarItem.addTarget(self, action:  #selector(MainViewController.swipeRight(_:)), for: .touchUpInside)
+        runningBarItem.enable = false
         self.navigationItem.leftBarButtonItem = runningBarItem
         stepBarItem.addTarget(self, action:  #selector(MainViewController.swipeLeft(_:)), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = stepBarItem
 
+        
     }
 
+    func didPan(_ sender:UIPanGestureRecognizer){
+        mainInfoView.animationProcess = sender.translation(in: view).x/windowBounds.width
+        switch sender.state {
+        case .ended,.cancelled:
+            let velocityX = sender.velocity(in: view).x
+            if velocityX > 300{
+                swipeRight(sender)
+                break
+            }
+            if velocityX < -300{
+                swipeLeft(sender)
+                break
+            }
+            if mainInfoView.animationProcess > 0.4 {
+                swipeRight(sender)
+            }else{
+                if mainInfoView.animationProcess < -0.4 {
+                    swipeLeft(sender)
+                }else{
+                    if stepBarItem.enable {
+                        swipeRight(sender)
+                    }else{
+                        swipeLeft(sender)
+                    }
+                }
+            }
+            print("ended \(sender.velocity(in: view))")
+        default: break
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         #if !(arch(i386) || arch(x86_64))
@@ -73,14 +106,14 @@ class MainViewController: UIViewController {
         if segue.identifier == "ShowStepDetailVC"{
             guard let stepDetailVC = segue.destination as? StepDetailViewController else {return}
             #if !(arch(i386) || arch(x86_64))
-                healthManager.readStepCount(periodDataType: .Weekly){ [unowned self] (counts,error) in
+                healthManager.readStepCount(periodDataType: .Weekly){(counts,error) in
                     if counts != nil && error == nil{
                         DispatchQueue.main.async {
                             stepDetailVC.stepCounts = counts!
                         }
                     }
                 }
-                healthManager.readDistanceWalkingRunning(periodDataType: .Weekly){ [unowned self] (distances,error) in
+                healthManager.readDistanceWalkingRunning(periodDataType: .Weekly){(distances,error) in
                     if distances != nil && error == nil{
                         DispatchQueue.main.async {
                             stepDetailVC.distances = distances!
@@ -92,20 +125,17 @@ class MainViewController: UIViewController {
     }
     
     private func initMainInfoView(){
-        mainInfoView = MainInformationView(frame:CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height/3))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPan(_:)))
+        mainInfoView = MainInformationView(frame:CGRect(x: 0, y: 66, width: view.frame.width, height: view.frame.height/3))
+        mainInfoView.addGestureRecognizer(panGestureRecognizer)
         view.addSubview(mainInfoView)
-        let rightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.swipeRight(_:)))
-        rightGestureRecognizer.direction = .right
-        let leftgestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.swipeLeft(_:)))
-        leftgestureRecognizer.direction = .left
-        mainInfoView.addGestureRecognizer(rightGestureRecognizer)
-        mainInfoView.addGestureRecognizer(leftgestureRecognizer)
     }
     
     func swipeLeft(_ sender:AnyObject){
         UIView.animate(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState,.curveEaseInOut,.beginFromCurrentState], animations: {[unowned self] in
             self.mainInfoView.swipeCounterclockwise()
-
+            self.stepBarItem.enable = false
+            self.runningBarItem.enable = true
             }, completion:  nil)
         
         print(stepBarChartView.frame)
@@ -114,7 +144,8 @@ class MainViewController: UIViewController {
     func swipeRight(_ sender:AnyObject){
         UIView.animate(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState,.curveEaseInOut,.beginFromCurrentState], animations: {[unowned self] in
             self.mainInfoView.swipeClockwise()
-            
+            self.stepBarItem.enable = true
+            self.runningBarItem.enable = false
             }, completion:  nil)
     }
 }
