@@ -8,11 +8,49 @@
 
 import UIKit
 
-class MainInformationView: UIView {
+enum MainInfoViewState{
+    case step
+    case distance
+}
+
+class MainInformationView: UIView{
     private let dot = UIView()
     private let stepCountLabel = UILabel()
     private let distanceWalkingRunningLabel = UILabel()
     private let containerView = UIView()
+    
+    private var state = MainInfoViewState.distance
+    
+    var animationProcess : CGFloat = 0{
+        didSet{
+            switch state{
+            case .distance:
+                if 0<animationProcess&&animationProcess<=1{
+                    dot.center.x = frame.width*2/5
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*animationProcess/2)
+                }else{
+                    if -1<=animationProcess&&animationProcess<0{
+                        dot.center.x = frame.width*2/5-frame.width/5*animationProcess
+                        containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*animationProcess)
+                    }else{
+                        return
+                    }
+                }
+            case .step:
+                if 0<animationProcess&&animationProcess<=1{
+                    dot.center.x = frame.width*3/5-frame.width/5*animationProcess
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*(animationProcess-1))
+                }else{
+                    if -1<=animationProcess&&animationProcess<0{
+                        dot.center.x = frame.width*3/5
+                        containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*(animationProcess/2-1))
+                    }else{
+                        return
+                    }
+                }
+            }         
+        }
+    }
     var stepCount = 0{
         didSet{
             stepCountLabel.text = "\(stepCount) Steps"
@@ -66,11 +104,13 @@ class MainInformationView: UIView {
     func swipeClockwise(){
         containerView.transform = .identity
         dot.center.x = frame.width*2/5
+        state = .distance
     }
     
     func swipeCounterclockwise(){
         containerView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
         dot.center.x = frame.width*3/5
+        state = .step
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

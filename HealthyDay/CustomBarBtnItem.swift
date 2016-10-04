@@ -15,8 +15,12 @@ enum BarBtnItemType{
 
 class CustomBarBtnItem: UIBarButtonItem {
 
-    let button = UIButton(type: .custom)
-    
+    private let button = UIButton(type: .custom)
+    var enable = true{
+        didSet{
+            button.isEnabled = enable
+        }
+    }
     init(buttonFrame frame:CGRect, title:String, itemType type:BarBtnItemType){
         super.init()
         let backView = UIView(frame:CGRect(x: 0, y: 0, width: frame.width+frame.minX, height: 22))
@@ -27,7 +31,8 @@ class CustomBarBtnItem: UIBarButtonItem {
             button.frame = CGRect(origin: origin, size: frame.size)
         }
         button.setTitle(title, for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
+        button.setTitleColor(UIColor.gray, for: .normal)
+        button.setTitleColor(UIColor.blue, for: .disabled)
         backView.addSubview(button)
         customView = backView
     }
