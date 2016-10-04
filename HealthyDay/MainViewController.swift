@@ -15,6 +15,10 @@ class MainViewController: UIViewController {
     private let healthManager = HealthManager()
     
     private var mainInfoView : MainInformationView!
+
+    private let stepBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 50, y: 0, width: 50, height: 22),title:"step", itemType:.right)
+    
+    private let runningBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 50, y: 0, width: 50, height: 22),title:"run", itemType:.left)
     
     @IBOutlet weak var stepBarChartView: UIView!
     
@@ -29,7 +33,12 @@ class MainViewController: UIViewController {
             print("HealthKit authorize: \(success)")
         }
         initMainInfoView()
-        
+     
+        runningBarItem.addTarget(self, action:  #selector(MainViewController.swipeRight(_:)), for: .touchUpInside)
+        self.navigationItem.leftBarButtonItem = runningBarItem
+        stepBarItem.addTarget(self, action:  #selector(MainViewController.swipeLeft(_:)), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = stepBarItem
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +68,7 @@ class MainViewController: UIViewController {
             }
         #endif
     }
-    
+  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowStepDetailVC"{
             guard let stepDetailVC = segue.destination as? StepDetailViewController else {return}
@@ -93,14 +102,16 @@ class MainViewController: UIViewController {
         mainInfoView.addGestureRecognizer(leftgestureRecognizer)
     }
     
-    func swipeLeft(_ sender:UISwipeGestureRecognizer){
+    func swipeLeft(_ sender:AnyObject){
         UIView.animate(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState,.curveEaseInOut,.beginFromCurrentState], animations: {[unowned self] in
             self.mainInfoView.swipeCounterclockwise()
 
             }, completion:  nil)
+        
+        print(stepBarChartView.frame)
     }
     
-    func swipeRight(_ sender:UISwipeGestureRecognizer){
+    func swipeRight(_ sender:AnyObject){
         UIView.animate(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState,.curveEaseInOut,.beginFromCurrentState], animations: {[unowned self] in
             self.mainInfoView.swipeClockwise()
             
