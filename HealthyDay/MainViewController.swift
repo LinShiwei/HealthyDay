@@ -11,14 +11,14 @@ import HealthKit
 import CoreLocation
 
 class MainViewController: UIViewController {
-    
+//MARK: Property
     private let healthManager = HealthManager()
     
     private var mainInfoView : MainInformationView!
 
-    private let stepBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 50, y: 0, width: 50, height: 22),title:"step", itemType:.right)
+    private let stepBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 70, y: 0, width: 50, height: 22),title:"step", itemType:.right)
     
-    private let runningBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 50, y: 0, width: 50, height: 22),title:"run", itemType:.left)
+    private let runningBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 70, y: 0, width: 50, height: 22),title:"run", itemType:.left)
     
     @IBOutlet weak var stepBarChartView: UIView!
     
@@ -26,8 +26,15 @@ class MainViewController: UIViewController {
         
         print("tapButton")
     }
+    
+//MARK: View cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        
         healthManager.authorize{(success,error) in
             print("Error == \(error)")
             print("HealthKit authorize: \(success)")
@@ -42,7 +49,67 @@ class MainViewController: UIViewController {
 
         
     }
+   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        #if !(arch(i386) || arch(x86_64))
+            healthManager.readStepCount(periodDataType: .Current){ [unowned self] (counts,error) in
+                if counts != nil && error == nil{
+                    DispatchQueue.main.async {
+                        self.mainInfoView.stepCount = counts![0]
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.mainInfoView.stepCount = 0
+                    }
+                }
+            }
+            healthManager.readDistanceWalkingRunning(periodDataType:.Current){ [unowned self] (distances,error) in
+                if distances != nil && error == nil{
+                    DispatchQueue.main.async {
+                        self.mainInfoView.distance = distances![0]
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.mainInfoView.distance = 0
+                    }
+                }
+            }
+        #endif
+    }
+//MARK: Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowStepDetailVC"{
+            guard let stepDetailVC = segue.destination as? StepDetailViewController else {return}
+            #if !(arch(i386) || arch(x86_64))
+                healthManager.readStepCount(periodDataType: .Weekly){(counts,error) in
+                    if counts != nil && error == nil{
+                        DispatchQueue.main.async {
+                            stepDetailVC.stepCounts = counts!
+                        }
+                    }
+                }
+                healthManager.readDistanceWalkingRunning(periodDataType: .Weekly){(distances,error) in
+                    if distances != nil && error == nil{
+                        DispatchQueue.main.async {
+                            stepDetailVC.distances = distances!
+                        }
+                    }
+                }
+            #endif
+        }
+    }
 
+//MARK: Subview init
+    private func initMainInfoView(){
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPan(_:)))
+        mainInfoView = MainInformationView(frame:CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height/3*2))
+        mainInfoView.addGestureRecognizer(panGestureRecognizer)
+        view.insertSubview(mainInfoView, at: 0)
+    }
+    
+    
+//MARK: Selector
     func didPan(_ sender:UIPanGestureRecognizer){
         mainInfoView.animationProcess = sender.translation(in: view).x/windowBounds.width
         switch sender.state {
@@ -72,63 +139,6 @@ class MainViewController: UIViewController {
             print("ended \(sender.velocity(in: view))")
         default: break
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        #if !(arch(i386) || arch(x86_64))
-            healthManager.readStepCount(periodDataType: .Current){ [unowned self] (counts,error) in
-                if counts != nil && error == nil{
-                    DispatchQueue.main.async {
-                        self.mainInfoView.stepCount = counts![0]
-                    }
-                }else{
-                    DispatchQueue.main.async {
-                        self.mainInfoView.stepCount = 0
-                    }
-                }
-            }
-            healthManager.readDistanceWalkingRunning(periodDataType:.Current){ [unowned self] (distances,error) in
-                if distances != nil && error == nil{
-                    DispatchQueue.main.async {
-                        self.mainInfoView.distance = distances![0]
-                    }
-                }else{
-                    DispatchQueue.main.async {
-                        self.mainInfoView.distance = 0
-                    }
-                }
-            }
-        #endif
-    }
-  
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowStepDetailVC"{
-            guard let stepDetailVC = segue.destination as? StepDetailViewController else {return}
-            #if !(arch(i386) || arch(x86_64))
-                healthManager.readStepCount(periodDataType: .Weekly){(counts,error) in
-                    if counts != nil && error == nil{
-                        DispatchQueue.main.async {
-                            stepDetailVC.stepCounts = counts!
-                        }
-                    }
-                }
-                healthManager.readDistanceWalkingRunning(periodDataType: .Weekly){(distances,error) in
-                    if distances != nil && error == nil{
-                        DispatchQueue.main.async {
-                            stepDetailVC.distances = distances!
-                        }
-                    }
-                }
-            #endif
-        }
-    }
-    
-    private func initMainInfoView(){
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPan(_:)))
-        mainInfoView = MainInformationView(frame:CGRect(x: 0, y: 66, width: view.frame.width, height: view.frame.height/3))
-        mainInfoView.addGestureRecognizer(panGestureRecognizer)
-        view.addSubview(mainInfoView)
     }
     
     func swipeLeft(_ sender:AnyObject){
