@@ -23,14 +23,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="o43-GG-BF1"/>
+                                    <constraint firstAttribute="height" constant="100" id="o43-GG-BF1"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Ser-bM-Fwk" appends="YES" id="iMM-wZ-FVj"/>
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nue-GV-2fS">
-                                <frame key="frameInset" minX="160" minY="429" width="55" height="30"/>
+                                <frame key="frameInset" minX="160" minY="465" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
@@ -156,7 +156,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xQ5-uK-391" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lQ6-YG-3Yz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lQ6-YG-3Yz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
