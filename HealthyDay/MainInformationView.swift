@@ -11,20 +11,20 @@ import UIKit
 class MainInformationView: UIView{
 //MARK: Property
     private let containerView = UIView()
-    private let stepCountLabel = UILabel()
-    private let distanceWalkingRunningLabel = UILabel()
+    private var stepCountLabel : StepCountLabel!
+    private var distanceWalkingRunningLabel : DistanceWalkingRunningLabel!
     private let dot = UIView()
     private let labelMaskView = UIView()
     private let decorativeView = UIView()
 
     var stepCount = 0{
         didSet{
-            stepCountLabel.text = "\(stepCount) Steps"
+            stepCountLabel.text = "\(stepCount)"
         }
     }
     var distance = 0{
         didSet{
-            distanceWalkingRunningLabel.text = "\(distance) Meters"
+            distanceWalkingRunningLabel.text = String(format:"%.2f",Double(distance)/1000)
         }
     }
 //MARK: View
@@ -50,20 +50,8 @@ class MainInformationView: UIView{
     private func initContainerView(rotateRadius radius:CGFloat){
         containerView.center = CGPoint(x: frame.width/2, y: frame.height/2+radius)
         
-        distanceWalkingRunningLabel.frame.size = CGSize(width: frame.width/2, height: frame.height/2)
-        distanceWalkingRunningLabel.center = CGPoint(x: 0, y: -radius)
-        distanceWalkingRunningLabel.textAlignment = .center
-        distanceWalkingRunningLabel.adjustsFontSizeToFitWidth = true
-        distanceWalkingRunningLabel.backgroundColor = UIColor.green
-        distanceWalkingRunningLabel.text = "0 Meters"
-        
-        stepCountLabel.frame.size = distanceWalkingRunningLabel.frame.size
-        stepCountLabel.center = CGPoint(x: -distanceWalkingRunningLabel.center.y, y: 0)
-        stepCountLabel.textAlignment = .center
-        stepCountLabel.adjustsFontSizeToFitWidth = true
-        stepCountLabel.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-        stepCountLabel.backgroundColor = UIColor.blue
-        stepCountLabel.text = "0 Steps"
+        distanceWalkingRunningLabel = DistanceWalkingRunningLabel(size:CGSize(width: frame.width/3*2, height: frame.height/2),center:CGPoint(x: 0, y: -radius))
+        stepCountLabel = StepCountLabel(size: distanceWalkingRunningLabel.frame.size, center: CGPoint(x: -distanceWalkingRunningLabel.center.y, y: 0))
         
         containerView.addSubview(stepCountLabel)
         containerView.addSubview(distanceWalkingRunningLabel)
@@ -103,7 +91,7 @@ class MainInformationView: UIView{
         decorativeView.layer.addSublayer(shapeLayer)
         addSubview(decorativeView)
     }
-    
+//MARK: Animation helper
     private func swipeClockwise(){
         containerView.transform = .identity
         dot.center.x = frame.width*2/5

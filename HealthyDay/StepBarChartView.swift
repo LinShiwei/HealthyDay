@@ -32,7 +32,7 @@ class StepBarChartView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        backgroundColor = UIColor.yellow
+//        backgroundColor = UIColor.yellow
 
     }
   
@@ -65,12 +65,34 @@ class StepBarChartView: UIView {
         }
 
     }
-    
-    func hide(){
-        alpha = 0
+//MARK: Animation helper  
+    private func hide(process:CGFloat){
+        alpha = 1 - process
     }
     
-    func show(){
-        alpha = 1
+    private func show(process:CGFloat){
+        alpha = process
+    }
+    
+    func panAnimation(process:CGFloat, currentState:MainVCState){
+        assert(process >= -1 && process <= 1)
+        switch process {
+        case 1:
+            hide(process: 1)
+        case -1:
+            show(process: 1)
+        default:
+            switch currentState{
+            case .step:
+                if process > 0{
+                    hide(process: process)
+                }
+            case .running:
+                if process < 0{
+                    show(process: -process)
+                }
+            }
+
+        }
     }
 }

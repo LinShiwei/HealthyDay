@@ -39,15 +39,34 @@ class StartRunningButton: UIButton {
         ringLayer.borderWidth = 1
         layer.addSublayer(ringLayer)
     }
-    
-    func hide(process: CGFloat){
-        assert(process > 0 && process < 1)
-        alpha = process
-        
+//MARK: Animation helper    
+    private func hide(process:CGFloat){
+        alpha = 1 - process
     }
     
-    func show(process: CGFloat){
-        assert(process > 0 && process < 1)
+    private func show(process:CGFloat){
         alpha = process
+    }
+    
+    func panAnimation(process:CGFloat, currentState:MainVCState){
+        assert(process >= -1 && process <= 1)
+        switch process {
+        case 1:
+            show(process: 1)
+        case -1:
+            hide(process: 1)
+        default:
+            switch currentState{
+            case .step:
+                if process > 0{
+                    show(process: process)
+                }
+            case .running:
+                if process < 0{
+                    hide(process: -process)
+                }
+            }
+            
+        }
     }
 }

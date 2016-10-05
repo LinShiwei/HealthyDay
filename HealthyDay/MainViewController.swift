@@ -20,8 +20,8 @@ class MainViewController: UIViewController {
     
     private var mainInfoView : MainInformationView!
 
-    private let stepBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 80, y: 0, width: 50, height: 22),title:"step", itemType:.right)
-    private let runningBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 80, y: 0, width: 50, height: 22),title:"run", itemType:.left)
+    private let stepBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 85, y: 0, width: 50, height: 22),title:"记步", itemType:.right)
+    private let runningBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 85, y: 0, width: 50, height: 22),title:"运动", itemType:.left)
     
     private var state = MainVCState.running
     
@@ -165,7 +165,9 @@ class MainViewController: UIViewController {
             }
         default:
             mainInfoView.panAnimation(process: process, currentState: state)
-            
+            stepBarChartView.panAnimation(process: process, currentState: state)
+            startRunningBtn.panAnimation(process: process, currentState: state)
+
         }
     }
     
@@ -184,8 +186,8 @@ class MainViewController: UIViewController {
             self.mainInfoView.panAnimation(process: -1, currentState: self.state)
             self.stepBarItem.enable = false
             self.runningBarItem.enable = true
-//            self.stepBarChartView.show()
-//            self.startRunningBtn.hide(process: 1)
+            self.stepBarChartView.panAnimation(process: -1, currentState: self.state)
+            self.startRunningBtn.panAnimation(process: -1, currentState: self.state)
             }, completion:  nil)
         state = .step
     }
@@ -205,8 +207,8 @@ class MainViewController: UIViewController {
             self.mainInfoView.panAnimation(process: 1, currentState: self.state)
             self.stepBarItem.enable = true
             self.runningBarItem.enable = false
-//            self.stepBarChartView.hide()
-//            self.startRunningBtn.show(process: 1)
+            self.stepBarChartView.panAnimation(process: 1, currentState: self.state)
+            self.startRunningBtn.panAnimation(process: 1, currentState: self.state)
             }, completion:  nil)
         state = .running
     }

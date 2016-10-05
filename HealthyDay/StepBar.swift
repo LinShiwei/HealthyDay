@@ -35,7 +35,7 @@ class StepBar: UIView {
         
         bar = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height-dateLabelSize.height))
         bar.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
-        bar.layer.backgroundColor = UIColor.lightGray.cgColor
+        bar.layer.backgroundColor = UIColor(white: 0.9, alpha: 1).cgColor
         bar.layer.cornerRadius = 5
         let barLayer = CALayer()
         barLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: 30)

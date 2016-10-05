@@ -17,8 +17,8 @@ struct ThemeColor {
 }
 
 let theme = ThemeColor(
-    lightColor:rgbColor(red:147, green:249, blue: 185, alpha: 1),
-    thickColor:rgbColor(red: 29, green: 151, blue: 108, alpha: 1)
+    lightColor:rgbColor(red:0x52, green:0xC2, blue: 0x34, alpha: 1),
+    thickColor:rgbColor(red: 0x3C, green: 0xA5, blue: 0x5C, alpha: 1)
 )
 
 
