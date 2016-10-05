@@ -8,53 +8,15 @@
 
 import UIKit
 
-enum MainInfoViewState{
-    case step
-    case distance
-}
-
 class MainInformationView: UIView{
 //MARK: Property
-    
     private let containerView = UIView()
     private let stepCountLabel = UILabel()
     private let distanceWalkingRunningLabel = UILabel()
     private let dot = UIView()
     private let labelMaskView = UIView()
     private let decorativeView = UIView()
-    
-    private var state = MainInfoViewState.distance
-    
-    var animationProcess : CGFloat = 0{
-        didSet{
-            switch state{
-            case .distance:
-                if 0<animationProcess&&animationProcess<=1{
-                    dot.center.x = frame.width*2/5
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*animationProcess/2)
-                }else{
-                    if -1<=animationProcess&&animationProcess<0{
-                        dot.center.x = frame.width*2/5-frame.width/5*animationProcess
-                        containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*animationProcess)
-                    }else{
-                        return
-                    }
-                }
-            case .step:
-                if 0<animationProcess&&animationProcess<=1{
-                    dot.center.x = frame.width*3/5-frame.width/5*animationProcess
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*(animationProcess-1))
-                }else{
-                    if -1<=animationProcess&&animationProcess<0{
-                        dot.center.x = frame.width*3/5
-                        containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*(animationProcess/2-1))
-                    }else{
-                        return
-                    }
-                }
-            }         
-        }
-    }
+
     var stepCount = 0{
         didSet{
             stepCountLabel.text = "\(stepCount) Steps"
@@ -142,16 +104,44 @@ class MainInformationView: UIView{
         addSubview(decorativeView)
     }
     
-    func swipeClockwise(){
+    private func swipeClockwise(){
         containerView.transform = .identity
         dot.center.x = frame.width*2/5
-        state = .distance
     }
     
-    func swipeCounterclockwise(){
+    private func swipeCounterclockwise(){
         containerView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
         dot.center.x = frame.width*3/5
-        state = .step
     }
    
+    func panAnimation(process: CGFloat, currentState: MainVCState){
+        assert(process >= -1 && process <= 1)
+        switch process {
+        case 1:
+            swipeClockwise()
+        case -1:
+            swipeCounterclockwise()
+        default:
+            switch currentState{
+            case .running:
+                if process > 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*process/2)
+                    dot.center.x = frame.width*2/5 //可以去掉吗
+                }
+                if process < 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*process)
+                    dot.center.x = frame.width*2/5-frame.width/5*process
+                }
+            case .step:
+                if process > 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*(process-1))
+                    dot.center.x = frame.width*3/5-frame.width/5*process
+                }
+                if process < 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*(process/2-1))
+                    dot.center.x = frame.width*3/5
+                }
+            }
+        }
+    }
 }
