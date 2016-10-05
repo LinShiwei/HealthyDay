@@ -110,7 +110,7 @@ class MainInformationView: UIView{
     
     private func initDotView(){
         dot.frame.size = CGSize(width: 10, height: 10)
-        dot.center = CGPoint(x: frame.width*2/5, y: frame.height/4 - 10)
+        dot.center = CGPoint(x: frame.width*2/5, y: 66)
         dot.layer.cornerRadius = dot.frame.width
         dot.layer.backgroundColor = UIColor.white.cgColor
         addSubview(dot)

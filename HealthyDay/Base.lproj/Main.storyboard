@@ -23,37 +23,41 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="o43-GG-BF1"/>
+                                    <constraint firstAttribute="height" constant="80" id="o43-GG-BF1"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Ser-bM-Fwk" appends="YES" id="iMM-wZ-FVj"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nue-GV-2fS">
-                                <frame key="frameInset" minX="160" minY="465" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nue-GV-2fS" customClass="StartRunningButton" customModule="HealthyDay" customModuleProvider="target">
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
                                 </accessibility>
-                                <state key="normal" title="Test"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="1ab-Nm-2yW"/>
+                                    <constraint firstAttribute="height" constant="100" id="fPa-rx-Gbm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="开始"/>
                                 <connections>
-                                    <action selector="buttonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cUw-xz-6i3"/>
-                                    <segue destination="x4C-hv-WIR" kind="show" id="6A9-T1-Evd"/>
+                                    <segue destination="x4C-hv-WIR" kind="show" id="SHk-RA-YqM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Jlp-qb-dme" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4mg-aE-CYY"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nue-GV-2fS" secondAttribute="bottom" constant="20" id="KrA-AP-e6Z"/>
                             <constraint firstItem="Jlp-qb-dme" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="eQ4-jo-iWw"/>
+                            <constraint firstItem="Nue-GV-2fS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jKS-w7-9sH"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Jlp-qb-dme" secondAttribute="bottom" constant="20" id="ypx-7g-NxM"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="oPt-TA-BsL"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="stepBarChartView" destination="Jlp-qb-dme" id="4dN-t9-nSO"/>
+                        <outlet property="startRunningBtn" destination="Nue-GV-2fS" id="C3R-dE-YZt"/>
+                        <outlet property="stepBarChartView" destination="Jlp-qb-dme" id="Yng-gv-DmL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -106,8 +110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bP-VX-fMk">
-                                <frame key="frameInset" width="1000" height="1000"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bP-VX-fMk">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Bjh-pM-XZU"/>
                                 </constraints>
@@ -125,9 +128,7 @@
                                     <action selector="tapToStartRunning:" destination="x4C-hv-WIR" eventType="touchUpInside" id="1VM-YQ-eDB"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-mH-y4e">
-                                <frame key="frameInset" width="1000" height="1000"/>
-                            </mapView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-mH-y4e"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -156,7 +157,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xQ5-uK-391" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lQ6-YG-3Yz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lQ6-YG-3Yz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
