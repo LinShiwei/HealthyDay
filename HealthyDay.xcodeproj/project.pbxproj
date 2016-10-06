@@ -17,6 +17,7 @@
 		56130D881D9AB4FC005334FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56130D871D9AB4FC005334FF /* MapKit.framework */; };
 		562379C51DA128C200525B7C /* MainInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562379C41DA128C200525B7C /* MainInformationView.swift */; };
 		563E06561D98B04000B18DAE /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E06551D98B04000B18DAE /* HealthManager.swift */; };
+		564FF90B1DA6203E008AC31E /* StepRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FF90A1DA6203E008AC31E /* StepRingView.swift */; };
 		56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56629EA71D9B877000720F0A /* RunningViewController.swift */; };
 		56629EB71D9B8D8300720F0A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56629EB61D9B8D8300720F0A /* Quick.framework */; };
 		56629EB91D9B8D8900720F0A /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56629EB81D9B8D8900720F0A /* Nimble.framework */; };
@@ -73,6 +74,7 @@
 		56130D871D9AB4FC005334FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		562379C41DA128C200525B7C /* MainInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInformationView.swift; sourceTree = "<group>"; };
 		563E06551D98B04000B18DAE /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		564FF90A1DA6203E008AC31E /* StepRingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepRingView.swift; sourceTree = "<group>"; };
 		56629EA71D9B877000720F0A /* RunningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
 		56629EB61D9B8D8300720F0A /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		56629EB81D9B8D8900720F0A /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -183,10 +185,8 @@
 			children = (
 				560E1BAA1D953D3600B488AE /* MainViewController.swift */,
 				567E83C11DA52BE600BBD133 /* MainInfoView */,
-				56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */,
-				569202591DA0F7C500D9DA33 /* StepBar.swift */,
-				567595301DA36DCD00582080 /* CustomBarBtnItem.swift */,
-				567E83BB1DA4D3B800BBD133 /* StartRunningButton.swift */,
+				564FF90C1DA6A41D008AC31E /* StepBarChart */,
+				564FF90D1DA6A42E008AC31E /* BarItem */,
 			);
 			name = MainViewController;
 			sourceTree = "<group>";
@@ -204,12 +204,31 @@
 			name = Support;
 			sourceTree = "<group>";
 		};
+		564FF90C1DA6A41D008AC31E /* StepBarChart */ = {
+			isa = PBXGroup;
+			children = (
+				56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */,
+				569202591DA0F7C500D9DA33 /* StepBar.swift */,
+			);
+			name = StepBarChart;
+			sourceTree = "<group>";
+		};
+		564FF90D1DA6A42E008AC31E /* BarItem */ = {
+			isa = PBXGroup;
+			children = (
+				567595301DA36DCD00582080 /* CustomBarBtnItem.swift */,
+				567E83BB1DA4D3B800BBD133 /* StartRunningButton.swift */,
+			);
+			name = BarItem;
+			sourceTree = "<group>";
+		};
 		567E83C11DA52BE600BBD133 /* MainInfoView */ = {
 			isa = PBXGroup;
 			children = (
 				562379C41DA128C200525B7C /* MainInformationView.swift */,
 				567E83BD1DA526E800BBD133 /* DistanceWalkingRunningLabel.swift */,
 				567E83BF1DA52AEA00BBD133 /* StepCountLabel.swift */,
+				564FF90A1DA6203E008AC31E /* StepRingView.swift */,
 			);
 			name = MainInfoView;
 			sourceTree = "<group>";
@@ -328,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				564FF90B1DA6203E008AC31E /* StepRingView.swift in Sources */,
 				560E1BAB1D953D3600B488AE /* MainViewController.swift in Sources */,
 				5692025A1DA0F7C500D9DA33 /* StepBar.swift in Sources */,
 				567E83BC1DA4D3B800BBD133 /* StartRunningButton.swift in Sources */,

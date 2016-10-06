@@ -10,14 +10,25 @@ import UIKit
 
 class StepCountLabel: UILabel {
 
-    let nameLabel = UILabel()
-    var subviewsAlpha : CGFloat = 1{
+    private let nameLabel = UILabel()
+    private let targetLabel = UILabel()
+    private var ringView : StepRingView!
+    private let targetCount = 10000
+    
+    var stepCount : Int = 0 {
         didSet{
-            for view in subviews {
-                view.alpha = subviewsAlpha
-            }
+            text = "\(stepCount)"
+            ringView.precent = Double(stepCount)/Double(targetCount)
         }
     }
+    
+    var subviewsAlpha : CGFloat = 1{
+        didSet{
+            nameLabel.alpha = subviewsAlpha
+            targetLabel.alpha = subviewsAlpha
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,16 +39,26 @@ class StepCountLabel: UILabel {
         textAlignment = .center
         textColor = UIColor.white
         adjustsFontSizeToFitWidth = true
-        transform = CGAffineTransform(rotationAngle: CGFloat.pi/3)
-//        backgroundColor = UIColor.blue
         text = "0"
-        font = UIFont(name: "DINCondensed-Bold", size: 90)
+        font = UIFont(name: "DINCondensed-Bold", size: 70)
 
-        nameLabel.frame = CGRect(x: 0, y: 0, width: size.width, height: 50)
+        nameLabel.frame = CGRect(x: 0, y: 20, width: size.width, height: 50)
         nameLabel.text = "今日步数"
+        nameLabel.font = UIFont.systemFont(ofSize: 14)
         nameLabel.textAlignment = .center
         nameLabel.textColor = UIColor.white
         addSubview(nameLabel)
-
+        
+        targetLabel.frame = CGRect(x: 0, y: size.height-95, width: size.width, height: 50)
+        targetLabel.text = "目标 \(targetCount)步"
+        targetLabel.font = UIFont.systemFont(ofSize: 14)
+        targetLabel.textAlignment = .center
+        targetLabel.textColor = UIColor.white
+        addSubview(targetLabel)
+        
+        ringView = StepRingView(size:CGSize(width: 120, height: 120),center:CGPoint(x:frame.width/2,y:frame.height/2-10), precent: 0.3)
+        addSubview(ringView)
+    
+        transform = CGAffineTransform(rotationAngle: CGFloat.pi/3)
     }
 }

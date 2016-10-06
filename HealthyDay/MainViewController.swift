@@ -17,13 +17,11 @@ enum MainVCState{
 class MainViewController: UIViewController {
 //MARK: Property
     private let healthManager = HealthManager()
-    
-    private var mainInfoView : MainInformationView!
+    private var state = MainVCState.running
 
     private let stepBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 85, y: 0, width: 50, height: 22),title:"记步", itemType:.right)
     private let runningBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 85, y: 0, width: 50, height: 22),title:"运动", itemType:.left)
-    
-    private var state = MainVCState.running
+    private var mainInfoView : MainInformationView!
     
     @IBOutlet weak var stepBarChartView: StepBarChartView!
     @IBOutlet weak var startRunningBtn: StartRunningButton!
@@ -54,33 +52,8 @@ class MainViewController: UIViewController {
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        #if !(arch(i386) || arch(x86_64))
-            healthManager.readStepCount(periodDataType: .Current){ [unowned self] (counts,error) in
-                if counts != nil && error == nil{
-                    DispatchQueue.main.async {
-                        self.mainInfoView.stepCount = counts![0]
-                    }
-                }else{
-                    DispatchQueue.main.async {
-                        self.mainInfoView.stepCount = 0
-                    }
-                }
-            }
-            healthManager.readDistanceWalkingRunning(periodDataType:.Current){ [unowned self] (distances,error) in
-                if distances != nil && error == nil{
-                    DispatchQueue.main.async {
-                        self.mainInfoView.distance = distances![0]
-                    }
-                }else{
-                    DispatchQueue.main.async {
-                        self.mainInfoView.distance = 0
-                    }
-                }
-            }
-            #else
-            mainInfoView.stepCount = 5000
-            mainInfoView.distance = 2000
-        #endif
+        updateCurrentDistance()
+        updateCurrentStepCount()
     }
     
 //MARK: Segue
@@ -198,6 +171,10 @@ class MainViewController: UIViewController {
             self.stepBarChartView.panAnimation(process: -1, currentState: self.state)
             self.startRunningBtn.panAnimation(process: -1, currentState: self.state)
             }, completion:  nil)
+        
+        if state == .running{
+            updateCurrentStepCount()
+        }
         state = .step
     }
     
@@ -219,7 +196,7 @@ class MainViewController: UIViewController {
                     return baseDuration - baseDuration*pro
                 case .running:
                     return baseDuration*pro
-                    }
+                }
             }
         }()
         UIView.animate(withDuration: duration, delay: 0, options: [.beginFromCurrentState,.curveEaseOut], animations: {[unowned self] in
@@ -229,7 +206,48 @@ class MainViewController: UIViewController {
             self.stepBarChartView.panAnimation(process: 1, currentState: self.state)
             self.startRunningBtn.panAnimation(process: 1, currentState: self.state)
             }, completion:  nil)
+        if state == .step{
+            updateCurrentDistance() 
+        }
         state = .running
+    }
+    
+//MARK: Helper
+    
+    private func updateCurrentStepCount(){
+        #if !(arch(i386) || arch(x86_64))
+            healthManager.readStepCount(periodDataType: .Current){ [unowned self] (counts,error) in
+                if counts != nil && error == nil{
+                    DispatchQueue.main.async {
+                        self.mainInfoView.stepCount = counts![0]
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.mainInfoView.stepCount = 0
+                    }
+                }
+        }
+            #else
+            mainInfoView.stepCount = 1000
+        #endif
+    }
+    
+    private func updateCurrentDistance(){
+        #if !(arch(i386) || arch(x86_64))
+            healthManager.readDistanceWalkingRunning(periodDataType:.Current){ [unowned self] (distances,error) in
+                if distances != nil && error == nil{
+                    DispatchQueue.main.async {
+                        self.mainInfoView.distance = distances![0]
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.mainInfoView.distance = 0
+                    }
+                }
+            }
+            #else
+            mainInfoView.distance = 2000
+        #endif
     }
 }
 

@@ -19,7 +19,8 @@ class MainInformationView: UIView{
 
     var stepCount = 0{
         didSet{
-            stepCountLabel.text = "\(stepCount)"
+            stepCountLabel.stepCount = stepCount
+            
         }
     }
     var distance = 0{
@@ -30,7 +31,6 @@ class MainInformationView: UIView{
 //MARK: View
     override init(frame:CGRect){
         super.init(frame:frame)
-        
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds

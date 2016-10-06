@@ -9,14 +9,6 @@
 import UIKit
 
 class DistanceWalkingRunningLabel: UILabel {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     let nameLabel = UILabel()
     var subviewsAlpha : CGFloat = 1{
@@ -45,6 +37,8 @@ class DistanceWalkingRunningLabel: UILabel {
         nameLabel.textAlignment = .center
         nameLabel.textColor = UIColor.white
         addSubview(nameLabel)
+        
+        
 
     }
 }
