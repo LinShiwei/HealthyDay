@@ -42,10 +42,19 @@ class StartRunningButton: UIButton {
 //MARK: Animation helper    
     private func hide(process:CGFloat){
         alpha = 1 - process
+        let scaleTransform = CGAffineTransform(scaleX: 1-0.5*process, y: 1-0.5*process)
+        let scaleShiftTransform = scaleTransform.translatedBy(x: 0, y: (buttonDiameter/2+30)*process)
+        
+        transform = scaleShiftTransform
     }
     
     private func show(process:CGFloat){
         alpha = process
+        let scaleTransform = CGAffineTransform(scaleX: 0.5+0.5*process, y: 0.5+0.5*process)
+        let scaleShiftTransform = scaleTransform.translatedBy(x: 0, y: (buttonDiameter/2+30)*(1-process))
+        
+        transform = scaleShiftTransform
+//        transform = .identity
     }
     
     func panAnimation(process:CGFloat, currentState:MainVCState){

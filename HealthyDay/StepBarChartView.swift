@@ -67,10 +67,12 @@ class StepBarChartView: UIView {
     }
 //MARK: Animation helper  
     private func hide(process:CGFloat){
+        transform = CGAffineTransform(translationX: 0, y: 20*process)
         alpha = 1 - process
     }
     
     private func show(process:CGFloat){
+        transform = CGAffineTransform(translationX: 0, y: 20*(1-process))
         alpha = process
     }
     

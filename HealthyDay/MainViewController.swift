@@ -44,10 +44,10 @@ class MainViewController: UIViewController {
         initMainInfoView()
         initStepBarChartView()
         
-        runningBarItem.addTarget(self, action:  #selector(MainViewController.swipeRight(_:process:)), for: .touchUpInside)
+        runningBarItem.addTarget(self, action:  #selector(MainViewController.swipeRight(_:process:velocity:)), for: .touchUpInside)
         runningBarItem.enable = false
         self.navigationItem.leftBarButtonItem = runningBarItem
-        stepBarItem.addTarget(self, action:  #selector(MainViewController.swipeLeft(_:process:)), for: .touchUpInside)
+        stepBarItem.addTarget(self, action:  #selector(MainViewController.swipeLeft(_:process:velocity:)), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = stepBarItem
 
     }
@@ -137,29 +137,29 @@ class MainViewController: UIViewController {
     
 //MARK: Selector
     func didPan(_ sender:UIPanGestureRecognizer){
-        let process = sender.translation(in: view).x/windowBounds.width
-
+        let process = sender.translation(in: mainInfoView).x/mainInfoView.frame.width
+        print(sender.velocity(in: view))
         switch sender.state {
         case .ended,.cancelled:
             let velocityX = sender.velocity(in: view).x
-            if velocityX > 300{
-                swipeRight(sender, process: process)
+            if velocityX > 900{
+                swipeRight(sender, process: process, velocity: velocityX)
                 break
             }
-            if velocityX < -300{
-                swipeLeft(sender, process: process)
+            if velocityX < -900{
+                swipeLeft(sender, process: process, velocity: velocityX)
                 break
             }
             if process > 0.4 {
-                swipeRight(sender, process: process)
+                swipeRight(sender, process: process, velocity: velocityX)
             }else{
                 if process < -0.4 {
-                    swipeLeft(sender, process: process)
+                    swipeLeft(sender, process: process, velocity: velocityX)
                 }else{
                     if state == .running {
-                        swipeRight(sender, process: process)
+                        swipeRight(sender, process: process, velocity: velocityX)
                     }else{
-                        swipeLeft(sender, process: process)
+                        swipeLeft(sender, process: process, velocity: velocityX)
                     }
                 }
             }
@@ -171,18 +171,28 @@ class MainViewController: UIViewController {
         }
     }
     
-    func swipeLeft(_ sender:AnyObject, process:CGFloat = -1){
+    func swipeLeft(_ sender:AnyObject, process:CGFloat = -1, velocity:CGFloat){
         let duration : Double = {
             let baseDuration = 0.5
             let pro = Double(abs(process))
-            switch state{
-            case .step:
-                return baseDuration*pro
-            case .running:
-                return baseDuration - baseDuration*pro
+            let vel = Double(abs(velocity))
+            if vel > 900{
+                switch state{
+                case .step:
+                    return baseDuration*pro*900/vel
+                case .running:
+                    return (baseDuration - baseDuration*pro)*900/vel
+                }
+            }else{
+                switch state{
+                case .step:
+                    return baseDuration*pro
+                case .running:
+                    return baseDuration - baseDuration*pro
+                }
             }
         }()
-        UIView.animate(withDuration: duration, delay: 0, options: [.beginFromCurrentState,.curveEaseInOut,.beginFromCurrentState], animations: {[unowned self] in
+        UIView.animate(withDuration: duration, delay: 0, options: [.beginFromCurrentState,.curveEaseOut], animations: {[unowned self] in
             self.mainInfoView.panAnimation(process: -1, currentState: self.state)
             self.stepBarItem.enable = false
             self.runningBarItem.enable = true
@@ -192,18 +202,28 @@ class MainViewController: UIViewController {
         state = .step
     }
     
-    func swipeRight(_ sender:AnyObject, process:CGFloat = 1){
+    func swipeRight(_ sender:AnyObject, process:CGFloat = 1, velocity:CGFloat){
         let duration : Double = {
             let baseDuration = 0.5
             let pro = Double(abs(process))
-            switch state{
-            case .step:
-                return baseDuration - baseDuration*pro
-            case .running:
-                return baseDuration*pro
+            let vel = Double(abs(velocity))
+            if vel > 900{
+                switch state{
+                case .step:
+                    return baseDuration*pro*900/vel
+                case .running:
+                    return (baseDuration - baseDuration*pro)*900/vel
+                }
+            }else{
+                switch state{
+                case .step:
+                    return baseDuration - baseDuration*pro
+                case .running:
+                    return baseDuration*pro
+                    }
             }
         }()
-        UIView.animate(withDuration: duration, delay: 0, options: [.beginFromCurrentState,.curveEaseInOut,.beginFromCurrentState], animations: {[unowned self] in
+        UIView.animate(withDuration: duration, delay: 0, options: [.beginFromCurrentState,.curveEaseOut], animations: {[unowned self] in
             self.mainInfoView.panAnimation(process: 1, currentState: self.state)
             self.stepBarItem.enable = true
             self.runningBarItem.enable = false
