@@ -19,7 +19,13 @@ class DistanceWalkingRunningLabel: UILabel {
     */
     
     let nameLabel = UILabel()
-    
+    var subviewsAlpha : CGFloat = 1{
+        didSet{
+            for view in subviews {
+                view.alpha = subviewsAlpha
+            }
+        }
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

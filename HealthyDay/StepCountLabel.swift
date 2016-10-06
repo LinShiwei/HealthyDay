@@ -11,7 +11,13 @@ import UIKit
 class StepCountLabel: UILabel {
 
     let nameLabel = UILabel()
-    
+    var subviewsAlpha : CGFloat = 1{
+        didSet{
+            for view in subviews {
+                view.alpha = subviewsAlpha
+            }
+        }
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -22,7 +28,7 @@ class StepCountLabel: UILabel {
         textAlignment = .center
         textColor = UIColor.white
         adjustsFontSizeToFitWidth = true
-        transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+        transform = CGAffineTransform(rotationAngle: CGFloat.pi/3)
 //        backgroundColor = UIColor.blue
         text = "0"
         font = UIFont(name: "DINCondensed-Bold", size: 90)

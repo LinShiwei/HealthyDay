@@ -50,8 +50,8 @@ class MainInformationView: UIView{
     private func initContainerView(rotateRadius radius:CGFloat){
         containerView.center = CGPoint(x: frame.width/2, y: frame.height/2+radius)
         
-        distanceWalkingRunningLabel = DistanceWalkingRunningLabel(size:CGSize(width: frame.width/3*2, height: frame.height/2),center:CGPoint(x: 0, y: -radius))
-        stepCountLabel = StepCountLabel(size: distanceWalkingRunningLabel.frame.size, center: CGPoint(x: -distanceWalkingRunningLabel.center.y, y: 0))
+        distanceWalkingRunningLabel = DistanceWalkingRunningLabel(size:CGSize(width: frame.width, height: frame.height/2),center:CGPoint(x: 0, y: -radius))
+        stepCountLabel = StepCountLabel(size: distanceWalkingRunningLabel.frame.size, center: CGPoint(x: -distanceWalkingRunningLabel.center.y*sin(CGFloat.pi/3), y: distanceWalkingRunningLabel.center.y*sin(CGFloat.pi/6)))
         
         containerView.addSubview(stepCountLabel)
         containerView.addSubview(distanceWalkingRunningLabel)
@@ -92,13 +92,29 @@ class MainInformationView: UIView{
         addSubview(decorativeView)
     }
 //MARK: Animation helper
+    private func hideDistanceWalkingRunningSublabel(alpha:CGFloat){
+        guard distanceWalkingRunningLabel.subviewsAlpha != alpha else {return}
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {[unowned self] in
+            self.distanceWalkingRunningLabel.subviewsAlpha = alpha
+            }, completion: nil)
+        
+    }
+    
+    private func hideStepCountSublabel(alpha:CGFloat){
+        guard stepCountLabel.subviewsAlpha != alpha else {return}
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {[unowned self] in
+            self.stepCountLabel.subviewsAlpha = alpha
+            }, completion: nil)
+
+    }
+    
     private func swipeClockwise(){
         containerView.transform = .identity
         dot.center.x = frame.width*2/5
     }
     
     private func swipeCounterclockwise(){
-        containerView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
+        containerView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/3)
         dot.center.x = frame.width*3/5
     }
    
@@ -107,26 +123,34 @@ class MainInformationView: UIView{
         switch process {
         case 1:
             swipeClockwise()
+            hideDistanceWalkingRunningSublabel(alpha: 1)
+            hideStepCountSublabel(alpha: 1)
         case -1:
             swipeCounterclockwise()
+            hideDistanceWalkingRunningSublabel(alpha: 1)
+            hideStepCountSublabel(alpha: 1)
         default:
             switch currentState{
             case .running:
+                hideDistanceWalkingRunningSublabel(alpha: 0)
+                hideStepCountSublabel(alpha: 1)
                 if process > 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*process/2)
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*process/2)
                     dot.center.x = frame.width*2/5 //可以去掉吗
                 }
                 if process < 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*process)
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*process)
                     dot.center.x = frame.width*2/5-frame.width/5*process
                 }
             case .step:
+                hideDistanceWalkingRunningSublabel(alpha: 1)
+                hideStepCountSublabel(alpha: 0)
                 if process > 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*(process-1))
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*(process-1))
                     dot.center.x = frame.width*3/5-frame.width/5*process
                 }
                 if process < 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2*(process/2-1))
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*(process/2-1))
                     dot.center.x = frame.width*3/5
                 }
             }

@@ -138,7 +138,6 @@ class MainViewController: UIViewController {
 //MARK: Selector
     func didPan(_ sender:UIPanGestureRecognizer){
         let process = sender.translation(in: mainInfoView).x/mainInfoView.frame.width
-        print(sender.velocity(in: view))
         switch sender.state {
         case .ended,.cancelled:
             let velocityX = sender.velocity(in: view).x
