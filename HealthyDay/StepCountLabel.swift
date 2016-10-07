@@ -58,8 +58,9 @@ class StepCountLabel: UILabel {
         targetLabel.textColor = UIColor.white
         addSubview(targetLabel)
         
-//        ringView = StepRingView(size:CGSize(width: 120, height: 120),center:CGPoint(x:frame.width/2,y:frame.height/2-10), precent: 0.3)
+
         ringView = StepRingView(size: CGSize(width:frame.height,height:frame.height), center: CGPoint(x:frame.width/2, y:frame.height/2), precent: 0.3)
+
         addSubview(ringView)
     
         transform = CGAffineTransform(rotationAngle: CGFloat.pi/3)
