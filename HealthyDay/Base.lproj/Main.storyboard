@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jlp-qb-dme" customClass="StepBarChartView" customModule="HealthyDay" customModuleProvider="target">
@@ -54,14 +54,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Jlp-qb-dme" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4mg-aE-CYY"/>
-                            <constraint firstItem="Nue-GV-2fS" firstAttribute="top" secondItem="3xe-nk-yIO" secondAttribute="bottom" constant="30" id="HYb-6F-RCD"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nue-GV-2fS" secondAttribute="bottom" constant="20" id="KrA-AP-e6Z"/>
+                            <constraint firstItem="Nue-GV-2fS" firstAttribute="top" secondItem="3xe-nk-yIO" secondAttribute="bottom" constant="20" id="HYb-6F-RCD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nue-GV-2fS" secondAttribute="bottom" constant="30" id="KrA-AP-e6Z"/>
                             <constraint firstItem="3xe-nk-yIO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L3G-vo-W4I"/>
                             <constraint firstItem="3xe-nk-yIO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="VzH-jf-Hjw"/>
                             <constraint firstAttribute="trailing" secondItem="3xe-nk-yIO" secondAttribute="trailing" id="crj-xq-WMJ"/>
                             <constraint firstItem="Jlp-qb-dme" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="eQ4-jo-iWw"/>
                             <constraint firstItem="Nue-GV-2fS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jKS-w7-9sH"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Jlp-qb-dme" secondAttribute="bottom" constant="20" id="ypx-7g-NxM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Jlp-qb-dme" secondAttribute="bottom" constant="30" id="ypx-7g-NxM"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -95,7 +95,7 @@
                         <viewControllerLayoutGuide type="bottom" id="O2d-H1-iAa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eOe-wJ-o62">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stepDetail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53V-SP-loS">
@@ -124,7 +124,7 @@
                         <viewControllerLayoutGuide type="bottom" id="x03-CL-5B4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fGb-00-Rra">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bP-VX-fMk">

@@ -76,15 +76,12 @@ class MainInformationView: UIView{
 
         containerView.center = CGPoint(x: frame.width/2, y: frame.height/2+radius)
         
-//        distanceWalkingRunningLabel = DistanceWalkingRunningLabel(size:CGSize(width: frame.width, height: frame.height*0.77),center:CGPoint(x: 0, y: -radius))
         distanceWalkingRunningLabel = DistanceWalkingRunningLabel(frame:CGRect(x: -containerView.center.x, y: -containerView.center.y+frame.height*0.17, width: frame.width, height: frame.height*0.6))
         stepCountLabel = StepCountLabel(size: CGSize(width:frame.width,height:frame.height*0.47), center: CGPoint(x: radius*sin(CGFloat.pi/3), y: -radius*sin(CGFloat.pi/6)))
         
         containerView.addSubview(stepCountLabel)
         containerView.addSubview(distanceWalkingRunningLabel)
-//        print("label frame")
-//        print(stepCountLabel.frame)
-//        print(distanceWalkingRunningLabel.frame)
+
         addSubview(containerView)
     }
     

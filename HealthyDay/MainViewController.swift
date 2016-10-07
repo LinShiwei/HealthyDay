@@ -21,7 +21,6 @@ class MainViewController: UIViewController {
 
     private let stepBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 85, y: 0, width: 50, height: 22),title:"记步", itemType:.right)
     private let runningBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 85, y: 0, width: 50, height: 22),title:"运动", itemType:.left)
-//    private var mainInfoView : MainInformationView!
     
     @IBOutlet weak var mainInfoView: MainInformationView!
     @IBOutlet weak var stepBarChartView: StepBarChartView!
@@ -40,7 +39,6 @@ class MainViewController: UIViewController {
             print("HealthKit authorize: \(success)")
         }
 
-//        initMainInfoView()
         initStepBarChartView()
         
         runningBarItem.addTarget(self, action:  #selector(MainViewController.swipeRight(_:process:velocity:)), for: .touchUpInside)
@@ -84,13 +82,6 @@ class MainViewController: UIViewController {
     }
 
 //MARK: Subview init
-    private func initMainInfoView(){
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPan(_:)))
-        mainInfoView = MainInformationView(frame:CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height/5*4))
-        mainInfoView.addGestureRecognizer(panGestureRecognizer)
-        view.insertSubview(mainInfoView, at: 0)
-    }
-    
     private func initStepBarChartView(){
         stepBarChartView.alpha = 0
         #if !(arch(i386) || arch(x86_64))
@@ -110,10 +101,6 @@ class MainViewController: UIViewController {
     
 //MARK: Selector
     @IBAction func didPanInMainInfoView(_ sender: UIPanGestureRecognizer) {
-        
-        didPan(sender)
-    }
-    func didPan(_ sender:UIPanGestureRecognizer){
         let process = sender.translation(in: mainInfoView).x/mainInfoView.frame.width
         switch sender.state {
         case .ended,.cancelled:
@@ -143,10 +130,10 @@ class MainViewController: UIViewController {
             mainInfoView.panAnimation(process: process, currentState: state)
             stepBarChartView.panAnimation(process: process, currentState: state)
             startRunningBtn.panAnimation(process: process, currentState: state)
-
+            
         }
     }
-    
+
     func swipeLeft(_ sender:AnyObject, process:CGFloat = -1, velocity:CGFloat){
         let duration : Double = {
             let baseDuration = 0.5

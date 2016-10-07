@@ -24,16 +24,8 @@ class StepBarChartView: UIView {
     
     private var stepBars = [StepBar]()
 
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = UIColor.purple
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        backgroundColor = UIColor.yellow
-
     }
   
     override func draw(_ rect: CGRect) {

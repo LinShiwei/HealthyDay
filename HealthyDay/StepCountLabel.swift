@@ -40,11 +40,11 @@ class StepCountLabel: UILabel {
         textColor = UIColor.white
         adjustsFontSizeToFitWidth = true
         text = "0"
-        font = UIFont(name: "DINCondensed-Bold", size: 70)
+        font = UIFont(name: "DINCondensed-Bold", size: 70/320*frame.width)
 
         nameLabel.frame = CGRect(x: 0, y: frame.height*0.184, width: size.width, height: frame.height*0.1)
         nameLabel.text = "今日步数"
-        nameLabel.font = UIFont.systemFont(ofSize: 14)
+        nameLabel.font = UIFont.systemFont(ofSize: 14/320*frame.width)
         nameLabel.adjustsFontSizeToFitWidth = true
         nameLabel.textAlignment = .center
         nameLabel.textColor = UIColor.white
@@ -52,7 +52,7 @@ class StepCountLabel: UILabel {
         
         targetLabel.frame = CGRect(x: 0, y: frame.height*0.71, width: size.width, height: frame.height*0.1)
         targetLabel.text = "目标 \(targetCount)步"
-        targetLabel.font = UIFont.systemFont(ofSize: 14)
+        targetLabel.font = UIFont.systemFont(ofSize: 14/320*frame.width)
         targetLabel.adjustsFontSizeToFitWidth = true
         targetLabel.textAlignment = .center
         targetLabel.textColor = UIColor.white

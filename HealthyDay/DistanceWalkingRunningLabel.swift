@@ -25,22 +25,10 @@ class DistanceWalkingRunningLabel: UILabel {
         textColor = UIColor.white
         adjustsFontSizeToFitWidth = true
         text = "0.00"
-        font = UIFont(name: "DINCondensed-Bold", size: 90)
+        font = UIFont(name: "DINCondensed-Bold", size: 90.0/320*frame.width)
         
         initNameLabel()
     }
-    
-//    init(size:CGSize, center:CGPoint){
-//        super.init(frame: CGRect(origin: CGPoint(x:0,y:0), size: size))
-//        self.center = center
-//        textAlignment = .center
-//        textColor = UIColor.white
-//        adjustsFontSizeToFitWidth = true
-//        text = "0.00"
-//        font = UIFont(name: "DINCondensed-Bold", size: 90)
-//        
-//        initNameLabel()
-//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -54,6 +42,7 @@ class DistanceWalkingRunningLabel: UILabel {
         nameLabel.textAlignment = .center
         nameLabel.textColor = UIColor.white
         nameLabel.adjustsFontSizeToFitWidth = true
+        nameLabel.font = UIFont.systemFont(ofSize: 17.0/320*frame.width)
         addSubview(nameLabel)
     }
 }
