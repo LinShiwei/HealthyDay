@@ -18,9 +18,6 @@ class DistanceWalkingRunningLabel: UILabel {
             }
         }
     }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     init(size:CGSize, center:CGPoint){
         super.init(frame: CGRect(origin: CGPoint(x:0,y:0), size: size))
@@ -28,17 +25,22 @@ class DistanceWalkingRunningLabel: UILabel {
         textAlignment = .center
         textColor = UIColor.white
         adjustsFontSizeToFitWidth = true
-//        backgroundColor = UIColor.green
         text = "0.00"
         font = UIFont(name: "DINCondensed-Bold", size: 90)
         
-        nameLabel.frame = CGRect(x: 0, y: 0, width: size.width, height: 50)
+        initNameLabel()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func initNameLabel(){
+        guard nameLabel.superview == nil else{return}
+        nameLabel.frame = CGRect(x: 0, y: 0, width: frame.width, height: 50)
         nameLabel.text = "今日总里程(公里)"
         nameLabel.textAlignment = .center
         nameLabel.textColor = UIColor.white
         addSubview(nameLabel)
-        
-        
-
     }
 }

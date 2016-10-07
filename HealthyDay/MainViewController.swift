@@ -21,8 +21,9 @@ class MainViewController: UIViewController {
 
     private let stepBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 85, y: 0, width: 50, height: 22),title:"记步", itemType:.right)
     private let runningBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 85, y: 0, width: 50, height: 22),title:"运动", itemType:.left)
-    private var mainInfoView : MainInformationView!
+//    private var mainInfoView : MainInformationView!
     
+    @IBOutlet weak var mainInfoView: MainInformationView!
     @IBOutlet weak var stepBarChartView: StepBarChartView!
     @IBOutlet weak var startRunningBtn: StartRunningButton!
 
@@ -38,8 +39,8 @@ class MainViewController: UIViewController {
             print("Error == \(error)")
             print("HealthKit authorize: \(success)")
         }
-        
-        initMainInfoView()
+
+//        initMainInfoView()
         initStepBarChartView()
         
         runningBarItem.addTarget(self, action:  #selector(MainViewController.swipeRight(_:process:velocity:)), for: .touchUpInside)
@@ -49,13 +50,12 @@ class MainViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = stepBarItem
 
     }
-   
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         updateCurrentDistance()
         updateCurrentStepCount()
     }
-    
 //MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowStepDetailVC"{
@@ -109,6 +109,10 @@ class MainViewController: UIViewController {
     }
     
 //MARK: Selector
+    @IBAction func didPanInMainInfoView(_ sender: UIPanGestureRecognizer) {
+        
+        didPan(sender)
+    }
     func didPan(_ sender:UIPanGestureRecognizer){
         let process = sender.translation(in: mainInfoView).x/mainInfoView.frame.width
         switch sender.state {

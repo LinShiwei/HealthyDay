@@ -16,6 +16,7 @@ class MainInformationView: UIView{
     private let dot = UIView()
     private let labelMaskView = UIView()
     private let decorativeView = UIView()
+    private let gradientLayer = CAGradientLayer()
 
     var stepCount = 0{
         didSet{
@@ -44,10 +45,35 @@ class MainInformationView: UIView{
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        print("lay")
+        print(frame)
+
+        
+        
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        print("layoutsubviews")
+        initGradientLayer()
+        initContainerView(rotateRadius: frame.width/2+frame.height/4)
+        initDotView()
+//        initLabelMaskView()
+        initButtomDecorativeView()
+    }
+    
 //MARK: Custom View
+    private func initGradientLayer(){
+        guard gradientLayer.superlayer == nil else {return}
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [theme.lightColor.cgColor,theme.thickColor.cgColor]
+        layer.addSublayer(gradientLayer)
+    }
+    
     private func initContainerView(rotateRadius radius:CGFloat){
+        guard containerView.superview == nil else{return}
+
         containerView.center = CGPoint(x: frame.width/2, y: frame.height/2+radius)
         
         distanceWalkingRunningLabel = DistanceWalkingRunningLabel(size:CGSize(width: frame.width, height: frame.height/2),center:CGPoint(x: 0, y: -radius))
@@ -55,10 +81,14 @@ class MainInformationView: UIView{
         
         containerView.addSubview(stepCountLabel)
         containerView.addSubview(distanceWalkingRunningLabel)
+        print("label frame")
+        print(stepCountLabel.frame)
+        print(distanceWalkingRunningLabel.frame)
         addSubview(containerView)
     }
     
     private func initDotView(){
+        guard dot.superview == nil else{return}
         dot.frame.size = CGSize(width: 10, height: 10)
         dot.center = CGPoint(x: frame.width*2/5, y: 66)
         dot.layer.cornerRadius = dot.frame.width
@@ -67,12 +97,14 @@ class MainInformationView: UIView{
     }
 
     private func initLabelMaskView(){
+        guard labelMaskView.superview == nil else{return}
         labelMaskView.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: windowBounds.height-frame.height)
         labelMaskView.backgroundColor = UIColor.white
         addSubview(labelMaskView)
     }
     
     private func initButtomDecorativeView(){
+        guard decorativeView.superview == nil else{return}
         let height = frame.height/10
         let width = frame.width
         decorativeView.frame = CGRect(x: 0, y: frame.height-height, width: width, height: height)
@@ -111,6 +143,7 @@ class MainInformationView: UIView{
     private func swipeClockwise(){
         containerView.transform = .identity
         dot.center.x = frame.width*2/5
+        print(frame)
     }
     
     private func swipeCounterclockwise(){
