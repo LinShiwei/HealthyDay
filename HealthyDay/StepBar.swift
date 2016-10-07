@@ -10,13 +10,8 @@ import UIKit
 
 class StepBar: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    let dateLabelSize = CGSize(width: 24, height: 12)
+        
     var bar : UIView!
     var dateLabel : UILabel!
     var day = ""{
@@ -26,17 +21,34 @@ class StepBar: UIView {
     }
     var stepCount = 0{
         didSet{
-            
+            assert(bar.layer.sublayers!.count == 1)
+            assert(superview is StepBarChartView)
+            guard let barLayer = bar.layer.sublayers?.first else{return}
+            guard let superView = superview as? StepBarChartView else {return}
+            let height = stepCount > superView.distinationStepCount ? bar.frame.height : bar.frame.height*CGFloat(stepCount)/CGFloat(superView.distinationStepCount)
+            barLayer.frame.size = CGSize(width: frame.width, height: height)
         }
     }
     
     override init(frame: CGRect){
         super.init(frame: frame)
-        bar = UIView(frame: CGRect(origin: frame.origin, size: CGSize(width: frame.width, height: frame.height*0.8)))
-        bar.backgroundColor = UIColor.green
-        bar.layer.frame = CGRect(x: 0, y: 20, width: frame.width, height: 30)
-        bar.layer.backgroundColor = UIColor.red.cgColor
-        dateLabel = UILabel(frame: CGRect(x: frame.minX, y: frame.minY + frame.height*0.8, width: frame.width, height: frame.height*0.2))
+        
+        bar = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height-dateLabelSize.height))
+        bar.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        bar.layer.backgroundColor = UIColor(white: 0.9, alpha: 1).cgColor
+        bar.layer.cornerRadius = 5
+        let barLayer = CALayer()
+        barLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: 30)
+        barLayer.backgroundColor = theme.thickColor.cgColor
+        barLayer.cornerRadius = 5
+        bar.layer.addSublayer(barLayer)
+        dateLabel = UILabel(frame: CGRect(x: (frame.width-dateLabelSize.width)/2, y: frame.height-dateLabelSize.height, width: dateLabelSize.width, height: dateLabelSize.height))
+        dateLabel.textAlignment = .center
+        dateLabel.textColor = theme.thickColor
+        dateLabel.adjustsFontSizeToFitWidth = true
+        
+        addSubview(bar)
+        addSubview(dateLabel)
         
     }
     

@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationController = self.window!.rootViewController as! UINavigationController
         if let mainVC = navigationController.topViewController as? MainViewController{
-            mainVC.viewWillAppear(false)
+            mainVC.viewDidAppear(false)
         }
     }
 
