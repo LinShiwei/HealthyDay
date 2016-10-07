@@ -18,27 +18,42 @@ class DistanceWalkingRunningLabel: UILabel {
             }
         }
     }
+    
+    override init(frame: CGRect) {
+        super.init(frame:frame)
+        textAlignment = .center
+        textColor = UIColor.white
+        adjustsFontSizeToFitWidth = true
+        text = "0.00"
+        font = UIFont(name: "DINCondensed-Bold", size: 90)
+        
+        initNameLabel()
+    }
+    
+//    init(size:CGSize, center:CGPoint){
+//        super.init(frame: CGRect(origin: CGPoint(x:0,y:0), size: size))
+//        self.center = center
+//        textAlignment = .center
+//        textColor = UIColor.white
+//        adjustsFontSizeToFitWidth = true
+//        text = "0.00"
+//        font = UIFont(name: "DINCondensed-Bold", size: 90)
+//        
+//        initNameLabel()
+//    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(size:CGSize, center:CGPoint){
-        super.init(frame: CGRect(origin: CGPoint(x:0,y:0), size: size))
-        self.center = center
-        textAlignment = .center
-        textColor = UIColor.white
-        adjustsFontSizeToFitWidth = true
-//        backgroundColor = UIColor.green
-        text = "0.00"
-        font = UIFont(name: "DINCondensed-Bold", size: 90)
+    private func initNameLabel(){
         
-        nameLabel.frame = CGRect(x: 0, y: 0, width: size.width, height: 50)
+        guard nameLabel.superview == nil else{return}
+        nameLabel.frame = CGRect(x: 0, y: frame.height*0.21, width: frame.width, height: frame.height*0.072)
         nameLabel.text = "今日总里程(公里)"
         nameLabel.textAlignment = .center
         nameLabel.textColor = UIColor.white
+        nameLabel.adjustsFontSizeToFitWidth = true
         addSubview(nameLabel)
-        
-        
-
     }
 }

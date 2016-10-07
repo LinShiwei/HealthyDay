@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jlp-qb-dme" customClass="StepBarChartView" customModule="HealthyDay" customModuleProvider="target">
@@ -43,11 +43,22 @@
                                     <segue destination="x4C-hv-WIR" kind="show" id="SHk-RA-YqM"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xe-nk-yIO" customClass="MainInformationView" customModule="HealthyDay" customModuleProvider="target">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="X2Z-kZ-xrr" appends="YES" id="ZNI-ps-AlU"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Jlp-qb-dme" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4mg-aE-CYY"/>
+                            <constraint firstItem="Nue-GV-2fS" firstAttribute="top" secondItem="3xe-nk-yIO" secondAttribute="bottom" constant="30" id="HYb-6F-RCD"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nue-GV-2fS" secondAttribute="bottom" constant="20" id="KrA-AP-e6Z"/>
+                            <constraint firstItem="3xe-nk-yIO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L3G-vo-W4I"/>
+                            <constraint firstItem="3xe-nk-yIO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="VzH-jf-Hjw"/>
+                            <constraint firstAttribute="trailing" secondItem="3xe-nk-yIO" secondAttribute="trailing" id="crj-xq-WMJ"/>
                             <constraint firstItem="Jlp-qb-dme" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="eQ4-jo-iWw"/>
                             <constraint firstItem="Nue-GV-2fS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jKS-w7-9sH"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Jlp-qb-dme" secondAttribute="bottom" constant="20" id="ypx-7g-NxM"/>
@@ -56,6 +67,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="oPt-TA-BsL"/>
                     <connections>
+                        <outlet property="mainInfoView" destination="3xe-nk-yIO" id="5sX-OR-pJ8"/>
                         <outlet property="startRunningBtn" destination="Nue-GV-2fS" id="C3R-dE-YZt"/>
                         <outlet property="stepBarChartView" destination="Jlp-qb-dme" id="Yng-gv-DmL"/>
                     </connections>
@@ -66,8 +78,13 @@
                         <segue destination="bBV-9E-9v3" kind="show" identifier="ShowStepDetailVC" id="21x-Wu-ZLa"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="X2Z-kZ-xrr">
+                    <connections>
+                        <action selector="didPanInMainInfoView:" destination="BYZ-38-t0r" id="82o-B7-DeJ"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="972" y="37.331334332833585"/>
+            <point key="canvasLocation" x="971.25" y="36.971830985915496"/>
         </scene>
         <!--Step Detail View Controller-->
         <scene sceneID="pem-mP-glS">
@@ -78,7 +95,7 @@
                         <viewControllerLayoutGuide type="bottom" id="O2d-H1-iAa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eOe-wJ-o62">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stepDetail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53V-SP-loS">
@@ -107,10 +124,11 @@
                         <viewControllerLayoutGuide type="bottom" id="x03-CL-5B4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fGb-00-Rra">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bP-VX-fMk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bP-VX-fMk">
+                                <frame key="frameInset" width="1000" height="1000"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Bjh-pM-XZU"/>
                                 </constraints>
@@ -128,7 +146,9 @@
                                     <action selector="tapToStartRunning:" destination="x4C-hv-WIR" eventType="touchUpInside" id="1VM-YQ-eDB"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-mH-y4e"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-mH-y4e">
+                                <frame key="frameInset" width="1000" height="1000"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
