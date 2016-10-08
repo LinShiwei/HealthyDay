@@ -19,8 +19,8 @@ class MainViewController: UIViewController {
     private let healthManager = HealthManager()
     private var state = MainVCState.running
 
-    private let stepBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 85, y: 0, width: 50, height: 22),title:"记步", itemType:.right)
-    private let runningBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: 85, y: 0, width: 50, height: 22),title:"运动", itemType:.left)
+    private let stepBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: windowBounds.width/5*2-18-25, y: 0, width: 50, height: 22),title:"记步", itemType:.right)
+    private let runningBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: windowBounds.width/5*2-18-25, y: 0, width: 50, height: 22),title:"运动", itemType:.left)
     
     @IBOutlet weak var mainInfoView: MainInformationView!
     @IBOutlet weak var stepBarChartView: StepBarChartView!
@@ -204,7 +204,6 @@ class MainViewController: UIViewController {
     }
     
 //MARK: Helper
-    
     private func updateCurrentStepCount(){
         #if !(arch(i386) || arch(x86_64))
             healthManager.readStepCount(periodDataType: .Current){ [unowned self] (counts,error) in

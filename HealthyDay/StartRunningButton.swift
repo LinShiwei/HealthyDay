@@ -10,13 +10,8 @@ import UIKit
 
 class StartRunningButton: UIButton {
 
-    let buttonDiameter : CGFloat = 100 //buttonRadius, should change in main.storyboard
-    let ringGap : CGFloat = 5
-    var animationProcess : CGFloat = 0 {
-        didSet{
-            
-        }
-    }
+    private let buttonDiameter : CGFloat = 100 //buttonRadius, should change in main.storyboard
+    private let ringGap : CGFloat = 5
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -47,7 +42,6 @@ class StartRunningButton: UIButton {
         let scaleShiftTransform = scaleTransform.translatedBy(x: 0, y: (buttonDiameter/2+30)*(1-process))
         
         transform = scaleShiftTransform
-//        transform = .identity
     }
     
     func panAnimation(process:CGFloat, currentState:MainVCState){
@@ -68,7 +62,6 @@ class StartRunningButton: UIButton {
                     hide(process: -process)
                 }
             }
-            
         }
     }
 }
