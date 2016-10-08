@@ -41,10 +41,10 @@ class MainViewController: UIViewController {
 
         initStepBarChartView()
         
-        runningBarItem.addTarget(self, action:  #selector(MainViewController.swipeRight(_:process:velocity:)), for: .touchUpInside)
+        runningBarItem.addTarget(self, action:  #selector(MainViewController.swipeRight(_:progress:velocity:)), for: .touchUpInside)
         runningBarItem.enable = false
         self.navigationItem.leftBarButtonItem = runningBarItem
-        stepBarItem.addTarget(self, action:  #selector(MainViewController.swipeLeft(_:process:velocity:)), for: .touchUpInside)
+        stepBarItem.addTarget(self, action:  #selector(MainViewController.swipeLeft(_:progress:velocity:)), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = stepBarItem
 
     }
@@ -101,43 +101,43 @@ class MainViewController: UIViewController {
     
 //MARK: Selector
     @IBAction func didPanInMainInfoView(_ sender: UIPanGestureRecognizer) {
-        let process = sender.translation(in: mainInfoView).x/mainInfoView.frame.width
+        let progress = sender.translation(in: mainInfoView).x/mainInfoView.frame.width
         switch sender.state {
         case .ended,.cancelled:
             let velocityX = sender.velocity(in: view).x
             if velocityX > 900{
-                swipeRight(sender, process: process, velocity: velocityX)
+                swipeRight(sender, progress: progress, velocity: velocityX)
                 break
             }
             if velocityX < -900{
-                swipeLeft(sender, process: process, velocity: velocityX)
+                swipeLeft(sender, progress: progress, velocity: velocityX)
                 break
             }
-            if process > 0.4 {
-                swipeRight(sender, process: process, velocity: velocityX)
+            if progress > 0.4 {
+                swipeRight(sender, progress: progress, velocity: velocityX)
             }else{
-                if process < -0.4 {
-                    swipeLeft(sender, process: process, velocity: velocityX)
+                if progress < -0.4 {
+                    swipeLeft(sender, progress: progress, velocity: velocityX)
                 }else{
                     if state == .running {
-                        swipeRight(sender, process: process, velocity: velocityX)
+                        swipeRight(sender, progress: progress, velocity: velocityX)
                     }else{
-                        swipeLeft(sender, process: process, velocity: velocityX)
+                        swipeLeft(sender, progress: progress, velocity: velocityX)
                     }
                 }
             }
         default:
-            mainInfoView.panAnimation(process: process, currentState: state)
-            stepBarChartView.panAnimation(process: process, currentState: state)
-            startRunningBtn.panAnimation(process: process, currentState: state)
+            mainInfoView.panAnimation(progress: progress, currentState: state)
+            stepBarChartView.panAnimation(progress: progress, currentState: state)
+            startRunningBtn.panAnimation(progress: progress, currentState: state)
             
         }
     }
 
-    func swipeLeft(_ sender:AnyObject, process:CGFloat = -1, velocity:CGFloat){
+    func swipeLeft(_ sender:AnyObject, progress:CGFloat = -1, velocity:CGFloat){
         let duration : Double = {
             let baseDuration = 0.5
-            let pro = Double(abs(process))
+            let pro = Double(abs(progress))
             let vel = Double(abs(velocity))
             if vel > 900{
                 switch state{
@@ -156,11 +156,11 @@ class MainViewController: UIViewController {
             }
         }()
         UIView.animate(withDuration: duration, delay: 0, options: [.beginFromCurrentState,.curveEaseOut], animations: {[unowned self] in
-            self.mainInfoView.panAnimation(process: -1, currentState: self.state)
+            self.mainInfoView.panAnimation(progress: -1, currentState: self.state)
             self.stepBarItem.enable = false
             self.runningBarItem.enable = true
-            self.stepBarChartView.panAnimation(process: -1, currentState: self.state)
-            self.startRunningBtn.panAnimation(process: -1, currentState: self.state)
+            self.stepBarChartView.panAnimation(progress: -1, currentState: self.state)
+            self.startRunningBtn.panAnimation(progress: -1, currentState: self.state)
             }, completion:  nil)
         
         if state == .running{
@@ -169,10 +169,10 @@ class MainViewController: UIViewController {
         state = .step
     }
     
-    func swipeRight(_ sender:AnyObject, process:CGFloat = 1, velocity:CGFloat){
+    func swipeRight(_ sender:AnyObject, progress:CGFloat = 1, velocity:CGFloat){
         let duration : Double = {
             let baseDuration = 0.5
-            let pro = Double(abs(process))
+            let pro = Double(abs(progress))
             let vel = Double(abs(velocity))
             if vel > 900{
                 switch state{
@@ -191,11 +191,11 @@ class MainViewController: UIViewController {
             }
         }()
         UIView.animate(withDuration: duration, delay: 0, options: [.beginFromCurrentState,.curveEaseOut], animations: {[unowned self] in
-            self.mainInfoView.panAnimation(process: 1, currentState: self.state)
+            self.mainInfoView.panAnimation(progress: 1, currentState: self.state)
             self.stepBarItem.enable = true
             self.runningBarItem.enable = false
-            self.stepBarChartView.panAnimation(process: 1, currentState: self.state)
-            self.startRunningBtn.panAnimation(process: 1, currentState: self.state)
+            self.stepBarChartView.panAnimation(progress: 1, currentState: self.state)
+            self.startRunningBtn.panAnimation(progress: 1, currentState: self.state)
             }, completion:  nil)
         if state == .step{
             updateCurrentDistance() 

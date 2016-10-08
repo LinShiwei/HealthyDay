@@ -58,32 +58,32 @@ class StepBarChartView: UIView {
 
     }
 //MARK: Animation helper  
-    private func hide(process:CGFloat){
-        transform = CGAffineTransform(translationX: 0, y: 20*process)
-        alpha = 1 - process
+    private func hide(progress:CGFloat){
+        transform = CGAffineTransform(translationX: 0, y: 20*progress)
+        alpha = 1 - progress
     }
     
-    private func show(process:CGFloat){
-        transform = CGAffineTransform(translationX: 0, y: 20*(1-process))
-        alpha = process
+    private func show(progress:CGFloat){
+        transform = CGAffineTransform(translationX: 0, y: 20*(1-progress))
+        alpha = progress
     }
     
-    func panAnimation(process:CGFloat, currentState:MainVCState){
-        assert(process >= -1 && process <= 1)
-        switch process {
+    func panAnimation(progress:CGFloat, currentState:MainVCState){
+        assert(progress >= -1 && progress <= 1)
+        switch progress {
         case 1:
-            hide(process: 1)
+            hide(progress: 1)
         case -1:
-            show(process: 1)
+            show(progress: 1)
         default:
             switch currentState{
             case .step:
-                if process > 0{
-                    hide(process: process)
+                if progress > 0{
+                    hide(progress: progress)
                 }
             case .running:
-                if process < 0{
-                    show(process: -process)
+                if progress < 0{
+                    show(progress: -progress)
                 }
             }
 

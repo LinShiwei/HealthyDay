@@ -12,7 +12,7 @@ class StepRingView: UIView,CAAnimationDelegate {
     
     private let dotCount : CGFloat = 60
     private let dotRadius : CGFloat = 1
-    private let ringGap : CGFloat = 3
+    private let ringGap : CGFloat = 4
     
     let maskLayer = CAReplicatorLayer()
     let strokeLayer = CAShapeLayer()

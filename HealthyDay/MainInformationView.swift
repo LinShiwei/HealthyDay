@@ -175,9 +175,9 @@ class MainInformationView: UIView{
         bottomDecorativeCurveView?.transform = CGAffineTransform(rotationAngle: -bottomDecorativeCurveRotateDegree)
     }
    
-    func panAnimation(process: CGFloat, currentState: MainVCState){
-        assert(process >= -1 && process <= 1)
-        switch process {
+    func panAnimation(progress: CGFloat, currentState: MainVCState){
+        assert(progress >= -1 && progress <= 1)
+        switch progress {
         case 1:
             swipeClockwise()
             hideDistanceWalkingRunningSublabel(alpha: 1)
@@ -191,26 +191,26 @@ class MainInformationView: UIView{
             case .running:
                 hideDistanceWalkingRunningSublabel(alpha: 0)
                 hideStepCountSublabel(alpha: 1)
-                if process > 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*process/2)
+                if progress > 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*progress/2)
                     dot.center.x = frame.width*2/5 //可以去掉吗
                     bottomDecorativeCurveView?.transform = .identity
                 }
-                if process < 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*process)
-                    dot.center.x = frame.width*2/5-frame.width/5*process
-                    bottomDecorativeCurveView?.transform = CGAffineTransform(rotationAngle: bottomDecorativeCurveRotateDegree*process)
+                if progress < 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*progress)
+                    dot.center.x = frame.width*2/5-frame.width/5*progress
+                    bottomDecorativeCurveView?.transform = CGAffineTransform(rotationAngle: bottomDecorativeCurveRotateDegree*progress)
                 }
             case .step:
                 hideDistanceWalkingRunningSublabel(alpha: 1)
                 hideStepCountSublabel(alpha: 0)
-                if process > 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*(process-1))
-                    dot.center.x = frame.width*3/5-frame.width/5*process
-                    bottomDecorativeCurveView?.transform = CGAffineTransform(rotationAngle: -bottomDecorativeCurveRotateDegree*(1-process))
+                if progress > 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*(progress-1))
+                    dot.center.x = frame.width*3/5-frame.width/5*progress
+                    bottomDecorativeCurveView?.transform = CGAffineTransform(rotationAngle: -bottomDecorativeCurveRotateDegree*(1-progress))
                 }
-                if process < 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*(process/2-1))
+                if progress < 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*(progress/2-1))
                     dot.center.x = frame.width*3/5
                     bottomDecorativeCurveView?.transform = CGAffineTransform(rotationAngle: -bottomDecorativeCurveRotateDegree)
                 }
