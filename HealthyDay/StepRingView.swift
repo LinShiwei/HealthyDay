@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StepRingView: UIView,CAAnimationDelegate {
+class StepRingView: UIView {
     
     private let dotCount : CGFloat = 60
     private let dotRadius : CGFloat = 1
@@ -21,11 +21,12 @@ class StepRingView: UIView,CAAnimationDelegate {
     var precent : Double = 0{
         didSet{
             precent = precent > 1 ? 1 : precent
+            precent = precent < 0 ? 0 : precent
             let strokeEnd = CABasicAnimation(keyPath: "strokeEnd")
+            strokeLayer.strokeEnd = CGFloat(precent)
             strokeEnd.fromValue = 1
-            strokeEnd.toValue = precent
             strokeEnd.duration = (1-precent)*1
-            strokeLayer.ocb_applyAnimation(strokeEnd)
+            strokeLayer.add(strokeEnd, forKey: "strokeEnd")
         }
     }
     
@@ -43,7 +44,7 @@ class StepRingView: UIView,CAAnimationDelegate {
         maskLayer.instanceCount = Int(dotCount)
         maskLayer.instanceColor = UIColor.darkGray.cgColor
         maskLayer.instanceTransform = CATransform3DMakeRotation(CGFloat.pi*2/dotCount, 0, 0, 1)
-        maskLayer.transform = CATransform3DMakeRotation(CGFloat.pi/4, 0, 0, 1)
+//        maskLayer.transform = CATransform3DMakeRotation(CGFloat.pi/4, 0, 0, 1)
         maskLayer.addSublayer(dot)
         
         let circlePath : CGPath = {
@@ -60,9 +61,9 @@ class StepRingView: UIView,CAAnimationDelegate {
         strokeLayer.mask = maskLayer
         strokeLayer.backgroundColor = UIColor.darkGray.cgColor
         
-        strokeLayer.actions = [
-            "strokeEnd":NSNull()
-        ]
+        let angle = dotRadius/(frame.height/2)
+        strokeLayer.transform = CATransform3DMakeRotation(-angle, 0, 0, 1)
+        maskLayer.transform = CATransform3DMakeRotation(CGFloat.pi/4+angle*2, 0, 0, 1)
         strokeLayer.strokeEnd = 0.3
         
         layer.addSublayer(strokeLayer)
@@ -80,16 +81,3 @@ class StepRingView: UIView,CAAnimationDelegate {
     }
 }
 
-extension CALayer {
-    func ocb_applyAnimation(_ animation: CABasicAnimation) {
-        let copy = animation.copy() as! CABasicAnimation
-        
-        if copy.fromValue == nil {
-            copy.fromValue = self.presentation()!.value(forKeyPath: copy.keyPath!)
-        }
-        
-        self.add(copy, forKey: copy.keyPath)
-        //由于这个动画的fillMode是Backwards所以addAnimation后，直接进入动画的初始状态，使得下面的setValue在视觉上并没有立即生效。下面的setValue反应的是最终的效果值
-        self.setValue(copy.toValue, forKeyPath:copy.keyPath!)
-    }
-}

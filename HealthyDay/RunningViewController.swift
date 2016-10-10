@@ -17,6 +17,8 @@ class RunningViewController: UIViewController {
     var hasLocated = false
     var startRunning = false
     
+    var gpsNotationView : GPSNotationView!
+    
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBAction func tapToStartRunning(_ sender: UIButton) {
@@ -31,9 +33,10 @@ class RunningViewController: UIViewController {
             if success {
                 self.mapView.delegate = self
                 self.mapView.showsUserLocation = true
-            }else{
-                self.addGPSDisableNotation(toMapView: self.mapView)
             }
+            
+            self.gpsNotationView = GPSNotationView(frame: CGRect(x: 20, y: 20, width: 200, height: 20), hasEnabled: success)
+            self.mapView.addSubview(self.gpsNotationView)
         }
     }
   
@@ -46,12 +49,6 @@ class RunningViewController: UIViewController {
         print(mapView.overlays.count)
     }
     
-    private func addGPSDisableNotation(toMapView view:MKMapView){
-        let label = UILabel(frame: CGRect(x: 10, y: 10, width: view.frame.width-10, height: view.frame.height/5))
-        label.text = "GPS Disabled"
-        label.sizeToFit()
-        view.addSubview(label)
-    }
 }
 
 extension RunningViewController: MKMapViewDelegate{
