@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xQ5-uK-391">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xQ5-uK-391">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -94,22 +94,14 @@
                         <viewControllerLayoutGuide type="top" id="mzw-On-F6o"/>
                         <viewControllerLayoutGuide type="bottom" id="O2d-H1-iAa"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eOe-wJ-o62">
+                    <view key="view" contentMode="scaleToFill" id="eOe-wJ-o62" customClass="StepDetailView" customModule="HealthyDay" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stepDetail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53V-SP-loS">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="53V-SP-loS" firstAttribute="centerY" secondItem="eOe-wJ-o62" secondAttribute="centerY" id="r9F-hQ-bRE"/>
-                            <constraint firstItem="53V-SP-loS" firstAttribute="centerX" secondItem="eOe-wJ-o62" secondAttribute="centerX" id="ucy-dA-h7y"/>
-                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="stepDetailView" destination="eOe-wJ-o62" id="Uen-4y-j98"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2I-u6-02a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

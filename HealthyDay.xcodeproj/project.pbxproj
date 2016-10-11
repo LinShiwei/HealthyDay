@@ -32,6 +32,9 @@
 		56B03C881DA1FB6A0071CBB4 /* StepDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B03C861DA1FB6A0071CBB4 /* StepDetailViewController.swift */; };
 		56BC4F4C1D9FF2B80074B498 /* StepBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */; };
 		56D631E91D98ECE7008232FA /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D631E81D98ECE7008232FA /* Define.swift */; };
+		7239A4171DA9F7CA0061E66A /* StepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7239A4161DA9F7CA0061E66A /* StepDetailView.swift */; };
+		72606D8C1DA9061E0064FA3E /* StepLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72606D8B1DA9061E0064FA3E /* StepLineChart.swift */; };
+		72906C731DABC126007032B4 /* StepEverydayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72906C721DABC126007032B4 /* StepEverydayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,9 @@
 		56B03C861DA1FB6A0071CBB4 /* StepDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepDetailViewController.swift; sourceTree = "<group>"; };
 		56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBarChartView.swift; sourceTree = "<group>"; };
 		56D631E81D98ECE7008232FA /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
+		7239A4161DA9F7CA0061E66A /* StepDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepDetailView.swift; sourceTree = "<group>"; };
+		72606D8B1DA9061E0064FA3E /* StepLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepLineChart.swift; sourceTree = "<group>"; };
+		72906C721DABC126007032B4 /* StepEverydayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepEverydayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +182,9 @@
 			children = (
 				56629EA71D9B877000720F0A /* RunningViewController.swift */,
 				56B03C861DA1FB6A0071CBB4 /* StepDetailViewController.swift */,
+				7239A4161DA9F7CA0061E66A /* StepDetailView.swift */,
+				72606D8B1DA9061E0064FA3E /* StepLineChart.swift */,
+				72906C721DABC126007032B4 /* StepEverydayView.swift */,
 			);
 			name = DetailViewController;
 			sourceTree = "<group>";
@@ -348,9 +357,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				564FF90B1DA6203E008AC31E /* StepRingView.swift in Sources */,
+				7239A4171DA9F7CA0061E66A /* StepDetailView.swift in Sources */,
 				560E1BAB1D953D3600B488AE /* MainViewController.swift in Sources */,
 				5692025A1DA0F7C500D9DA33 /* StepBar.swift in Sources */,
 				567E83BC1DA4D3B800BBD133 /* StartRunningButton.swift in Sources */,
+				72606D8C1DA9061E0064FA3E /* StepLineChart.swift in Sources */,
 				567595311DA36DCD00582080 /* CustomBarBtnItem.swift in Sources */,
 				56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */,
 				567E83BE1DA526E800BBD133 /* DistanceWalkingRunningLabel.swift in Sources */,
@@ -358,6 +369,7 @@
 				562379C51DA128C200525B7C /* MainInformationView.swift in Sources */,
 				56629EBD1D9BB08300720F0A /* LocationManager.swift in Sources */,
 				56BC4F4C1D9FF2B80074B498 /* StepBarChartView.swift in Sources */,
+				72906C731DABC126007032B4 /* StepEverydayView.swift in Sources */,
 				567E83C01DA52AEA00BBD133 /* StepCountLabel.swift in Sources */,
 				563E06561D98B04000B18DAE /* HealthManager.swift in Sources */,
 				56D631E91D98ECE7008232FA /* Define.swift in Sources */,
