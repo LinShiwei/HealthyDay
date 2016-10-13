@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol MainInfoViewTapGestureDelegate {
+    func didTap(inLabel label:UILabel)
+}
+
 class MainInformationView: UIView{
 //MARK: Property
-    private let containerView = UIView()
     private var stepCountLabel : StepCountLabel!
     private var distanceWalkingRunningLabel : DistanceWalkingRunningLabel!
+    
+    private let containerView = UIView()
     private let dot = UIView()
     private let labelMaskView = UIView()
     private let decorativeView = UIView()
@@ -32,6 +37,8 @@ class MainInformationView: UIView{
             distanceWalkingRunningLabel.text = String(format:"%.2f",Double(distance)/1000)
         }
     }
+    
+    var delegate : MainInfoViewTapGestureDelegate?
 //MARK: View
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -43,8 +50,9 @@ class MainInformationView: UIView{
         initContainerView(rotateRadius: frame.height)
         initDotView()
         initBottomDecorativeView()
+        addGestureToSelf()
     }
-    
+
 //MARK: Custom View
     private func initGradientLayer(){
         guard gradientLayer.superlayer == nil else {return}
@@ -60,7 +68,6 @@ class MainInformationView: UIView{
         
         distanceWalkingRunningLabel = DistanceWalkingRunningLabel(frame:CGRect(x: -containerView.center.x, y: -containerView.center.y+frame.height*0.17, width: frame.width, height: frame.height*0.6))
         stepCountLabel = StepCountLabel(size: CGSize(width:frame.width,height:frame.height*0.47), center: CGPoint(x: radius*sin(CGFloat.pi/3), y: -radius*sin(CGFloat.pi/6)))
-        
         containerView.addSubview(stepCountLabel)
         containerView.addSubview(distanceWalkingRunningLabel)
 
@@ -146,6 +153,29 @@ class MainInformationView: UIView{
         curveView.layer.addSublayer(shapeLayerTwo)
         return curveView
     }
+//MARK: Gesture Helper
+    private func addGestureToSelf(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainInformationView.didTap(_:)))
+        addGestureRecognizer(tapGesture)
+    }
+    
+    func didTap(_ sender: UITapGestureRecognizer){
+        if pointIsInLabelText(point:sender.location(in: stepCountLabel), label:stepCountLabel){
+            delegate?.didTap(inLabel: stepCountLabel)
+        }
+        
+        if pointIsInLabelText(point: sender.location(in: distanceWalkingRunningLabel), label: distanceWalkingRunningLabel){
+            delegate?.didTap(inLabel: distanceWalkingRunningLabel)
+        }
+    }
+    
+    private func pointIsInLabelText(point:CGPoint, label:UILabel)->Bool{
+        if (abs(point.x-label.bounds.width/2) < label.textRect(forBounds: label.bounds, limitedToNumberOfLines: 0).width/2)&&(abs(point.y-label.bounds.height/2) < label.textRect(forBounds: label.bounds, limitedToNumberOfLines: 0).height/2){
+            return true
+        }else{
+            return false
+        }
+    }
 //MARK: Animation helper
     private func hideDistanceWalkingRunningSublabel(alpha:CGFloat){
         guard distanceWalkingRunningLabel.subviewsAlpha != alpha else {return}
@@ -167,6 +197,10 @@ class MainInformationView: UIView{
         containerView.transform = .identity
         dot.center.x = frame.width*2/5
         bottomDecorativeCurveView?.transform = .identity
+        print(stepCountLabel.gestureRecognizers)
+        print(distanceWalkingRunningLabel.gestureRecognizers)
+        print(stepCountLabel.isUserInteractionEnabled)
+        print(distanceWalkingRunningLabel.isUserInteractionEnabled)
     }
     
     private func swipeCounterclockwise(){

@@ -71,6 +71,8 @@
                         <outlet property="mainInfoView" destination="3xe-nk-yIO" id="5sX-OR-pJ8"/>
                         <outlet property="startRunningBtn" destination="Nue-GV-2fS" id="C3R-dE-YZt"/>
                         <outlet property="stepBarChartView" destination="Jlp-qb-dme" id="Yng-gv-DmL"/>
+                        <outlet property="stepBarChartViewTapGesture" destination="Ser-bM-Fwk" id="TDC-za-kYQ"/>
+                        <segue destination="shk-6F-WeU" kind="show" identifier="ShowDistanceDetailVC" id="MFs-MI-NZ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -86,6 +88,35 @@
                 </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="971.25" y="36.971830985915496"/>
+        </scene>
+        <!--Distance Detail View Controller-->
+        <scene sceneID="6Fh-1c-Pj4">
+            <objects>
+                <viewController id="shk-6F-WeU" customClass="DistanceDetailViewController" customModule="HealthyDay" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xc7-kr-B2l"/>
+                        <viewControllerLayoutGuide type="bottom" id="UBr-fR-HDP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FCU-be-acl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distancedetail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgW-LD-Uid">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bgW-LD-Uid" firstAttribute="centerX" secondItem="FCU-be-acl" secondAttribute="centerX" id="w9d-61-FgO"/>
+                            <constraint firstItem="bgW-LD-Uid" firstAttribute="centerY" secondItem="FCU-be-acl" secondAttribute="centerY" id="ztn-1I-edt"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iwr-60-MKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1806" y="-797"/>
         </scene>
         <!--Step Detail View Controller-->
         <scene sceneID="pem-mP-glS">
@@ -114,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2I-u6-02a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="-235"/>
+            <point key="canvasLocation" x="1806" y="36"/>
         </scene>
         <!--Running View Controller-->
         <scene sceneID="Gih-px-Y8B">
@@ -295,11 +326,12 @@
                         <outlet property="mapView" destination="d1m-mH-y4e" id="ijK-XZ-C2p"/>
                         <outlet property="runningDistanceLabel" destination="xwf-hQ-Z2h" id="wdX-qN-69M"/>
                         <outlet property="runningDurationLabel" destination="INm-hx-eZC" id="z6y-QO-dJD"/>
+                        <outlet property="runningInfoView" destination="Zwi-sk-b5j" id="mbw-oa-VhO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ave-ds-8xV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801.5" y="428.5"/>
+            <point key="canvasLocation" x="1806" y="870"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kyh-Gx-0hY">
