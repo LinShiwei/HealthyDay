@@ -13,6 +13,19 @@ class GPSNotationView: UIView {
     let gpsNotation = UILabel()
     let infoLabel = UILabel()
     
+    var hasEnabled = false{
+        didSet{
+
+            if hasEnabled {
+                gpsNotation.layer.backgroundColor = UIColor.green.cgColor
+                infoLabel.text = getCurrentDateDescription()
+            }else{
+                gpsNotation.layer.backgroundColor = UIColor.red.cgColor
+                infoLabel.text = "GPS不可用"
+            }
+        }
+    }
+    
     init(frame:CGRect, hasEnabled:Bool){
         super.init(frame: frame)
         assert(frame.width > 100)
@@ -23,7 +36,7 @@ class GPSNotationView: UIView {
         let gap :CGFloat = 2
         gpsNotation.frame = CGRect(x: 0, y: gap, width: 30, height: frame.height-gap*2)
         gpsNotation.layer.cornerRadius = frame.height/2
-        gpsNotation.layer.backgroundColor = hasEnabled ? UIColor.green.cgColor : UIColor.red.cgColor
+        gpsNotation.layer.backgroundColor = UIColor.red.cgColor
         gpsNotation.text = "GPS"
         gpsNotation.textAlignment = .center
         gpsNotation.textColor = UIColor.black
@@ -34,13 +47,9 @@ class GPSNotationView: UIView {
         infoLabel.textAlignment = .center
         infoLabel.textColor = UIColor.black
         infoLabel.font = UIFont.systemFont(ofSize: 14)
-        if hasEnabled {
-            infoLabel.text = getCurrentDateDescription()
-        }else{
-            infoLabel.text = "GPS不可用"
-        }
-        addSubview(infoLabel)
         
+        addSubview(infoLabel)
+        self.hasEnabled = hasEnabled
     }
     
     required init?(coder aDecoder: NSCoder) {

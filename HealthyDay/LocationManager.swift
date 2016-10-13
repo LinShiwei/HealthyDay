@@ -11,7 +11,11 @@ import CoreLocation
 
 internal class LocationManager {
     let locationManager = CLLocationManager()
-    
+    var delegate : CLLocationManagerDelegate?{
+        didSet{
+            locationManager.delegate = delegate
+        }
+    }
     func authorize(_ completion: @escaping (_ success:Bool) -> Void){
         guard CLLocationManager.locationServicesEnabled() else{
             completion(false)
@@ -20,7 +24,7 @@ internal class LocationManager {
         }
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             if CLLocationManager.authorizationStatus() != .authorizedWhenInUse || CLLocationManager.authorizationStatus() != .authorizedAlways{
                 completion(false)
             }else{

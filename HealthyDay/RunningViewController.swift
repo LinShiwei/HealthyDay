@@ -86,15 +86,13 @@ class RunningViewController: UIViewController {
 //MARK: View cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.delegate = self
         locationManager.authorize{[unowned self] success in
-            if success {
-                self.mapView.delegate = self
-                self.mapView.showsUserLocation = true
-            }
-            
             self.gpsNotationView = GPSNotationView(frame: CGRect(x: 20, y: 20, width: 200, height: 20), hasEnabled: success)
             self.mapView.addSubview(self.gpsNotationView)
         }
+        self.mapView.delegate = self
+        self.mapView.showsUserLocation = true
         
         runningInfoView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
     }
@@ -171,5 +169,13 @@ extension RunningViewController: MKMapViewDelegate{
         render.lineWidth = 5.0
         
         return render
+    }
+}
+
+extension RunningViewController:CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            gpsNotationView.hasEnabled = true
+        }
     }
 }
