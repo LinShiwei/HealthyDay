@@ -26,6 +26,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var stepBarChartView: StepBarChartView!
     @IBOutlet weak var startRunningBtn: StartRunningButton!
 
+    @IBOutlet var mainInfoViewDistanceLabelTapGesture: UITapGestureRecognizer!
+    @IBOutlet var stepBarChartViewTapGesture: UITapGestureRecognizer!
+    
 //MARK: View cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,7 @@ class MainViewController: UIViewController {
             print("HealthKit authorize: \(success)")
         }
 
+        mainInfoView.delegate = self
         initStepBarChartView()
         
         runningBarItem.addTarget(self, action:  #selector(MainViewController.swipeRight(_:progress:velocity:)), for: .touchUpInside)
@@ -238,6 +242,19 @@ class MainViewController: UIViewController {
             #else
             mainInfoView.distance = 2000
         #endif
+    }
+}
+
+extension MainViewController:MainInfoViewTapGestureDelegate{
+    func didTap(inLabel label:UILabel){
+        switch label {
+        case is StepCountLabel:
+            performSegue(withIdentifier: "ShowStepDetailVC", sender: label)
+        case is DistanceWalkingRunningLabel:
+            performSegue(withIdentifier: "ShowDistanceDetailVC", sender: label)
+        default:
+            break
+        }
     }
 }
 
