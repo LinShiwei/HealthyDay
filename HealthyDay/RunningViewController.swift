@@ -20,6 +20,7 @@ class RunningViewController: UIViewController {
             runningCoordiantes.removeAll()
             if startRunning {
                 initTimer()
+                runningDistance = 0
                 runningDuration = 0
             }else{
                 timer?.invalidate()
@@ -36,7 +37,7 @@ class RunningViewController: UIViewController {
         didSet{
             //unit of runningDistance is meter
             guard let text = runningDistanceLabel.attributedText as? NSMutableAttributedString else{return}
-            let range = NSMakeRange(0, 4)
+            let range = NSMakeRange(0, text.length-2)
             let attributeString = NSAttributedString(string: String(format:"%.2f",runningDistance/1000.0), attributes: [
                 "NSFontAttributeName":UIFont(name: "DINCondensed-Bold", size: 17)
                 ])
@@ -71,6 +72,7 @@ class RunningViewController: UIViewController {
     var timer : Timer?
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var runningInfoView: RunningInfomationView!
     
     @IBOutlet weak var runningDistanceLabel: UILabel!
     @IBOutlet weak var runningDurationLabel: UILabel!
@@ -93,6 +95,8 @@ class RunningViewController: UIViewController {
             self.gpsNotationView = GPSNotationView(frame: CGRect(x: 20, y: 20, width: 200, height: 20), hasEnabled: success)
             self.mapView.addSubview(self.gpsNotationView)
         }
+        
+        runningInfoView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
     }
 //MARK: Custom func & Helper
     private func initTimer(){
@@ -132,10 +136,6 @@ class RunningViewController: UIViewController {
 }
 
 extension RunningViewController: MKMapViewDelegate{
-    func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
-        
-    }
-    
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         guard let location = userLocation.location else{return}
         if !mapView.isUserLocationVisible {
