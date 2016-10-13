@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5603168B1DAF96F500C04B8A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5603168A1DAF96F500C04B8A /* CoreData.framework */; };
+		5603168E1DAF974000C04B8A /* HealthyDay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5603168C1DAF974000C04B8A /* HealthyDay.xcdatamodeld */; };
 		560E1BA91D953D3600B488AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E1BA81D953D3600B488AE /* AppDelegate.swift */; };
 		560E1BAB1D953D3600B488AE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E1BAA1D953D3600B488AE /* MainViewController.swift */; };
 		560E1BAE1D953D3600B488AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560E1BAC1D953D3600B488AE /* Main.storyboard */; };
@@ -62,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5603168A1DAF96F500C04B8A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5603168D1DAF974000C04B8A /* HealthyDay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HealthyDay.xcdatamodel; sourceTree = "<group>"; };
 		560E1BA51D953D3600B488AE /* HealthyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		560E1BA81D953D3600B488AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		560E1BAA1D953D3600B488AE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5603168B1DAF96F500C04B8A /* CoreData.framework in Frameworks */,
 				56130D881D9AB4FC005334FF /* MapKit.framework in Frameworks */,
 				560E1BCB1D953F7F00B488AE /* HealthKit.framework in Frameworks */,
 			);
@@ -162,6 +167,7 @@
 		560E1BC91D953F7F00B488AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5603168A1DAF96F500C04B8A /* CoreData.framework */,
 				56629EB81D9B8D8900720F0A /* Nimble.framework */,
 				56629EB61D9B8D8300720F0A /* Quick.framework */,
 				56130D871D9AB4FC005334FF /* MapKit.framework */,
@@ -204,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				560E1BAC1D953D3600B488AE /* Main.storyboard */,
+				5603168C1DAF974000C04B8A /* HealthyDay.xcdatamodeld */,
 				560E1BAF1D953D3600B488AE /* Assets.xcassets */,
 				560E1BB11D953D3600B488AE /* LaunchScreen.storyboard */,
 				560E1BC81D953F7E00B488AE /* HealthyDay.entitlements */,
@@ -362,6 +369,7 @@
 				560E1BAB1D953D3600B488AE /* MainViewController.swift in Sources */,
 				5692025A1DA0F7C500D9DA33 /* StepBar.swift in Sources */,
 				567E83BC1DA4D3B800BBD133 /* StartRunningButton.swift in Sources */,
+				5603168E1DAF974000C04B8A /* HealthyDay.xcdatamodeld in Sources */,
 				567595311DA36DCD00582080 /* CustomBarBtnItem.swift in Sources */,
 				56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */,
 				56DDFAA11DAF28A700A71405 /* DistanceDetailViewController.swift in Sources */,
@@ -611,6 +619,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5603168C1DAF974000C04B8A /* HealthyDay.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5603168D1DAF974000C04B8A /* HealthyDay.xcdatamodel */,
+			);
+			currentVersion = 5603168D1DAF974000C04B8A /* HealthyDay.xcdatamodel */;
+			path = HealthyDay.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 560E1B9D1D953D3500B488AE /* Project object */;
 }
