@@ -10,13 +10,8 @@ import UIKit
 
 class StartRunningButton: UIButton {
 
-    let buttonDiameter : CGFloat = 100 //buttonRadius, should change in main.storyboard
-    let ringGap : CGFloat = 5
-    var animationProcess : CGFloat = 0 {
-        didSet{
-            
-        }
-    }
+    private let buttonDiameter : CGFloat = 100 //buttonRadius, should change in main.storyboard
+    private let ringGap : CGFloat = 5
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -33,42 +28,40 @@ class StartRunningButton: UIButton {
         layer.addSublayer(ringLayer)
     }
 //MARK: Animation helper    
-    private func hide(process:CGFloat){
-        alpha = 1 - process
-        let scaleTransform = CGAffineTransform(scaleX: 1-0.5*process, y: 1-0.5*process)
-        let scaleShiftTransform = scaleTransform.translatedBy(x: 0, y: (buttonDiameter/2+30)*process)
+    private func hide(progress:CGFloat){
+        alpha = 1 - progress
+        let scaleTransform = CGAffineTransform(scaleX: 1-0.5*progress, y: 1-0.5*progress)
+        let scaleShiftTransform = scaleTransform.translatedBy(x: 0, y: (buttonDiameter/2+30)*progress)
         
         transform = scaleShiftTransform
     }
     
-    private func show(process:CGFloat){
-        alpha = process
-        let scaleTransform = CGAffineTransform(scaleX: 0.5+0.5*process, y: 0.5+0.5*process)
-        let scaleShiftTransform = scaleTransform.translatedBy(x: 0, y: (buttonDiameter/2+30)*(1-process))
+    private func show(progress:CGFloat){
+        alpha = progress
+        let scaleTransform = CGAffineTransform(scaleX: 0.5+0.5*progress, y: 0.5+0.5*progress)
+        let scaleShiftTransform = scaleTransform.translatedBy(x: 0, y: (buttonDiameter/2+30)*(1-progress))
         
         transform = scaleShiftTransform
-//        transform = .identity
     }
     
-    func panAnimation(process:CGFloat, currentState:MainVCState){
-        assert(process >= -1 && process <= 1)
-        switch process {
+    func panAnimation(progress:CGFloat, currentState:MainVCState){
+        assert(progress >= -1 && progress <= 1)
+        switch progress {
         case 1:
-            show(process: 1)
+            show(progress: 1)
         case -1:
-            hide(process: 1)
+            hide(progress: 1)
         default:
             switch currentState{
             case .step:
-                if process > 0{
-                    show(process: process)
+                if progress > 0{
+                    show(progress: progress)
                 }
             case .running:
-                if process < 0{
-                    hide(process: -process)
+                if progress < 0{
+                    hide(progress: -progress)
                 }
             }
-            
         }
     }
 }
