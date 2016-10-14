@@ -26,6 +26,10 @@
 	<string>lsw healthUpdate Usage description</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>lsw locationWhenInUse description</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

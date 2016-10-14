@@ -35,14 +35,15 @@ internal class LocationManager {
         default:
             completion(false)
         }
-        print(CLLocationManager.authorizationStatus().rawValue)
     }
     
     func startUpdate(){
         locationManager.startUpdatingLocation()
+        locationManager.allowsBackgroundLocationUpdates = true
     }
     
     func stopUpdate(){
+        locationManager.allowsBackgroundLocationUpdates = false
         locationManager.stopUpdatingLocation()
     }
     

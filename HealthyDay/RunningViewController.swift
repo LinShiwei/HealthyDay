@@ -12,30 +12,32 @@ import CoreData
 
 class RunningViewController: UIViewController {
 
-    let locationManager = LocationManager()
-    var runningCoordiantes = [CLLocationCoordinate2D]()
+    private let locationManager = LocationManager()
+    fileprivate var runningCoordiantes = [CLLocationCoordinate2D]()
     
-    var hasLocated = false
-    var startRunning = false{
+    fileprivate var hasLocated = false
+    fileprivate var startRunning = false{
         didSet{
             runningCoordiantes.removeAll()
             if startRunning {
                 initTimer()
                 runningDistance = 0
                 runningDuration = 0
+                locationManager.startUpdate()
             }else{
                 timer?.invalidate()
                 timer = nil
                 saveRunningDataToCoreData()
+                locationManager.stopUpdate()
             }
         }
     }
     
-    var gpsNotationView : GPSNotationView!
+    fileprivate var gpsNotationView : GPSNotationView!
     
-    var oldLocation : CLLocation?
+    fileprivate var oldLocation : CLLocation?
     
-    var runningDistance : Double = 0{
+    private var runningDistance : Double = 0{
         didSet{
             //unit of runningDistance is meter
             guard let text = runningDistanceLabel.attributedText as? NSMutableAttributedString else{return}
@@ -49,7 +51,7 @@ class RunningViewController: UIViewController {
         }
     }
     
-    var runningDuration : Int = 0{
+    private var runningDuration : Int = 0{
         didSet{
             let seconds = runningDuration%60
             let minutes = (runningDuration%3600)/60
@@ -58,7 +60,7 @@ class RunningViewController: UIViewController {
         }
     }
     
-    var durationPerKilometer : Int = 0{
+    private var durationPerKilometer : Int = 0{
         didSet{
             let seconds = durationPerKilometer%60
             let minutes = (durationPerKilometer%3600)/60
@@ -71,7 +73,7 @@ class RunningViewController: UIViewController {
         }
     }
     
-    var timer : Timer?
+    private var timer : Timer?
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var runningInfoView: RunningInfomationView!
@@ -98,6 +100,11 @@ class RunningViewController: UIViewController {
         
         runningInfoView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        startRunning = false
+        hasLocated = false
+    }
 //MARK: Custom func & Helper
     private func initTimer(){
         guard timer == nil || timer?.isValid == false else{ return}
@@ -110,12 +117,21 @@ class RunningViewController: UIViewController {
         mapView.removeOverlays(mapView.overlays)
         mapView.add(overlay)
     }
-    
+/*
     fileprivate func updateRunningDistance(withNewLocation location:CLLocation){
         guard (oldLocation != location)&&(oldLocation != nil) else{return}
         runningDistance += location.distance(from: oldLocation!)
         oldLocation = location
-        print(runningDistance)
+    }
+  */
+    fileprivate func updateRunningDistance(withNewLocations locations:[CLLocation]){
+        guard (oldLocation != locations.last)&&(oldLocation != nil) else{return}
+        print("Update \(locations.count) location(s)")
+        for location in locations {
+            runningDistance += location.distance(from: oldLocation!)
+            oldLocation = location
+        }
+        
     }
     
     private func formatTime(withSeconds sumSeconds:Int)->String{
@@ -159,26 +175,11 @@ extension RunningViewController: MKMapViewDelegate{
         if !mapView.isUserLocationVisible {
             mapView.setCenter(location.coordinate, animated: true)
         }
-        
-//        let lat = location.coordinate.latitude
-//        let lon = location.coordinate.longitude
-        
+
         if !hasLocated {
             let userRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 1000.0, 1000.0)
             mapView.setRegion(userRegion, animated: true)
             hasLocated = true
-        }else{
-            if startRunning {
-                drawRoute(withCoordiantes: runningCoordiantes)
-                if oldLocation == nil{
-                    oldLocation = location
-                }else{
-                    updateRunningDistance(withNewLocation: location)
-                }
-                runningCoordiantes.append(location.coordinate)
-            }else{
-                
-            }
         }
     }
     
@@ -196,6 +197,19 @@ extension RunningViewController:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             gpsNotationView.hasEnabled = true
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard hasLocated && startRunning else{return}
+        drawRoute(withCoordiantes: runningCoordiantes)
+        if oldLocation == nil{
+            oldLocation = locations.last
+        }else{
+            updateRunningDistance(withNewLocations: locations)
+        }
+        for location in locations {
+            runningCoordiantes.append(location.coordinate)
         }
     }
 }

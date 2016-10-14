@@ -197,10 +197,6 @@ class MainInformationView: UIView{
         containerView.transform = .identity
         dot.center.x = frame.width*2/5
         bottomDecorativeCurveView?.transform = .identity
-        print(stepCountLabel.gestureRecognizers)
-        print(distanceWalkingRunningLabel.gestureRecognizers)
-        print(stepCountLabel.isUserInteractionEnabled)
-        print(distanceWalkingRunningLabel.isUserInteractionEnabled)
     }
     
     private func swipeCounterclockwise(){
