@@ -25,6 +25,7 @@ class StepDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "步数详情"
         automaticallyAdjustsScrollViewInsets = false
     }
     

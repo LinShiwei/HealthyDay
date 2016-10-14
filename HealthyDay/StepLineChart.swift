@@ -50,7 +50,7 @@ class StepLineChart: UIScrollView {
     }
     
     private func dayOfTheWeek(offset: Int) -> String {
-        let interval = Date().timeIntervalSince1970
+        let interval = Date().timeIntervalSince1970 + 8 * 3600
         let days = Int(interval / 86400) + offset
         let dayOfWeek = (days - 3) % 7
         switch dayOfWeek {
@@ -83,13 +83,14 @@ class StepLineChart: UIScrollView {
             stepRange = stepCountsData.count + 5
         }
         for day in 0...stepRange {
-            let dateDescription = Date(timeInterval: 24*3600*Double(-stepRange + 3 + day), since: currentDate).description
+            let dateDescription = Date(timeInterval: 24*3600*Double(-stepRange + 3 + day), since: currentDate).formatDescription()
             let range = dateDescription.index(dateDescription.startIndex, offsetBy: 8)..<dateDescription.index(dateDescription.startIndex, offsetBy: 10)
             let dayOfWeek = dayOfTheWeek(offset: -stepRange + 3 + day)
             let text = "周" + dayOfWeek + "\n" + dateDescription.substring(with: range)
             texts.append(text)
             let dateLabel = UILabel(frame: CGRect(x: viewSize.width * CGFloat(day), y: viewSize.height, width: viewSize.width, height: viewSize.height / 3.5))
             dateLabel.text = text
+            dateLabel.textColor = rgbColor(red: 0x9F, green: 0x9F, blue: 0x9F, alpha: 1)
             dateLabel.textAlignment = .center
             dateLabel.numberOfLines = 0
             dateLabel.font = UIFont(name: "STHeitiSC-Light", size: viewSize.width / 4.5)

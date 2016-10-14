@@ -29,6 +29,12 @@ class StepDetailView: UIView {
         initStepLineChart()
         initCenterGradientLayer()
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
+    
     override func layoutSubviews() {
         //        initLabel()
         initDateLabel()
@@ -100,7 +106,7 @@ class StepDetailView: UIView {
     private func initTendencyLabel() {
         tendencyLabel.frame = CGRect(x: frame.width * 0.65, y: frame.height * 1.3 / 15, width: frame.width * 0.25, height: frame.height * 1.5 / 15)
         tendencyLabel.text = "趋势"
-        tendencyLabel.textColor = UIColor.green
+        tendencyLabel.textColor = rgbColor(red: 0x22, green: 0xC8, blue: 0x19, alpha: 1)
         tendencyLabel.font = UIFont.systemFont(ofSize: 14/320*frame.width)
         tendencyLabel.textAlignment = .center
         addSubview(tendencyLabel)
@@ -112,7 +118,7 @@ class StepDetailView: UIView {
         } else if currentIndex == stepCountsData.count + 1 {
             dateLabel.text = "昨天"
         } else {
-            let dateDescription = Date(timeInterval: 24*3600*Double(currentIndex - 7), since: currentDate).description
+            let dateDescription = Date(timeInterval: 24*3600*Double(currentIndex - 7), since: currentDate).formatDescription()
             let range = dateDescription.index(dateDescription.startIndex, offsetBy: 5)..<dateDescription.index(dateDescription.startIndex, offsetBy: 10)
             let text = dateDescription.substring(with: range)
             dateLabel.text = text
@@ -142,11 +148,6 @@ class StepDetailView: UIView {
             addSubview(imformationTitleLabel[index])
         }
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-    }
 }
 
 extension StepDetailView: UIScrollViewDelegate {
@@ -155,9 +156,6 @@ extension StepDetailView: UIScrollViewDelegate {
         currentIndex = Int(round((currentCenterX - viewSize.width / 2) / viewSize.width))
         guard currentIndex >= 3 && currentIndex - 2 <= stepLineChart.stepEverydayViews.count else {return}
         hideStepEverydayViewLabel(index: currentIndex - 3, alpha: 0)
-        guard stepLineChart.contentOffset.x >= 0 && stepLineChart.contentOffset.x < 236.6667 else {return}
-        guard stepLineChart.contentOffset.x == 0 || abs(stepLineChart.contentOffset.x - (stepLineChart.contentSize.width - frame.width)) < 0.12 else{return}
-        hideStepEverydayViewLabel(index: currentIndex - 3, alpha: 1)
     }
     
     //    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -177,13 +175,14 @@ extension StepDetailView: UIScrollViewDelegate {
         guard stepLineChart.contentOffset.x == 0 || abs(stepLineChart.contentOffset.x - (stepLineChart.contentSize.width - frame.width)) < 0.12 else{return}
         hideStepEverydayViewLabel(index: currentIndex - 3, alpha: 1)
         changeDateLabel(currentIndex: currentIndex)
+        print("1")
     }
-    
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         guard currentIndex >= 3 && currentIndex - 2 <= stepLineChart.stepEverydayViews.count else {return}
         hideStepEverydayViewLabel(index: currentIndex - 3, alpha: 1)
         changeDateLabel(currentIndex: currentIndex)
+        print("2")
     }
 }
 
@@ -197,10 +196,10 @@ class SplitLine: CALayer {
         super.init()
         if layerWidthIsThin {
             layerWidth = 1
-            layerColor = UIColor.gray
+            layerColor = splitLine.lightColor
         } else {
             layerWidth = 23
-            layerColor = UIColor.gray
+            layerColor = splitLine.thickColor
         }
         if isHorizen {
             width = to.x - from.x
@@ -224,9 +223,9 @@ class ImformationTitle: UILabel {
         self.text = text
         self.font = UIFont(name: "DINCondensed-Bold", size: 16)
         if isLight {
-            self.textColor = UIColor.gray
+            self.textColor = rgbColor(red: 0xCB, green: 0xCB, blue: 0xCB, alpha: 1)
         } else {
-            self.textColor = UIColor.gray
+            self.textColor = rgbColor(red: 0x2E, green: 0x2E, blue: 0x2E, alpha: 1)
         }
     }
     required init?(coder aDecoder: NSCoder) {
