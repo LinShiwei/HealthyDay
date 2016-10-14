@@ -30,6 +30,7 @@
 		567E83BC1DA4D3B800BBD133 /* StartRunningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E83BB1DA4D3B800BBD133 /* StartRunningButton.swift */; };
 		567E83BE1DA526E800BBD133 /* DistanceWalkingRunningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E83BD1DA526E800BBD133 /* DistanceWalkingRunningLabel.swift */; };
 		567E83C01DA52AEA00BBD133 /* StepCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E83BF1DA52AEA00BBD133 /* StepCountLabel.swift */; };
+		56914B6F1DAFBE6E00C6163E /* DistanceDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56914B6E1DAFBE6E00C6163E /* DistanceDetailTableViewCell.swift */; };
 		5692025A1DA0F7C500D9DA33 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569202591DA0F7C500D9DA33 /* StepBar.swift */; };
 		56B03C881DA1FB6A0071CBB4 /* StepDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B03C861DA1FB6A0071CBB4 /* StepDetailViewController.swift */; };
 		56BC4F4C1D9FF2B80074B498 /* StepBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */; };
@@ -90,6 +91,7 @@
 		567E83BB1DA4D3B800BBD133 /* StartRunningButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartRunningButton.swift; sourceTree = "<group>"; };
 		567E83BD1DA526E800BBD133 /* DistanceWalkingRunningLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceWalkingRunningLabel.swift; sourceTree = "<group>"; };
 		567E83BF1DA52AEA00BBD133 /* StepCountLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCountLabel.swift; sourceTree = "<group>"; };
+		56914B6E1DAFBE6E00C6163E /* DistanceDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceDetailTableViewCell.swift; sourceTree = "<group>"; };
 		569202591DA0F7C500D9DA33 /* StepBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		56B03C861DA1FB6A0071CBB4 /* StepDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepDetailViewController.swift; sourceTree = "<group>"; };
 		56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBarChartView.swift; sourceTree = "<group>"; };
@@ -145,9 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				56B03C861DA1FB6A0071CBB4 /* StepDetailViewController.swift */,
-				56DDFAA01DAF28A700A71405 /* DistanceDetailViewController.swift */,
 				562379C81DA1291D00525B7C /* MainViewController */,
 				562379C71DA1290700525B7C /* RunningViewController */,
+				56914B701DAFC89500C6163E /* DistanceDetailViewController */,
 				562379C61DA128E000525B7C /* Helper */,
 				56492EDC1D960CA3007C3510 /* Support */,
 				56D631E81D98ECE7008232FA /* Define.swift */,
@@ -247,6 +249,15 @@
 				564FF90A1DA6203E008AC31E /* StepRingView.swift */,
 			);
 			name = MainInfoView;
+			sourceTree = "<group>";
+		};
+		56914B701DAFC89500C6163E /* DistanceDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				56DDFAA01DAF28A700A71405 /* DistanceDetailViewController.swift */,
+				56914B6E1DAFBE6E00C6163E /* DistanceDetailTableViewCell.swift */,
+			);
+			name = DistanceDetailViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,6 +377,7 @@
 				564FF90B1DA6203E008AC31E /* StepRingView.swift in Sources */,
 				56FF26911DAA2816001E04C6 /* GPSNotationView.swift in Sources */,
 				56FF26931DAA3979001E04C6 /* RunningInfomationView.swift in Sources */,
+				56914B6F1DAFBE6E00C6163E /* DistanceDetailTableViewCell.swift in Sources */,
 				560E1BAB1D953D3600B488AE /* MainViewController.swift in Sources */,
 				5692025A1DA0F7C500D9DA33 /* StepBar.swift in Sources */,
 				567E83BC1DA4D3B800BBD133 /* StartRunningButton.swift in Sources */,

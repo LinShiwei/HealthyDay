@@ -10,7 +10,7 @@ import UIKit
 
 class DistanceWalkingRunningLabel: UILabel {
     
-    let nameLabel = UILabel()
+    private let nameLabel = UILabel()
     var subviewsAlpha : CGFloat = 1{
         didSet{
             for view in subviews {

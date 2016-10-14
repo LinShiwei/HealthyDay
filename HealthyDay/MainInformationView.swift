@@ -24,7 +24,7 @@ class MainInformationView: UIView{
     private let gradientLayer = CAGradientLayer()
     private var bottomDecorativeCurveView : UIView?
 
-    let bottomDecorativeCurveRotateDegree : CGFloat = CGFloat.pi/180*2
+    private let bottomDecorativeCurveRotateDegree : CGFloat = CGFloat.pi/180*2
     
     var stepCount = 0{
         didSet{

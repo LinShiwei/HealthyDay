@@ -57,7 +57,7 @@ class GPSNotationView: UIView {
     }
     
     private func getCurrentDateDescription()->String{
-        let date = Date().description
+        let date = Date().formatDescription()
         let timeRange = date.index(date.startIndex, offsetBy: 11)..<date.index(date.startIndex, offsetBy: 16)
         let dateArray = date.substring(to: date.index(date.startIndex, offsetBy: 10)).components(separatedBy: "-")
         

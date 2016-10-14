@@ -36,7 +36,7 @@ class StepBarChartView: UIView {
         let currentDate = Date()
         var texts = [String]()
         for day in 0...6 {
-            let dateDescription = Date(timeInterval: -24*3600*Double(day), since: currentDate).description
+            let dateDescription = Date(timeInterval: -24*3600*Double(day), since: currentDate).formatDescription()
             let range = dateDescription.index(dateDescription.startIndex, offsetBy: 8)..<dateDescription.index(dateDescription.startIndex, offsetBy: 10)
             texts.append(dateDescription.substring(with: range)+" 日")
         }

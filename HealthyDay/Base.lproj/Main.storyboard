@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="971.25" y="36.971830985915496"/>
         </scene>
-        <!--Distance Detail View Controller-->
+        <!--历史记录-->
         <scene sceneID="6Fh-1c-Pj4">
             <objects>
-                <viewController id="shk-6F-WeU" customClass="DistanceDetailViewController" customModule="HealthyDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="历史记录" automaticallyAdjustsScrollViewInsets="NO" id="shk-6F-WeU" customClass="DistanceDetailViewController" customModule="HealthyDay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xc7-kr-B2l"/>
                         <viewControllerLayoutGuide type="bottom" id="UBr-fR-HDP"/>
@@ -101,22 +101,95 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distancedetail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgW-LD-Uid">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Af-E6-8OR">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceDetailTableViewCell" id="PqW-if-Jdn" customClass="DistanceDetailTableViewCell" customModule="HealthyDay" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PqW-if-Jdn" id="qoA-dh-p3g">
+                                            <frame key="frameInset" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTd-Pg-sGo">
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="9">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="月">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="13">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="日">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" 19:30">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.50公里" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-ay-QMO">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="leading" secondItem="zTd-Pg-sGo" secondAttribute="trailing" id="1N5-MS-ulP"/>
+                                                <constraint firstItem="zTd-Pg-sGo" firstAttribute="centerY" secondItem="qoA-dh-p3g" secondAttribute="centerY" id="2Cj-fl-Vii"/>
+                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="width" secondItem="zTd-Pg-sGo" secondAttribute="width" id="2tm-N9-aHg"/>
+                                                <constraint firstItem="zTd-Pg-sGo" firstAttribute="leading" secondItem="qoA-dh-p3g" secondAttribute="leadingMargin" id="2zv-4S-wqv"/>
+                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="trailing" secondItem="qoA-dh-p3g" secondAttribute="trailingMargin" id="6ph-gr-Vni"/>
+                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="bottom" secondItem="qoA-dh-p3g" secondAttribute="bottomMargin" id="DeJ-PL-xAN"/>
+                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="top" secondItem="qoA-dh-p3g" secondAttribute="topMargin" id="q1V-B9-iqY"/>
+                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="height" secondItem="zTd-Pg-sGo" secondAttribute="height" id="uhN-BY-Myv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="zTd-Pg-sGo" id="tAZ-2z-Ndg"/>
+                                            <outlet property="distanceLabel" destination="Wz2-ay-QMO" id="7eO-6V-bGQ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="shk-6F-WeU" id="Ejs-w0-DY2"/>
+                                    <outlet property="delegate" destination="shk-6F-WeU" id="yKT-w4-p6w"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bgW-LD-Uid" firstAttribute="centerX" secondItem="FCU-be-acl" secondAttribute="centerX" id="w9d-61-FgO"/>
-                            <constraint firstItem="bgW-LD-Uid" firstAttribute="centerY" secondItem="FCU-be-acl" secondAttribute="centerY" id="ztn-1I-edt"/>
+                            <constraint firstItem="9Af-E6-8OR" firstAttribute="top" secondItem="xc7-kr-B2l" secondAttribute="bottom" id="891-7u-wGq"/>
+                            <constraint firstAttribute="trailing" secondItem="9Af-E6-8OR" secondAttribute="trailing" id="NXH-1L-UQK"/>
+                            <constraint firstItem="9Af-E6-8OR" firstAttribute="leading" secondItem="FCU-be-acl" secondAttribute="leading" id="gMm-p3-5Y8"/>
+                            <constraint firstItem="UBr-fR-HDP" firstAttribute="top" secondItem="9Af-E6-8OR" secondAttribute="bottom" id="qbJ-8P-LLG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="distanceDetailTableView" destination="9Af-E6-8OR" id="adh-Cl-mfk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iwr-60-MKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="-797"/>
+            <point key="canvasLocation" x="1805.5999999999999" y="-797.45127436281871"/>
         </scene>
         <!--Step Detail View Controller-->
         <scene sceneID="pem-mP-glS">
@@ -331,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ave-ds-8xV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="870"/>
+            <point key="canvasLocation" x="1806" y="827"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kyh-Gx-0hY">

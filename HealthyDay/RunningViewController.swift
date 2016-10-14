@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class RunningViewController: UIViewController {
 
@@ -25,6 +26,7 @@ class RunningViewController: UIViewController {
             }else{
                 timer?.invalidate()
                 timer = nil
+                saveRunningDataToCoreData()
             }
         }
     }
@@ -121,6 +123,24 @@ class RunningViewController: UIViewController {
         let minutes = (sumSeconds%3600)/60
         let hours = sumSeconds/3600
         return String(format: "%02d:%02d:%02d", arguments: [hours,minutes,seconds])
+    }
+    
+    private func saveRunningDataToCoreData(){
+        DispatchQueue.global().async{[unowned self] in
+            let managedContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+            let entity = NSEntityDescription.entity(forEntityName: "Running", in:managedContext)
+            let distanceObject = NSManagedObject(entity: entity!, insertInto: managedContext)
+            distanceObject.setValue(Date().addingTimeInterval(-(Double)(self.runningDuration)), forKey: "date")
+            distanceObject.setValue(self.runningDuration, forKey: "duration")
+            distanceObject.setValue(self.runningDistance, forKey: "distance")
+            distanceObject.setValue(self.durationPerKilometer, forKey: "durationPerKilometer")
+            do {
+                try managedContext.save()
+            }
+            catch let error as NSError {
+                print("Could not save \(error), \(error.userInfo)")
+            }
+        }
     }
     
 //MARK: Selector
