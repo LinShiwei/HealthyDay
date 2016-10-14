@@ -10,17 +10,17 @@ import UIKit
 
 class StepLineChart: UIScrollView {
     
-    var currentIndex = 0
-    var viewSize : CGSize = CGSize(width: UIScreen.main.bounds.width / 7, height: UIScreen.main.bounds.height * 3.5 / 15.0)
-
-    var stepCountsData = [Int]()
-    var maxStepCount = Int()
-
     var stepEverydayViews = [StepEverydayView]()
-    var linesInStepLineChart = [CAShapeLayer]()
-    var dotsPosition = [CGPoint]()
-    var gradientLayer = CAGradientLayer()
-    var gradientMaskView = CAShapeLayer()
+    
+    fileprivate var viewSize : CGSize = CGSize(width: UIScreen.main.bounds.width / 7, height: UIScreen.main.bounds.height * 3.5 / 15.0)
+    fileprivate var stepCountsData = [Int]()
+    fileprivate var maxStepCount = Int()
+    fileprivate var currentIndex = 0
+    fileprivate var linesInStepLineChart = [CAShapeLayer]()
+    fileprivate var dotsPosition = [CGPoint]()
+    fileprivate var gradientLayer = CAGradientLayer()
+    fileprivate var gradientMaskView = CAShapeLayer()
+    fileprivate var dateLabels = [UILabel]()
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -46,7 +46,58 @@ class StepLineChart: UIScrollView {
             initGradientMaskView()
             initLine()
         }
+        initDateLabel()
     }
+    
+    private func dayOfTheWeek(offset: Int) -> String {
+        let interval = Date().timeIntervalSince1970
+        let days = Int(interval / 86400) + offset
+        let dayOfWeek = (days - 3) % 7
+        switch dayOfWeek {
+        case 0:
+            return "日"
+        case 1:
+            return "一"
+        case 2:
+            return "二"
+        case 3:
+            return "三"
+        case 4:
+            return "四"
+        case 5:
+            return "五"
+        case 6:
+            return "六"
+        default:
+            return ""
+        }
+    }
+    
+    private func initDateLabel() {
+        let currentDate = Date()
+        var texts = [String]()
+        var stepRange = Int()
+        if stepCountsData.isEmpty == true {
+            stepRange = 6
+        } else {
+            stepRange = stepCountsData.count + 5
+        }
+        for day in 0...stepRange {
+            let dateDescription = Date(timeInterval: 24*3600*Double(-stepRange + 3 + day), since: currentDate).description
+            let range = dateDescription.index(dateDescription.startIndex, offsetBy: 8)..<dateDescription.index(dateDescription.startIndex, offsetBy: 10)
+            let dayOfWeek = dayOfTheWeek(offset: -stepRange + 3 + day)
+            let text = "周" + dayOfWeek + "\n" + dateDescription.substring(with: range)
+            texts.append(text)
+            let dateLabel = UILabel(frame: CGRect(x: viewSize.width * CGFloat(day), y: viewSize.height, width: viewSize.width, height: viewSize.height / 3.5))
+            dateLabel.text = text
+            dateLabel.textAlignment = .center
+            dateLabel.numberOfLines = 0
+            dateLabel.font = UIFont(name: "STHeitiSC-Light", size: viewSize.width / 4.5)
+            dateLabels.append(dateLabel)
+            addSubview(dateLabel)
+        }
+    }
+
     
     
     private func initStepEverydayView() {

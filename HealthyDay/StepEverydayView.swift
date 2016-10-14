@@ -11,13 +11,13 @@ import UIKit
 class StepEverydayView: UIView {
 
     let stepLabel = UILabel()
-    let dot = CALayer()
-    var dotRadius = CGFloat()
-    var isToday = false
-    var proportion = CGFloat()
-    var stepCount = Int()
     
-
+    fileprivate var isToday = false
+    fileprivate let dot = CALayer()
+    fileprivate var dotRadius = CGFloat()
+    fileprivate var proportion = CGFloat()
+    fileprivate var stepCount = Int()
+    
     init(frame: CGRect,proportion: CGFloat,stepCount: Int, isToday: Bool) {
         super.init(frame: frame)
         self.proportion = proportion
@@ -61,13 +61,15 @@ class StepEverydayView: UIView {
     }
     
     private func initStepLabel() {
-        stepLabel.frame = CGRect(x: frame.width * 0.15, y: dotPosition().y - frame.height / 3.5, width: frame.width * 0.7, height: frame.height / 4)
+        stepLabel.frame = CGRect(x: frame.width * 0.1, y: dotPosition().y - frame.height / 3.5, width: frame.width * 0.8, height: frame.height / 4)
         stepLabel.text = "\(stepCount)"
         stepLabel.textAlignment = .center
         stepLabel.textColor = UIColor.black
         stepLabel.adjustsFontSizeToFitWidth = true
         addSubview(stepLabel)
         stepLabel.alpha = 0
+        guard isToday == true else {return}
+        stepLabel.alpha = 1
     }
     
     
