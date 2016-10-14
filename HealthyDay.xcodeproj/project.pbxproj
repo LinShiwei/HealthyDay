@@ -35,8 +35,11 @@
 		7239A4171DA9F7CA0061E66A /* StepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7239A4161DA9F7CA0061E66A /* StepDetailView.swift */; };
 		72606D8C1DA9061E0064FA3E /* StepLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72606D8B1DA9061E0064FA3E /* StepLineChart.swift */; };
 		72906C731DABC126007032B4 /* StepEverydayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72906C721DABC126007032B4 /* StepEverydayView.swift */; };
+<<<<<<< HEAD
 		56FF26911DAA2816001E04C6 /* GPSNotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF26901DAA2816001E04C6 /* GPSNotationView.swift */; };
 		56FF26931DAA3979001E04C6 /* RunningInfomationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF26921DAA3979001E04C6 /* RunningInfomationView.swift */; };
+=======
+>>>>>>> parent of 0e46ce4... Merge branch 'LinShiwei/master' into StepDetailView
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,8 +98,11 @@
 		7239A4161DA9F7CA0061E66A /* StepDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepDetailView.swift; sourceTree = "<group>"; };
 		72606D8B1DA9061E0064FA3E /* StepLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepLineChart.swift; sourceTree = "<group>"; };
 		72906C721DABC126007032B4 /* StepEverydayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepEverydayView.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		56FF26901DAA2816001E04C6 /* GPSNotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPSNotationView.swift; sourceTree = "<group>"; };
 		56FF26921DAA3979001E04C6 /* RunningInfomationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningInfomationView.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> parent of 0e46ce4... Merge branch 'LinShiwei/master' into StepDetailView
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,9 +149,8 @@
 		560E1BA71D953D3600B488AE /* HealthyDay */ = {
 			isa = PBXGroup;
 			children = (
-				56B03C861DA1FB6A0071CBB4 /* StepDetailViewController.swift */,
 				562379C81DA1291D00525B7C /* MainViewController */,
-				562379C71DA1290700525B7C /* RunningViewController */,
+				562379C71DA1290700525B7C /* DetailViewController */,
 				562379C61DA128E000525B7C /* Helper */,
 				56492EDC1D960CA3007C3510 /* Support */,
 				56D631E81D98ECE7008232FA /* Define.swift */,
@@ -182,7 +187,7 @@
 			name = Helper;
 			sourceTree = "<group>";
 		};
-		562379C71DA1290700525B7C /* RunningViewController */ = {
+		562379C71DA1290700525B7C /* DetailViewController */ = {
 			isa = PBXGroup;
 			children = (
 				56629EA71D9B877000720F0A /* RunningViewController.swift */,
@@ -190,10 +195,13 @@
 				7239A4161DA9F7CA0061E66A /* StepDetailView.swift */,
 				72606D8B1DA9061E0064FA3E /* StepLineChart.swift */,
 				72906C721DABC126007032B4 /* StepEverydayView.swift */,
+<<<<<<< HEAD
 				56FF26901DAA2816001E04C6 /* GPSNotationView.swift */,
 				56FF26921DAA3979001E04C6 /* RunningInfomationView.swift */,
+=======
+>>>>>>> parent of 0e46ce4... Merge branch 'LinShiwei/master' into StepDetailView
 			);
-			name = RunningViewController;
+			name = DetailViewController;
 			sourceTree = "<group>";
 		};
 		562379C81DA1291D00525B7C /* MainViewController */ = {
@@ -365,8 +373,11 @@
 			files = (
 				564FF90B1DA6203E008AC31E /* StepRingView.swift in Sources */,
 				7239A4171DA9F7CA0061E66A /* StepDetailView.swift in Sources */,
+<<<<<<< HEAD
 				56FF26911DAA2816001E04C6 /* GPSNotationView.swift in Sources */,
 				56FF26931DAA3979001E04C6 /* RunningInfomationView.swift in Sources */,
+=======
+>>>>>>> parent of 0e46ce4... Merge branch 'LinShiwei/master' into StepDetailView
 				560E1BAB1D953D3600B488AE /* MainViewController.swift in Sources */,
 				5692025A1DA0F7C500D9DA33 /* StepBar.swift in Sources */,
 				567E83BC1DA4D3B800BBD133 /* StartRunningButton.swift in Sources */,

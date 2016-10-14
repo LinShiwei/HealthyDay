@@ -17,10 +17,7 @@ class MainInformationView: UIView{
     private let labelMaskView = UIView()
     private let decorativeView = UIView()
     private let gradientLayer = CAGradientLayer()
-    private var bottomDecorativeCurveView : UIView?
 
-    let bottomDecorativeCurveRotateDegree : CGFloat = CGFloat.pi/180*2
-    
     var stepCount = 0{
         didSet{
             stepCountLabel.stepCount = stepCount
@@ -33,16 +30,37 @@ class MainInformationView: UIView{
         }
     }
 //MARK: View
+    override init(frame:CGRect){
+        super.init(frame:frame)
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [theme.lightColor.cgColor,theme.thickColor.cgColor]
+        layer.addSublayer(gradientLayer)
+        
+        initContainerView(rotateRadius: frame.height)
+        initDotView()
+        initLabelMaskView()
+        initButtomDecorativeView()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        print("lay")
+        print(frame)
+
+        
+        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        print("layoutsubviews")
         initGradientLayer()
         initContainerView(rotateRadius: frame.height)
         initDotView()
-        initBottomDecorativeView()
+//        initLabelMaskView()
+        initButtomDecorativeView()
     }
     
 //MARK: Custom View
@@ -76,7 +94,14 @@ class MainInformationView: UIView{
         addSubview(dot)
     }
 
-    private func initBottomDecorativeView(){
+    private func initLabelMaskView(){
+        guard labelMaskView.superview == nil else{return}
+        labelMaskView.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: windowBounds.height-frame.height)
+        labelMaskView.backgroundColor = UIColor.white
+        addSubview(labelMaskView)
+    }
+    
+    private func initButtomDecorativeView(){
         guard decorativeView.superview == nil else{return}
         let height = frame.height*0.24
         let width = frame.width
@@ -95,56 +120,7 @@ class MainInformationView: UIView{
         shapeLayer.fillColor = UIColor.white.cgColor
         
         decorativeView.layer.addSublayer(shapeLayer)
-        if bottomDecorativeCurveView == nil {
-            bottomDecorativeCurveView = createBottomDecorativeCurve(withBottomDecorativeViewSize: CGSize(width: width, height: height))
-            decorativeView.addSubview(bottomDecorativeCurveView!)
-        }
         addSubview(decorativeView)
-        
-    }
-    
-    private func createBottomDecorativeCurve(withBottomDecorativeViewSize size:CGSize)-> UIView{
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: 0, y: size.height))
-        path.addCurve(to: CGPoint(x: size.width, y:size.height), controlPoint1: CGPoint(x:size.width/3,y:size.height/2), controlPoint2: CGPoint(x:size.width/3*2,y:size.height/2))
-        
-        let shapeLayer = CAShapeLayer()
-        let shapeLayerTwo = CAShapeLayer()
-
-        for layer in [shapeLayer,shapeLayerTwo] {
-            layer.path = path.cgPath
-            layer.lineWidth = 1
-            layer.fillColor = nil
-            let strokingPath = CGPath(__byStroking: layer.path!, transform: nil, lineWidth: 1, lineCap: .round, lineJoin: .miter, miterLimit: 1)
-            layer.bounds = (strokingPath?.boundingBoxOfPath)!
-            layer.anchorPoint = CGPoint(x: 0.5, y: 0)
-        }
-        shapeLayer.strokeColor = UIColor(white: 1, alpha: 0.5).cgColor
-        shapeLayerTwo.strokeColor = UIColor(white: 1, alpha: 0.3).cgColor
-        
-        shapeLayerTwo.transform = CATransform3DMakeRotation(2*CGFloat.pi/180, 0, 0, 1)
-        
-        let shapeLayerTwoAnimation = CABasicAnimation(keyPath: "position.y")
-        shapeLayerTwoAnimation.fromValue = shapeLayer.position.y+3
-        shapeLayerTwoAnimation.toValue = shapeLayer.position.y-3
-        shapeLayerTwoAnimation.repeatCount = Float(Int.max)
-        shapeLayerTwoAnimation.autoreverses = true
-        shapeLayerTwoAnimation.duration = 5
-        shapeLayerTwo.add(shapeLayerTwoAnimation, forKey: "positionYAnimation")
-        
-        let shapeLayerAnimation = CABasicAnimation(keyPath: "position.y")
-        shapeLayerAnimation.fromValue = shapeLayer.position.y-3
-        shapeLayerAnimation.toValue = shapeLayer.position.y+3
-        shapeLayerAnimation.repeatCount = Float(Int.max)
-        shapeLayerAnimation.autoreverses = true
-        shapeLayerAnimation.duration = 5
-        shapeLayer.add(shapeLayerAnimation, forKey: "positionYAnimation")
-
-        let curveView = UIView()
-        curveView.frame.origin = CGPoint(x:frame.width/2,y:size.height-shapeLayer.frame.height-3)
-        curveView.layer.addSublayer(shapeLayer)
-        curveView.layer.addSublayer(shapeLayerTwo)
-        return curveView
     }
 //MARK: Animation helper
     private func hideDistanceWalkingRunningSublabel(alpha:CGFloat){
@@ -166,18 +142,17 @@ class MainInformationView: UIView{
     private func swipeClockwise(){
         containerView.transform = .identity
         dot.center.x = frame.width*2/5
-        bottomDecorativeCurveView?.transform = .identity
+        print(frame)
     }
     
     private func swipeCounterclockwise(){
         containerView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/3)
         dot.center.x = frame.width*3/5
-        bottomDecorativeCurveView?.transform = CGAffineTransform(rotationAngle: -bottomDecorativeCurveRotateDegree)
     }
    
-    func panAnimation(progress: CGFloat, currentState: MainVCState){
-        assert(progress >= -1 && progress <= 1)
-        switch progress {
+    func panAnimation(process: CGFloat, currentState: MainVCState){
+        assert(process >= -1 && process <= 1)
+        switch process {
         case 1:
             swipeClockwise()
             hideDistanceWalkingRunningSublabel(alpha: 1)
@@ -191,28 +166,24 @@ class MainInformationView: UIView{
             case .running:
                 hideDistanceWalkingRunningSublabel(alpha: 0)
                 hideStepCountSublabel(alpha: 1)
-                if progress > 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*progress/2)
+                if process > 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*process/2)
                     dot.center.x = frame.width*2/5 //可以去掉吗
-                    bottomDecorativeCurveView?.transform = .identity
                 }
-                if progress < 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*progress)
-                    dot.center.x = frame.width*2/5-frame.width/5*progress
-                    bottomDecorativeCurveView?.transform = CGAffineTransform(rotationAngle: bottomDecorativeCurveRotateDegree*progress)
+                if process < 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*process)
+                    dot.center.x = frame.width*2/5-frame.width/5*process
                 }
             case .step:
                 hideDistanceWalkingRunningSublabel(alpha: 1)
                 hideStepCountSublabel(alpha: 0)
-                if progress > 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*(progress-1))
-                    dot.center.x = frame.width*3/5-frame.width/5*progress
-                    bottomDecorativeCurveView?.transform = CGAffineTransform(rotationAngle: -bottomDecorativeCurveRotateDegree*(1-progress))
+                if process > 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*(process-1))
+                    dot.center.x = frame.width*3/5-frame.width/5*process
                 }
-                if progress < 0 {
-                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*(progress/2-1))
+                if process < 0 {
+                    containerView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/3*(process/2-1))
                     dot.center.x = frame.width*3/5
-                    bottomDecorativeCurveView?.transform = CGAffineTransform(rotationAngle: -bottomDecorativeCurveRotateDegree)
                 }
             }
         }

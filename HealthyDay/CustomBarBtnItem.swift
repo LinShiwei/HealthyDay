@@ -15,7 +15,7 @@ enum BarBtnItemType{
 
 class CustomBarBtnItem: UIBarButtonItem {
 
-    let button : UIButton = {
+    private let button : UIButton = {
         let btn = UIButton(type: .custom)
         btn.setTitleColor(UIColor(red:1,green:1,blue:1,alpha:0.7), for: .normal)
         btn.setTitleColor(UIColor.white, for: .disabled)
