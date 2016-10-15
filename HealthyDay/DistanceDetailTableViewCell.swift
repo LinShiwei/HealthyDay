@@ -18,7 +18,7 @@ class DistanceDetailTableViewCell: UITableViewCell {
     
     var distance : Double = 0{
         didSet{
-            distanceLabel.text = String(format: "%.2f 公里", distance)
+            distanceLabel.text = String(format: "%.2f 公里", distance/1000.0)
         }
     }
     

@@ -86,7 +86,7 @@ class DistanceDetailViewController: UIViewController {
         var items = [DistanceDetailItem]()
         for _ in 0...20{
             let secondOffset = Double(arc4random_uniform(3600*24*3))+3600*24*7
-            let distance = Double(arc4random_uniform(100)+UInt32(1))/10.0
+            let distance = Double(arc4random_uniform(10000)+UInt32(1000))
             let durationPerKilometer = Int(arc4random_uniform(60))+300
             let duration = Int(distance * Double(durationPerKilometer))
             date.addTimeInterval(secondOffset)
@@ -145,6 +145,7 @@ extension DistanceDetailViewController: UITableViewDelegate{
             catch let error as NSError {
                 print("Could not save \(error), \(error.userInfo)")
             }
+            objects.remove(at: index)
             distances.remove(at: index)
             distancesInfo[indexPath.section].count -= 1
             tableView.deleteRows(at: [indexPath], with: .fade)
