@@ -9,8 +9,11 @@
 import Foundation
 import CoreLocation
 
-internal class LocationManager {
+internal final class LocationManager {
+    static let sharedLocationManager = LocationManager()
     private let locationManager = CLLocationManager()
+    private init(){
+    }
     var delegate : CLLocationManagerDelegate?{
         didSet{
             locationManager.delegate = delegate

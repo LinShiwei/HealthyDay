@@ -12,7 +12,7 @@ import CoreData
 
 internal class RunningViewController: UIViewController {
 
-    private let locationManager = LocationManager()
+    private let locationManager = LocationManager.sharedLocationManager
     fileprivate var runningCoordiantes = [CLLocationCoordinate2D]()
     
     fileprivate var hasLocated = false

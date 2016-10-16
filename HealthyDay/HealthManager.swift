@@ -10,14 +10,19 @@ import Foundation
 import HealthKit
 
 enum PeriodDataType{
+    case Specified
     case Current
     case Weekly
     case Monthly
 }
 
-internal class HealthManager{
-    fileprivate let store = HKHealthStore()
+internal final class HealthManager{
+    static let sharedHealthManager = HealthManager()
+    private let store = HKHealthStore()
     
+    private init(){
+    }
+//MARK: API
     internal func authorize(_ completion: @escaping (_ success:Bool, _ error:Error?) -> Void){
         let typesToRead : Set = [
             HKQuantityType.quantityType(forIdentifier: .stepCount)!,
@@ -33,9 +38,9 @@ internal class HealthManager{
         }
     }
     
-    internal func readStepCount(periodDataType type:PeriodDataType, _ completion: @escaping ([Int]?,Error?)->Void){
+    internal func readStepCount(inDate date:Date = Date(), periodDataType type:PeriodDataType, _ completion: @escaping ([Int]?,Error?)->Void){
         var stepCounts = [Int]()
-        let sampleQuery = createQuantitySampleQuery(typeIdentifier: .stepCount, periodDataType: type){[unowned self](query, samples, error) in
+        let sampleQuery = createQuantitySampleQuery(inDate: date, typeIdentifier: .stepCount, periodDataType: type){[unowned self](query, samples, error) in
             guard error == nil && samples != nil else{
                 completion(nil,error)
                 return
@@ -46,9 +51,9 @@ internal class HealthManager{
         store.execute(sampleQuery)
     }
     
-    internal func readDistanceWalkingRunning(periodDataType type:PeriodDataType, _ completion: @escaping ([Int]?,Error?)->Void){
+    internal func readDistanceWalkingRunning(inDate date:Date = Date(), periodDataType type:PeriodDataType, _ completion: @escaping ([Int]?,Error?)->Void){
         var distances = [Int]()
-        let sampleQuery = createQuantitySampleQuery(typeIdentifier: .distanceWalkingRunning, periodDataType: type){[unowned self](query, samples, error) in
+        let sampleQuery = createQuantitySampleQuery(inDate: date, typeIdentifier: .distanceWalkingRunning, periodDataType: type){[unowned self](query, samples, error) in
             guard error == nil && samples != nil else{
                 completion(nil,error)
                 return
@@ -59,16 +64,28 @@ internal class HealthManager{
         store.execute(sampleQuery)
     }
     
-    private func createQuantitySampleQuery(typeIdentifier identifier:HKQuantityTypeIdentifier, periodDataType type:PeriodDataType, completion:  @escaping (HKSampleQuery,[HKSample]?,Error?)->Void)->HKSampleQuery{
+    internal func readDetailStepCount(inDate date:Date, _ completion: @escaping ([HKSample]?,Error?)->Void){
+
+        let detailSampleQuery = createQuantitySampleQuery(inDate: date, typeIdentifier: .stepCount, periodDataType: .Specified){(query, samples, error) in
+            guard error == nil && samples != nil else{
+                completion(nil,error)
+                return
+            }
+            completion(samples,nil)
+        }
+        store.execute(detailSampleQuery)
+    }
+//MARK: Help func
+    private func createQuantitySampleQuery(inDate date:Date = Date(), typeIdentifier identifier:HKQuantityTypeIdentifier, periodDataType type:PeriodDataType, completion:  @escaping (HKSampleQuery,[HKSample]?,Error?)->Void)->HKSampleQuery{
     
-        let nowDate = Date()
         let beginningDate : Date = {
             let secondOffset = TimeZone.current.secondsFromGMT()
             let interval = intervalInPeriod(periodDataType: type)
-            return Date(timeInterval: Double(-secondOffset - interval), since: nowDate)
+            return Date(timeInterval: Double(-secondOffset - interval), since: date)
         }()
+        let endDate = type == .Specified ? beginningDate.addingTimeInterval(3600*24) : date
         let readingType = HKQuantityType.quantityType(forIdentifier: identifier)!
-        let currentDayPredicate = HKQuery.predicateForSamples(withStart: beginningDate, end: nowDate, options: HKQueryOptions())
+        let currentDayPredicate = HKQuery.predicateForSamples(withStart: beginningDate, end: endDate, options: HKQueryOptions())
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
         return HKSampleQuery(sampleType: readingType, predicate: currentDayPredicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor], resultsHandler: completion)
     
@@ -99,7 +116,7 @@ internal class HealthManager{
         }
         counts.append(count)
         switch type {
-        case .Current:
+        case .Current,.Specified:
             assert(counts.count <= 1)
         case .Weekly:
             assert(counts.count <= 7)
@@ -112,7 +129,7 @@ internal class HealthManager{
     private func intervalInPeriod(periodDataType type:PeriodDataType)->Int{
         let currentSeconds = Int(Date().timeIntervalSince1970)%(24*3600)
         switch type {
-        case .Current:
+        case .Current,.Specified:
             return currentSeconds
         case .Weekly:
             return 6*24*3600+currentSeconds

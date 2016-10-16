@@ -16,7 +16,7 @@ internal enum MainVCState{
 
 internal class MainViewController: UIViewController {
 //MARK: Property
-    private let healthManager = HealthManager()
+    private let healthManager = HealthManager.sharedHealthManager
     private var state = MainVCState.running
 
     private let stepBarItem = CustomBarBtnItem(buttonFrame: CGRect(x: windowBounds.width/5*2-18-25, y: 0, width: 50, height: 22),title:"记步", itemType:.right)
@@ -223,9 +223,10 @@ internal class MainViewController: UIViewController {
                         self.mainInfoView.stepCount = 0
                     }
                 }
-        }
+            }
             #else
             mainInfoView.stepCount = 1000
+            
         #endif
     }
     
