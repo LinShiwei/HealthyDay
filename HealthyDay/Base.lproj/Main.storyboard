@@ -206,15 +206,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="stepDetailView" destination="eOe-wJ-o62" id="2Ai-UL-gca"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2I-u6-02a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1806" y="36"/>
         </scene>
-        <!--Running View Controller-->
+        <!--户外跑步-->
         <scene sceneID="Gih-px-Y8B">
             <objects>
-                <viewController id="x4C-hv-WIR" customClass="RunningViewController" customModule="HealthyDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="户外跑步" id="x4C-hv-WIR" customClass="RunningViewController" customModule="HealthyDay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0mV-xI-nQ9"/>
                         <viewControllerLayoutGuide type="bottom" id="x03-CL-5B4"/>
@@ -402,7 +405,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xQ5-uK-391" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lQ6-YG-3Yz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lQ6-YG-3Yz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

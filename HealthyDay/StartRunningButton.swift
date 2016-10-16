@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StartRunningButton: UIButton {
+internal class StartRunningButton: UIButton {
 
     private let buttonDiameter : CGFloat = 100 //buttonRadius, should change in main.storyboard
     private let ringGap : CGFloat = 5
@@ -44,7 +44,7 @@ class StartRunningButton: UIButton {
         transform = scaleShiftTransform
     }
     
-    func panAnimation(progress:CGFloat, currentState:MainVCState){
+    internal func panAnimation(progress:CGFloat, currentState:MainVCState){
         assert(progress >= -1 && progress <= 1)
         switch progress {
         case 1:

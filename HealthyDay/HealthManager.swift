@@ -18,7 +18,7 @@ enum PeriodDataType{
 internal class HealthManager{
     fileprivate let store = HKHealthStore()
     
-    func authorize(_ completion: @escaping (_ success:Bool, _ error:Error?) -> Void){
+    internal func authorize(_ completion: @escaping (_ success:Bool, _ error:Error?) -> Void){
         let typesToRead : Set = [
             HKQuantityType.quantityType(forIdentifier: .stepCount)!,
             HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
@@ -33,7 +33,7 @@ internal class HealthManager{
         }
     }
     
-    func readStepCount(periodDataType type:PeriodDataType, _ completion: @escaping ([Int]?,Error?)->Void){
+    internal func readStepCount(periodDataType type:PeriodDataType, _ completion: @escaping ([Int]?,Error?)->Void){
         var stepCounts = [Int]()
         let sampleQuery = createQuantitySampleQuery(typeIdentifier: .stepCount, periodDataType: type){[unowned self](query, samples, error) in
             guard error == nil && samples != nil else{
@@ -46,7 +46,7 @@ internal class HealthManager{
         store.execute(sampleQuery)
     }
     
-    func readDistanceWalkingRunning(periodDataType type:PeriodDataType, _ completion: @escaping ([Int]?,Error?)->Void){
+    internal func readDistanceWalkingRunning(periodDataType type:PeriodDataType, _ completion: @escaping ([Int]?,Error?)->Void){
         var distances = [Int]()
         let sampleQuery = createQuantitySampleQuery(typeIdentifier: .distanceWalkingRunning, periodDataType: type){[unowned self](query, samples, error) in
             guard error == nil && samples != nil else{

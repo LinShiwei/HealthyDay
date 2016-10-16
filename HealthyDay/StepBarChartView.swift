@@ -8,11 +8,11 @@
 
 import UIKit
 
-class StepBarChartView: UIView {
+internal class StepBarChartView: UIView {
 
-    var distinationStepCount = 10000
+    internal var distinationStepCount = 10000
     
-    var stepCounts = [Int](){
+    internal var stepCounts = [Int](){
         didSet{
             assert(stepCounts.count == 7)
             assert(stepBars.count == 7)
@@ -68,7 +68,7 @@ class StepBarChartView: UIView {
         alpha = progress
     }
     
-    func panAnimation(progress:CGFloat, currentState:MainVCState){
+    internal func panAnimation(progress:CGFloat, currentState:MainVCState){
         assert(progress >= -1 && progress <= 1)
         switch progress {
         case 1:

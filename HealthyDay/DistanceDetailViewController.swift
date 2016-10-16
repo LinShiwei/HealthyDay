@@ -9,19 +9,19 @@
 import UIKit
 import CoreData
 
-struct DistanceDetailItem {
+fileprivate struct DistanceDetailItem {
     let date : Date
     let distance : Double
     let duration : Int
     let durationPerKilometer : Int
 }
 
-struct DistancesInfo{
+fileprivate struct DistancesInfo{
     let month : String
     var count : Int
 }
 
-class DistanceDetailViewController: UIViewController {
+internal class DistanceDetailViewController: UIViewController {
 
     fileprivate var objects = [NSManagedObject]()
 

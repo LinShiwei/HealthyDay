@@ -10,11 +10,11 @@ import UIKit
 import HealthKit
 import CoreLocation
 
-enum MainVCState{
+internal enum MainVCState{
     case running,step
 }
 
-class MainViewController: UIViewController {
+internal class MainViewController: UIViewController {
 //MARK: Property
     private let healthManager = HealthManager()
     private var state = MainVCState.running
@@ -50,13 +50,16 @@ class MainViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = runningBarItem
         stepBarItem.addTarget(self, action:  #selector(MainViewController.swipeLeft(_:progress:velocity:)), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = stepBarItem
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateCurrentDistance()
         updateCurrentStepCount()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
 //MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,8 +81,8 @@ class MainViewController: UIViewController {
                     }
                 }
                 #else
-//                stepDetailVC.stepCounts = [Int](repeatElement(4000, count: 7))
-//                stepDetailVC.distances = [Int](repeatElement(1200, count: 7))
+                stepDetailVC.stepCounts = [4609,7984,10345,6902,9834,3294,8567]
+                stepDetailVC.distances = [1242,4987,5395,10924,2834,1230,4834]
             #endif
 
         }
@@ -138,7 +141,7 @@ class MainViewController: UIViewController {
         }
     }
 
-    func swipeLeft(_ sender:AnyObject, progress:CGFloat = -1, velocity:CGFloat){
+    internal func swipeLeft(_ sender:AnyObject, progress:CGFloat = -1, velocity:CGFloat){
         let duration : Double = {
             let baseDuration = 0.5
             let pro = Double(abs(progress))
@@ -173,7 +176,7 @@ class MainViewController: UIViewController {
         state = .step
     }
     
-    func swipeRight(_ sender:AnyObject, progress:CGFloat = 1, velocity:CGFloat){
+    internal func swipeRight(_ sender:AnyObject, progress:CGFloat = 1, velocity:CGFloat){
         let duration : Double = {
             let baseDuration = 0.5
             let pro = Double(abs(progress))
@@ -246,7 +249,7 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController:MainInfoViewTapGestureDelegate{
-    func didTap(inLabel label:UILabel){
+    internal func didTap(inLabel label:UILabel){
         switch label {
         case is StepCountLabel:
             performSegue(withIdentifier: "ShowStepDetailVC", sender: label)

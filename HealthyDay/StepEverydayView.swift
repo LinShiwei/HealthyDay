@@ -37,23 +37,19 @@ class StepEverydayView: UIView {
         let lineChartHeight = frame.height * 2.5 / 3.5
         if isToday {
             dotRadius = 3
-            let dotY = frame.height - lineChartHeight * proportion - dotRadius
-            dot.position = CGPoint(x: frame.width / 2 - dotRadius, y: dotY)
-            dot.frame.size = CGSize(width: dotRadius * 2, height: dotRadius * 2)
-            dot.cornerRadius = CGFloat(dotRadius)
             dot.borderWidth = 1.5
             dot.borderColor = UIColor.green.cgColor
             dot.backgroundColor = UIColor.white.cgColor
         } else {
             dotRadius = 6
-            let dotY = frame.height - lineChartHeight * proportion - dotRadius
-            dot.position = CGPoint(x: frame.width / 2 - dotRadius, y: dotY)
-            dot.frame.size = CGSize(width: dotRadius * 2, height: dotRadius * 2)
-            dot.cornerRadius = CGFloat(dotRadius)
             dot.borderWidth = 2
             dot.borderColor = UIColor.white.cgColor
             dot.backgroundColor = UIColor.green.cgColor
         }
+        let dotY = frame.height - lineChartHeight * proportion - dotRadius
+        dot.position = CGPoint(x: frame.width / 2 - dotRadius, y: dotY)
+        dot.frame.size = CGSize(width: dotRadius * 2, height: dotRadius * 2)
+        dot.cornerRadius = CGFloat(dotRadius)
         layer.addSublayer(dot)
     }
     
@@ -67,14 +63,7 @@ class StepEverydayView: UIView {
         stepLabel.textAlignment = .center
         stepLabel.textColor = UIColor.black
         stepLabel.adjustsFontSizeToFitWidth = true
+        stepLabel.alpha = isToday ? 1 : 0
         addSubview(stepLabel)
-        stepLabel.alpha = 0
-        guard isToday == true else {return}
-        stepLabel.alpha = 1
-    }
-    
-    
-    func returnStepCountLabel() -> UILabel {
-        return stepLabel
     }
 }

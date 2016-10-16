@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol MainInfoViewTapGestureDelegate {
+internal protocol MainInfoViewTapGestureDelegate {
     func didTap(inLabel label:UILabel)
 }
 
-class MainInformationView: UIView{
+internal class MainInformationView: UIView{
 //MARK: Property
     private var stepCountLabel : StepCountLabel!
     private var distanceWalkingRunningLabel : DistanceWalkingRunningLabel!
@@ -26,19 +26,19 @@ class MainInformationView: UIView{
 
     private let bottomDecorativeCurveRotateDegree : CGFloat = CGFloat.pi/180*2
     
-    var stepCount = 0{
+    internal var stepCount = 0{
         didSet{
             stepCountLabel.stepCount = stepCount
             
         }
     }
-    var distance = 0{
+    internal var distance = 0{
         didSet{
             distanceWalkingRunningLabel.text = String(format:"%.2f",Double(distance)/1000)
         }
     }
     
-    var delegate : MainInfoViewTapGestureDelegate?
+    internal var delegate : MainInfoViewTapGestureDelegate?
 //MARK: View
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -159,7 +159,7 @@ class MainInformationView: UIView{
         addGestureRecognizer(tapGesture)
     }
     
-    func didTap(_ sender: UITapGestureRecognizer){
+    internal func didTap(_ sender: UITapGestureRecognizer){
         if pointIsInLabelText(point:sender.location(in: stepCountLabel), label:stepCountLabel){
             delegate?.didTap(inLabel: stepCountLabel)
         }
@@ -205,7 +205,7 @@ class MainInformationView: UIView{
         bottomDecorativeCurveView?.transform = CGAffineTransform(rotationAngle: -bottomDecorativeCurveRotateDegree)
     }
    
-    func panAnimation(progress: CGFloat, currentState: MainVCState){
+    internal func panAnimation(progress: CGFloat, currentState: MainVCState){
         assert(progress >= -1 && progress <= 1)
         switch progress {
         case 1:

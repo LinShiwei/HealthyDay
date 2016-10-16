@@ -12,9 +12,16 @@ class StepDetailView: UIView {
 
     var stepLineChart : StepLineChart!
     
-    fileprivate var stepCountsData = [2000, 3000, 7500, 3500, 12000]
+    internal var stepCountsData = [Int](){
+        didSet{
+            initMaxStepCount()
+            initStepLineChart()
+            initCenterGradientLayer()
+            initMaxStepCountLabel()
+        }
+    }
     fileprivate var targetCount = 10000
-    fileprivate var maxStepCount = Int()
+    fileprivate var maxStepCount = 0
     fileprivate var currentIndex = 0
     fileprivate var viewSize = CGSize()
     fileprivate let centerGradientLayer = CAGradientLayer()
@@ -23,75 +30,16 @@ class StepDetailView: UIView {
     fileprivate var dateLabel = UILabel()
     fileprivate var tendencyLabel = UILabel()
     fileprivate var imformationTitleLabel = [ImformationTitle]()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initStepLineChart()
-        initCenterGradientLayer()
-    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
     }
-    
+
     override func layoutSubviews() {
-        //        initLabel()
         initDateLabel()
         initTendencyLabel()
-        initMaxStepCount()
-        initStepLineChart()
-        initCenterGradientLayer()
-        initMaxStepCountLabel()
         initSplitLines()
         initImformationTitleLabel()
-    }
-    
-    private func initStepLineChart() {
-        let totalDataCount = stepCountsData.count
-        var lineChartColumn = totalDataCount + 6
-        if totalDataCount == 0 {
-            lineChartColumn = 7
-        }
-        let lineChartWidth = CGFloat(lineChartColumn) * frame.width / 7
-        viewSize = CGSize(width: frame.width / 7, height: frame.height)
-        stepLineChart = StepLineChart(frame: CGRect(x: 0, y: frame.height * 2.5 / 15.0, width: frame.width, height: frame.height*0.3), stepCountsData: stepCountsData, maxStepCount: maxStepCount)
-        stepLineChart.contentSize = CGSize(width: lineChartWidth, height: 0)
-        stepLineChart.contentOffset = CGPoint(x: lineChartWidth - frame.width, y: 0)
-        stepLineChart.delegate = self
-        addSubview(stepLineChart)
-    }
-    
-    private func initMaxStepCount() {
-        let stepCount = stepCountsData.max()
-        if stepCountsData.isEmpty == true {
-            maxStepCount = targetCount
-        } else {
-            maxStepCount = max(stepCount!, targetCount)
-        }
-    }
-    
-    func hideStepEverydayViewLabel(index: Int, alpha: CGFloat){
-        guard stepLineChart.stepEverydayViews[index].stepLabel.alpha != alpha else {return}
-        UIView.animate(withDuration: 0.1, delay: 0.25, options: .curveEaseInOut, animations: {[unowned self] in
-            self.stepLineChart.stepEverydayViews[index].stepLabel.alpha = alpha
-            }, completion: nil)
-    }
-    
-    private func initMaxStepCountLabel() {
-        maxStepCountLabel.frame = CGRect(x: frame.width * 0.03, y: frame.height * 3.1 / 15, width: frame.width / 11, height: frame.height * 0.3 / 15)
-        maxStepCountLabel.text = "\(maxStepCount)"
-        maxStepCountLabel.textAlignment = .center
-        maxStepCountLabel.textColor = UIColor.black
-        maxStepCountLabel.adjustsFontSizeToFitWidth = true
-        addSubview(maxStepCountLabel)
-    }
-    
-    private func initCenterGradientLayer() {
-        guard centerGradientLayer.superlayer == nil else {return}
-        centerGradientLayer.frame = CGRect(x: frame.width * 3 / 7, y: frame.height * 3.5 / 15.0, width: frame.width / 7, height: frame.height * 3.5 / 15.0)
-        centerGradientLayer.colors = [lineChart.lightColor.cgColor, lineChart.thickColor.cgColor]
-        layer.addSublayer(centerGradientLayer)
     }
     
     private func initDateLabel() {
@@ -111,18 +59,43 @@ class StepDetailView: UIView {
         tendencyLabel.textAlignment = .center
         addSubview(tendencyLabel)
     }
-    func changeDateLabel(currentIndex: Int) {
-        let currentDate = Date()
-        if currentIndex == stepCountsData.count + 2 {
-            dateLabel.text = "今天"
-        } else if currentIndex == stepCountsData.count + 1 {
-            dateLabel.text = "昨天"
+    
+    
+    private func initMaxStepCount() {
+        let stepCount = stepCountsData.max()
+        if stepCountsData.isEmpty == true {
+            maxStepCount = targetCount
         } else {
-            let dateDescription = Date(timeInterval: 24*3600*Double(currentIndex - 7), since: currentDate).formatDescription()
-            let range = dateDescription.index(dateDescription.startIndex, offsetBy: 5)..<dateDescription.index(dateDescription.startIndex, offsetBy: 10)
-            let text = dateDescription.substring(with: range)
-            dateLabel.text = text
+            maxStepCount = max(stepCount!, targetCount)
         }
+    }
+    
+    private func initStepLineChart() {
+        let totalDataCount = stepCountsData.count
+        let lineChartColumn = totalDataCount == 0 ? 7 : totalDataCount + 6
+        let lineChartWidth = CGFloat(lineChartColumn) * frame.width / 7
+        viewSize = CGSize(width: frame.width / 7, height: frame.height)
+        stepLineChart = StepLineChart(frame: CGRect(x: 0, y: frame.height * 2.5 / 15.0, width: frame.width, height: frame.height*0.3), stepCountsData: stepCountsData, maxStepCount: maxStepCount)
+        stepLineChart.contentSize = CGSize(width: lineChartWidth, height: 0)
+        stepLineChart.contentOffset = CGPoint(x: lineChartWidth - frame.width, y: 0)
+        stepLineChart.delegate = self
+        addSubview(stepLineChart)
+    }
+    
+    private func initCenterGradientLayer() {
+        guard centerGradientLayer.superlayer == nil else {return}
+        centerGradientLayer.frame = CGRect(x: frame.width * 3 / 7, y: frame.height * 3.5 / 15.0, width: frame.width / 7, height: frame.height * 3.5 / 15.0)
+        centerGradientLayer.colors = [lineChart.lightColor.cgColor, lineChart.thickColor.cgColor]
+        layer.addSublayer(centerGradientLayer)
+    }
+    
+    private func initMaxStepCountLabel() {
+        maxStepCountLabel.frame = CGRect(x: frame.width * 0.03, y: frame.height * 3.1 / 15, width: frame.width / 11, height: frame.height * 0.3 / 15)
+        maxStepCountLabel.text = "\(maxStepCount)"
+        maxStepCountLabel.textAlignment = .center
+        maxStepCountLabel.textColor = UIColor.black
+        maxStepCountLabel.adjustsFontSizeToFitWidth = true
+        addSubview(maxStepCountLabel)
     }
     
     private func initSplitLines() {
@@ -148,6 +121,27 @@ class StepDetailView: UIView {
             addSubview(imformationTitleLabel[index])
         }
     }
+    
+    fileprivate func hideStepEverydayViewLabel(index: Int, alpha: CGFloat){
+        guard stepLineChart.stepEverydayViews[index].stepLabel.alpha != alpha else {return}
+        UIView.animate(withDuration: 0.1, delay: 0.25, options: .curveEaseInOut, animations: {[unowned self] in
+            self.stepLineChart.stepEverydayViews[index].stepLabel.alpha = alpha
+            }, completion: nil)
+    }
+    
+    fileprivate func changeDateLabel(currentIndex: Int) {
+        let currentDate = Date()
+        if currentIndex == stepCountsData.count + 2 {
+            dateLabel.text = "今天"
+        } else if currentIndex == stepCountsData.count + 1 {
+            dateLabel.text = "昨天"
+        } else {
+            let dateDescription = Date(timeInterval: 24*3600*Double(currentIndex - 7), since: currentDate).formatDescription()
+            let range = dateDescription.index(dateDescription.startIndex, offsetBy: 5)..<dateDescription.index(dateDescription.startIndex, offsetBy: 10)
+            let text = dateDescription.substring(with: range)
+            dateLabel.text = text
+        }
+    }
 }
 
 extension StepDetailView: UIScrollViewDelegate {
@@ -157,11 +151,7 @@ extension StepDetailView: UIScrollViewDelegate {
         guard currentIndex >= 3 && currentIndex - 2 <= stepLineChart.stepEverydayViews.count else {return}
         hideStepEverydayViewLabel(index: currentIndex - 3, alpha: 0)
     }
-    
-    //    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-    //        <#code#>
-    //    }
-    
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             stepLineChart.setContentOffset(stepLineChart.contentOffsetForIndex(currentIndex), animated: true)
@@ -175,14 +165,12 @@ extension StepDetailView: UIScrollViewDelegate {
         guard stepLineChart.contentOffset.x == 0 || abs(stepLineChart.contentOffset.x - (stepLineChart.contentSize.width - frame.width)) < 0.12 else{return}
         hideStepEverydayViewLabel(index: currentIndex - 3, alpha: 1)
         changeDateLabel(currentIndex: currentIndex)
-        print("1")
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         guard currentIndex >= 3 && currentIndex - 2 <= stepLineChart.stepEverydayViews.count else {return}
         hideStepEverydayViewLabel(index: currentIndex - 3, alpha: 1)
         changeDateLabel(currentIndex: currentIndex)
-        print("2")
     }
 }
 

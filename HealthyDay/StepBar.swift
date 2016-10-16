@@ -8,18 +8,18 @@
 
 import UIKit
 
-class StepBar: UIView {
+internal class StepBar: UIView {
 
-    let dateLabelSize = CGSize(width: 24, height: 12)
+    private let dateLabelSize = CGSize(width: 24, height: 12)
         
-    var bar : UIView!
-    var dateLabel : UILabel!
-    var day = ""{
+    private var bar : UIView!
+    private var dateLabel : UILabel!
+    internal var day = ""{
         didSet{
             dateLabel.text = day
         }
     }
-    var stepCount = 0{
+    internal var stepCount = 0{
         didSet{
             assert(bar.layer.sublayers!.count == 1)
             assert(superview is StepBarChartView)

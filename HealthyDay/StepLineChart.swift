@@ -52,30 +52,28 @@ class StepLineChart: UIScrollView {
     private func dayOfTheWeek(offset: Int) -> String {
         let interval = Date().timeIntervalSince1970 + 8 * 3600
         let days = Int(interval / 86400) + offset
-        let dayOfWeek = (days - 3) % 7
-        switch dayOfWeek {
+        switch (days - 3) % 7 {
         case 0:
-            return "日"
+            return "周日"
         case 1:
-            return "一"
+            return "周一"
         case 2:
-            return "二"
+            return "周二"
         case 3:
-            return "三"
+            return "周三"
         case 4:
-            return "四"
+            return "周四"
         case 5:
-            return "五"
+            return "周五"
         case 6:
-            return "六"
+            return "周六"
         default:
-            return ""
+            fatalError("weekday Error")
         }
     }
     
     private func initDateLabel() {
         let currentDate = Date()
-        var texts = [String]()
         var stepRange = Int()
         if stepCountsData.isEmpty == true {
             stepRange = 6
@@ -86,8 +84,7 @@ class StepLineChart: UIScrollView {
             let dateDescription = Date(timeInterval: 24*3600*Double(-stepRange + 3 + day), since: currentDate).formatDescription()
             let range = dateDescription.index(dateDescription.startIndex, offsetBy: 8)..<dateDescription.index(dateDescription.startIndex, offsetBy: 10)
             let dayOfWeek = dayOfTheWeek(offset: -stepRange + 3 + day)
-            let text = "周" + dayOfWeek + "\n" + dateDescription.substring(with: range)
-            texts.append(text)
+            let text = dayOfWeek + "\n" + dateDescription.substring(with: range)
             let dateLabel = UILabel(frame: CGRect(x: viewSize.width * CGFloat(day), y: viewSize.height, width: viewSize.width, height: viewSize.height / 3.5))
             dateLabel.text = text
             dateLabel.textColor = rgbColor(red: 0x9F, green: 0x9F, blue: 0x9F, alpha: 1)
@@ -122,7 +119,7 @@ class StepLineChart: UIScrollView {
             let path = UIBezierPath()
             path.move(to: dotsPosition[index])
             path.addLine(to: dotsPosition[index + 1])
-            path.close()
+//            path.close()
             let lineInLineChart = CAShapeLayer()
             lineInLineChart.path = path.cgPath
             lineInLineChart.lineWidth = 3.5

@@ -14,6 +14,7 @@ struct ThemeColor {
 
     let lightColor: UIColor
     let thickColor: UIColor
+//    let lightTextColor: UIColor
 }
 
 let theme = ThemeColor(

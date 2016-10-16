@@ -8,17 +8,17 @@
 
 import UIKit
 
-class StepRingView: UIView {
+internal class StepRingView: UIView {
     
     private let dotCount : CGFloat = 60
     private let dotRadius : CGFloat = 1
     private let ringGap : CGFloat = 4
     
-    let maskLayer = CAReplicatorLayer()
-    let strokeLayer = CAShapeLayer()
-    let ringLayer = CALayer()
+    private let maskLayer = CAReplicatorLayer()
+    private let strokeLayer = CAShapeLayer()
+    private let ringLayer = CALayer()
     
-    var precent : Double = 0{
+    internal var precent : Double = 0{
         didSet{
             precent = precent > 1 ? 1 : precent
             precent = precent < 0 ? 0 : precent
@@ -30,7 +30,7 @@ class StepRingView: UIView {
         }
     }
     
-    init(size:CGSize, center:CGPoint, precent:Double) {
+    internal init(size:CGSize, center:CGPoint, precent:Double) {
         let frame = CGRect(origin: CGPoint(x:center.x-size.width/2,y:center.y-size.height/2), size: size)
         super.init(frame:frame)
         self.precent = precent

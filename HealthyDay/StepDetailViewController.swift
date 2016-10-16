@@ -14,7 +14,7 @@ class StepDetailViewController: UIViewController {
     
     var stepCounts = [Int](){
         didSet{
-            print(stepCounts)
+            configureView()
         }
     }
     var distances = [Int](){
@@ -27,16 +27,15 @@ class StepDetailViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "步数详情"
         automaticallyAdjustsScrollViewInsets = false
+        configureView() 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
+    private func configureView(){
+        if stepCounts.count != 0 {
+            if let view = stepDetailView {
+                view.stepCountsData = stepCounts
+            }
+        }
     }
     
 }
