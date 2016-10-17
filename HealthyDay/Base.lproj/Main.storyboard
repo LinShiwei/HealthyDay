@@ -110,7 +110,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PqW-if-Jdn" id="qoA-dh-p3g">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTd-Pg-sGo">
@@ -185,6 +185,14 @@
                             <constraint firstItem="UBr-fR-HDP" firstAttribute="top" secondItem="9Af-E6-8OR" secondAttribute="bottom" id="qbJ-8P-LLG"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="历史记录" id="gdk-kZ-YoL">
+                        <barButtonItem key="backBarButtonItem" title=" " id="ROK-Vx-7WY"/>
+                        <barButtonItem key="rightBarButtonItem" title="统计" id="CEt-a4-dYM">
+                            <connections>
+                                <segue destination="SE8-Rv-tfc" kind="show" id="VDD-b4-MmH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="distanceDetailTableView" destination="9Af-E6-8OR" id="adh-Cl-mfk"/>
                     </connections>
@@ -192,6 +200,98 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iwr-60-MKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1805.5999999999999" y="-797.45127436281871"/>
+        </scene>
+        <!--运动统计-->
+        <scene sceneID="DiO-Yg-i45">
+            <objects>
+                <viewController title="运动统计" id="SE8-Rv-tfc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nkl-ju-IBy"/>
+                        <viewControllerLayoutGuide type="bottom" id="cCd-gJ-xfA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CHG-Jc-WDN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="S8F-3u-3Jf">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="0Xh-jN-uyJ"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="周"/>
+                                    <segment title="月"/>
+                                    <segment title="年"/>
+                                    <segment title="总"/>
+                                </segments>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezJ-SF-3Yk">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kzf-EQ-kl8">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5EH-Ui-pxL">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="M2W-mI-IoA"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xws-SS-4Ab">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="mWl-3v-gpn"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpR-N0-EAc">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="bRl-ZT-7TB"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yef-jp-7XQ">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Rjg-Yc-Lv0"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="DpR-N0-EAc" firstAttribute="leading" secondItem="kzf-EQ-kl8" secondAttribute="leading" id="6p5-90-bb2"/>
+                                    <constraint firstItem="xws-SS-4Ab" firstAttribute="top" secondItem="5EH-Ui-pxL" secondAttribute="bottom" constant="1" id="EtW-kY-WJb"/>
+                                    <constraint firstAttribute="trailing" secondItem="xws-SS-4Ab" secondAttribute="trailing" id="RCf-BH-dci"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yef-jp-7XQ" secondAttribute="trailing" id="arl-pZ-8lE"/>
+                                    <constraint firstAttribute="trailing" secondItem="DpR-N0-EAc" secondAttribute="trailing" id="d4b-bM-3Sq"/>
+                                    <constraint firstItem="DpR-N0-EAc" firstAttribute="top" secondItem="xws-SS-4Ab" secondAttribute="bottom" constant="1" id="fHR-Eg-8N7"/>
+                                    <constraint firstAttribute="bottom" secondItem="DpR-N0-EAc" secondAttribute="bottom" id="gEO-Zp-FSf"/>
+                                    <constraint firstItem="5EH-Ui-pxL" firstAttribute="top" secondItem="Yef-jp-7XQ" secondAttribute="bottom" constant="1" id="gEj-5l-Rdm"/>
+                                    <constraint firstAttribute="trailing" secondItem="5EH-Ui-pxL" secondAttribute="trailing" id="nJ1-Ca-Zer"/>
+                                    <constraint firstItem="Yef-jp-7XQ" firstAttribute="top" secondItem="kzf-EQ-kl8" secondAttribute="top" constant="8" id="oNI-Sc-eDv"/>
+                                    <constraint firstItem="5EH-Ui-pxL" firstAttribute="leading" secondItem="kzf-EQ-kl8" secondAttribute="leading" id="pVr-H3-Mvc"/>
+                                    <constraint firstItem="xws-SS-4Ab" firstAttribute="leading" secondItem="kzf-EQ-kl8" secondAttribute="leading" id="t86-zb-WHA"/>
+                                    <constraint firstItem="Yef-jp-7XQ" firstAttribute="leading" secondItem="kzf-EQ-kl8" secondAttribute="leading" id="ulc-IB-Qyn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S8F-3u-3Jf" firstAttribute="trailing" secondItem="CHG-Jc-WDN" secondAttribute="trailingMargin" id="4ux-PA-vTw"/>
+                            <constraint firstAttribute="trailing" secondItem="ezJ-SF-3Yk" secondAttribute="trailing" id="7jj-uq-deS"/>
+                            <constraint firstItem="kzf-EQ-kl8" firstAttribute="leading" secondItem="CHG-Jc-WDN" secondAttribute="leading" id="9uV-km-WAo"/>
+                            <constraint firstItem="kzf-EQ-kl8" firstAttribute="top" secondItem="ezJ-SF-3Yk" secondAttribute="bottom" constant="8" id="B0k-cZ-Mgl"/>
+                            <constraint firstAttribute="trailing" secondItem="kzf-EQ-kl8" secondAttribute="trailing" id="G1X-5U-OTd"/>
+                            <constraint firstItem="ezJ-SF-3Yk" firstAttribute="leading" secondItem="CHG-Jc-WDN" secondAttribute="leading" id="HXW-f9-BUn"/>
+                            <constraint firstItem="cCd-gJ-xfA" firstAttribute="top" secondItem="kzf-EQ-kl8" secondAttribute="bottom" id="HYV-iQ-wIS"/>
+                            <constraint firstItem="ezJ-SF-3Yk" firstAttribute="top" secondItem="S8F-3u-3Jf" secondAttribute="bottom" constant="8" id="QcW-eN-iPs"/>
+                            <constraint firstItem="S8F-3u-3Jf" firstAttribute="top" secondItem="Nkl-ju-IBy" secondAttribute="bottom" constant="8" id="kKb-q9-X88"/>
+                            <constraint firstItem="S8F-3u-3Jf" firstAttribute="leading" secondItem="CHG-Jc-WDN" secondAttribute="leadingMargin" id="zZr-0H-k6f"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="运动统计" id="Gh3-fI-6Ac"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0E6-GL-RTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2589.5999999999999" y="-797.45127436281871"/>
         </scene>
         <!--Step Detail View Controller-->
         <scene sceneID="pem-mP-glS">
