@@ -19,6 +19,7 @@
 		56130D881D9AB4FC005334FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56130D871D9AB4FC005334FF /* MapKit.framework */; };
 		562379C51DA128C200525B7C /* MainInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562379C41DA128C200525B7C /* MainInformationView.swift */; };
 		563E06561D98B04000B18DAE /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E06551D98B04000B18DAE /* HealthManager.swift */; };
+		56492F931DB65F43009CDEEB /* BottomDecorativeCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */; };
 		564FF90B1DA6203E008AC31E /* StepRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FF90A1DA6203E008AC31E /* StepRingView.swift */; };
 		56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56629EA71D9B877000720F0A /* RunningViewController.swift */; };
 		56629EB71D9B8D8300720F0A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56629EB61D9B8D8300720F0A /* Quick.framework */; };
@@ -27,6 +28,7 @@
 		56629EBB1D9B8EC200720F0A /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56629EB61D9B8D8300720F0A /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56629EBD1D9BB08300720F0A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56629EBC1D9BB08300720F0A /* LocationManager.swift */; };
 		567595311DA36DCD00582080 /* CustomBarBtnItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567595301DA36DCD00582080 /* CustomBarBtnItem.swift */; };
+		567D07591DB63C8A001E23A6 /* DistanceStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567D07581DB63C8A001E23A6 /* DistanceStatisticsViewController.swift */; };
 		567E83BC1DA4D3B800BBD133 /* StartRunningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E83BB1DA4D3B800BBD133 /* StartRunningButton.swift */; };
 		567E83BE1DA526E800BBD133 /* DistanceWalkingRunningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E83BD1DA526E800BBD133 /* DistanceWalkingRunningLabel.swift */; };
 		567E83C01DA52AEA00BBD133 /* StepCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E83BF1DA52AEA00BBD133 /* StepCountLabel.swift */; };
@@ -85,12 +87,14 @@
 		56130D871D9AB4FC005334FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		562379C41DA128C200525B7C /* MainInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInformationView.swift; sourceTree = "<group>"; };
 		563E06551D98B04000B18DAE /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomDecorativeCurve.swift; sourceTree = "<group>"; };
 		564FF90A1DA6203E008AC31E /* StepRingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepRingView.swift; sourceTree = "<group>"; };
 		56629EA71D9B877000720F0A /* RunningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
 		56629EB61D9B8D8300720F0A /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		56629EB81D9B8D8900720F0A /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		56629EBC1D9BB08300720F0A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		567595301DA36DCD00582080 /* CustomBarBtnItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBarBtnItem.swift; sourceTree = "<group>"; };
+		567D07581DB63C8A001E23A6 /* DistanceStatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceStatisticsViewController.swift; sourceTree = "<group>"; };
 		567E83BB1DA4D3B800BBD133 /* StartRunningButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartRunningButton.swift; sourceTree = "<group>"; };
 		567E83BD1DA526E800BBD133 /* DistanceWalkingRunningLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceWalkingRunningLabel.swift; sourceTree = "<group>"; };
 		567E83BF1DA52AEA00BBD133 /* StepCountLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCountLabel.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 				567E83BD1DA526E800BBD133 /* DistanceWalkingRunningLabel.swift */,
 				567E83BF1DA52AEA00BBD133 /* StepCountLabel.swift */,
 				564FF90A1DA6203E008AC31E /* StepRingView.swift */,
+				56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */,
 			);
 			name = MainInfoView;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			children = (
 				56DDFAA01DAF28A700A71405 /* DistanceDetailViewController.swift */,
 				56914B6E1DAFBE6E00C6163E /* DistanceDetailTableViewCell.swift */,
+				567D07581DB63C8A001E23A6 /* DistanceStatisticsViewController.swift */,
 			);
 			name = DistanceDetailViewController;
 			sourceTree = "<group>";
@@ -406,8 +412,10 @@
 				5603168E1DAF974000C04B8A /* HealthyDay.xcdatamodeld in Sources */,
 				567595311DA36DCD00582080 /* CustomBarBtnItem.swift in Sources */,
 				56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */,
+				56492F931DB65F43009CDEEB /* BottomDecorativeCurve.swift in Sources */,
 				56DDFAA11DAF28A700A71405 /* DistanceDetailViewController.swift in Sources */,
 				567E83BE1DA526E800BBD133 /* DistanceWalkingRunningLabel.swift in Sources */,
+				567D07591DB63C8A001E23A6 /* DistanceStatisticsViewController.swift in Sources */,
 				56B03C881DA1FB6A0071CBB4 /* StepDetailViewController.swift in Sources */,
 				562379C51DA128C200525B7C /* MainInformationView.swift in Sources */,
 				56629EBD1D9BB08300720F0A /* LocationManager.swift in Sources */,

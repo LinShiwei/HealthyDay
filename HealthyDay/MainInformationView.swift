@@ -22,14 +22,13 @@ internal class MainInformationView: UIView{
     private let labelMaskView = UIView()
     private let decorativeView = UIView()
     private let gradientLayer = CAGradientLayer()
-    private var bottomDecorativeCurveView : UIView?
+    private var bottomDecorativeCurveView : BottomDecorativeCurve?
 
     private let bottomDecorativeCurveRotateDegree : CGFloat = CGFloat.pi/180*2
     
     internal var stepCount = 0{
         didSet{
             stepCountLabel.stepCount = stepCount
-            
         }
     }
     internal var distance = 0{
@@ -52,7 +51,7 @@ internal class MainInformationView: UIView{
         initBottomDecorativeView()
         addGestureToSelf()
     }
-
+    
 //MARK: Custom View
     private func initGradientLayer(){
         guard gradientLayer.superlayer == nil else {return}
@@ -103,56 +102,13 @@ internal class MainInformationView: UIView{
         
         decorativeView.layer.addSublayer(shapeLayer)
         if bottomDecorativeCurveView == nil {
-            bottomDecorativeCurveView = createBottomDecorativeCurve(withBottomDecorativeViewSize: CGSize(width: width, height: height))
+            bottomDecorativeCurveView = BottomDecorativeCurve(withMainInfoViewFrame: frame, andBottomDecorativeViewSize: CGSize(width: width, height: height))
             decorativeView.addSubview(bottomDecorativeCurveView!)
         }
         addSubview(decorativeView)
         
     }
     
-    private func createBottomDecorativeCurve(withBottomDecorativeViewSize size:CGSize)-> UIView{
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: 0, y: size.height))
-        path.addCurve(to: CGPoint(x: size.width, y:size.height), controlPoint1: CGPoint(x:size.width/3,y:size.height/2), controlPoint2: CGPoint(x:size.width/3*2,y:size.height/2))
-        
-        let shapeLayer = CAShapeLayer()
-        let shapeLayerTwo = CAShapeLayer()
-
-        for layer in [shapeLayer,shapeLayerTwo] {
-            layer.path = path.cgPath
-            layer.lineWidth = 1
-            layer.fillColor = nil
-            let strokingPath = CGPath(__byStroking: layer.path!, transform: nil, lineWidth: 1, lineCap: .round, lineJoin: .miter, miterLimit: 1)
-            layer.bounds = (strokingPath?.boundingBoxOfPath)!
-            layer.anchorPoint = CGPoint(x: 0.5, y: 0)
-        }
-        shapeLayer.strokeColor = UIColor(white: 1, alpha: 0.5).cgColor
-        shapeLayerTwo.strokeColor = UIColor(white: 1, alpha: 0.3).cgColor
-        
-        shapeLayerTwo.transform = CATransform3DMakeRotation(2*CGFloat.pi/180, 0, 0, 1)
-        
-        let shapeLayerTwoAnimation = CABasicAnimation(keyPath: "position.y")
-        shapeLayerTwoAnimation.fromValue = shapeLayer.position.y+3
-        shapeLayerTwoAnimation.toValue = shapeLayer.position.y-3
-        shapeLayerTwoAnimation.repeatCount = Float(Int.max)
-        shapeLayerTwoAnimation.autoreverses = true
-        shapeLayerTwoAnimation.duration = 5
-        shapeLayerTwo.add(shapeLayerTwoAnimation, forKey: "positionYAnimation")
-        
-        let shapeLayerAnimation = CABasicAnimation(keyPath: "position.y")
-        shapeLayerAnimation.fromValue = shapeLayer.position.y-3
-        shapeLayerAnimation.toValue = shapeLayer.position.y+3
-        shapeLayerAnimation.repeatCount = Float(Int.max)
-        shapeLayerAnimation.autoreverses = true
-        shapeLayerAnimation.duration = 5
-        shapeLayer.add(shapeLayerAnimation, forKey: "positionYAnimation")
-
-        let curveView = UIView()
-        curveView.frame.origin = CGPoint(x:frame.width/2,y:size.height-shapeLayer.frame.height-3)
-        curveView.layer.addSublayer(shapeLayer)
-        curveView.layer.addSublayer(shapeLayerTwo)
-        return curveView
-    }
 //MARK: Gesture Helper
     private func addGestureToSelf(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainInformationView.didTap(_:)))
@@ -246,5 +202,9 @@ internal class MainInformationView: UIView{
                 }
             }
         }
+    }
+    
+    internal func refreshAnimations(){
+        bottomDecorativeCurveView?.refreshAnimation()
     }
 }
