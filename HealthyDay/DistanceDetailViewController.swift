@@ -9,19 +9,19 @@
 import UIKit
 import CoreData
 
-struct DistanceDetailItem {
+fileprivate struct DistanceDetailItem {
     let date : Date
     let distance : Double
     let duration : Int
     let durationPerKilometer : Int
 }
 
-struct DistancesInfo{
+fileprivate struct DistancesInfo{
     let month : String
     var count : Int
 }
 
-class DistanceDetailViewController: UIViewController {
+internal class DistanceDetailViewController: UIViewController {
 
     fileprivate var objects = [NSManagedObject]()
 
@@ -86,7 +86,7 @@ class DistanceDetailViewController: UIViewController {
         var items = [DistanceDetailItem]()
         for _ in 0...20{
             let secondOffset = Double(arc4random_uniform(3600*24*3))+3600*24*7
-            let distance = Double(arc4random_uniform(100)+UInt32(1))/10.0
+            let distance = Double(arc4random_uniform(10000)+UInt32(1000))
             let durationPerKilometer = Int(arc4random_uniform(60))+300
             let duration = Int(distance * Double(durationPerKilometer))
             date.addTimeInterval(secondOffset)
@@ -145,6 +145,7 @@ extension DistanceDetailViewController: UITableViewDelegate{
             catch let error as NSError {
                 print("Could not save \(error), \(error.userInfo)")
             }
+            objects.remove(at: index)
             distances.remove(at: index)
             distancesInfo[indexPath.section].count -= 1
             tableView.deleteRows(at: [indexPath], with: .fade)

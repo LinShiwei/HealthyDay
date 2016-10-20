@@ -9,10 +9,12 @@
 import UIKit
 
 class StepDetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var stepDetailView: StepDetailView!
+    
     var stepCounts = [Int](){
         didSet{
-            print(stepCounts)
+            configureView()
         }
     }
     var distances = [Int](){
@@ -23,7 +25,18 @@ class StepDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.title = "步数详情"
+        automaticallyAdjustsScrollViewInsets = false
+        configureView() 
     }
-
+    
+    private func configureView(){
+        if stepCounts.count != 0 {
+            if let view = stepDetailView {
+                view.stepCountsData = stepCounts
+            }
+        }
+    }
+    
 }
+

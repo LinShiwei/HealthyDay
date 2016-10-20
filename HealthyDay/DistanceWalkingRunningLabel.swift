@@ -8,10 +8,10 @@
 
 import UIKit
 
-class DistanceWalkingRunningLabel: UILabel {
+internal class DistanceWalkingRunningLabel: UILabel {
     
     private let nameLabel = UILabel()
-    var subviewsAlpha : CGFloat = 1{
+    internal var subviewsAlpha : CGFloat = 1{
         didSet{
             for view in subviews {
                 view.alpha = subviewsAlpha

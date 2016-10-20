@@ -13,20 +13,20 @@ enum BarBtnItemType{
     case right
 }
 
-class CustomBarBtnItem: UIBarButtonItem {
+internal class CustomBarBtnItem: UIBarButtonItem {
 
-    let button : UIButton = {
+    private let button : UIButton = {
         let btn = UIButton(type: .custom)
         btn.setTitleColor(UIColor(red:1,green:1,blue:1,alpha:0.7), for: .normal)
         btn.setTitleColor(UIColor.white, for: .disabled)
         return btn
     }()
-    var enable = true{
+    internal var enable = true{
         didSet{
             button.isEnabled = enable
         }
     }
-    init(buttonFrame frame:CGRect, title:String, itemType type:BarBtnItemType){
+    internal init(buttonFrame frame:CGRect, title:String, itemType type:BarBtnItemType){
         super.init()
         let backView = UIView(frame:CGRect(x: 0, y: 0, width: frame.width+frame.minX, height: 22))
         button.setTitle(title, for: .normal)
@@ -44,7 +44,7 @@ class CustomBarBtnItem: UIBarButtonItem {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents){
+    internal func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents){
         button.addTarget(target, action: action, for: controlEvents)
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RunningInfomationView: UIView {
+internal class RunningInfomationView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

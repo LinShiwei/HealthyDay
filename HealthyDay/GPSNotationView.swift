@@ -8,12 +8,12 @@
 
 import UIKit
 
-class GPSNotationView: UIView {
+internal class GPSNotationView: UIView {
 
-    let gpsNotation = UILabel()
-    let infoLabel = UILabel()
+    private let gpsNotation = UILabel()
+    private let infoLabel = UILabel()
     
-    var hasEnabled = false{
+    internal var hasEnabled = false{
         didSet{
 
             if hasEnabled {
@@ -26,7 +26,7 @@ class GPSNotationView: UIView {
         }
     }
     
-    init(frame:CGRect, hasEnabled:Bool){
+    internal init(frame:CGRect, hasEnabled:Bool){
         super.init(frame: frame)
         assert(frame.width > 100)
         
@@ -66,7 +66,7 @@ class GPSNotationView: UIView {
         return dateArray[0]+"年"+dateArray[1]+"月"+dateArray[2]+"日 "+time
     }
     
-    func refreshCurrentTime(){
+    internal func refreshCurrentTime(){
         infoLabel.text = getCurrentDateDescription()
     }
     

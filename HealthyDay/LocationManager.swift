@@ -9,14 +9,17 @@
 import Foundation
 import CoreLocation
 
-internal class LocationManager {
-    let locationManager = CLLocationManager()
+internal final class LocationManager {
+    static let sharedLocationManager = LocationManager()
+    private let locationManager = CLLocationManager()
+    private init(){
+    }
     var delegate : CLLocationManagerDelegate?{
         didSet{
             locationManager.delegate = delegate
         }
     }
-    func authorize(_ completion: @escaping (_ success:Bool) -> Void){
+    internal func authorize(_ completion: @escaping (_ success:Bool) -> Void){
         guard CLLocationManager.locationServicesEnabled() else{
             completion(false)
             print("lsw_Location services disabled. locationservicesEnabled is false")
@@ -37,12 +40,12 @@ internal class LocationManager {
         }
     }
     
-    func startUpdate(){
+    internal func startUpdate(){
         locationManager.startUpdatingLocation()
         locationManager.allowsBackgroundLocationUpdates = true
     }
     
-    func stopUpdate(){
+    internal func stopUpdate(){
         locationManager.allowsBackgroundLocationUpdates = false
         locationManager.stopUpdatingLocation()
     }

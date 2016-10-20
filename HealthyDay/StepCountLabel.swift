@@ -8,21 +8,21 @@
 
 import UIKit
 
-class StepCountLabel: UILabel {
+internal class StepCountLabel: UILabel {
 
     private let nameLabel = UILabel()
     private let targetLabel = UILabel()
     private var ringView : StepRingView!
     private let targetCount = 10000
     
-    var stepCount : Int = 0 {
+    internal var stepCount : Int = 0 {
         didSet{
             text = "\(stepCount)"
             ringView.precent = Double(stepCount)/Double(targetCount)
         }
     }
     
-    var subviewsAlpha : CGFloat = 1{
+    internal var subviewsAlpha : CGFloat = 1{
         didSet{
             nameLabel.alpha = subviewsAlpha
             targetLabel.alpha = subviewsAlpha

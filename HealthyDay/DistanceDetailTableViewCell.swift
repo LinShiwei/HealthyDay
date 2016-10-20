@@ -8,17 +8,17 @@
 
 import UIKit
 
-class DistanceDetailTableViewCell: UITableViewCell {
+internal class DistanceDetailTableViewCell: UITableViewCell {
 
-    var date = Date(){
+    internal var date = Date(){
         didSet{
             dateLabel.text = getFormatDateDescription(fromDate: date)
         }
     }
     
-    var distance : Double = 0{
+    internal var distance : Double = 0{
         didSet{
-            distanceLabel.text = String(format: "%.2f 公里", distance)
+            distanceLabel.text = String(format: "%.2f 公里", distance/1000.0)
         }
     }
     
@@ -32,8 +32,6 @@ class DistanceDetailTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     private func getFormatDateDescription(fromDate date:Date)->String{
@@ -45,6 +43,4 @@ class DistanceDetailTableViewCell: UITableViewCell {
         assert(dateArray.count == 3)
         return dateArray[1]+"月"+dateArray[2]+"日 "+time
     }
-    
-    
 }

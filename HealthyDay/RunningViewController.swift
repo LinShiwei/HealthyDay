@@ -10,9 +10,9 @@ import UIKit
 import MapKit
 import CoreData
 
-class RunningViewController: UIViewController {
+internal class RunningViewController: UIViewController {
 
-    private let locationManager = LocationManager()
+    private let locationManager = LocationManager.sharedLocationManager
     fileprivate var runningCoordiantes = [CLLocationCoordinate2D]()
     
     fileprivate var hasLocated = false
@@ -102,7 +102,9 @@ class RunningViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        startRunning = false
+        if startRunning == true {
+            startRunning = false
+        }
         hasLocated = false
     }
 //MARK: Custom func & Helper
@@ -126,7 +128,7 @@ class RunningViewController: UIViewController {
   */
     fileprivate func updateRunningDistance(withNewLocations locations:[CLLocation]){
         guard (oldLocation != locations.last)&&(oldLocation != nil) else{return}
-        print("Update \(locations.count) location(s)")
+//        print("Update \(locations.count) location(s)")
         for location in locations {
             runningDistance += location.distance(from: oldLocation!)
             oldLocation = location
@@ -160,12 +162,13 @@ class RunningViewController: UIViewController {
     }
     
 //MARK: Selector
-    func updateDurationAndAverageSpeed(_ sender:Timer){
+    internal func updateDurationAndAverageSpeed(_ sender:Timer){
         assert(timer != nil)
         runningDuration += Int(timer!.timeInterval)
         if runningDistance != 0{
             durationPerKilometer = Int(Double(runningDuration) / runningDistance * 1000)
         }
+        gpsNotationView.refreshCurrentTime()
     }
 }
 
