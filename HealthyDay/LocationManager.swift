@@ -28,11 +28,7 @@ internal final class LocationManager {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
-            if CLLocationManager.authorizationStatus() != .authorizedWhenInUse || CLLocationManager.authorizationStatus() != .authorizedAlways{
-                completion(false)
-            }else{
-                completion(true)
-            }
+            completion(false)
         case .authorizedWhenInUse, .authorizedAlways:
             completion(true)
         default:

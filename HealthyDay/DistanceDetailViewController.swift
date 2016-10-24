@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-fileprivate struct DistanceDetailItem {
+internal struct DistanceDetailItem {
     let date : Date
     let distance : Double
     let duration : Int
@@ -36,6 +36,14 @@ internal class DistanceDetailViewController: UIViewController {
         distanceDetailTableView.reloadData()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDistanceStatisticsVC"{
+            guard let distanceStatisticsVC = segue.destination as? DistanceStatisticsViewController else {return}
+            distanceStatisticsVC.distanceDetailItem = distances
+        }
+    }
+    
+//MARK: Helper
     private func initDistancesFromCoreData(){
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Running")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
