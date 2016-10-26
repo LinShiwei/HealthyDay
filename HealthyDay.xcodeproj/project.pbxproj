@@ -23,7 +23,7 @@
 		56492F931DB65F43009CDEEB /* BottomDecorativeCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */; };
 		564F2ACC1DB9BBEE00BB3135 /* DistanceStatisticsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564F2ACB1DB9BBEE00BB3135 /* DistanceStatisticsChartView.swift */; };
 		564FF90B1DA6203E008AC31E /* StepRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FF90A1DA6203E008AC31E /* StepRingView.swift */; };
-		5655AF251DBA47CF00849A5C /* DistanceStaticsticChartBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5655AF241DBA47CF00849A5C /* DistanceStaticsticChartBar.swift */; };
+		5655AF251DBA47CF00849A5C /* DistanceStatisticsChartBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5655AF241DBA47CF00849A5C /* DistanceStatisticsChartBar.swift */; };
 		5655AF271DBA48D600849A5C /* DistanceStatisticsChartBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5655AF261DBA48D600849A5C /* DistanceStatisticsChartBar.xib */; };
 		56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56629EA71D9B877000720F0A /* RunningViewController.swift */; };
 		56629EB71D9B8D8300720F0A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56629EB61D9B8D8300720F0A /* Quick.framework */; };
@@ -95,7 +95,7 @@
 		56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomDecorativeCurve.swift; sourceTree = "<group>"; };
 		564F2ACB1DB9BBEE00BB3135 /* DistanceStatisticsChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceStatisticsChartView.swift; sourceTree = "<group>"; };
 		564FF90A1DA6203E008AC31E /* StepRingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepRingView.swift; sourceTree = "<group>"; };
-		5655AF241DBA47CF00849A5C /* DistanceStaticsticChartBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceStaticsticChartBar.swift; sourceTree = "<group>"; };
+		5655AF241DBA47CF00849A5C /* DistanceStatisticsChartBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceStatisticsChartBar.swift; sourceTree = "<group>"; };
 		5655AF261DBA48D600849A5C /* DistanceStatisticsChartBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceStatisticsChartBar.xib; sourceTree = "<group>"; };
 		56629EA71D9B877000720F0A /* RunningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
 		56629EB61D9B8D8300720F0A /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 			children = (
 				567D07581DB63C8A001E23A6 /* DistanceStatisticsViewController.swift */,
 				564F2ACB1DB9BBEE00BB3135 /* DistanceStatisticsChartView.swift */,
-				5655AF241DBA47CF00849A5C /* DistanceStaticsticChartBar.swift */,
+				5655AF241DBA47CF00849A5C /* DistanceStatisticsChartBar.swift */,
 				5655AF261DBA48D600849A5C /* DistanceStatisticsChartBar.xib */,
 				562ACB2F1DBE4670003BC042 /* DistanceStatisticsDataManager.swift */,
 			);
@@ -436,7 +436,7 @@
 				56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */,
 				56492F931DB65F43009CDEEB /* BottomDecorativeCurve.swift in Sources */,
 				56DDFAA11DAF28A700A71405 /* DistanceDetailViewController.swift in Sources */,
-				5655AF251DBA47CF00849A5C /* DistanceStaticsticChartBar.swift in Sources */,
+				5655AF251DBA47CF00849A5C /* DistanceStatisticsChartBar.swift in Sources */,
 				567E83BE1DA526E800BBD133 /* DistanceWalkingRunningLabel.swift in Sources */,
 				567D07591DB63C8A001E23A6 /* DistanceStatisticsViewController.swift in Sources */,
 				56B03C881DA1FB6A0071CBB4 /* StepDetailViewController.swift in Sources */,

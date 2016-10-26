@@ -90,13 +90,13 @@ internal class DistanceDetailViewController: UIViewController {
     }
     
     private func mockDistancesData()->[DistanceDetailItem]{
-        var date = Date(timeIntervalSinceNow: -3600*24*200)
+        var date = Date(timeIntervalSinceNow: -3600*24*100)
         var items = [DistanceDetailItem]()
         for _ in 0...20{
-            let secondOffset = Double(arc4random_uniform(3600*24*3))+3600*24*7
-            let distance = Double(arc4random_uniform(10000)+UInt32(1000))
-            let durationPerKilometer = Int(arc4random_uniform(60))+300
-            let duration = Int(distance * Double(durationPerKilometer))
+            let secondOffset = Double(arc4random_uniform(3600*24*2))+3600*24*3
+            let distance = Double(arc4random_uniform(2000)+UInt32(9000))
+            let durationPerKilometer = Int(arc4random_uniform(60))+330
+            let duration = Int(distance / 1000 * Double(durationPerKilometer))
             date.addTimeInterval(secondOffset)
             items.append(DistanceDetailItem(date: date, distance: distance, duration: duration, durationPerKilometer: durationPerKilometer))
         }

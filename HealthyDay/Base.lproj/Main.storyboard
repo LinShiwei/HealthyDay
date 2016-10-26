@@ -17,7 +17,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jlp-qb-dme" customClass="StepBarChartView" customModule="HealthyDay" customModuleProvider="target">
@@ -100,17 +100,17 @@
                         <viewControllerLayoutGuide type="bottom" id="UBr-fR-HDP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FCU-be-acl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Af-E6-8OR">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceDetailTableViewCell" id="PqW-if-Jdn" customClass="DistanceDetailTableViewCell" customModule="HealthyDay" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PqW-if-Jdn" id="qoA-dh-p3g">
-                                            <frame key="frameInset" width="1000" height="44"/>
+                                            <frame key="frameInset" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTd-Pg-sGo">
@@ -210,7 +210,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cCd-gJ-xfA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CHG-Jc-WDN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="S8F-3u-3Jf">
@@ -225,7 +225,7 @@
                                 </segments>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="StatisticsPeriodChanged:" destination="SE8-Rv-tfc" eventType="valueChanged" id="sGl-Rx-6kG"/>
+                                    <action selector="statisticsPeriodChanged:" destination="SE8-Rv-tfc" eventType="valueChanged" id="8pn-MG-Zwe"/>
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezJ-SF-3Yk" customClass="DistanceStatisticsChartView" customModule="HealthyDay" customModuleProvider="target">
@@ -405,18 +405,18 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7U-7B-pZr">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="cCH-2t-RnC"/>
+                                    <constraint firstAttribute="width" constant="120" id="cCH-2t-RnC"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="La">
+                                    <fragment content="0">
                                         <attributes>
-                                            <font key="NSFont" size="24" name="TimesNewRomanPS-ItalicMT"/>
+                                            <font key="NSFont" size="24" name="HiraginoSansGB-W3"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="bel">
+                                    <fragment content="本周">
                                         <attributes>
-                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <font key="NSFont" size="14" name="PingFangSC-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -425,19 +425,20 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WX5-0p-fKv">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="iUf-s6-JCO"/>
+                                    <constraint firstAttribute="width" constant="170" id="iUf-s6-JCO"/>
                                     <constraint firstAttribute="height" constant="44" id="jqA-Do-zln"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="La">
+                                    <fragment content="--">
                                         <attributes>
-                                            <font key="NSFont" size="24" name=".AppleSystemUIFont"/>
+                                            <font key="NSFont" size="24" name="HiraginoSansGB-W3"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="bel">
+                                    <fragment content="公里">
                                         <attributes>
-                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <font key="NSFont" size="14" name=".PingFangSC-Regular"/>
+                                            <font key="NSOriginalFont" size="14" name=".AppleSystemUIFont"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -466,7 +467,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="运动统计" id="Gh3-fI-6Ac"/>
                     <connections>
+                        <outlet property="averageDurationPerKilometerLabel" destination="GXQ-VC-LMp" id="N4A-2v-X4S"/>
+                        <outlet property="averageSpeedLabel" destination="7x4-Xj-SRZ" id="eWZ-fi-tZJ"/>
+                        <outlet property="currentPeriodLabel" destination="G7U-7B-pZr" id="KaC-z4-PCo"/>
                         <outlet property="distanceStatisticsChart" destination="ezJ-SF-3Yk" id="cNx-ba-5gG"/>
+                        <outlet property="statisticsPeriodSegmentedControl" destination="S8F-3u-3Jf" id="BJJ-On-Qb5"/>
+                        <outlet property="totalCalorieLabel" destination="Yb4-lj-xE6" id="mF7-BU-XBG"/>
+                        <outlet property="totalDistanceLabel" destination="WX5-0p-fKv" id="C43-LR-PKY"/>
+                        <outlet property="totalDurationLabel" destination="ahu-nI-KcT" id="OuL-iz-1ag"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0E6-GL-RTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -482,7 +490,7 @@
                         <viewControllerLayoutGuide type="bottom" id="O2d-H1-iAa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eOe-wJ-o62" customClass="StepDetailView" customModule="HealthyDay" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -503,7 +511,7 @@
                         <viewControllerLayoutGuide type="bottom" id="x03-CL-5B4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fGb-00-Rra">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-mH-y4e"/>
