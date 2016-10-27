@@ -23,12 +23,13 @@ fileprivate struct DistancesInfo{
 
 internal class DistanceDetailViewController: UIViewController {
 
+//MARK: IBOutlet
+    @IBOutlet weak var distanceDetailTableView: UITableView!
+//MARK: Property
     fileprivate var objects = [NSManagedObject]()
-
     fileprivate var distances = [DistanceDetailItem]()
     fileprivate var distancesInfo = [DistancesInfo]()
-    
-    @IBOutlet weak var distanceDetailTableView: UITableView!
+//MARK: View
     override func viewDidLoad() {
         super.viewDidLoad()
         initDistancesFromCoreData()
@@ -64,6 +65,7 @@ internal class DistanceDetailViewController: UIViewController {
         }
     }
     
+    //Classify distances with month
     private func classifyDistances(distances:[DistanceDetailItem])->[DistancesInfo]{
         assert(distances.count > 0)
         var info = [DistancesInfo]()
@@ -138,6 +140,10 @@ internal class DistanceDetailViewController: UIViewController {
 }
 
 extension DistanceDetailViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 88
+    }
+    
     @objc(tableView:canFocusRowAtIndexPath:) func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -175,6 +181,8 @@ extension DistanceDetailViewController: UITableViewDataSource{
         let index = indexInDistancesArray(withIndexPath: indexPath)
         cell.date = distances[index].date
         cell.distance = distances[index].distance
+        cell.duration = distances[index].duration
+        cell.durationPerKilometer = distances[index].durationPerKilometer
         return cell
     }
     

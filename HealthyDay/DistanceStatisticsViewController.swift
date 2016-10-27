@@ -13,7 +13,7 @@ enum StatisticsPeriod{
 }
 
 class DistanceStatisticsViewController: UIViewController {
-
+//MARK: IBOutlet
     @IBOutlet weak var statisticsPeriodSegmentedControl: UISegmentedControl!
     @IBOutlet weak var totalDistanceLabel: UILabel!
     @IBOutlet weak var currentPeriodLabel: UILabel!
@@ -22,8 +22,8 @@ class DistanceStatisticsViewController: UIViewController {
     @IBOutlet weak var totalCalorieLabel: UILabel!
     @IBOutlet weak var averageDurationPerKilometerLabel: UILabel!
     @IBOutlet weak var averageSpeedLabel: UILabel!
-    
-    var distanceDetailItem = [DistanceDetailItem](){
+//MARK: Property
+    internal var distanceDetailItem = [DistanceDetailItem](){
         didSet{
             statisticeManager.distances = distanceDetailItem
             
@@ -67,23 +67,13 @@ class DistanceStatisticsViewController: UIViewController {
     
     private var totalDuration = 0{
         didSet{
-            let seconds = totalDuration%60
-            let minutes = (totalDuration%3600)/60
-            let hours = totalDuration/3600
-            totalDurationLabel.text = String(format: "%02d:%02d:%02d", arguments: [hours,minutes,seconds])
+            totalDurationLabel.text = durationFormatter(secondsDuration: totalDuration)
         }
     }
     
     private var averageDurationPerKilometer = 0{
         didSet{
-            let seconds = averageDurationPerKilometer%60
-            let minutes = (averageDurationPerKilometer%3600)/60
-            let hours = averageDurationPerKilometer/3600
-            if hours == 0 {
-                averageDurationPerKilometerLabel.text = String(format: "%02d'%02d\"/公里", arguments: [minutes,seconds])
-            }else{
-                averageDurationPerKilometerLabel.text = String(format: "%02d:%02d:%02d/公里", arguments: [hours,minutes,seconds])
-            }
+            averageDurationPerKilometerLabel.text = durationPerKilometerFormatter(secondsDurationPK: averageDurationPerKilometer)
         }
     }
     
@@ -94,8 +84,7 @@ class DistanceStatisticsViewController: UIViewController {
     }
 
     private let statisticeManager = DistanceStatisticsDataManager.shared
-    private let calendar = Calendar(identifier: .republicOfChina)
-
+//MARK: View
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -104,10 +93,7 @@ class DistanceStatisticsViewController: UIViewController {
         super.viewDidAppear(animated)
         statisticsPeriodChanged(statisticsPeriodSegmentedControl)
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-
+//MARK: func
     @IBAction func statisticsPeriodChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:

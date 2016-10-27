@@ -8,12 +8,9 @@
 
 import UIKit
 
-
-
 class DistanceStatisticsChartView: UIView {
-    let statisticeManager = DistanceStatisticsDataManager.shared
-
-    var distanceStatistics = [Double](){
+//MARK: Property
+    internal var distanceStatistics = [Double](){
         didSet{
             maxDistance = 0.0
             for value in distanceStatistics{
@@ -21,36 +18,27 @@ class DistanceStatisticsChartView: UIView {
                     maxDistance = value
                 }
             }
-            
             initStatisticsChart(withStatisticsData: distanceStatistics)
         }
     }
-    var type = StatisticsPeriod.Week
+    internal var type = StatisticsPeriod.Week
     
     private var maxDistance = 0.0
-
+    private let statisticeManager = DistanceStatisticsDataManager.shared
+//MARK: init func
     private func initStatisticsChart(withStatisticsData data:[Double]){
         var barCount = 0
         for view in self.subviews where view is DistanceStatisticsChartBar {
             barCount += 1
         }
         guard barCount != data.count || type == .Year else {return}
-        switch type {
-        case .Week:
-            assert(data.count == 7)
-        case .Month:
-            assert(data.count > 27&&data.count<32)
-        case .Year:
-            assert(data.count == 12)
-        default:
-            break
-        }
-    
+        checkTypeAndDataMatching(data: data)
         for view in self.subviews where view is DistanceStatisticsChartBar {
             view.removeFromSuperview()
         }
         let titles = statisticeManager.getPeriodDescriptionText()
         assert(titles.count == data.count)
+        
         var barWidth : CGFloat
         var startXPosition : CGFloat
         if type == .All {
@@ -76,6 +64,19 @@ class DistanceStatisticsChartView: UIView {
                     addSubview(chartBar)
                 }
             }
+        }
+    }
+    
+    private func checkTypeAndDataMatching(data:[Double]){
+        switch type {
+        case .Week:
+            assert(data.count == 7)
+        case .Month:
+            assert(data.count > 27&&data.count<32)
+        case .Year:
+            assert(data.count == 12)
+        default:
+            break
         }
     }
 }

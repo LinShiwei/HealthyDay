@@ -9,20 +9,19 @@
 import UIKit
 
 class DistanceStatisticsChartBar: UIView {
-
+//MARK: IBOutlet
     @IBOutlet weak var barHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var barInfoLabel: UILabel!
     @IBOutlet weak var bar: UIView!
     @IBOutlet weak var barBottom: UIView!
     @IBOutlet weak var barTitleLabel: UILabel!
-    
-    var barInfo = ""{
+//MARK: Property
+    internal var barInfo = ""{
         didSet{
             barInfoLabel.text = barInfo
         }
     }
-    var barHeight : CGFloat = 0{
+    internal var barHeight : CGFloat = 0{
         didSet{
             barHeightConstraint.constant = barHeight
             layoutIfNeeded()
@@ -30,12 +29,12 @@ class DistanceStatisticsChartBar: UIView {
         }
     }
     
-    var barTitle = ""{
+    internal var barTitle = ""{
         didSet{
             barTitleLabel.text = barTitle
         }
     }
-    
+//MARK: View
     override func awakeFromNib() {
         bar.backgroundColor = theme.thickColor
     }

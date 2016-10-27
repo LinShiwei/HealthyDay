@@ -9,6 +9,8 @@
 import Foundation
 
 internal final class DistanceStatisticsDataManager {
+//MARK: Internal property
+    //Should set distances and type before using manager.
     static let shared = DistanceStatisticsDataManager()
     internal var distances = [DistanceDetailItem]()
     internal var type = StatisticsPeriod.Week{
@@ -17,12 +19,12 @@ internal final class DistanceStatisticsDataManager {
         }
     }
 
-    private let calendar = Calendar(identifier: .republicOfChina)
+//MARK: Private property
     private let currentDate = Date()
     private var dateInterval = DateInterval()
     private init(){}
     
-    
+//MARK: Internal interface
     internal func getPeriodDescriptionText()->[String]{
         switch type {
         case .Week:
@@ -109,6 +111,7 @@ internal final class DistanceStatisticsDataManager {
         }
     }
     
+//MARK: Private func
     private func getDateInterval(withType type:StatisticsPeriod)->DateInterval{
         switch type {
         case .Week:
@@ -121,7 +124,6 @@ internal final class DistanceStatisticsDataManager {
             return DateInterval(start: Date(timeIntervalSinceReferenceDate: 0), end: currentDate)
         }
     }
-    
     
     private func getWeekDistanceStatistics()->[Double]{
         var results = [Double]()

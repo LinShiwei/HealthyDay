@@ -17,7 +17,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jlp-qb-dme" customClass="StepBarChartView" customModule="HealthyDay" customModuleProvider="target">
@@ -100,74 +100,154 @@
                         <viewControllerLayoutGuide type="bottom" id="UBr-fR-HDP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FCU-be-acl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Af-E6-8OR">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceDetailTableViewCell" id="PqW-if-Jdn" customClass="DistanceDetailTableViewCell" customModule="HealthyDay" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceDetailTableViewCell" rowHeight="88" id="PqW-if-Jdn" customClass="DistanceDetailTableViewCell" customModule="HealthyDay" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PqW-if-Jdn" id="qoA-dh-p3g">
-                                            <frame key="frameInset" width="1000" height="44"/>
+                                            <frame key="frameInset" width="375" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTd-Pg-sGo">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgY-n2-9yr">
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8y-8U-u9E">
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="22e-Qp-gjf"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CbV-A0-hdp">
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="21" id="LPY-nY-WIq"/>
+                                                                <constraint firstAttribute="height" constant="21" id="ROM-Oo-Dcm"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00‘00“" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taa-Ex-ypR">
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="yYD-9v-G0L"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zAg-Cy-pKo">
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="9ZN-wu-VQg"/>
+                                                                <constraint firstAttribute="width" constant="21" id="lpY-WD-Kf8"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="zAg-Cy-pKo" firstAttribute="leading" secondItem="MgY-n2-9yr" secondAttribute="leading" id="9Oc-IM-Y5e"/>
+                                                        <constraint firstItem="CbV-A0-hdp" firstAttribute="leading" secondItem="MgY-n2-9yr" secondAttribute="leading" id="Ehm-6E-0MA"/>
+                                                        <constraint firstItem="CbV-A0-hdp" firstAttribute="top" secondItem="MgY-n2-9yr" secondAttribute="top" id="FZ4-FO-o1x"/>
+                                                        <constraint firstItem="f8y-8U-u9E" firstAttribute="top" secondItem="MgY-n2-9yr" secondAttribute="top" id="LYs-fe-PHp"/>
+                                                        <constraint firstItem="zAg-Cy-pKo" firstAttribute="top" secondItem="CbV-A0-hdp" secondAttribute="bottom" constant="8" id="QZ1-HB-Kzo"/>
+                                                        <constraint firstAttribute="bottom" secondItem="taa-Ex-ypR" secondAttribute="bottom" id="ZC4-ls-8eA"/>
+                                                        <constraint firstAttribute="bottom" secondItem="zAg-Cy-pKo" secondAttribute="bottom" id="bN7-kf-ewA"/>
+                                                        <constraint firstItem="f8y-8U-u9E" firstAttribute="leading" secondItem="CbV-A0-hdp" secondAttribute="trailing" constant="8" id="gUu-eU-j5C"/>
+                                                        <constraint firstAttribute="trailing" secondItem="taa-Ex-ypR" secondAttribute="trailing" id="rDN-gJ-Yeh"/>
+                                                        <constraint firstItem="taa-Ex-ypR" firstAttribute="top" secondItem="f8y-8U-u9E" secondAttribute="bottom" constant="8" id="shI-5y-7ug"/>
+                                                        <constraint firstAttribute="trailing" secondItem="f8y-8U-u9E" secondAttribute="trailing" id="wl8-7i-ojP"/>
+                                                        <constraint firstItem="taa-Ex-ypR" firstAttribute="leading" secondItem="zAg-Cy-pKo" secondAttribute="trailing" constant="8" id="xDq-AT-II4"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-Us-t13">
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTd-Pg-sGo">
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="Mk0-2f-8I7"/>
+                                                            </constraints>
+                                                            <attributedString key="attributedText">
+                                                                <fragment content="9">
+                                                                    <attributes>
+                                                                        <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                                <fragment content="月">
+                                                                    <attributes>
+                                                                        <font key="NSFont" size="11" name=".PingFangSC-Regular"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                                <fragment content="13">
+                                                                    <attributes>
+                                                                        <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                                <fragment content="日下午">
+                                                                    <attributes>
+                                                                        <font key="NSFont" size="11" name=".PingFangSC-Regular"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFD-6w-phF">
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="fFD-6w-phF" secondAttribute="height" multiplier="1:1" id="q9g-bU-INi"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="zTd-Pg-sGo" secondAttribute="bottom" id="9ah-pC-EqW"/>
+                                                        <constraint firstItem="zTd-Pg-sGo" firstAttribute="top" secondItem="fFD-6w-phF" secondAttribute="bottom" constant="8" id="9qa-xG-N49"/>
+                                                        <constraint firstAttribute="width" secondItem="daZ-Us-t13" secondAttribute="height" multiplier="1:1" id="CjH-1h-6iT"/>
+                                                        <constraint firstItem="zTd-Pg-sGo" firstAttribute="leading" secondItem="daZ-Us-t13" secondAttribute="leading" id="Gep-rO-6ks"/>
+                                                        <constraint firstItem="fFD-6w-phF" firstAttribute="top" secondItem="daZ-Us-t13" secondAttribute="top" constant="8" id="LH6-V5-aUZ"/>
+                                                        <constraint firstItem="fFD-6w-phF" firstAttribute="centerX" secondItem="daZ-Us-t13" secondAttribute="centerX" id="WuQ-xP-y8I"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zTd-Pg-sGo" secondAttribute="trailing" id="Y98-op-Wnb"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-ay-QMO">
                                                     <attributedString key="attributedText">
-                                                        <fragment content="9">
+                                                        <fragment content="2.50">
                                                             <attributes>
-                                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                                <font key="NSFont" size="24" name="HiraginoSansGB-W3"/>
+                                                                <font key="NSOriginalFont" size="24" name="HiraginoSansGB-W3"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
-                                                        <fragment content="月">
+                                                        <fragment content="公里">
                                                             <attributes>
-                                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                        <fragment content="13">
-                                                            <attributes>
-                                                                <font key="NSFont" metaFont="system" size="17"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                        <fragment content="日">
-                                                            <attributes>
-                                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                        <fragment content=" 19:30">
-                                                            <attributes>
-                                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                                <font key="NSFont" size="14" name=".PingFangSC-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.50公里" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-ay-QMO">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="leading" secondItem="zTd-Pg-sGo" secondAttribute="trailing" id="1N5-MS-ulP"/>
-                                                <constraint firstItem="zTd-Pg-sGo" firstAttribute="centerY" secondItem="qoA-dh-p3g" secondAttribute="centerY" id="2Cj-fl-Vii"/>
-                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="width" secondItem="zTd-Pg-sGo" secondAttribute="width" id="2tm-N9-aHg"/>
-                                                <constraint firstItem="zTd-Pg-sGo" firstAttribute="leading" secondItem="qoA-dh-p3g" secondAttribute="leadingMargin" id="2zv-4S-wqv"/>
-                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="trailing" secondItem="qoA-dh-p3g" secondAttribute="trailingMargin" id="6ph-gr-Vni"/>
-                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="bottom" secondItem="qoA-dh-p3g" secondAttribute="bottomMargin" id="DeJ-PL-xAN"/>
-                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="top" secondItem="qoA-dh-p3g" secondAttribute="topMargin" id="q1V-B9-iqY"/>
-                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="height" secondItem="zTd-Pg-sGo" secondAttribute="height" id="uhN-BY-Myv"/>
+                                                <constraint firstItem="MgY-n2-9yr" firstAttribute="centerY" secondItem="qoA-dh-p3g" secondAttribute="centerY" id="2Is-mp-TEU"/>
+                                                <constraint firstItem="daZ-Us-t13" firstAttribute="leading" secondItem="qoA-dh-p3g" secondAttribute="leadingMargin" id="MAT-lB-DWo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="MgY-n2-9yr" secondAttribute="trailing" id="Rwh-lc-wZw"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Wz2-ay-QMO" secondAttribute="bottom" constant="-8" id="SrR-c2-7X4"/>
+                                                <constraint firstItem="daZ-Us-t13" firstAttribute="bottom" secondItem="qoA-dh-p3g" secondAttribute="bottomMargin" id="jJq-h2-WOe"/>
+                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="leading" secondItem="daZ-Us-t13" secondAttribute="trailing" constant="16" id="mDU-S2-BqI"/>
+                                                <constraint firstItem="MgY-n2-9yr" firstAttribute="leading" secondItem="Wz2-ay-QMO" secondAttribute="trailing" id="mJ3-Ci-WtG"/>
+                                                <constraint firstItem="MgY-n2-9yr" firstAttribute="width" secondItem="Wz2-ay-QMO" secondAttribute="width" id="oph-OM-seh"/>
+                                                <constraint firstItem="daZ-Us-t13" firstAttribute="top" secondItem="qoA-dh-p3g" secondAttribute="topMargin" id="qhE-YF-vay"/>
+                                                <constraint firstItem="Wz2-ay-QMO" firstAttribute="top" secondItem="qoA-dh-p3g" secondAttribute="topMargin" constant="8" id="w4J-v4-vVm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="zTd-Pg-sGo" id="tAZ-2z-Ndg"/>
                                             <outlet property="distanceLabel" destination="Wz2-ay-QMO" id="7eO-6V-bGQ"/>
+                                            <outlet property="durationLabel" destination="f8y-8U-u9E" id="obu-Us-WqS"/>
+                                            <outlet property="durationPerKilometerLabel" destination="taa-Ex-ypR" id="ncs-r3-L4L"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -199,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iwr-60-MKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1805.5999999999999" y="-797.45127436281871"/>
+            <point key="canvasLocation" x="1803.75" y="-797.53521126760563"/>
         </scene>
         <!--运动统计-->
         <scene sceneID="DiO-Yg-i45">
@@ -210,7 +290,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cCd-gJ-xfA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CHG-Jc-WDN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="S8F-3u-3Jf">
@@ -477,7 +557,7 @@
                         <viewControllerLayoutGuide type="bottom" id="O2d-H1-iAa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eOe-wJ-o62" customClass="StepDetailView" customModule="HealthyDay" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -498,7 +578,7 @@
                         <viewControllerLayoutGuide type="bottom" id="x03-CL-5B4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fGb-00-Rra">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-mH-y4e"/>

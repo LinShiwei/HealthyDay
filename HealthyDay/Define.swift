@@ -8,7 +8,8 @@
 
 import Foundation
 import UIKit
-let windowBounds = UIScreen.main.bounds
+internal let windowBounds = UIScreen.main.bounds
+internal let calendar = Calendar(identifier: .republicOfChina)
 
 struct ThemeColor {
 
@@ -41,5 +42,23 @@ extension Date{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.string(from: self)
+    }
+}
+//MARK: Helper func
+internal func durationFormatter(secondsDuration duration:Int)->String{
+    let seconds = duration%60
+    let minutes = (duration%3600)/60
+    let hours = duration/3600
+    return String(format: "%02d:%02d:%02d", arguments: [hours,minutes,seconds])
+}
+
+internal func durationPerKilometerFormatter(secondsDurationPK duration:Int)->String{
+    let seconds = duration%60
+    let minutes = (duration%3600)/60
+    let hours = duration/3600
+    if hours == 0 {
+        return String(format: "%02d'%02d\"/公里", arguments: [minutes,seconds])
+    }else{
+        return String(format: "%02d:%02d:%02d/公里", arguments: [hours,minutes,seconds])
     }
 }
