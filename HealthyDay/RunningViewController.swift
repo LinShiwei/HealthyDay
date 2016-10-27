@@ -43,7 +43,7 @@ internal class RunningViewController: UIViewController {
             guard let text = runningDistanceLabel.attributedText as? NSMutableAttributedString else{return}
             let range = NSMakeRange(0, text.length-2)
             let attributeString = NSAttributedString(string: String(format:"%.2f",runningDistance/1000.0), attributes: [
-                "NSFontAttributeName":UIFont(name: "DINCondensed-Bold", size: 17)
+                NSFontAttributeName:UIFont(name: "DINCondensed-Bold", size: 48)!
                 ])
             text.replaceCharacters(in: range, with: attributeString)
             runningDistanceLabel.text = String(format:"%.2f",runningDistance/1000.0) + "公里"

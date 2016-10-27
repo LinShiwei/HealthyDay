@@ -39,8 +39,8 @@ class DistanceStatisticsViewController: UIViewController {
             guard let text = totalDistanceLabel.attributedText as? NSMutableAttributedString else{return}
             let range = NSMakeRange(0, text.length-2)
             let attributeString = NSAttributedString(string: String(format:"%.2f",totalDistance/1000.0), attributes: [
-                "NSFontAttributeName":UIFont(name: "DINCondensed-Bold", size: 17)
-//                "NSForegroundColorAttributeName":UIColor.red
+                NSFontAttributeName:UIFont(name: "DINCondensed-Bold", size: 37)!
+//                NSForegroundColorAttributeName:UIColor.red
                 ])
             text.replaceCharacters(in: range, with: attributeString)
             totalDistanceLabel.text = String(format:"%.2f",totalDistance/1000.0) + "公里"
@@ -51,19 +51,16 @@ class DistanceStatisticsViewController: UIViewController {
     
     private var currentPeriodDescription = ""{
         didSet{
-            guard let text = currentPeriodLabel.attributedText as? NSMutableAttributedString else{return}
-            let range = NSMakeRange(0, 1)
-            let attributeStringPrefix = NSAttributedString(string: "0", attributes: [
-                "NSFontAttributeName":UIFont(name: "DINCondensed-Bold", size: 17),
-                "NSForegroundColorAttributeName":UIColor.clear
+            currentPeriodLabel.textAlignment = .right
+            let text = NSMutableAttributedString(string: "I", attributes: [
+                NSFontAttributeName:UIFont(name: "DINCondensed-Bold", size: 37)!,
+                NSForegroundColorAttributeName:UIColor.clear
                 ])
-            text.replaceCharacters(in: range, with: attributeStringPrefix)
-            let rangeBack = NSMakeRange(1, text.length-1)
-            let attributeStringSuffix = NSAttributedString(string: currentPeriodDescription, attributes: [
-                
-                :])
-            text.replaceCharacters(in: rangeBack, with: attributeStringSuffix)
-            currentPeriodLabel.text = "0\(currentPeriodDescription)"
+            let attributedStringSuffix = NSMutableAttributedString(string: currentPeriodDescription, attributes: [
+                NSFontAttributeName:UIFont.systemFont(ofSize: 14)
+                ])
+            text.append(attributedStringSuffix)
+            currentPeriodLabel.text = "I\(currentPeriodDescription)"
             currentPeriodLabel.attributedText = text
         }
     }
