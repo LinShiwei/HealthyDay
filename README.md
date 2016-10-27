@@ -5,6 +5,7 @@ An app for walking and running using HealthKit.
 ## Quick Look
 
 ![image](/HealthyDay_Demo1.gif)
+![image](/HealthyDay_Demo2.gif)
 
 ## Features
 
