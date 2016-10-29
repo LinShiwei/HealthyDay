@@ -25,7 +25,7 @@ class DistanceStatisticsChartBar: UIView {
         didSet{
             barHeightConstraint.constant = barHeight
             layoutIfNeeded()
-            barBottom.backgroundColor = barHeight == 0 ? theme.lightColor : theme.thickColor
+            barBottom.backgroundColor = barHeight == 0 ? theme.translucentLightThemeColor : theme.lightThemeColor
         }
     }
     
@@ -36,6 +36,6 @@ class DistanceStatisticsChartBar: UIView {
     }
 //MARK: View
     override func awakeFromNib() {
-        bar.backgroundColor = theme.thickColor
+        bar.backgroundColor = theme.lightThemeColor
     }
 }

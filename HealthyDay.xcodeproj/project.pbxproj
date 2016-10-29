@@ -18,6 +18,7 @@
 		560E1BCB1D953F7F00B488AE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560E1BCA1D953F7F00B488AE /* HealthKit.framework */; };
 		56130D881D9AB4FC005334FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56130D871D9AB4FC005334FF /* MapKit.framework */; };
 		562379C51DA128C200525B7C /* MainInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562379C41DA128C200525B7C /* MainInformationView.swift */; };
+		5626DB791DC4805A00F90708 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626DB781DC4805A00F90708 /* Theme.swift */; };
 		562ACB301DBE4670003BC042 /* DistanceStatisticsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ACB2F1DBE4670003BC042 /* DistanceStatisticsDataManager.swift */; };
 		563E06561D98B04000B18DAE /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E06551D98B04000B18DAE /* HealthManager.swift */; };
 		56492F931DB65F43009CDEEB /* BottomDecorativeCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */; };
@@ -90,6 +91,7 @@
 		560E1BCA1D953F7F00B488AE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		56130D871D9AB4FC005334FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		562379C41DA128C200525B7C /* MainInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInformationView.swift; sourceTree = "<group>"; };
+		5626DB781DC4805A00F90708 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		562ACB2F1DBE4670003BC042 /* DistanceStatisticsDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceStatisticsDataManager.swift; sourceTree = "<group>"; };
 		563E06551D98B04000B18DAE /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomDecorativeCurve.swift; sourceTree = "<group>"; };
@@ -170,7 +172,6 @@
 				726354631DB1370D00D18E52 /* StepDetailViewController */,
 				562379C61DA128E000525B7C /* Helper */,
 				56492EDC1D960CA3007C3510 /* Support */,
-				56D631E81D98ECE7008232FA /* Define.swift */,
 			);
 			path = HealthyDay;
 			sourceTree = "<group>";
@@ -219,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				560E1BAA1D953D3600B488AE /* MainViewController.swift */,
+				5626DB781DC4805A00F90708 /* Theme.swift */,
+				56D631E81D98ECE7008232FA /* Define.swift */,
 				567E83C11DA52BE600BBD133 /* MainInfoView */,
 				564FF90C1DA6A41D008AC31E /* StepBarChart */,
 				564FF90D1DA6A42E008AC31E /* BarItem */,
@@ -443,6 +446,7 @@
 				564F2ACC1DB9BBEE00BB3135 /* DistanceStatisticsChartView.swift in Sources */,
 				562379C51DA128C200525B7C /* MainInformationView.swift in Sources */,
 				56629EBD1D9BB08300720F0A /* LocationManager.swift in Sources */,
+				5626DB791DC4805A00F90708 /* Theme.swift in Sources */,
 				56BC4F4C1D9FF2B80074B498 /* StepBarChartView.swift in Sources */,
 				567E83C01DA52AEA00BBD133 /* StepCountLabel.swift in Sources */,
 				563E06561D98B04000B18DAE /* HealthManager.swift in Sources */,

@@ -125,8 +125,8 @@
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock-44-2" translatesAutoresizingMaskIntoConstraints="NO" id="CbV-A0-hdp">
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="21" id="LPY-nY-WIq"/>
-                                                                <constraint firstAttribute="height" constant="21" id="ROM-Oo-Dcm"/>
+                                                                <constraint firstAttribute="width" constant="17" id="LPY-nY-WIq"/>
+                                                                <constraint firstAttribute="height" constant="17" id="ROM-Oo-Dcm"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00‘00“" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taa-Ex-ypR">
@@ -139,59 +139,35 @@
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stopwatch Filled-44" translatesAutoresizingMaskIntoConstraints="NO" id="zAg-Cy-pKo">
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="9ZN-wu-VQg"/>
-                                                                <constraint firstAttribute="width" constant="21" id="lpY-WD-Kf8"/>
+                                                                <constraint firstAttribute="height" constant="17" id="9ZN-wu-VQg"/>
+                                                                <constraint firstAttribute="width" constant="17" id="lpY-WD-Kf8"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="zAg-Cy-pKo" firstAttribute="leading" secondItem="MgY-n2-9yr" secondAttribute="leading" id="9Oc-IM-Y5e"/>
-                                                        <constraint firstItem="CbV-A0-hdp" firstAttribute="leading" secondItem="MgY-n2-9yr" secondAttribute="leading" id="Ehm-6E-0MA"/>
-                                                        <constraint firstItem="CbV-A0-hdp" firstAttribute="top" secondItem="MgY-n2-9yr" secondAttribute="top" id="FZ4-FO-o1x"/>
+                                                        <constraint firstItem="zAg-Cy-pKo" firstAttribute="leading" secondItem="MgY-n2-9yr" secondAttribute="leading" constant="2" id="9Oc-IM-Y5e"/>
+                                                        <constraint firstItem="CbV-A0-hdp" firstAttribute="leading" secondItem="MgY-n2-9yr" secondAttribute="leading" constant="2" id="Ehm-6E-0MA"/>
+                                                        <constraint firstItem="CbV-A0-hdp" firstAttribute="top" secondItem="MgY-n2-9yr" secondAttribute="top" constant="2" id="FZ4-FO-o1x"/>
                                                         <constraint firstItem="f8y-8U-u9E" firstAttribute="top" secondItem="MgY-n2-9yr" secondAttribute="top" id="LYs-fe-PHp"/>
-                                                        <constraint firstItem="zAg-Cy-pKo" firstAttribute="top" secondItem="CbV-A0-hdp" secondAttribute="bottom" constant="8" id="QZ1-HB-Kzo"/>
+                                                        <constraint firstItem="zAg-Cy-pKo" firstAttribute="top" secondItem="CbV-A0-hdp" secondAttribute="bottom" constant="12" id="QZ1-HB-Kzo"/>
                                                         <constraint firstAttribute="bottom" secondItem="taa-Ex-ypR" secondAttribute="bottom" id="ZC4-ls-8eA"/>
-                                                        <constraint firstAttribute="bottom" secondItem="zAg-Cy-pKo" secondAttribute="bottom" id="bN7-kf-ewA"/>
-                                                        <constraint firstItem="f8y-8U-u9E" firstAttribute="leading" secondItem="CbV-A0-hdp" secondAttribute="trailing" constant="8" id="gUu-eU-j5C"/>
+                                                        <constraint firstAttribute="bottom" secondItem="zAg-Cy-pKo" secondAttribute="bottom" constant="2" id="bN7-kf-ewA"/>
+                                                        <constraint firstItem="f8y-8U-u9E" firstAttribute="leading" secondItem="CbV-A0-hdp" secondAttribute="trailing" constant="10" id="gUu-eU-j5C"/>
                                                         <constraint firstAttribute="trailing" secondItem="taa-Ex-ypR" secondAttribute="trailing" id="rDN-gJ-Yeh"/>
                                                         <constraint firstItem="taa-Ex-ypR" firstAttribute="top" secondItem="f8y-8U-u9E" secondAttribute="bottom" constant="8" id="shI-5y-7ug"/>
                                                         <constraint firstAttribute="trailing" secondItem="f8y-8U-u9E" secondAttribute="trailing" id="wl8-7i-ojP"/>
-                                                        <constraint firstItem="taa-Ex-ypR" firstAttribute="leading" secondItem="zAg-Cy-pKo" secondAttribute="trailing" constant="8" id="xDq-AT-II4"/>
+                                                        <constraint firstItem="taa-Ex-ypR" firstAttribute="leading" secondItem="zAg-Cy-pKo" secondAttribute="trailing" constant="10" id="xDq-AT-II4"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-Us-t13">
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTd-Pg-sGo">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9月13日下午" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTd-Pg-sGo">
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="Mk0-2f-8I7"/>
                                                             </constraints>
-                                                            <attributedString key="attributedText">
-                                                                <fragment content="9">
-                                                                    <attributes>
-                                                                        <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment content="月">
-                                                                    <attributes>
-                                                                        <font key="NSFont" size="11" name=".PingFangSC-Regular"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment content="13">
-                                                                    <attributes>
-                                                                        <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment content="日下午">
-                                                                    <attributes>
-                                                                        <font key="NSFont" size="11" name=".PingFangSC-Regular"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
+                                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Running2-88" translatesAutoresizingMaskIntoConstraints="NO" id="fFD-6w-phF">
@@ -303,7 +279,7 @@
                                     <segment title="年"/>
                                     <segment title="总"/>
                                 </segments>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="statisticsPeriodChanged:" destination="SE8-Rv-tfc" eventType="valueChanged" id="8pn-MG-Zwe"/>
                                 </connections>

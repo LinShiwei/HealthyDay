@@ -56,7 +56,7 @@ internal class MainInformationView: UIView{
     private func initGradientLayer(){
         guard gradientLayer.superlayer == nil else {return}
         gradientLayer.frame = bounds
-        gradientLayer.colors = [theme.lightColor.cgColor,theme.thickColor.cgColor]
+        gradientLayer.colors = [theme.lightThemeColor.cgColor,theme.darkThemeColor.cgColor]
         layer.addSublayer(gradientLayer)
     }
     

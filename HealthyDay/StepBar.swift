@@ -39,12 +39,12 @@ internal class StepBar: UIView {
         bar.layer.cornerRadius = 5
         let barLayer = CALayer()
         barLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: 30)
-        barLayer.backgroundColor = theme.thickColor.cgColor
+        barLayer.backgroundColor = theme.darkThemeColor.cgColor
         barLayer.cornerRadius = 5
         bar.layer.addSublayer(barLayer)
         dateLabel = UILabel(frame: CGRect(x: (frame.width-dateLabelSize.width)/2, y: frame.height-dateLabelSize.height, width: dateLabelSize.width, height: dateLabelSize.height))
         dateLabel.textAlignment = .center
-        dateLabel.textColor = theme.thickColor
+        dateLabel.textColor = theme.darkThemeColor
         dateLabel.adjustsFontSizeToFitWidth = true
         
         addSubview(bar)

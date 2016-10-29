@@ -36,6 +36,15 @@ internal class MainViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController!.navigationBar.backIndicatorImage = UIImage(named: "Back-22")!
+        self.navigationController!.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "Back-22")!
+
+        self.navigationController?.navigationBar.titleTextAttributes =  [
+//            NSForegroundColorAttributeName : theme.darkTextColor,
+            NSFontAttributeName : UIFont.systemFont(ofSize: 17)
+        ]
+        
+        
         
         healthManager.authorize{(success,error) in
             print("Error == \(error)")

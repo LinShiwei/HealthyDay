@@ -191,4 +191,11 @@ extension DistanceDetailViewController: UITableViewDataSource{
         title.append("月")
         return title.replacingOccurrences(of: "-", with: "年")
     }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView{
+            header.textLabel?.font = UIFont.systemFont(ofSize: 14)
+            header.textLabel?.textColor = theme.darkTextColor
+        }
+    }
 }
