@@ -43,7 +43,7 @@ internal class RunningViewController: UIViewController {
             guard let text = runningDistanceLabel.attributedText as? NSMutableAttributedString else{return}
             let range = NSMakeRange(0, text.length-2)
             let attributeString = NSAttributedString(string: String(format:"%.2f",runningDistance/1000.0), attributes: [
-                "NSFontAttributeName":UIFont(name: "DINCondensed-Bold", size: 17)
+                NSFontAttributeName:UIFont(name: "DINCondensed-Bold", size: 48)!
                 ])
             text.replaceCharacters(in: range, with: attributeString)
             runningDistanceLabel.text = String(format:"%.2f",runningDistance/1000.0) + "公里"
@@ -53,23 +53,13 @@ internal class RunningViewController: UIViewController {
     
     private var runningDuration : Int = 0{
         didSet{
-            let seconds = runningDuration%60
-            let minutes = (runningDuration%3600)/60
-            let hours = runningDuration/3600
-            runningDurationLabel.text = String(format: "%02d:%02d:%02d", arguments: [hours,minutes,seconds])
+            runningDurationLabel.text = durationFormatter(secondsDuration: runningDuration)
         }
     }
     
     private var durationPerKilometer : Int = 0{
         didSet{
-            let seconds = durationPerKilometer%60
-            let minutes = (durationPerKilometer%3600)/60
-            let hours = durationPerKilometer/3600
-            if hours == 0 {
-                durationPerKilometerLabel.text = String(format: "%02d'%02d\"", arguments: [minutes,seconds])
-            }else{
-                durationPerKilometerLabel.text = String(format: "%02d:%02d:%02d", arguments: [hours,minutes,seconds])
-            }
+            durationPerKilometerLabel.text = durationPerKilometerFormatter(secondsDurationPK: durationPerKilometer)
         }
     }
     
@@ -135,14 +125,7 @@ internal class RunningViewController: UIViewController {
         }
         
     }
-    
-    private func formatTime(withSeconds sumSeconds:Int)->String{
-        let seconds = sumSeconds%60
-        let minutes = (sumSeconds%3600)/60
-        let hours = sumSeconds/3600
-        return String(format: "%02d:%02d:%02d", arguments: [hours,minutes,seconds])
-    }
-    
+
     private func saveRunningDataToCoreData(){
         DispatchQueue.global().async{[unowned self] in
             let managedContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
@@ -188,7 +171,6 @@ extension RunningViewController: MKMapViewDelegate{
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let render = MKPolylineRenderer(overlay: overlay)
-        render.fillColor = UIColor.blue
         render.strokeColor = UIColor.red
         render.lineWidth = 5.0
         

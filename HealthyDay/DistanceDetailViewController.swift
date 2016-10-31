@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-fileprivate struct DistanceDetailItem {
+internal struct DistanceDetailItem {
     let date : Date
     let distance : Double
     let duration : Int
@@ -23,12 +23,13 @@ fileprivate struct DistancesInfo{
 
 internal class DistanceDetailViewController: UIViewController {
 
+//MARK: IBOutlet
+    @IBOutlet weak var distanceDetailTableView: UITableView!
+//MARK: Property
     fileprivate var objects = [NSManagedObject]()
-
     fileprivate var distances = [DistanceDetailItem]()
     fileprivate var distancesInfo = [DistancesInfo]()
-    
-    @IBOutlet weak var distanceDetailTableView: UITableView!
+//MARK: View
     override func viewDidLoad() {
         super.viewDidLoad()
         initDistancesFromCoreData()
@@ -36,6 +37,14 @@ internal class DistanceDetailViewController: UIViewController {
         distanceDetailTableView.reloadData()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDistanceStatisticsVC"{
+            guard let distanceStatisticsVC = segue.destination as? DistanceStatisticsViewController else {return}
+            distanceStatisticsVC.distanceDetailItem = distances
+        }
+    }
+    
+//MARK: Helper
     private func initDistancesFromCoreData(){
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Running")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
@@ -56,6 +65,7 @@ internal class DistanceDetailViewController: UIViewController {
         }
     }
     
+    //Classify distances with month
     private func classifyDistances(distances:[DistanceDetailItem])->[DistancesInfo]{
         assert(distances.count > 0)
         var info = [DistancesInfo]()
@@ -82,13 +92,13 @@ internal class DistanceDetailViewController: UIViewController {
     }
     
     private func mockDistancesData()->[DistanceDetailItem]{
-        var date = Date(timeIntervalSinceNow: -3600*24*200)
+        var date = Date(timeIntervalSinceNow: -3600*24*100)
         var items = [DistanceDetailItem]()
         for _ in 0...20{
-            let secondOffset = Double(arc4random_uniform(3600*24*3))+3600*24*7
-            let distance = Double(arc4random_uniform(10000)+UInt32(1000))
-            let durationPerKilometer = Int(arc4random_uniform(60))+300
-            let duration = Int(distance * Double(durationPerKilometer))
+            let secondOffset = Double(arc4random_uniform(3600*24*2))+3600*24*3
+            let distance = Double(arc4random_uniform(2000)+UInt32(9000))
+            let durationPerKilometer = Int(arc4random_uniform(60))+330
+            let duration = Int(distance / 1000 * Double(durationPerKilometer))
             date.addTimeInterval(secondOffset)
             items.append(DistanceDetailItem(date: date, distance: distance, duration: duration, durationPerKilometer: durationPerKilometer))
         }
@@ -130,6 +140,10 @@ internal class DistanceDetailViewController: UIViewController {
 }
 
 extension DistanceDetailViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 88
+    }
+    
     @objc(tableView:canFocusRowAtIndexPath:) func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -167,6 +181,8 @@ extension DistanceDetailViewController: UITableViewDataSource{
         let index = indexInDistancesArray(withIndexPath: indexPath)
         cell.date = distances[index].date
         cell.distance = distances[index].distance
+        cell.duration = distances[index].duration
+        cell.durationPerKilometer = distances[index].durationPerKilometer
         return cell
     }
     
@@ -174,5 +190,12 @@ extension DistanceDetailViewController: UITableViewDataSource{
         var title = distancesInfo[section].month
         title.append("月")
         return title.replacingOccurrences(of: "-", with: "年")
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView{
+            header.textLabel?.font = UIFont.systemFont(ofSize: 14)
+            header.textLabel?.textColor = theme.darkTextColor
+        }
     }
 }

@@ -17,13 +17,13 @@ internal class StartRunningButton: UIButton {
         super.init(coder: aDecoder)
         
         layer.cornerRadius = buttonDiameter/2
-        layer.backgroundColor = theme.lightColor.cgColor
+        layer.backgroundColor = theme.lightThemeColor.cgColor
         tintColor = UIColor.white
         
         let ringLayer = CALayer()
         ringLayer.frame = CGRect(x: -ringGap, y: -ringGap, width: buttonDiameter+ringGap*2, height: buttonDiameter+ringGap*2)
         ringLayer.cornerRadius = buttonDiameter/2+ringGap
-        ringLayer.borderColor = theme.lightColor.cgColor
+        ringLayer.borderColor = theme.lightThemeColor.cgColor
         ringLayer.borderWidth = 1
         layer.addSublayer(ringLayer)
     }

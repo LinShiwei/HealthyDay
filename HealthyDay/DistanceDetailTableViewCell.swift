@@ -10,6 +10,12 @@ import UIKit
 
 internal class DistanceDetailTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var durationPerKilometerLabel: UILabel!
+    
     internal var date = Date(){
         didSet{
             dateLabel.text = getFormatDateDescription(fromDate: date)
@@ -18,29 +24,44 @@ internal class DistanceDetailTableViewCell: UITableViewCell {
     
     internal var distance : Double = 0{
         didSet{
-            distanceLabel.text = String(format: "%.2f 公里", distance/1000.0)
+            let text = NSMutableAttributedString(string: String(format: "%.2f", distance/1000.0), attributes: [
+                NSFontAttributeName:UIFont(name: "DINCondensed-Bold", size: 37)!,
+                ])
+            let unitText = NSMutableAttributedString(string: "公里", attributes: [
+                NSFontAttributeName:UIFont.systemFont(ofSize: 14)
+                ])
+            text.append(unitText)
+            distanceLabel.text = String(format: "%.2f公里", distance/1000.0)
+            distanceLabel.attributedText = text
         }
     }
     
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    internal var duration : Int = 0{
+        didSet{
+            durationLabel.text = durationFormatter(secondsDuration: duration)
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    internal var durationPerKilometer : Int = 0{
+        didSet{
+            durationPerKilometerLabel.text = durationPerKilometerFormatter(secondsDurationPK: durationPerKilometer)
+        }
     }
 
     private func getFormatDateDescription(fromDate date:Date)->String{
-        let dateDescription = date.formatDescription()
-        let timeRange = dateDescription.index(dateDescription.startIndex, offsetBy: 11)..<dateDescription.index(dateDescription.startIndex, offsetBy: 16)
-        let dateArray = dateDescription.substring(to: dateDescription.index(dateDescription.startIndex, offsetBy: 10)).components(separatedBy: "-")
-        
-        let time = dateDescription.substring(with: timeRange)
-        assert(dateArray.count == 3)
-        return dateArray[1]+"月"+dateArray[2]+"日 "+time
+        let day = calendar.component(.day, from: date)
+        let hour = calendar.component(.hour, from: date)
+        switch hour {
+        case 0..<11:
+            return String(day)+"日上午"
+        case 11..<14:
+            return String(day)+"日中午"
+        case 14..<19:
+            return String(day)+"日下午"
+        case 19..<25:
+            return String(day)+"日晚上"
+        default:
+            fatalError("Hour should be in 0...24")
+        }
     }
 }
