@@ -45,7 +45,8 @@ internal class StepBar: UIView {
         dateLabel = UILabel(frame: CGRect(x: (frame.width-dateLabelSize.width)/2, y: frame.height-dateLabelSize.height, width: dateLabelSize.width, height: dateLabelSize.height))
         dateLabel.textAlignment = .center
         dateLabel.textColor = theme.darkThemeColor
-        dateLabel.adjustsFontSizeToFitWidth = true
+        dateLabel.adjustsFontSizeToFitWidth = false
+        dateLabel.font = UIFont.systemFont(ofSize: 9)
         
         addSubview(bar)
         addSubview(dateLabel)

@@ -58,7 +58,7 @@ class BottomDecorativeCurve: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func refreshAnimation(){
+    internal func refreshAnimation(){
         shapeLayer.removeAllAnimations()
         shapeLayerTwo.removeAllAnimations()
         shapeLayer.add(shapeLayerAnimation, forKey: "positionYAnimation")

@@ -12,12 +12,6 @@ internal let windowBounds = UIScreen.main.bounds
 internal let calendar = Calendar(identifier: .republicOfChina)
 internal let theme = Theme.shared
 
-struct ThemeColor {
-
-    let lightColor: UIColor
-    let thickColor: UIColor
-}
-
 internal func rgbColor(red:CGFloat, green:CGFloat, blue:CGFloat, alpha:CGFloat)->UIColor{
     return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0 , alpha: alpha)
 }
