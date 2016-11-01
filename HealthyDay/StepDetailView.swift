@@ -20,16 +20,16 @@ class StepDetailView: UIView {
             initMaxStepCountLabel()
         }
     }
-    fileprivate var targetCount = 10000
-    fileprivate var maxStepCount = 0
-    fileprivate var currentIndex = 0
     fileprivate var viewSize = CGSize()
-    fileprivate let centerGradientLayer = CAGradientLayer()
-    fileprivate var spliteLines = [CALayer]()
-    fileprivate var maxStepCountLabel = UILabel()
-    fileprivate var dateLabel = UILabel()
-    fileprivate var tendencyLabel = UILabel()
-    fileprivate var imformationTitleLabel = [ImformationTitle]()
+    fileprivate var currentIndex = 0
+    private var targetCount = 10000
+    private var maxStepCount = 0
+    private let centerGradientLayer = CAGradientLayer()
+    private var spliteLines = [CALayer]()
+    private var maxStepCountLabel = UILabel()
+    private var dateLabel = UILabel()
+    private var tendencyLabel = UILabel()
+    private var imformationTitleLabel = [ImformationTitle]()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -73,11 +73,12 @@ class StepDetailView: UIView {
     private func initStepLineChart() {
         let totalDataCount = stepCountsData.count
         let lineChartColumn = totalDataCount == 0 ? 7 : totalDataCount + 6
-        let lineChartWidth = CGFloat(lineChartColumn) * frame.width / 7
+        let lineChartWidth = CGFloat(lineChartColumn) * frame.width * 0.143
         viewSize = CGSize(width: frame.width / 7, height: frame.height)
         stepLineChart = StepLineChart(frame: CGRect(x: 0, y: frame.height * 2.5 / 15.0, width: frame.width, height: frame.height*0.3), stepCountsData: stepCountsData, maxStepCount: maxStepCount)
         stepLineChart.contentSize = CGSize(width: lineChartWidth, height: 0)
         stepLineChart.contentOffset = CGPoint(x: lineChartWidth - frame.width, y: 0)
+        stepLineChart.layer.zPosition = 1
         stepLineChart.delegate = self
         addSubview(stepLineChart)
     }
@@ -85,21 +86,23 @@ class StepDetailView: UIView {
     private func initCenterGradientLayer() {
         guard centerGradientLayer.superlayer == nil else {return}
         centerGradientLayer.frame = CGRect(x: frame.width * 3 / 7, y: frame.height * 3.5 / 15.0, width: frame.width / 7, height: frame.height * 3.5 / 15.0)
-        centerGradientLayer.colors = [lineChart.lightColor.cgColor, lineChart.thickColor.cgColor]
+        centerGradientLayer.colors = [theme.lightLineChartColor.cgColor, theme.thickLineChartColor.cgColor]
+        centerGradientLayer.zPosition = 2
         layer.addSublayer(centerGradientLayer)
     }
     
     private func initMaxStepCountLabel() {
-        maxStepCountLabel.frame = CGRect(x: frame.width * 0.03, y: frame.height * 3.1 / 15, width: frame.width / 11, height: frame.height * 0.3 / 15)
+        maxStepCountLabel.frame = CGRect(x: frame.width * 0.03, y: frame.height * 2.9 / 15, width: frame.width / 11, height: frame.height * 0.5 / 15)
         maxStepCountLabel.text = "\(maxStepCount)"
         maxStepCountLabel.textAlignment = .center
         maxStepCountLabel.textColor = UIColor.black
+        maxStepCountLabel.layer.zPosition = 2
         maxStepCountLabel.adjustsFontSizeToFitWidth = true
         addSubview(maxStepCountLabel)
     }
     
     private func initSplitLines() {
-        spliteLines.append(SplitLine(from: CGPoint(x: frame.width * 0.03,y: frame.height * 3.5 / 15),to: CGPoint(x: frame.width * 0.97,y: frame.height * 3.5 / 15), layerWidthIsThin: true, isHorizen: true))
+        spliteLines.append(SplitLine(from: CGPoint(x: frame.width * 0.03,y: frame.height * 3.4 / 15),to: CGPoint(x: frame.width * 0.97,y: frame.height * 3.4 / 15), layerWidthIsThin: true, isHorizen: true))
         spliteLines.append(SplitLine(from: CGPoint(x: frame.width * 0.03,y: frame.height * 6.0 / 15),to: CGPoint(x: frame.width * 0.97,y: frame.height * 6.0 / 15), layerWidthIsThin: true, isHorizen: true))
         spliteLines.append(SplitLine(from: CGPoint(x: frame.width * 0.05,y: frame.height * 9.5 / 15),to: CGPoint(x: frame.width * 0.95,y: frame.height * 9.5 / 15), layerWidthIsThin: true, isHorizen: true))
         spliteLines.append(SplitLine(from: CGPoint(x: frame.width * 0.05,y: frame.height * 11.0 / 15),to: CGPoint(x: frame.width * 0.95,y: frame.height * 11.0 / 15), layerWidthIsThin: true, isHorizen: true))
@@ -124,7 +127,7 @@ class StepDetailView: UIView {
     
     fileprivate func hideStepEverydayViewLabel(index: Int, alpha: CGFloat){
         guard stepLineChart.stepEverydayViews[index].stepLabel.alpha != alpha else {return}
-        UIView.animate(withDuration: 0.1, delay: 0.25, options: .curveEaseInOut, animations: {[unowned self] in
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {[unowned self] in
             self.stepLineChart.stepEverydayViews[index].stepLabel.alpha = alpha
             }, completion: nil)
     }
@@ -136,7 +139,7 @@ class StepDetailView: UIView {
         } else if currentIndex == stepCountsData.count + 1 {
             dateLabel.text = "昨天"
         } else {
-            let dateDescription = Date(timeInterval: 24*3600*Double(currentIndex - 7), since: currentDate).formatDescription()
+            let dateDescription = Date(timeInterval: 24*3600*Double(currentIndex - 2 - stepCountsData.count), since: currentDate).formatDescription()
             let range = dateDescription.index(dateDescription.startIndex, offsetBy: 5)..<dateDescription.index(dateDescription.startIndex, offsetBy: 10)
             let text = dateDescription.substring(with: range)
             dateLabel.text = text
@@ -145,36 +148,36 @@ class StepDetailView: UIView {
 }
 
 extension StepDetailView: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentCenterX = stepLineChart.currentCenter().x
         currentIndex = Int(round((currentCenterX - viewSize.width / 2) / viewSize.width))
         guard currentIndex >= 3 && currentIndex - 2 <= stepLineChart.stepEverydayViews.count else {return}
         hideStepEverydayViewLabel(index: currentIndex - 3, alpha: 0)
     }
 
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    internal func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             stepLineChart.setContentOffset(stepLineChart.contentOffsetForIndex(currentIndex), animated: true)
             changeDateLabel(currentIndex: currentIndex)
         }
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    internal func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         stepLineChart.setContentOffset(stepLineChart.contentOffsetForIndex(currentIndex), animated: true)
         guard currentIndex >= 3 && currentIndex - 2 <= stepLineChart.stepEverydayViews.count else {return}
-        guard stepLineChart.contentOffset.x == 0 || abs(stepLineChart.contentOffset.x - (stepLineChart.contentSize.width - frame.width)) < 0.12 else{return}
+        guard stepLineChart.contentOffset.x == 0 || stepLineChart.contentOffset.x - (stepLineChart.contentSize.width - frame.width) == 0 else{return}
         hideStepEverydayViewLabel(index: currentIndex - 3, alpha: 1)
         changeDateLabel(currentIndex: currentIndex)
     }
     
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    internal func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         guard currentIndex >= 3 && currentIndex - 2 <= stepLineChart.stepEverydayViews.count else {return}
         hideStepEverydayViewLabel(index: currentIndex - 3, alpha: 1)
         changeDateLabel(currentIndex: currentIndex)
     }
 }
 
-class SplitLine: CALayer {
+internal class SplitLine: CALayer {
     private var width = CGFloat()
     private var height = CGFloat()
     private var layerWidth = CGFloat()
@@ -184,10 +187,10 @@ class SplitLine: CALayer {
         super.init()
         if layerWidthIsThin {
             layerWidth = 1
-            layerColor = splitLine.lightColor
+            layerColor = theme.lightSplitLineColor
         } else {
             layerWidth = 23
-            layerColor = splitLine.thickColor
+            layerColor = theme.thickSplitLineColor
         }
         if isHorizen {
             width = to.x - from.x
@@ -200,11 +203,11 @@ class SplitLine: CALayer {
         self.backgroundColor = layerColor.cgColor
     }
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
-class ImformationTitle: UILabel {
+internal class ImformationTitle: UILabel {
     
     init(frame: CGRect, text: String, isLight: Bool) {
         super.init(frame: frame)
@@ -217,7 +220,7 @@ class ImformationTitle: UILabel {
         }
     }
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

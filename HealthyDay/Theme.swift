@@ -20,6 +20,12 @@ internal final class Theme {
     let lightTextColor = UIColor.lightGray
     let darkTextColor = UIColor.darkGray
     
+    let lightLineChartColor = rgbColor(red: 0xFF, green: 0xFF, blue: 0xFF, alpha: 0.5)
+    let thickLineChartColor = rgbColor(red: 0x15, green: 0xF9, blue: 0x50, alpha: 0.5)
+    
+    let lightSplitLineColor = rgbColor(red: 0xE3, green: 0xE3, blue: 0xE3, alpha: 1)
+    let thickSplitLineColor = rgbColor(red: 0xDF, green: 0xDF, blue: 0xDF, alpha: 1)
+    
     private init(){}
     
     

@@ -12,12 +12,12 @@ class StepDetailViewController: UIViewController {
     
     @IBOutlet weak var stepDetailView: StepDetailView!
     
-    var stepCounts = [Int](){
+    internal var stepCounts = [Int](){
         didSet{
             configureView()
         }
     }
-    var distances = [Int](){
+    internal var distances = [Int](){
         didSet{
             print(distances)
         }

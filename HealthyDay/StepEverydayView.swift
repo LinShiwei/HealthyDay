@@ -13,11 +13,11 @@ class StepEverydayView: UIView {
     
     let stepLabel = UILabel()
     
-    fileprivate var isToday = false
-    fileprivate let dot = CALayer()
-    fileprivate var dotRadius = CGFloat()
-    fileprivate var proportion = CGFloat()
-    fileprivate var stepCount = Int()
+    private var isToday = false
+    private let dot = CALayer()
+    private var dotRadius = CGFloat()
+    private var proportion = CGFloat()
+    private var stepCount = Int()
     
     init(frame: CGRect,proportion: CGFloat,stepCount: Int, isToday: Bool) {
         super.init(frame: frame)
@@ -53,7 +53,7 @@ class StepEverydayView: UIView {
         layer.addSublayer(dot)
     }
     
-    func dotPosition() -> CGPoint {
+    internal func dotPosition() -> CGPoint {
         return dot.position
     }
     

@@ -10,17 +10,17 @@ import UIKit
 
 class StepLineChart: UIScrollView {
     
-    var stepEverydayViews = [StepEverydayView]()
+    internal var stepEverydayViews = [StepEverydayView]()
     
-    fileprivate var viewSize : CGSize = CGSize(width: UIScreen.main.bounds.width / 7, height: UIScreen.main.bounds.height * 3.5 / 15.0)
-    fileprivate var stepCountsData = [Int]()
-    fileprivate var maxStepCount = Int()
-    fileprivate var currentIndex = 0
-    fileprivate var linesInStepLineChart = [CAShapeLayer]()
-    fileprivate var dotsPosition = [CGPoint]()
-    fileprivate var gradientLayer = CAGradientLayer()
-    fileprivate var gradientMaskView = CAShapeLayer()
-    fileprivate var dateLabels = [UILabel]()
+    private var viewSize : CGSize = CGSize(width: UIScreen.main.bounds.width / 7, height: UIScreen.main.bounds.height * 3.5 / 15.0)
+    private var stepCountsData = [Int]()
+    private var maxStepCount = Int()
+    private var currentIndex = 0
+    private var linesInStepLineChart = [CAShapeLayer]()
+    private var dotsPosition = [CGPoint]()
+    private var gradientLayer = CAGradientLayer()
+    private var gradientMaskView = CAShapeLayer()
+    private var dateLabels = [UILabel]()
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -132,7 +132,7 @@ class StepLineChart: UIScrollView {
     private func initGradiantLayer() {
         guard gradientLayer.superlayer == nil else {return}
         gradientLayer.frame = CGRect(x: 3.5 * viewSize.width, y: viewSize.height / 3.5, width: CGFloat(stepCountsData.count - 1) * viewSize.width, height: viewSize.height * 2.5 / 3.5)
-        gradientLayer.colors = [lineChart.thickColor.cgColor, lineChart.lightColor.cgColor]
+        gradientLayer.colors = [theme.thickLineChartColor.cgColor, theme.lightLineChartColor.cgColor]
         layer.addSublayer(gradientLayer)
     }
     
@@ -143,8 +143,8 @@ class StepLineChart: UIScrollView {
         for index in 0..<stepCountsData.count - 1 {
             path.addLine(to: dotsPosition[index + 1])
         }
-        path.addLine(to: CGPoint(x: dotsPosition[stepCountsData.count - 1].x, y: 0))
-        path.addLine(to: CGPoint(x: dotsPosition[0].x, y: 0))
+        path.addLine(to: CGPoint(x: dotsPosition[stepCountsData.count - 1].x, y: viewSize.height / 3.5))
+        path.addLine(to: CGPoint(x: dotsPosition[0].x, y: viewSize.height / 3.5))
         path.close()
         gradientMaskView.path = path.cgPath
         gradientMaskView.fillColor = UIColor.white.cgColor
@@ -155,21 +155,19 @@ class StepLineChart: UIScrollView {
         super.init(coder: aDecoder)
     }
     
-    func currentCenter() -> CGPoint {
+    internal func currentCenter() -> CGPoint {
         let x = contentOffset.x + bounds.width / 2.0
         let y = contentOffset.y
         return CGPoint(x: x, y: y)
     }
     
-    func contentOffsetForIndex(_ index: Int) -> CGPoint {
+    internal func contentOffsetForIndex(_ index: Int) -> CGPoint {
         let centerX = centerForViewAtIndex(index).x
         let x: CGFloat = centerX - self.bounds.width / 2.0
-        //        x = max(0, x)
-        //        x = min(x, scrollView.contentSize.width)
         return CGPoint(x: x, y: 0)
     }
     
-    func centerForViewAtIndex(_ index: Int) -> CGPoint {
+    internal func centerForViewAtIndex(_ index: Int) -> CGPoint {
         let y = bounds.midY
         let x = CGFloat(index) * viewSize.width + viewSize.width / 2
         return CGPoint(x: x, y: y)
