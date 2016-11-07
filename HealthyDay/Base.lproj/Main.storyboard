@@ -107,10 +107,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceDetailTableViewCell" rowHeight="88" id="PqW-if-Jdn" customClass="DistanceDetailTableViewCell" customModule="HealthyDay" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="88"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PqW-if-Jdn" id="qoA-dh-p3g">
-                                            <frame key="frameInset" width="320" height="88"/>
+                                            <frame key="frameInset" width="1000" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgY-n2-9yr">
@@ -580,7 +580,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="NQI-3b-yaz" secondAttribute="height" multiplier="125:77" id="3uH-Ea-0P2"/>
                                             <constraint firstItem="hqh-mi-ch4" firstAttribute="leading" secondItem="NQI-3b-yaz" secondAttribute="leading" id="b1d-dg-h2g"/>
@@ -613,7 +613,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="uA7-i0-AhU" firstAttribute="centerX" secondItem="hIn-bg-8Sa" secondAttribute="centerX" id="An6-Uo-dL5"/>
                                             <constraint firstItem="yyl-n8-nHA" firstAttribute="leading" secondItem="hIn-bg-8Sa" secondAttribute="leading" id="Mwo-qo-Jb1"/>
@@ -629,13 +629,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Fq-yc-XV3">
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZb-CE-0rX">
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="开始">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="tapToStartRunning:" destination="x4C-hv-WIR" eventType="touchUpInside" id="1VM-YQ-eDB"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="BZb-CE-0rX" secondAttribute="bottom" constant="8" id="EIb-o8-FtU"/>
                                             <constraint firstAttribute="width" secondItem="4Fq-yc-XV3" secondAttribute="height" multiplier="125:77" id="I0r-BP-QF8"/>

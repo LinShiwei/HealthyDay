@@ -64,16 +64,17 @@ internal class RunningViewController: UIViewController {
     }
     
     private var timer : Timer?
-    
+//MARK: IBOutlet
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var runningInfoView: RunningInfomationView!
     
     @IBOutlet weak var runningDistanceLabel: UILabel!
     @IBOutlet weak var runningDurationLabel: UILabel!
     @IBOutlet weak var durationPerKilometerLabel: UILabel!
-    
+//MARK: IBAction
     @IBAction func tapToStartRunning(_ sender: UIButton) {
         startRunning = !startRunning
+        sender.setTitle(startRunning ? "暂停" : "开始", for: .normal)
         print("running start == \(startRunning)")
         
     }
@@ -86,9 +87,9 @@ internal class RunningViewController: UIViewController {
             self.mapView.addSubview(self.gpsNotationView)
         }
         self.mapView.delegate = self
+        self.mapView.userLocation.title = "我的位置"
         self.mapView.showsUserLocation = true
-        
-        runningInfoView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+//        runningInfoView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
