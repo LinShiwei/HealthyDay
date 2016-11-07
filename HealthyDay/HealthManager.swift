@@ -77,12 +77,8 @@ internal final class HealthManager{
     }
 //MARK: Help func
     private func createQuantitySampleQuery(inDate date:Date = Date(), typeIdentifier identifier:HKQuantityTypeIdentifier, periodDataType type:PeriodDataType, completion:  @escaping (HKSampleQuery,[HKSample]?,Error?)->Void)->HKSampleQuery{
-    
-        let beginningDate : Date = {
-            let secondOffset = TimeZone.current.secondsFromGMT()
-            let interval = intervalInPeriod(periodDataType: type)
-            return Date(timeInterval: Double(-secondOffset - interval), since: date)
-        }()
+        
+        let beginningDate = getBeginningDate(withPeriodDataType: type, ofDate: date)
         let endDate = type == .Specified ? beginningDate.addingTimeInterval(3600*24) : date
         let readingType = HKQuantityType.quantityType(forIdentifier: identifier)!
         let currentDayPredicate = HKQuery.predicateForSamples(withStart: beginningDate, end: endDate, options: HKQueryOptions())
@@ -104,16 +100,25 @@ internal final class HealthManager{
         }()
         var counts = [Int]()
         var count = 0
-        var perDay = Date(timeInterval: 24*3600, since: samples[0].startDate)
+        var perDay = Date(timeInterval: 24*3600, since: calendar.startOfDay(for: samples[0].endDate))
+        
         for sample in samples{
-            if sample.startDate <= perDay {
+            if sample.endDate <= perDay {
                 count += Int((sample as! HKQuantitySample).quantity.doubleValue(for: unit))
             }else{
-                counts.append(count)
-                count = Int((sample as! HKQuantitySample).quantity.doubleValue(for: unit))
+                let interval = sample.endDate.timeIntervalSince(sample.startDate)
+                if sample.startDate+interval/2 <= perDay {
+                    count += Int((sample as! HKQuantitySample).quantity.doubleValue(for: unit))
+                    counts.append(count)
+                    count = 0
+                }else{
+                    counts.append(count)
+                    count = Int((sample as! HKQuantitySample).quantity.doubleValue(for: unit))
+                }
                 perDay = Date(timeInterval: 24*3600, since: perDay)
             }
         }
+        
         counts.append(count)
         switch type {
         case .Current,.Specified:
@@ -125,16 +130,15 @@ internal final class HealthManager{
         }
         return counts
     }
-    
-    private func intervalInPeriod(periodDataType type:PeriodDataType)->Int{
-        let currentSeconds = Int(Date().timeIntervalSince1970)%(24*3600)
+
+    private func getBeginningDate(withPeriodDataType type:PeriodDataType, ofDate date:Date)->Date{
         switch type {
         case .Current,.Specified:
-            return currentSeconds
+            return calendar.startOfDay(for: date)
         case .Weekly:
-            return 6*24*3600+currentSeconds
+            return calendar.date(byAdding: .day, value: -6, to: calendar.startOfDay(for: date))!
         case .Monthly:
-            return 29*24*3600+currentSeconds
+            return calendar.date(byAdding: .day, value: -29, to: calendar.startOfDay(for: date))!
         }
     }
 }
