@@ -19,7 +19,7 @@ class StepDetailViewController: UIViewController {
     }
     internal var distances = [Int](){
         didSet{
-            print(distances)
+//            print(distances)
         }
     }
     

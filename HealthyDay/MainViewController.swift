@@ -43,9 +43,7 @@ internal class MainViewController: UIViewController {
 //            NSForegroundColorAttributeName : theme.darkTextColor,
             NSFontAttributeName : UIFont.systemFont(ofSize: 17)
         ]
-        
-        
-        
+       
         healthManager.authorize{(success,error) in
             print("Error == \(error)")
             print("HealthKit authorize: \(success)")

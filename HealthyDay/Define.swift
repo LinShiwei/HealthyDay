@@ -12,8 +12,13 @@ internal let windowBounds = UIScreen.main.bounds
 internal let calendar = Calendar(identifier: .republicOfChina)
 internal let theme = Theme.shared
 
-internal func rgbColor(red:CGFloat, green:CGFloat, blue:CGFloat, alpha:CGFloat)->UIColor{
-    return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0 , alpha: alpha)
+//Determine the running data source, can choose between web server:linshiwei.win and CoreData.
+internal let dataSource = DataSource.coreData
+
+
+enum DataSource {
+    case coreData
+    case linshiwei_win
 }
 
 extension Date{
@@ -24,6 +29,10 @@ extension Date{
     }
 }
 //MARK: Helper func
+internal func rgbColor(red:CGFloat, green:CGFloat, blue:CGFloat, alpha:CGFloat)->UIColor{
+    return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0 , alpha: alpha)
+}
+
 internal func durationFormatter(secondsDuration duration:Int)->String{
     let seconds = duration%60
     let minutes = (duration%3600)/60
