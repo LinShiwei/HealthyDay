@@ -32,9 +32,14 @@ internal class DistanceDetailViewController: UIViewController {
 //MARK: View
     override func viewDidLoad() {
         super.viewDidLoad()
-        distances = dataSourceManager.getAllRunningData()
-        distancesInfo = classifyDistances(distances: distances)
-        distanceDetailTableView.reloadData()
+        dataSourceManager.getAllRunningData{ [unowned self] (success,items) in
+            if success ,let distanceItems = items {
+                self.distances = distanceItems
+                self.distancesInfo = self.classifyDistances(distances: self.distances)
+                self.distanceDetailTableView.reloadData()
+            }
+            
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,20 +52,21 @@ internal class DistanceDetailViewController: UIViewController {
 //MARK: Helper
     //Classify distances with month
     private func classifyDistances(distances:[DistanceDetailItem])->[DistancesInfo]{
-        assert(distances.count > 0)
         var info = [DistancesInfo]()
-        var dateDescription = distances[0].date.formatDescription()
-        var month = dateDescription.substring(to: dateDescription.index(dateDescription.startIndex, offsetBy: 7))
-        var infoIndex = 0
-        info.append(DistancesInfo(month: month, count: 0))
-        for distance in distances {
-            if distance.date.formatDescription().contains(month){
-                info[infoIndex].count += 1
-            }else{
-                dateDescription = distance.date.formatDescription()
-                month = dateDescription.substring(to: dateDescription.index(dateDescription.startIndex, offsetBy: 7))
-                info.append(DistancesInfo(month: month, count: 1))
-                infoIndex += 1
+        if distances.count > 0 {
+            var dateDescription = distances[0].date.formatDescription()
+            var month = dateDescription.substring(to: dateDescription.index(dateDescription.startIndex, offsetBy: 7))
+            var infoIndex = 0
+            info.append(DistancesInfo(month: month, count: 0))
+            for distance in distances {
+                if distance.date.formatDescription().contains(month){
+                    info[infoIndex].count += 1
+                }else{
+                    dateDescription = distance.date.formatDescription()
+                    month = dateDescription.substring(to: dateDescription.index(dateDescription.startIndex, offsetBy: 7))
+                    info.append(DistancesInfo(month: month, count: 1))
+                    infoIndex += 1
+                }
             }
         }
         return info

@@ -42,6 +42,8 @@
 		5692025A1DA0F7C500D9DA33 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569202591DA0F7C500D9DA33 /* StepBar.swift */; };
 		56B03C881DA1FB6A0071CBB4 /* StepDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B03C861DA1FB6A0071CBB4 /* StepDetailViewController.swift */; };
 		56BC4F4C1D9FF2B80074B498 /* StepBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */; };
+		56BF22651DD9F8CB008CA28C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BF22641DD9F8CB008CA28C /* SwiftyJSON.framework */; };
+		56BF22671DD9F8D4008CA28C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BF22661DD9F8D4008CA28C /* Alamofire.framework */; };
 		56D631E91D98ECE7008232FA /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D631E81D98ECE7008232FA /* Define.swift */; };
 		56DDFAA11DAF28A700A71405 /* DistanceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DDFAA01DAF28A700A71405 /* DistanceDetailViewController.swift */; };
 		56FF26911DAA2816001E04C6 /* GPSNotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF26901DAA2816001E04C6 /* GPSNotationView.swift */; };
@@ -114,6 +116,8 @@
 		569202591DA0F7C500D9DA33 /* StepBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		56B03C861DA1FB6A0071CBB4 /* StepDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepDetailViewController.swift; sourceTree = "<group>"; };
 		56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBarChartView.swift; sourceTree = "<group>"; };
+		56BF22641DD9F8CB008CA28C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		56BF22661DD9F8D4008CA28C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		56D631E81D98ECE7008232FA /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		56DDFAA01DAF28A700A71405 /* DistanceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceDetailViewController.swift; sourceTree = "<group>"; };
 		56FF26901DAA2816001E04C6 /* GPSNotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPSNotationView.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56BF22671DD9F8D4008CA28C /* Alamofire.framework in Frameworks */,
+				56BF22651DD9F8CB008CA28C /* SwiftyJSON.framework in Frameworks */,
 				5603168B1DAF96F500C04B8A /* CoreData.framework in Frameworks */,
 				56130D881D9AB4FC005334FF /* MapKit.framework in Frameworks */,
 				560E1BCB1D953F7F00B488AE /* HealthKit.framework in Frameworks */,
@@ -190,6 +196,8 @@
 		560E1BC91D953F7F00B488AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56BF22661DD9F8D4008CA28C /* Alamofire.framework */,
+				56BF22641DD9F8CB008CA28C /* SwiftyJSON.framework */,
 				5603168A1DAF96F500C04B8A /* CoreData.framework */,
 				56629EB81D9B8D8900720F0A /* Nimble.framework */,
 				56629EB61D9B8D8300720F0A /* Quick.framework */,
@@ -319,6 +327,7 @@
 				560E1BA11D953D3600B488AE /* Sources */,
 				560E1BA21D953D3600B488AE /* Frameworks */,
 				560E1BA31D953D3600B488AE /* Resources */,
+				56BF22681DD9F8E2008CA28C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -421,6 +430,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		56BF22681DD9F8E2008CA28C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		560E1BA11D953D3600B488AE /* Sources */ = {

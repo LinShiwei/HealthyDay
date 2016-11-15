@@ -8,18 +8,17 @@
 
 import UIKit
 import CoreData
+import SwiftyJSON
+import Alamofire
 
 internal final class DataSourceManager{
     static let sharedDataSourceManager = DataSourceManager()
-
-    fileprivate var objects = [NSManagedObject]()
-
     private init(){
     }
     
 //MARK: DataSource API
-    internal func getAllRunningData()->[DistanceDetailItem]{
-        return dataSource == .linshiwei_win ? getAllRunningDataFromServer() : getAllRunningDataFromCoreData()
+    internal func getAllRunningData(_ completion: @escaping (Bool,[DistanceDetailItem]?)->Void){
+        dataSource == .linshiwei_win ? getAllRunningDataFromServer(completion) : getAllRunningDataFromCoreData(completion)
     }
     
     internal func saveOneRunningData(dataItem: DistanceDetailItem){
@@ -31,7 +30,9 @@ internal final class DataSourceManager{
     }
     
 //MARK: CoreData data
-    private func getAllRunningDataFromCoreData()->[DistanceDetailItem]{
+    fileprivate var objects = [NSManagedObject]()
+
+    private func getAllRunningDataFromCoreData(_ completion: @escaping (Bool,[DistanceDetailItem]?)->Void){
         var distances = [DistanceDetailItem]()
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Running")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
@@ -50,7 +51,8 @@ internal final class DataSourceManager{
             distances = mockDistancesData()
             saveDistancesToCoreData(distances: distances)
         }
-        return distances
+        completion(true,distances)
+//        return distances
     }
     
     private func saveOneRunningDataToCoreData(dataItem: DistanceDetailItem){
@@ -127,16 +129,83 @@ internal final class DataSourceManager{
         }
     }
 //MARK: Web server
-    private func getAllRunningDataFromServer()->[DistanceDetailItem]{
-        
-        return []
+    private let serverAPIAddress = "http://www.linshiwei.win/healthyday.php?key=lsw"
+    
+    func getAllRunningDataFromServer(_ completion: @escaping (Bool,[DistanceDetailItem]?)->Void){
+        let url = URL(string:serverAPIAddress + "&query=get")!
+        Alamofire.request(url).responseJSON{ response in
+            if let anyValue = response.result.value{
+                let json = JSON(anyValue)
+                print(json)
+                if json["status"].boolValue == true , let itemData = json["runningdata"].array {
+                    var items = [DistanceDetailItem]()
+                    for data in itemData{
+                        if let duration = data["duration"].int, let durationPerKilometer = data["durationPerKilometer"].int, let distance = data["distance"].double, let dateString = data["date"].string {
+                            
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                            if let date = dateFormatter.date(from: dateString){
+                                items.append(DistanceDetailItem(date: date, distance: distance, duration: duration, durationPerKilometer: durationPerKilometer))
+                            }else{
+                                print("date format invalid")
+                            }
+                        }else{
+                            print("data from server invalid")
+                        }
+                    }
+                    completion(true,items)
+                }else{
+                    completion(false,nil)
+                    print("json data format invalid")
+                }
+            }else{
+                DispatchQueue.main.async {
+                    completion(false,nil)
+                    print("fail to fetch data")
+                }
+            }
+        }
+//        return items
     }
     
-    private func saveOneRunningDataToServer(dataItem: DistanceDetailItem){
-        
+    func saveOneRunningDataToServer(dataItem: DistanceDetailItem){
+        let dateString = dataItem.date.formatDescription().replacingOccurrences(of: " ", with: "_")
+        let url = URL(string: serverAPIAddress + "&query=set&date=\(dateString)&distance=\(dataItem.distance)&duration=\(dataItem.duration)&durationperkilometer=\(dataItem.durationPerKilometer)")!
+        Alamofire.request(url).responseJSON{ response in
+            if let anyValue = response.result.value{
+                let json = JSON(anyValue)
+                print(json)
+                if json["status"].boolValue == true {
+                    print("save running data to server successfully")
+                }else{
+                    print("fail to save running data to server")
+                }
+            }else{
+                DispatchQueue.main.async {
+                    print("fail to fetch response JSON data")
+                }
+            }
+        }
     }
     
-    private func deleteOneRunningDataInServer(dataItem: DistanceDetailItem){
-        
+    func deleteOneRunningDataInServer(dataItem: DistanceDetailItem){
+        let dateString = dataItem.date.formatDescription()
+        let url = URL(string: serverAPIAddress + "&query=delete&date=\(dateString.replacingOccurrences(of: " ", with: "_"))")!
+        print(url)
+        Alamofire.request(url).responseJSON{ response in
+            if let anyValue = response.result.value{
+                let json = JSON(anyValue)
+                print(json)
+                if json["status"].boolValue == true {
+                    print("delete running data in server successfully")
+                }else{
+                    print("fail to delete running data in server")
+                }
+            }else{
+                DispatchQueue.main.async {
+                    print("fail to fetch response JSON data")
+                }
+            }
+        }
     }
 }
