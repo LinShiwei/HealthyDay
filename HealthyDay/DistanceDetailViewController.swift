@@ -97,7 +97,11 @@ extension DistanceDetailViewController: UITableViewDelegate{
     @objc(tableView:commitEditingStyle:forRowAtIndexPath:) func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let index = indexInDistancesArray(withIndexPath: indexPath)
-            dataSourceManager.deleteOneRunningData(dataItem: distances[index])
+            dataSourceManager.deleteOneRunningData(dataItem: distances[index]){ success in
+                if !success {
+                    print("fail to delete distance dataItem")
+                }
+            }
             distances.remove(at: index)
             distancesInfo[indexPath.section].count -= 1
             tableView.deleteRows(at: [indexPath], with: .fade)

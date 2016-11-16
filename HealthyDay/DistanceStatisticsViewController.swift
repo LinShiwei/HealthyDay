@@ -108,7 +108,7 @@ class DistanceStatisticsViewController: UIViewController {
             currentPeriodDescription = "\(calendar.component(.year, from: Date())+1911)年"
         case 3:
             statisticeManager.type = .All
-            currentPeriodDescription = ""
+            currentPeriodDescription = "全部"
         default:
             fatalError("SegmentedControl only has 4 segments")
         }

@@ -16,21 +16,21 @@ internal final class DataSourceManager{
     private init(){
     }
     
-//MARK: DataSource API
+//MARK: DataSource API (Strategy-design pattern)
     internal func getAllRunningData(_ completion: @escaping (Bool,[DistanceDetailItem]?)->Void){
         dataSource == .linshiwei_win ? getAllRunningDataFromServer(completion) : getAllRunningDataFromCoreData(completion)
     }
     
-    internal func saveOneRunningData(dataItem: DistanceDetailItem){
-        dataSource == .linshiwei_win ? saveOneRunningDataToServer(dataItem: dataItem) : saveOneRunningDataToCoreData(dataItem: dataItem)
+    internal func saveOneRunningData(dataItem: DistanceDetailItem,_ completion: ((Bool) -> Void)?=nil){
+        dataSource == .linshiwei_win ? saveOneRunningDataToServer(dataItem: dataItem,completion) : saveOneRunningDataToCoreData(dataItem: dataItem,completion)
     }
     
-    internal func deleteOneRunningData(dataItem: DistanceDetailItem){
-        dataSource == .linshiwei_win ? deleteOneRunningDataInServer(dataItem: dataItem) : deleteOneRunningDataInCoreData(dataItem: dataItem)
+    internal func deleteOneRunningData(dataItem: DistanceDetailItem,_ completion: ((Bool) -> Void)?=nil){
+        dataSource == .linshiwei_win ? deleteOneRunningDataInServer(dataItem: dataItem,completion) : deleteOneRunningDataInCoreData(dataItem: dataItem,completion)
     }
     
-//MARK: CoreData data
-    fileprivate var objects = [NSManagedObject]()
+//MARK: CoreData data Private API
+    private var objects = [NSManagedObject]()
 
     private func getAllRunningDataFromCoreData(_ completion: @escaping (Bool,[DistanceDetailItem]?)->Void){
         var distances = [DistanceDetailItem]()
@@ -52,10 +52,9 @@ internal final class DataSourceManager{
             saveDistancesToCoreData(distances: distances)
         }
         completion(true,distances)
-//        return distances
     }
     
-    private func saveOneRunningDataToCoreData(dataItem: DistanceDetailItem){
+    private func saveOneRunningDataToCoreData(dataItem: DistanceDetailItem,_ completion: ((Bool) -> Void)?=nil){
         DispatchQueue.global().async{[unowned self] in
             let managedContext = self.getManagedContext()
             let entity = NSEntityDescription.entity(forEntityName: "Running", in:managedContext)
@@ -69,11 +68,14 @@ internal final class DataSourceManager{
             }
             catch let error as NSError {
                 print("Could not save \(error), \(error.userInfo)")
+                completion?(false)
             }
+            completion?(true)
+
         }
     }
     
-    private func deleteOneRunningDataInCoreData(dataItem: DistanceDetailItem){
+    private func deleteOneRunningDataInCoreData(dataItem: DistanceDetailItem,_ completion: ((Bool) -> Void)?=nil){
         let managedContext = getManagedContext()
         let count = objects.count
         for (index,object) in objects.enumerated() where object.value(forKey: "date") as! Date == dataItem.date {
@@ -83,10 +85,12 @@ internal final class DataSourceManager{
             }
             catch let error as NSError {
                 print("Could not save \(error), \(error.userInfo)")
+                completion?(false)
             }
             objects.remove(at: index)
         }
         assert(objects.count == count - 1)
+        completion?(true)
     }
     //MARK: CoreData helper
     private func getManagedContext()->NSManagedObjectContext{
@@ -128,15 +132,14 @@ internal final class DataSourceManager{
             }
         }
     }
-//MARK: Web server
+//MARK: Web server Private API
     private let serverAPIAddress = "http://www.linshiwei.win/healthyday.php?key=lsw"
     
-    func getAllRunningDataFromServer(_ completion: @escaping (Bool,[DistanceDetailItem]?)->Void){
+    private func getAllRunningDataFromServer(_ completion: @escaping (Bool,[DistanceDetailItem]?)->Void){
         let url = URL(string:serverAPIAddress + "&query=get")!
         Alamofire.request(url).responseJSON{ response in
             if let anyValue = response.result.value{
                 let json = JSON(anyValue)
-                print(json)
                 if json["status"].boolValue == true , let itemData = json["runningdata"].array {
                     var items = [DistanceDetailItem]()
                     for data in itemData{
@@ -165,44 +168,46 @@ internal final class DataSourceManager{
                 }
             }
         }
-//        return items
     }
     
-    func saveOneRunningDataToServer(dataItem: DistanceDetailItem){
+    private func saveOneRunningDataToServer(dataItem: DistanceDetailItem,_ completion: ((Bool) -> Void)?=nil){
         let dateString = dataItem.date.formatDescription().replacingOccurrences(of: " ", with: "_")
         let url = URL(string: serverAPIAddress + "&query=set&date=\(dateString)&distance=\(dataItem.distance)&duration=\(dataItem.duration)&durationperkilometer=\(dataItem.durationPerKilometer)")!
         Alamofire.request(url).responseJSON{ response in
             if let anyValue = response.result.value{
                 let json = JSON(anyValue)
-                print(json)
                 if json["status"].boolValue == true {
                     print("save running data to server successfully")
+                    completion?(true)
                 }else{
                     print("fail to save running data to server")
+                    completion?(false)
                 }
             }else{
                 DispatchQueue.main.async {
+                    completion?(false)
                     print("fail to fetch response JSON data")
                 }
             }
         }
     }
     
-    func deleteOneRunningDataInServer(dataItem: DistanceDetailItem){
+    private func deleteOneRunningDataInServer(dataItem: DistanceDetailItem,_ completion: ((Bool) -> Void)?=nil){
         let dateString = dataItem.date.formatDescription()
         let url = URL(string: serverAPIAddress + "&query=delete&date=\(dateString.replacingOccurrences(of: " ", with: "_"))")!
-        print(url)
         Alamofire.request(url).responseJSON{ response in
             if let anyValue = response.result.value{
                 let json = JSON(anyValue)
-                print(json)
                 if json["status"].boolValue == true {
+                    completion?(true)
                     print("delete running data in server successfully")
                 }else{
+                    completion?(false)
                     print("fail to delete running data in server")
                 }
             }else{
                 DispatchQueue.main.async {
+                    completion?(false)
                     print("fail to fetch response JSON data")
                 }
             }

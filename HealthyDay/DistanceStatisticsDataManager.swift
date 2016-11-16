@@ -20,7 +20,11 @@ internal final class DistanceStatisticsDataManager {
     }
 
 //MARK: Private property
-    private let currentDate = Date()
+    private var currentDate : Date{
+        get{
+            return Date()
+        }
+    }
     private var dateInterval = DateInterval()
     private init(){}
     
@@ -44,7 +48,7 @@ internal final class DistanceStatisticsDataManager {
             return ["1","2","3","4","5","6","7","8","9","10","11","12"]
         case .All:
             guard distances.count > 0 else{
-                return [String(calendar.component(.year, from: Date()))]
+                return [String(1911+calendar.component(.year, from: Date()))]
             }
             let firstYear = calendar.component(.year, from: distances.first!.date)
             let lastYear = calendar.component(.year, from: distances.last!.date)
@@ -198,6 +202,9 @@ internal final class DistanceStatisticsDataManager {
     }
     
     private func getAllDistanceStatistics()->[Double]{
+        guard distances.count > 0 else {
+            return [0.0]
+        }
         var results = [Double]()
         var distance = 0.0
         let year = calendar.component(.year, from: distances.first!.date)
