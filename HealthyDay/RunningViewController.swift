@@ -8,11 +8,11 @@
 
 import UIKit
 import MapKit
-import CoreData
 
 internal class RunningViewController: UIViewController {
 
     private let locationManager = LocationManager.sharedLocationManager
+    private let dataSourceManager = DataSourceManager.sharedDataSourceManager
     fileprivate var runningCoordiantes = [CLLocationCoordinate2D]()
     
     fileprivate var hasLocated = false
@@ -27,7 +27,7 @@ internal class RunningViewController: UIViewController {
             }else{
                 timer?.invalidate()
                 timer = nil
-                saveRunningDataToCoreData()
+                saveRunningData()
                 locationManager.stopUpdate()
             }
         }
@@ -127,22 +127,9 @@ internal class RunningViewController: UIViewController {
         
     }
 
-    private func saveRunningDataToCoreData(){
-        DispatchQueue.global().async{[unowned self] in
-            let managedContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-            let entity = NSEntityDescription.entity(forEntityName: "Running", in:managedContext)
-            let distanceObject = NSManagedObject(entity: entity!, insertInto: managedContext)
-            distanceObject.setValue(Date().addingTimeInterval(-(Double)(self.runningDuration)), forKey: "date")
-            distanceObject.setValue(self.runningDuration, forKey: "duration")
-            distanceObject.setValue(self.runningDistance, forKey: "distance")
-            distanceObject.setValue(self.durationPerKilometer, forKey: "durationPerKilometer")
-            do {
-                try managedContext.save()
-            }
-            catch let error as NSError {
-                print("Could not save \(error), \(error.userInfo)")
-            }
-        }
+    private func saveRunningData(){
+        let dataItem = DistanceDetailItem(date: Date().addingTimeInterval(-(Double)(self.runningDuration)), distance: runningDistance, duration: runningDuration, durationPerKilometer: durationPerKilometer)
+        dataSourceManager.saveOneRunningData(dataItem: dataItem)
     }
     
 //MARK: Selector

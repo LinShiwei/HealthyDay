@@ -43,9 +43,7 @@ internal class MainViewController: UIViewController {
 //            NSForegroundColorAttributeName : theme.darkTextColor,
             NSFontAttributeName : UIFont.systemFont(ofSize: 17)
         ]
-        
-        
-        
+       
         healthManager.authorize{(success,error) in
             print("Error == \(error)")
             print("HealthKit authorize: \(success)")
@@ -59,6 +57,12 @@ internal class MainViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = runningBarItem
         stepBarItem.addTarget(self, action:  #selector(MainViewController.swipeLeft(_:progress:velocity:)), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = stepBarItem
+        
+//        let dataManager = DataSourceManager.sharedDataSourceManager
+//        let date = Date()
+//        let item = DistanceDetailItem(date: date, distance: 3000.33, duration: 600, durationPerKilometer: 200)
+//        dataManager.saveOneRunningDataToServer(dataItem: item)
+//        
     }
 
     override func viewWillAppear(_ animated: Bool){
