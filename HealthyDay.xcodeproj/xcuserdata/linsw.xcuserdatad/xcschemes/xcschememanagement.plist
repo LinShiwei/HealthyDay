@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>HealthyDay-OC.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>HealthyDay.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>560E1BB81D953D3700B488AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>56F6709C1DDD54200035FF01</key>
 		<dict>
 			<key>primary</key>
 			<true/>
