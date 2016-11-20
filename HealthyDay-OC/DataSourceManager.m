@@ -34,7 +34,7 @@
     }
     return self;
 }
-
+#pragma mark Public API
 - (void)getAllRunningDataWithCompletion:(void(^)(BOOL,NSArray<DistanceDetailItem *> * _Nullable))completion{
 //    _dataSource == Linshiwei_win ?
     [self getDataFromCoreDataWithCompletion:completion];
@@ -48,7 +48,7 @@
     [self deleteOneRunningDataItem:dataItem withCompletion:completion];
 }
 
-#pragma mark CoreData data Private API
+#pragma mark Private CoreData data API
 - (void)getDataFromCoreDataWithCompletion:(void(^)(BOOL,NSArray<DistanceDetailItem *> * _Nullable))completion{
     NSMutableArray<DistanceDetailItem *> *distances;
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Running"];

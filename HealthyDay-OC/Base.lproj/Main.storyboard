@@ -508,7 +508,7 @@
         <!--户外跑步-->
         <scene sceneID="wMe-Ob-lcb">
             <objects>
-                <viewController title="户外跑步" id="nrN-vp-hld" sceneMemberID="viewController">
+                <viewController title="户外跑步" id="nrN-vp-hld" customClass="RunningViewController_OC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dyy-ke-PSi"/>
                         <viewControllerLayoutGuide type="bottom" id="ftZ-V2-TrL"/>
@@ -518,7 +518,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbT-uT-ka1"/>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psA-rE-9uI" customClass="RunningInfomationView" customModule="HealthyDay_OC" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psA-rE-9uI" customClass="RunningInfomationView_OC">
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Cu-oh-jVH">
                                         <subviews>
@@ -592,6 +592,9 @@
                                                 <state key="normal" title="开始">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="tapToStartRunning:" destination="nrN-vp-hld" eventType="touchUpInside" id="Cyi-5M-4M1"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -678,6 +681,13 @@
                             <constraint firstItem="IbT-uT-ka1" firstAttribute="top" secondItem="Dyy-ke-PSi" secondAttribute="bottom" id="ucZ-X1-gYs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="durationPerKilometerLabel" destination="8RS-8I-dUB" id="FIe-sm-E8J"/>
+                        <outlet property="mapView" destination="IbT-uT-ka1" id="btw-6a-owb"/>
+                        <outlet property="runningDistanceLabel" destination="HXT-EK-NZC" id="TIg-8f-LhL"/>
+                        <outlet property="runningDurationLabel" destination="v7R-7f-Oc4" id="0xI-1I-1QX"/>
+                        <outlet property="runningInfoView" destination="psA-rE-9uI" id="YDp-Z1-enf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7g-gE-Unj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

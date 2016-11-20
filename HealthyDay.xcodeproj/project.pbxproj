@@ -48,6 +48,10 @@
 		56DDFAA11DAF28A700A71405 /* DistanceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DDFAA01DAF28A700A71405 /* DistanceDetailViewController.swift */; };
 		56EE64691DE17DAD005A14A1 /* DataSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE64681DE17DAD005A14A1 /* DataSourceManager.m */; };
 		56EE64701DE18A82005A14A1 /* DistanceDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE646F1DE18A82005A14A1 /* DistanceDetailItem.m */; };
+		56EE64731DE1C5A4005A14A1 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE64721DE1C5A4005A14A1 /* LocationManager.m */; };
+		56EE64811DE1CB74005A14A1 /* RunningViewController_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE64801DE1CB74005A14A1 /* RunningViewController_OC.m */; };
+		56EE64841DE1CB8F005A14A1 /* GPSNotationView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE64831DE1CB8F005A14A1 /* GPSNotationView_OC.m */; };
+		56EE64871DE1CBB8005A14A1 /* RunningInfomationView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE64861DE1CBB8005A14A1 /* RunningInfomationView_OC.m */; };
 		56F670A11DDD54200035FF01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F670A01DDD54200035FF01 /* main.m */; };
 		56F670A41DDD54200035FF01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F670A31DDD54200035FF01 /* AppDelegate.m */; };
 		56F670AA1DDD54200035FF01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56F670A81DDD54200035FF01 /* Main.storyboard */; };
@@ -139,6 +143,14 @@
 		56EE64681DE17DAD005A14A1 /* DataSourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceManager.m; sourceTree = "<group>"; };
 		56EE646E1DE18A82005A14A1 /* DistanceDetailItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceDetailItem.h; sourceTree = "<group>"; };
 		56EE646F1DE18A82005A14A1 /* DistanceDetailItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDetailItem.m; sourceTree = "<group>"; };
+		56EE64711DE1C5A4005A14A1 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		56EE64721DE1C5A4005A14A1 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		56EE647F1DE1CB74005A14A1 /* RunningViewController_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningViewController_OC.h; sourceTree = "<group>"; };
+		56EE64801DE1CB74005A14A1 /* RunningViewController_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningViewController_OC.m; sourceTree = "<group>"; };
+		56EE64821DE1CB8F005A14A1 /* GPSNotationView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSNotationView_OC.h; sourceTree = "<group>"; };
+		56EE64831DE1CB8F005A14A1 /* GPSNotationView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSNotationView_OC.m; sourceTree = "<group>"; };
+		56EE64851DE1CBB8005A14A1 /* RunningInfomationView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningInfomationView_OC.h; sourceTree = "<group>"; };
+		56EE64861DE1CBB8005A14A1 /* RunningInfomationView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningInfomationView_OC.m; sourceTree = "<group>"; };
 		56F6709D1DDD54200035FF01 /* HealthyDay-OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HealthyDay-OC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F670A01DDD54200035FF01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		56F670A21DDD54200035FF01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -370,11 +382,81 @@
 			name = PublicDefine;
 			sourceTree = "<group>";
 		};
-		56F6709E1DDD54200035FF01 /* HealthyDay-OC */ = {
+		56EE64741DE1C9DF005A14A1 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
 				56F670BB1DDD86390035FF01 /* MainViewController_OC.h */,
 				56F670BC1DDD86390035FF01 /* MainViewController_OC.m */,
+				56EE64751DE1C9F1005A14A1 /* MainInfoView */,
+				56EE64761DE1CA0E005A14A1 /* StepBarChart */,
+				56EE64771DE1CA2D005A14A1 /* BarItem */,
+			);
+			name = MainViewController;
+			sourceTree = "<group>";
+		};
+		56EE64751DE1C9F1005A14A1 /* MainInfoView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MainInfoView;
+			sourceTree = "<group>";
+		};
+		56EE64761DE1CA0E005A14A1 /* StepBarChart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = StepBarChart;
+			sourceTree = "<group>";
+		};
+		56EE64771DE1CA2D005A14A1 /* BarItem */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BarItem;
+			sourceTree = "<group>";
+		};
+		56EE64781DE1CA4B005A14A1 /* RunningViewController */ = {
+			isa = PBXGroup;
+			children = (
+				56EE647F1DE1CB74005A14A1 /* RunningViewController_OC.h */,
+				56EE64801DE1CB74005A14A1 /* RunningViewController_OC.m */,
+				56EE64821DE1CB8F005A14A1 /* GPSNotationView_OC.h */,
+				56EE64831DE1CB8F005A14A1 /* GPSNotationView_OC.m */,
+				56EE64851DE1CBB8005A14A1 /* RunningInfomationView_OC.h */,
+				56EE64861DE1CBB8005A14A1 /* RunningInfomationView_OC.m */,
+			);
+			name = RunningViewController;
+			sourceTree = "<group>";
+		};
+		56EE64791DE1CA58005A14A1 /* DistanceDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				56EE647A1DE1CA69005A14A1 /* DistanceStatisticsViewController */,
+			);
+			name = DistanceDetailViewController;
+			sourceTree = "<group>";
+		};
+		56EE647A1DE1CA69005A14A1 /* DistanceStatisticsViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DistanceStatisticsViewController;
+			sourceTree = "<group>";
+		};
+		56EE647B1DE1CA85005A14A1 /* StepDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = StepDetailViewController;
+			sourceTree = "<group>";
+		};
+		56F6709E1DDD54200035FF01 /* HealthyDay-OC */ = {
+			isa = PBXGroup;
+			children = (
+				56EE64741DE1C9DF005A14A1 /* MainViewController */,
+				56EE64781DE1CA4B005A14A1 /* RunningViewController */,
+				56EE64791DE1CA58005A14A1 /* DistanceDetailViewController */,
+				56EE647B1DE1CA85005A14A1 /* StepDetailViewController */,
 				56FC391B1DE00990000E2F74 /* HelpManager */,
 				56F6709F1DDD54200035FF01 /* Supporting Files */,
 				56EE646D1DE18A43005A14A1 /* PublicDefine */,
@@ -404,6 +486,8 @@
 				56FC391E1DE01E59000E2F74 /* HealthManager.m */,
 				56EE64671DE17DAD005A14A1 /* DataSourceManager.h */,
 				56EE64681DE17DAD005A14A1 /* DataSourceManager.m */,
+				56EE64711DE1C5A4005A14A1 /* LocationManager.h */,
+				56EE64721DE1C5A4005A14A1 /* LocationManager.m */,
 			);
 			name = HelpManager;
 			sourceTree = "<group>";
@@ -644,13 +728,17 @@
 			files = (
 				56FC39261DE03CC3000E2F74 /* Theme.m in Sources */,
 				56F670BD1DDD86390035FF01 /* MainViewController_OC.m in Sources */,
+				56EE64871DE1CBB8005A14A1 /* RunningInfomationView_OC.m in Sources */,
 				56F670AD1DDD54200035FF01 /* HealthyDay_OC.xcdatamodeld in Sources */,
+				56EE64731DE1C5A4005A14A1 /* LocationManager.m in Sources */,
 				56FC39291DE06118000E2F74 /* NSDate+NSDate_formatDescription.m in Sources */,
 				56EE64701DE18A82005A14A1 /* DistanceDetailItem.m in Sources */,
 				56FC39231DE03AE9000E2F74 /* Define.m in Sources */,
 				56EE64691DE17DAD005A14A1 /* DataSourceManager.m in Sources */,
 				56F670A41DDD54200035FF01 /* AppDelegate.m in Sources */,
 				56F670A11DDD54200035FF01 /* main.m in Sources */,
+				56EE64811DE1CB74005A14A1 /* RunningViewController_OC.m in Sources */,
+				56EE64841DE1CB8F005A14A1 /* GPSNotationView_OC.m in Sources */,
 				56FC391F1DE01E59000E2F74 /* HealthManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

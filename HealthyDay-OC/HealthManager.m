@@ -34,6 +34,7 @@
     return self;
 }
 
+#pragma mark Public API
 -(void)authorizeWithCompletion:(void(^)(BOOL,NSError* _Nullable))completion{
     NSSet *typesToRead = [NSSet setWithArray:@[
                                                [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount],

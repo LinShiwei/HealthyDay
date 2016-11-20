@@ -46,7 +46,7 @@ internal final class LocationManager {
         locationManager.stopUpdatingLocation()
     }
     
-    private func initLocatingParameter(){
+    private func initLocationParameter(){
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10.0
     }
