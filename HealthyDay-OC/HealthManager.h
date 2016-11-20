@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import <UIKit/UIKit.h>
+#import <HealthKit/HealthKit.h>
 
 enum PeriodDataType{
     Specified,
@@ -17,18 +17,17 @@ enum PeriodDataType{
 };
 
 @interface HealthManager : NSObject
-
+NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sharedHealthManager;
 
--(void)authorizeWithCompletion:(void(^)(BOOL,NSError*))completion;
+-(void)authorizeWithCompletion:(void(^)(BOOL,NSError* _Nullable))completion;
 
--(void)readStepCountInDate:(NSDate*)date withPeriodDataType:(enum PeriodDataType)type withCompletion:(void(^)(NSInteger[],NSError*))completion;
--(void)readStepCountWithPeriodDataType:(enum PeriodDataType)type withCompletion:(void(^)(NSInteger[],NSError*))completion;
+-(void)readStepCountInDate:(NSDate*)date withPeriodDataType:(enum PeriodDataType)type withCompletion:(void(^)(NSArray<NSNumber *> * _Nullable,NSError* _Nullable))completion;
+-(void)readStepCountWithPeriodDataType:(enum PeriodDataType)type withCompletion:(void(^)(NSArray<NSNumber *> * _Nullable,NSError* _Nullable))completion;
 
--(void)readDistanceWalkingRunningInDate:(NSDate*)date withPeriodType:(enum PeriodDataType)type withCompletion:(void(^)(NSInteger[],NSError*))completion;
--(void)readDistanceWalkingRunningWithPeriodType:(enum PeriodDataType)type withCompletion:(void(^)(NSInteger[],NSError*))completion;
+-(void)readDistanceWalkingRunningInDate:(NSDate*)date withPeriodType:(enum PeriodDataType)type withCompletion:(void(^)(NSArray<NSNumber *> * _Nullable,NSError* _Nullable))completion;
+-(void)readDistanceWalkingRunningWithPeriodType:(enum PeriodDataType)type withCompletion:(void(^)(NSArray<NSNumber *> * _Nullable,NSError* _Nullable))completion;
 
--(void)readDetailStepCountInDate:(NSDate*)date withCompletion:(void(^)(HKSample[],NSError*))completion;
--(void)readDetailStepCountWithCompletion:(void(^)(HKSample[],NSError*))completion;
-
+-(void)readDetailStepCountInDate:(NSDate*)date withCompletion:(void(^)(NSArray<HKSample *> * _Nullable,NSError * _Nullable))completion;
+NS_ASSUME_NONNULL_END
 @end

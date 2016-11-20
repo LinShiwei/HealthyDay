@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "Theme.h"
-enum DataSource{
-    CoreData,Linshiwei_win
-};
+
 @interface Define : NSObject
 + (instancetype)sharedDefine;
 
@@ -19,7 +17,6 @@ enum DataSource{
 @property NSCalendar *calendar;
 
 @property Theme *theme;
-@property enum DataSource dataSource;
 
 
 - (NSString*)durationFormatterWithSecondsDuration:(int)duration;

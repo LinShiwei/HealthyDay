@@ -24,7 +24,6 @@
         self.windowBounds = [UIScreen mainScreen].bounds;
         self.calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierRepublicOfChina];
         self.theme = [Theme sharedTheme];
-        self.dataSource = CoreData;
     }
     return self;
 }

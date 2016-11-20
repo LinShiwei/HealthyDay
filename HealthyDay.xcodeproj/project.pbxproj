@@ -46,6 +46,8 @@
 		56BF22671DD9F8D4008CA28C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BF22661DD9F8D4008CA28C /* Alamofire.framework */; };
 		56D631E91D98ECE7008232FA /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D631E81D98ECE7008232FA /* Define.swift */; };
 		56DDFAA11DAF28A700A71405 /* DistanceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DDFAA01DAF28A700A71405 /* DistanceDetailViewController.swift */; };
+		56EE64691DE17DAD005A14A1 /* DataSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE64681DE17DAD005A14A1 /* DataSourceManager.m */; };
+		56EE64701DE18A82005A14A1 /* DistanceDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE646F1DE18A82005A14A1 /* DistanceDetailItem.m */; };
 		56F670A11DDD54200035FF01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F670A01DDD54200035FF01 /* main.m */; };
 		56F670A41DDD54200035FF01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F670A31DDD54200035FF01 /* AppDelegate.m */; };
 		56F670AA1DDD54200035FF01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56F670A81DDD54200035FF01 /* Main.storyboard */; };
@@ -133,6 +135,10 @@
 		56BF22661DD9F8D4008CA28C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		56D631E81D98ECE7008232FA /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		56DDFAA01DAF28A700A71405 /* DistanceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceDetailViewController.swift; sourceTree = "<group>"; };
+		56EE64671DE17DAD005A14A1 /* DataSourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceManager.h; sourceTree = "<group>"; };
+		56EE64681DE17DAD005A14A1 /* DataSourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceManager.m; sourceTree = "<group>"; };
+		56EE646E1DE18A82005A14A1 /* DistanceDetailItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceDetailItem.h; sourceTree = "<group>"; };
+		56EE646F1DE18A82005A14A1 /* DistanceDetailItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDetailItem.m; sourceTree = "<group>"; };
 		56F6709D1DDD54200035FF01 /* HealthyDay-OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HealthyDay-OC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F670A01DDD54200035FF01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		56F670A21DDD54200035FF01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -349,6 +355,21 @@
 			name = DistanceDetailViewController;
 			sourceTree = "<group>";
 		};
+		56EE646D1DE18A43005A14A1 /* PublicDefine */ = {
+			isa = PBXGroup;
+			children = (
+				56FC39211DE03AE9000E2F74 /* Define.h */,
+				56FC39221DE03AE9000E2F74 /* Define.m */,
+				56FC39241DE03CC3000E2F74 /* Theme.h */,
+				56FC39251DE03CC3000E2F74 /* Theme.m */,
+				56FC39271DE06118000E2F74 /* NSDate+NSDate_formatDescription.h */,
+				56FC39281DE06118000E2F74 /* NSDate+NSDate_formatDescription.m */,
+				56EE646E1DE18A82005A14A1 /* DistanceDetailItem.h */,
+				56EE646F1DE18A82005A14A1 /* DistanceDetailItem.m */,
+			);
+			name = PublicDefine;
+			sourceTree = "<group>";
+		};
 		56F6709E1DDD54200035FF01 /* HealthyDay-OC */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,12 +377,7 @@
 				56F670BC1DDD86390035FF01 /* MainViewController_OC.m */,
 				56FC391B1DE00990000E2F74 /* HelpManager */,
 				56F6709F1DDD54200035FF01 /* Supporting Files */,
-				56FC39211DE03AE9000E2F74 /* Define.h */,
-				56FC39221DE03AE9000E2F74 /* Define.m */,
-				56FC39241DE03CC3000E2F74 /* Theme.h */,
-				56FC39251DE03CC3000E2F74 /* Theme.m */,
-				56FC39271DE06118000E2F74 /* NSDate+NSDate_formatDescription.h */,
-				56FC39281DE06118000E2F74 /* NSDate+NSDate_formatDescription.m */,
+				56EE646D1DE18A43005A14A1 /* PublicDefine */,
 			);
 			path = "HealthyDay-OC";
 			sourceTree = "<group>";
@@ -386,6 +402,8 @@
 			children = (
 				56FC391D1DE01E59000E2F74 /* HealthManager.h */,
 				56FC391E1DE01E59000E2F74 /* HealthManager.m */,
+				56EE64671DE17DAD005A14A1 /* DataSourceManager.h */,
+				56EE64681DE17DAD005A14A1 /* DataSourceManager.m */,
 			);
 			name = HelpManager;
 			sourceTree = "<group>";
@@ -628,7 +646,9 @@
 				56F670BD1DDD86390035FF01 /* MainViewController_OC.m in Sources */,
 				56F670AD1DDD54200035FF01 /* HealthyDay_OC.xcdatamodeld in Sources */,
 				56FC39291DE06118000E2F74 /* NSDate+NSDate_formatDescription.m in Sources */,
+				56EE64701DE18A82005A14A1 /* DistanceDetailItem.m in Sources */,
 				56FC39231DE03AE9000E2F74 /* Define.m in Sources */,
+				56EE64691DE17DAD005A14A1 /* DataSourceManager.m in Sources */,
 				56F670A41DDD54200035FF01 /* AppDelegate.m in Sources */,
 				56F670A11DDD54200035FF01 /* main.m in Sources */,
 				56FC391F1DE01E59000E2F74 /* HealthManager.m in Sources */,
