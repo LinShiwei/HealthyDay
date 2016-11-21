@@ -23,6 +23,13 @@
 		563B6D001DD9A1050038E704 /* DataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B6CFF1DD9A1050038E704 /* DataSourceManager.swift */; };
 		563E06561D98B04000B18DAE /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E06551D98B04000B18DAE /* HealthManager.swift */; };
 		56492F931DB65F43009CDEEB /* BottomDecorativeCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */; };
+		564B89641DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B89631DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m */; };
+		564B896A1DE2AD8E00D68770 /* DistanceDetailViewController_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B89691DE2AD8E00D68770 /* DistanceDetailViewController_OC.m */; };
+		564B896D1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B896C1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.m */; };
+		564B89701DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B896F1DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m */; };
+		564B89761DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B89751DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.m */; };
+		564B89781DE2AE6200D68770 /* DistanceStatisticsChartBar_OC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 564B89771DE2AE6200D68770 /* DistanceStatisticsChartBar_OC.xib */; };
+		564B897B1DE2AE8400D68770 /* DistanceStatisticsDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B897A1DE2AE8400D68770 /* DistanceStatisticsDataManager.m */; };
 		564F2ACC1DB9BBEE00BB3135 /* DistanceStatisticsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564F2ACB1DB9BBEE00BB3135 /* DistanceStatisticsChartView.swift */; };
 		564FF90B1DA6203E008AC31E /* StepRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FF90A1DA6203E008AC31E /* StepRingView.swift */; };
 		5655AF251DBA47CF00849A5C /* DistanceStatisticsChartBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5655AF241DBA47CF00849A5C /* DistanceStatisticsChartBar.swift */; };
@@ -118,6 +125,19 @@
 		563B6CFF1DD9A1050038E704 /* DataSourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceManager.swift; sourceTree = "<group>"; };
 		563E06551D98B04000B18DAE /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomDecorativeCurve.swift; sourceTree = "<group>"; };
+		564B89621DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceDetailTableViewCell_OC.h; sourceTree = "<group>"; };
+		564B89631DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDetailTableViewCell_OC.m; sourceTree = "<group>"; };
+		564B89681DE2AD8E00D68770 /* DistanceDetailViewController_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceDetailViewController_OC.h; sourceTree = "<group>"; };
+		564B89691DE2AD8E00D68770 /* DistanceDetailViewController_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDetailViewController_OC.m; sourceTree = "<group>"; };
+		564B896B1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceStatisticsViewController_OC.h; sourceTree = "<group>"; };
+		564B896C1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceStatisticsViewController_OC.m; sourceTree = "<group>"; };
+		564B896E1DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceStatisticsChartView_OC.h; sourceTree = "<group>"; };
+		564B896F1DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceStatisticsChartView_OC.m; sourceTree = "<group>"; };
+		564B89741DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceStatisticsChartBar_OC.h; sourceTree = "<group>"; };
+		564B89751DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceStatisticsChartBar_OC.m; sourceTree = "<group>"; };
+		564B89771DE2AE6200D68770 /* DistanceStatisticsChartBar_OC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceStatisticsChartBar_OC.xib; sourceTree = "<group>"; };
+		564B89791DE2AE8400D68770 /* DistanceStatisticsDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceStatisticsDataManager.h; sourceTree = "<group>"; };
+		564B897A1DE2AE8400D68770 /* DistanceStatisticsDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceStatisticsDataManager.m; sourceTree = "<group>"; };
 		564F2ACB1DB9BBEE00BB3135 /* DistanceStatisticsChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceStatisticsChartView.swift; sourceTree = "<group>"; };
 		564FF90A1DA6203E008AC31E /* StepRingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepRingView.swift; sourceTree = "<group>"; };
 		5655AF241DBA47CF00849A5C /* DistanceStatisticsChartBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceStatisticsChartBar.swift; sourceTree = "<group>"; };
@@ -431,6 +451,10 @@
 		56EE64791DE1CA58005A14A1 /* DistanceDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				564B89681DE2AD8E00D68770 /* DistanceDetailViewController_OC.h */,
+				564B89691DE2AD8E00D68770 /* DistanceDetailViewController_OC.m */,
+				564B89621DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.h */,
+				564B89631DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m */,
 				56EE647A1DE1CA69005A14A1 /* DistanceStatisticsViewController */,
 			);
 			name = DistanceDetailViewController;
@@ -439,6 +463,15 @@
 		56EE647A1DE1CA69005A14A1 /* DistanceStatisticsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				564B896B1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.h */,
+				564B896C1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.m */,
+				564B896E1DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.h */,
+				564B896F1DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m */,
+				564B89741DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.h */,
+				564B89751DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.m */,
+				564B89771DE2AE6200D68770 /* DistanceStatisticsChartBar_OC.xib */,
+				564B89791DE2AE8400D68770 /* DistanceStatisticsDataManager.h */,
+				564B897A1DE2AE8400D68770 /* DistanceStatisticsDataManager.m */,
 			);
 			name = DistanceStatisticsViewController;
 			sourceTree = "<group>";
@@ -650,6 +683,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				564B89781DE2AE6200D68770 /* DistanceStatisticsChartBar_OC.xib in Resources */,
 				56F670B71DDD5EF10035FF01 /* Assets.xcassets in Resources */,
 				56F670B21DDD54200035FF01 /* LaunchScreen.storyboard in Resources */,
 				56F670AA1DDD54200035FF01 /* Main.storyboard in Resources */,
@@ -726,8 +760,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				564B89641DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m in Sources */,
+				564B89761DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.m in Sources */,
+				564B896D1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.m in Sources */,
 				56FC39261DE03CC3000E2F74 /* Theme.m in Sources */,
 				56F670BD1DDD86390035FF01 /* MainViewController_OC.m in Sources */,
+				564B897B1DE2AE8400D68770 /* DistanceStatisticsDataManager.m in Sources */,
+				564B89701DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m in Sources */,
 				56EE64871DE1CBB8005A14A1 /* RunningInfomationView_OC.m in Sources */,
 				56F670AD1DDD54200035FF01 /* HealthyDay_OC.xcdatamodeld in Sources */,
 				56EE64731DE1C5A4005A14A1 /* LocationManager.m in Sources */,
@@ -739,6 +778,7 @@
 				56F670A11DDD54200035FF01 /* main.m in Sources */,
 				56EE64811DE1CB74005A14A1 /* RunningViewController_OC.m in Sources */,
 				56EE64841DE1CB8F005A14A1 /* GPSNotationView_OC.m in Sources */,
+				564B896A1DE2AD8E00D68770 /* DistanceDetailViewController_OC.m in Sources */,
 				56FC391F1DE01E59000E2F74 /* HealthManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

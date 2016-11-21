@@ -236,7 +236,7 @@
         <!--运动统计-->
         <scene sceneID="Heh-rm-jgI">
             <objects>
-                <viewController title="运动统计" id="m71-I2-Elo" sceneMemberID="viewController">
+                <viewController title="运动统计" id="m71-I2-Elo" customClass="DistanceStatisticsViewController_OC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fHN-EF-7Pe"/>
                         <viewControllerLayoutGuide type="bottom" id="j8c-HA-NTG"/>
@@ -256,8 +256,11 @@
                                     <segment title="总"/>
                                 </segments>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="statisticsPeriodChanged:" destination="m71-I2-Elo" eventType="valueChanged" id="Moc-q2-BXD"/>
+                                </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Mv-ja-6v1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Mv-ja-6v1" customClass="DistanceStatisticsChartView_OC">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjq-fr-mub">
@@ -482,6 +485,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="运动统计" id="b6M-DI-ZTo"/>
+                    <connections>
+                        <outlet property="averageDurationPerKilometerLabel" destination="XsT-6U-Tic" id="2cu-1p-lYg"/>
+                        <outlet property="averageSpeedLabel" destination="g3L-Qw-Yh8" id="1nd-wL-I9W"/>
+                        <outlet property="currentPeriodLabel" destination="DPG-03-Nsy" id="Pu5-Tk-tgo"/>
+                        <outlet property="distanceStatisticsChart" destination="6Mv-ja-6v1" id="Z0b-E6-6v6"/>
+                        <outlet property="statisticsPeriodSegmentedControl" destination="zQ3-vO-ywg" id="rkj-oF-nYG"/>
+                        <outlet property="totalCalorieLabel" destination="Hz7-O9-oyY" id="ST5-je-5Wm"/>
+                        <outlet property="totalDistanceLabel" destination="Zp6-j5-bZG" id="B3S-Dx-H52"/>
+                        <outlet property="totalDurationLabel" destination="hFU-G1-lct" id="r0V-95-7oB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xbk-Su-Htw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

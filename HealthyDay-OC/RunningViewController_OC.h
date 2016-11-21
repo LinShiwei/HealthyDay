@@ -12,7 +12,8 @@
 #import "LocationManager.h"
 #import "DataSourceManager.h"
 #import "GPSNotationView_OC.h"
-
+#import "Define.h"
+#import "DistanceDetailItem.h"
 @interface RunningViewController_OC : UIViewController
 
 @end

@@ -33,7 +33,33 @@
     return self;
 }
 
+- (void)setDelegate:(id<CLLocationManagerDelegate>)delegate{
+    _delegate = delegate;
+    _locationManager.delegate = delegate;
+}
 #pragma mark Public API
+
+- (void)authorizeWithCompletion:(void (^)(BOOL))completion{
+    if ([CLLocationManager locationServicesEnabled]){
+        switch ([CLLocationManager authorizationStatus]) {
+            case kCLAuthorizationStatusNotDetermined:
+                [_locationManager requestWhenInUseAuthorization];
+                completion(NO);
+                break;
+            case kCLAuthorizationStatusAuthorizedWhenInUse:
+            case kCLAuthorizationStatusAuthorizedAlways:
+                completion(YES);
+                break;
+            default:
+                completion(NO);
+                break;
+        }
+    }else{
+        completion(NO);
+        NSLog(@"lsw_location services disable. locationservicesEnabled is false");
+    }
+}
+
 - (void)startUpdate{
     [_locationManager startUpdatingLocation];
     [_locationManager setAllowsBackgroundLocationUpdates:YES];

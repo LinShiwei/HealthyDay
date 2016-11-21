@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 @interface LocationManager : NSObject
-
+@property (nonatomic) id<CLLocationManagerDelegate> delegate;
 + (instancetype)sharedLocationManager;
 
 - (void)authorizeWithCompletion:(void(^)(BOOL))completion;
