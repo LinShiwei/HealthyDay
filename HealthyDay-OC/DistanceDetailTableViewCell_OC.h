@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Define.h"
 
 @interface DistanceDetailTableViewCell_OC : UITableViewCell
+
+@property (nonatomic) NSDate *date;
+@property (nonatomic) double distance;
+@property (nonatomic) int duration;
+@property (nonatomic) int durationPerKilometer;
 
 @end

@@ -17,7 +17,7 @@
 @property UIColor *translucentLightThemeColor;
 
 @property UIColor *lightTextColor;
-@property UIColor *dartTextColor;
+@property UIColor *darkTextColor;
 
 @property UIColor *lightLineChartColor;
 @property UIColor *thickLineChartColor;

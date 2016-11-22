@@ -26,7 +26,7 @@
         self.translucentLightThemeColor = [self rgbColorWithRed:0x52 Green:0xC2 Blue:0x34 Alpha:0.5];
         
         self.lightTextColor  = [UIColor lightGrayColor];
-        self.dartTextColor   = [UIColor darkGrayColor];
+        self.darkTextColor   = [UIColor darkGrayColor];
         
         self.lightLineChartColor = [self rgbColorWithRed:0xFF Green:0xFF Blue:0xFF Alpha:0.5];
         self.thickLineChartColor = [self rgbColorWithRed:0x15 Green:0xF9 Blue:0x50 Alpha:0.5];

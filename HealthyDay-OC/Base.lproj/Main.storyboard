@@ -83,7 +83,7 @@
         <!--历史记录-->
         <scene sceneID="apz-RK-Yso">
             <objects>
-                <viewController title="历史记录" automaticallyAdjustsScrollViewInsets="NO" id="csI-Og-oey" sceneMemberID="viewController">
+                <viewController title="历史记录" automaticallyAdjustsScrollViewInsets="NO" id="csI-Og-oey" customClass="DistanceDetailViewController_OC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NpD-Qq-ilv"/>
                         <viewControllerLayoutGuide type="bottom" id="U6k-dk-fYU"/>
@@ -95,7 +95,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WzX-MG-czv">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceDetailTableViewCell" rowHeight="88" id="193-ry-g2n" customClass="DistanceDetailTableViewCell" customModule="HealthyDay_OC" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceDetailTableViewCell" rowHeight="88" id="193-ry-g2n" customClass="DistanceDetailTableViewCell_OC" customModule="HealthyDay">
                                         <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="193-ry-g2n" id="X7r-CG-2kI">
@@ -208,8 +208,18 @@
                                                 <constraint firstItem="YUd-4H-LgP" firstAttribute="bottom" secondItem="X7r-CG-2kI" secondAttribute="bottomMargin" id="xPd-W6-Mbd"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="zv1-97-VZ0" id="n9x-xf-whk"/>
+                                            <outlet property="distanceLabel" destination="wsr-Yp-On5" id="u5A-hq-jd0"/>
+                                            <outlet property="durationLabel" destination="8zM-2b-Mmb" id="ocJ-XM-sLs"/>
+                                            <outlet property="durationPerKilometerLabel" destination="fnr-hl-DKd" id="IEN-M2-8GU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="csI-Og-oey" id="Vi5-nQ-P08"/>
+                                    <outlet property="delegate" destination="csI-Og-oey" id="WXA-yh-ETX"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -224,10 +234,13 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="DlW-dF-gOI"/>
                         <barButtonItem key="rightBarButtonItem" title="统计" id="3Uv-tQ-0fu">
                             <connections>
-                                <segue destination="m71-I2-Elo" kind="show" id="hZH-oY-FVl"/>
+                                <segue destination="m71-I2-Elo" kind="show" identifier="ShowDistanceStatisticsVC" id="hZH-oY-FVl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="distanceDetailTableView" destination="WzX-MG-czv" id="oQ8-I7-Brh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7W-UT-fa5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
