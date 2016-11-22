@@ -8,9 +8,7 @@
 
 #import "MainViewController_OC.h"
 #import "HealthManager.h"
-enum MainVCState{
-    Running,Step
-};
+#import "MainVCStateEnum.h"
 
 @interface MainViewController_OC ()
 @property HealthManager *healthManager;

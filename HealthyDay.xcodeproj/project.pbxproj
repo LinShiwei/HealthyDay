@@ -23,6 +23,15 @@
 		563B6D001DD9A1050038E704 /* DataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B6CFF1DD9A1050038E704 /* DataSourceManager.swift */; };
 		563E06561D98B04000B18DAE /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E06551D98B04000B18DAE /* HealthManager.swift */; };
 		56408BDA1DE3D6CE0059CE8B /* DistanceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BD91DE3D6CE0059CE8B /* DistanceInfo.m */; };
+		56408BE61DE3EAA40059CE8B /* StepBar_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BE51DE3EAA40059CE8B /* StepBar_OC.m */; };
+		56408BE91DE3EABF0059CE8B /* StepBarChartView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BE81DE3EABF0059CE8B /* StepBarChartView_OC.m */; };
+		56408BEC1DE3EADC0059CE8B /* CustomBarBtnItem_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BEB1DE3EADC0059CE8B /* CustomBarBtnItem_OC.m */; };
+		56408BEF1DE3EAF40059CE8B /* StartRunningButton_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BEE1DE3EAF40059CE8B /* StartRunningButton_OC.m */; };
+		56408BF21DE3EB290059CE8B /* BottomDecorativeCurve_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BF11DE3EB290059CE8B /* BottomDecorativeCurve_OC.m */; };
+		56408BF51DE3EB400059CE8B /* MainInfomationView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BF41DE3EB400059CE8B /* MainInfomationView_OC.m */; };
+		56408BF81DE3EB590059CE8B /* StepRingView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BF71DE3EB590059CE8B /* StepRingView_OC.m */; };
+		56408C011DE3EBB80059CE8B /* StepCountLabel_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408C001DE3EBB80059CE8B /* StepCountLabel_OC.m */; };
+		56408C041DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408C031DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m */; };
 		56492F931DB65F43009CDEEB /* BottomDecorativeCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */; };
 		564B89641DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B89631DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m */; };
 		564B896A1DE2AD8E00D68770 /* DistanceDetailViewController_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B89691DE2AD8E00D68770 /* DistanceDetailViewController_OC.m */; };
@@ -127,6 +136,26 @@
 		563E06551D98B04000B18DAE /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		56408BD81DE3D6CE0059CE8B /* DistanceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceInfo.h; sourceTree = "<group>"; };
 		56408BD91DE3D6CE0059CE8B /* DistanceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceInfo.m; sourceTree = "<group>"; };
+		56408BE41DE3EAA40059CE8B /* StepBar_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepBar_OC.h; sourceTree = "<group>"; };
+		56408BE51DE3EAA40059CE8B /* StepBar_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepBar_OC.m; sourceTree = "<group>"; };
+		56408BE71DE3EABF0059CE8B /* StepBarChartView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepBarChartView_OC.h; sourceTree = "<group>"; };
+		56408BE81DE3EABF0059CE8B /* StepBarChartView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepBarChartView_OC.m; sourceTree = "<group>"; };
+		56408BEA1DE3EADC0059CE8B /* CustomBarBtnItem_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBarBtnItem_OC.h; sourceTree = "<group>"; };
+		56408BEB1DE3EADC0059CE8B /* CustomBarBtnItem_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBarBtnItem_OC.m; sourceTree = "<group>"; };
+		56408BED1DE3EAF40059CE8B /* StartRunningButton_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartRunningButton_OC.h; sourceTree = "<group>"; };
+		56408BEE1DE3EAF40059CE8B /* StartRunningButton_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartRunningButton_OC.m; sourceTree = "<group>"; };
+		56408BF01DE3EB290059CE8B /* BottomDecorativeCurve_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomDecorativeCurve_OC.h; sourceTree = "<group>"; };
+		56408BF11DE3EB290059CE8B /* BottomDecorativeCurve_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomDecorativeCurve_OC.m; sourceTree = "<group>"; };
+		56408BF31DE3EB400059CE8B /* MainInfomationView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainInfomationView_OC.h; sourceTree = "<group>"; };
+		56408BF41DE3EB400059CE8B /* MainInfomationView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainInfomationView_OC.m; sourceTree = "<group>"; };
+		56408BF61DE3EB590059CE8B /* StepRingView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepRingView_OC.h; sourceTree = "<group>"; };
+		56408BF71DE3EB590059CE8B /* StepRingView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepRingView_OC.m; sourceTree = "<group>"; };
+		56408BFF1DE3EBB80059CE8B /* StepCountLabel_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepCountLabel_OC.h; sourceTree = "<group>"; };
+		56408C001DE3EBB80059CE8B /* StepCountLabel_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepCountLabel_OC.m; sourceTree = "<group>"; };
+		56408C021DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceWalkingRunningLabel_OC.h; sourceTree = "<group>"; };
+		56408C031DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceWalkingRunningLabel_OC.m; sourceTree = "<group>"; };
+		56408C061DE3FA060059CE8B /* MainVCStateEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVCStateEnum.h; sourceTree = "<group>"; };
+		56408C071DE3FF2D0059CE8B /* BarBtnItemTypeEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarBtnItemTypeEnum.h; sourceTree = "<group>"; };
 		56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomDecorativeCurve.swift; sourceTree = "<group>"; };
 		564B89621DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceDetailTableViewCell_OC.h; sourceTree = "<group>"; };
 		564B89631DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDetailTableViewCell_OC.m; sourceTree = "<group>"; };
@@ -410,6 +439,7 @@
 			children = (
 				56F670BB1DDD86390035FF01 /* MainViewController_OC.h */,
 				56F670BC1DDD86390035FF01 /* MainViewController_OC.m */,
+				56408C061DE3FA060059CE8B /* MainVCStateEnum.h */,
 				56EE64751DE1C9F1005A14A1 /* MainInfoView */,
 				56EE64761DE1CA0E005A14A1 /* StepBarChart */,
 				56EE64771DE1CA2D005A14A1 /* BarItem */,
@@ -420,6 +450,16 @@
 		56EE64751DE1C9F1005A14A1 /* MainInfoView */ = {
 			isa = PBXGroup;
 			children = (
+				56408BF31DE3EB400059CE8B /* MainInfomationView_OC.h */,
+				56408BF41DE3EB400059CE8B /* MainInfomationView_OC.m */,
+				56408C021DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.h */,
+				56408C031DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m */,
+				56408BFF1DE3EBB80059CE8B /* StepCountLabel_OC.h */,
+				56408C001DE3EBB80059CE8B /* StepCountLabel_OC.m */,
+				56408BF61DE3EB590059CE8B /* StepRingView_OC.h */,
+				56408BF71DE3EB590059CE8B /* StepRingView_OC.m */,
+				56408BF01DE3EB290059CE8B /* BottomDecorativeCurve_OC.h */,
+				56408BF11DE3EB290059CE8B /* BottomDecorativeCurve_OC.m */,
 			);
 			name = MainInfoView;
 			sourceTree = "<group>";
@@ -427,6 +467,10 @@
 		56EE64761DE1CA0E005A14A1 /* StepBarChart */ = {
 			isa = PBXGroup;
 			children = (
+				56408BE71DE3EABF0059CE8B /* StepBarChartView_OC.h */,
+				56408BE81DE3EABF0059CE8B /* StepBarChartView_OC.m */,
+				56408BE41DE3EAA40059CE8B /* StepBar_OC.h */,
+				56408BE51DE3EAA40059CE8B /* StepBar_OC.m */,
 			);
 			name = StepBarChart;
 			sourceTree = "<group>";
@@ -434,6 +478,11 @@
 		56EE64771DE1CA2D005A14A1 /* BarItem */ = {
 			isa = PBXGroup;
 			children = (
+				56408BEA1DE3EADC0059CE8B /* CustomBarBtnItem_OC.h */,
+				56408BEB1DE3EADC0059CE8B /* CustomBarBtnItem_OC.m */,
+				56408C071DE3FF2D0059CE8B /* BarBtnItemTypeEnum.h */,
+				56408BED1DE3EAF40059CE8B /* StartRunningButton_OC.h */,
+				56408BEE1DE3EAF40059CE8B /* StartRunningButton_OC.m */,
 			);
 			name = BarItem;
 			sourceTree = "<group>";
@@ -771,18 +820,27 @@
 				564B896D1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.m in Sources */,
 				56FC39261DE03CC3000E2F74 /* Theme.m in Sources */,
 				56F670BD1DDD86390035FF01 /* MainViewController_OC.m in Sources */,
+				56408BF21DE3EB290059CE8B /* BottomDecorativeCurve_OC.m in Sources */,
 				564B897B1DE2AE8400D68770 /* DistanceStatisticsDataManager.m in Sources */,
 				564B89701DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m in Sources */,
 				56EE64871DE1CBB8005A14A1 /* RunningInfomationView_OC.m in Sources */,
+				56408C041DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m in Sources */,
+				56408C011DE3EBB80059CE8B /* StepCountLabel_OC.m in Sources */,
+				56408BF51DE3EB400059CE8B /* MainInfomationView_OC.m in Sources */,
 				56F670AD1DDD54200035FF01 /* HealthyDay_OC.xcdatamodeld in Sources */,
+				56408BEC1DE3EADC0059CE8B /* CustomBarBtnItem_OC.m in Sources */,
+				56408BE91DE3EABF0059CE8B /* StepBarChartView_OC.m in Sources */,
 				56EE64731DE1C5A4005A14A1 /* LocationManager.m in Sources */,
 				56FC39291DE06118000E2F74 /* NSDate+NSDate_formatDescription.m in Sources */,
+				56408BEF1DE3EAF40059CE8B /* StartRunningButton_OC.m in Sources */,
 				56EE64701DE18A82005A14A1 /* DistanceDetailItem.m in Sources */,
 				56FC39231DE03AE9000E2F74 /* Define.m in Sources */,
 				56EE64691DE17DAD005A14A1 /* DataSourceManager.m in Sources */,
 				56F670A41DDD54200035FF01 /* AppDelegate.m in Sources */,
 				56F670A11DDD54200035FF01 /* main.m in Sources */,
+				56408BE61DE3EAA40059CE8B /* StepBar_OC.m in Sources */,
 				56EE64811DE1CB74005A14A1 /* RunningViewController_OC.m in Sources */,
+				56408BF81DE3EB590059CE8B /* StepRingView_OC.m in Sources */,
 				56EE64841DE1CB8F005A14A1 /* GPSNotationView_OC.m in Sources */,
 				564B896A1DE2AD8E00D68770 /* DistanceDetailViewController_OC.m in Sources */,
 				56FC391F1DE01E59000E2F74 /* HealthManager.m in Sources */,
