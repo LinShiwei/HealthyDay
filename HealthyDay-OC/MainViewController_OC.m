@@ -80,7 +80,7 @@
             if (counts != nil && error == nil) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     //                    stepDetailVC.
-                })
+                });
             }
         }];
         [healthManager readDistanceWalkingRunningWithPeriodType:Weekly withCompletion:^(NSArray<NSNumber *> *distances,NSError *error){
@@ -251,6 +251,7 @@
         if (counts != nil && error == nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 _mainInfoView.stepCount = counts[0].intValue;
+                NSLog(@"%d", _mainInfoView.stepCount);
             });
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{

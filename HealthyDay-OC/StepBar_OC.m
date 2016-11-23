@@ -13,20 +13,20 @@
 @property CGSize dateLabelSize;
 @property UIView *bar;
 @property UILabel *dateLabel;
-@property int distinationStepCount;
+@property int destinationStepCount;
 
 @end
 
 @implementation StepBar_OC
 
-- (id)initWithFrame:(CGRect)frame distinationStepCount:(int)distinationStepCount{
+- (id)initWithFrame:(CGRect)frame destinationStepCount:(int)destinationStepCount{
     self = [super initWithFrame:frame];
     if (self) {
         self.bar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height-_dateLabelSize.height)];
         self.bar.transform = CGAffineTransformMakeRotation(M_PI);
         self.bar.layer.backgroundColor = [[UIColor colorWithWhite:0.9 alpha:1] CGColor];
         self.bar.layer.cornerRadius = 5;
-        CALayer *barLayer;
+        CALayer *barLayer = [CALayer layer];
         barLayer.frame = CGRectMake(0, 0, frame.size.width, 30);
         barLayer.backgroundColor = [[[Theme sharedTheme] darkThemeColor] CGColor];
         barLayer.cornerRadius = 5;
@@ -40,7 +40,7 @@
         [self addSubview:self.bar];
         [self addSubview:_dateLabel];
         
-        self.distinationStepCount = distinationStepCount;
+        self.destinationStepCount = destinationStepCount;
     }
     return self;
 }
@@ -54,7 +54,8 @@
     _stepCount = stepCount;
     NSAssert(_bar.layer.sublayers.count == 1, @"");
     CALayer *barLayer = [_bar.layer.sublayers firstObject];
-    CGFloat height = stepCount > _distinationStepCount ? _bar.frame.size.height : _bar.frame.size.height*stepCount/_distinationStepCount;
-    [barLayer setBounds:CGRectMake(0, 0, self.frame.size.width, height)];
+    CGFloat height = stepCount > _destinationStepCount ? _bar.frame.size.height : _bar.frame.size.height*stepCount/_destinationStepCount;
+//    [barLayer setBounds:CGRectMake(0, 0, self.frame.size.width, height)];
+    barLayer.frame = CGRectMake(barLayer.frame.origin.x, barLayer.frame.origin.y, self.frame.size.width, height);
 }
 @end

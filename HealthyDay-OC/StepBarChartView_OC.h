@@ -12,7 +12,7 @@
 #import "Define.h"
 
 @interface StepBarChartView_OC : UIView
-@property (nonatomic) int distinationStepCount;
+@property (nonatomic) int destinationStepCount;
 
 @property (nonatomic) NSArray<NSNumber *> *stepCounts;
 

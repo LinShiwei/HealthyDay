@@ -54,8 +54,9 @@ CGFloat ringGap = 4;
         _strokeLayer.backgroundColor = [[UIColor darkGrayColor] CGColor];
         
         CGFloat angle = dotRadius/(frame.size.height/2);
-        _strokeLayer.transform = CATransform3DMakeRotation(M_PI/4+angle*2, 0, 0, 1);
-        
+        _strokeLayer.transform = CATransform3DMakeRotation(-angle, 0, 0, 1);
+        _maskLayer.transform = CATransform3DMakeRotation(M_PI/4+angle*2, 0, 0, 1);
+        _strokeLayer.strokeEnd = 0.3;
         [self.layer addSublayer:_strokeLayer];
         
         CALayer *ringLayer = [CALayer layer];
@@ -68,5 +69,13 @@ CGFloat ringGap = 4;
     return self;
 }
 
-
+- (void)setPercent:(double)percent{
+    _percent = percent > 1 ? 1 : percent;
+    _percent = percent < 0 ? 0 : percent;
+    CABasicAnimation *strokeEnd = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    _strokeLayer.strokeEnd = (CGFloat)percent;
+    strokeEnd.fromValue = @1;
+    strokeEnd.duration = (1-percent)*1;
+    [_strokeLayer addAnimation:strokeEnd forKey:@"strokeEnd"];
+}
 @end

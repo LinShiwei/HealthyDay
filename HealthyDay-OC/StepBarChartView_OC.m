@@ -16,21 +16,26 @@
 
 @implementation StepBarChartView_OC
 
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.destinationStepCount = 10000;
+        self.stepBars = [NSMutableArray array];
+    }
+    return self;
+}
 - (void)drawRect:(CGRect)rect{
     [super drawRect:rect];
     [self addStepBars];
 }
 
-- (int)distinationStepCount{
-    return 10000;
-}
 
 - (void)setStepCounts:(NSArray<NSNumber *> *)stepCounts{
     _stepCounts = stepCounts;
     NSAssert(stepCounts.count == 7, @"");
     NSAssert(_stepBars.count == 7, @"");
     for (NSInteger index=0; index < 7; index++) {
-        _stepBars[index].stepCount = (int)stepCounts[index];
+        _stepBars[index].stepCount = stepCounts[index].intValue;
     }
 }
 
@@ -56,7 +61,7 @@
         CGFloat barInterval = self.frame.size.width / 7;
         CGFloat barWidth = 6;
         for (NSInteger barNumber=1; barNumber < 8; barNumber++) {
-            StepBar_OC *stepBar = [[StepBar_OC alloc] initWithFrame:CGRectMake(barInterval*barNumber-barInterval/2-barWidth/2, 0, barWidth, self.frame.size.height) distinationStepCount:_distinationStepCount];
+            StepBar_OC *stepBar = [[StepBar_OC alloc] initWithFrame:CGRectMake(barInterval*barNumber-barInterval/2-barWidth/2, 0, barWidth, self.frame.size.height) destinationStepCount:_destinationStepCount];
             stepBar.day = barTexts[7-barNumber];
             [_stepBars addObject:stepBar];
             [self addSubview:stepBar];

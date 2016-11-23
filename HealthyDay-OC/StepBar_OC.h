@@ -14,6 +14,6 @@
 @property (nonatomic) NSString *day;
 @property (nonatomic) int stepCount;
 
-- (id)initWithFrame:(CGRect)frame distinationStepCount:(int)distinationStepCount;
+- (id)initWithFrame:(CGRect)frame destinationStepCount:(int)destinationStepCount;
 
 @end

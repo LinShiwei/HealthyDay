@@ -121,7 +121,7 @@
             
         }
     }
-    NSMutableArray *counts;
+    NSMutableArray *counts = [NSMutableArray array];
     int count = 0;
     NSDate *perDay = [NSDate dateWithTimeInterval:24*3600 sinceDate:[[Define sharedDefine].calendar startOfDayForDate:[samples[0] endDate]]];
     for (HKSample *sample in samples){

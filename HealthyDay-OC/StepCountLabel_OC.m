@@ -48,7 +48,7 @@ int targetCount = 10000;
         _targetLabel.textColor = [UIColor whiteColor];
         [self addSubview:_targetLabel];
         
-        _ringView = [[StepRingView_OC alloc] initWithSize:CGSizeMake(self.frame.size.height, self.frame.size.height) center:CGPointMake(self.frame.size.width, self.frame.size.height/2) precent:0.3];
+        _ringView = [[StepRingView_OC alloc] initWithSize:CGSizeMake(self.frame.size.height, self.frame.size.height) center:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) precent:0.3];
         [self addSubview:_ringView];
         
         self.transform = CGAffineTransformMakeRotation(M_PI/3);

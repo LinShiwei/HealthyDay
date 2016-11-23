@@ -57,7 +57,7 @@
     _shapeLayerAnimation.autoreverses = YES;
     _shapeLayerAnimation.duration = 5;
     
-    self = [super init];
+    self = [super initWithFrame:CGRectMake(frame.size.width/2, size.height-_shapeLayer.frame.size.height-3, 0, 0)];
     if (self) {
         [self refreshAnimation];
         [self.layer addSublayer:_shapeLayer];

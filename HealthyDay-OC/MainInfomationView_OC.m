@@ -90,7 +90,7 @@ CGFloat bottomDecorativeCurveFotateDegree = M_PI/180.0*2;
         CGFloat height = self.frame.size.height * 0.24;
         CGFloat width = self.frame.size.width;
         
-        _decorativeView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, width, height)];
+        _decorativeView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-height, width, height)];
         UIBezierPath *path = [UIBezierPath bezierPath];
         [path moveToPoint:CGPointMake(0, height)];
         [path addCurveToPoint:CGPointMake(width, height) controlPoint1:CGPointMake(width/3, height/2) controlPoint2:CGPointMake(width/3*2, height/2)];

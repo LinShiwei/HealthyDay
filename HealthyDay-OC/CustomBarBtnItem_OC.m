@@ -10,7 +10,7 @@
 
 @interface CustomBarBtnItem_OC ()
 
-@property (nonatomic) UIButton *button;
+@property UIButton *button;
 
 @end
 
@@ -21,6 +21,9 @@
     self = [super init];
     if (self) {
         UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width+frame.origin.x, 22)];
+        self.button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.button setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7] forState:UIControlStateNormal];
+        [self.button setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
         [self.button setTitle:title forState:UIControlStateNormal];
         if (type == Left) {
             self.button.frame = frame;
@@ -31,14 +34,6 @@
         self.customView = backView;
     }
     return self;
-}
-
-
-- (UIButton *)button{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7] forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
-    return btn;
 }
 
 - (void)setEnable:(BOOL)enable{
