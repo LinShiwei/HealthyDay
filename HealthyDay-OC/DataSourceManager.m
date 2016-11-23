@@ -31,6 +31,7 @@
     self = [super init];
     if (self) {
         self.dataSource = CoreData;
+        self.objects = [NSMutableArray array];
     }
     return self;
 }

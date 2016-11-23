@@ -11,11 +11,10 @@
 #import "StepBar_OC.h"
 #import "Define.h"
 
-@interface StepBarChartView_OC : UIView{
-    int distinationStepCount;
-}
+@interface StepBarChartView_OC : UIView
+@property (nonatomic) int distinationStepCount;
 
-@property NSArray<NSNumber *> *stepCounts;
+@property (nonatomic) NSArray<NSNumber *> *stepCounts;
 
 - (void)panAnimationWithProgress:(CGFloat)progress currentState:(enum MainVCState)currentState;
 

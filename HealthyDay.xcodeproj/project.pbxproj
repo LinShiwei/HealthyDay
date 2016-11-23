@@ -16,6 +16,7 @@
 		560E1BB31D953D3600B488AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560E1BB11D953D3600B488AE /* LaunchScreen.storyboard */; };
 		560E1BBE1D953D3700B488AE /* HealthyDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E1BBD1D953D3700B488AE /* HealthyDayTests.swift */; };
 		560E1BCB1D953F7F00B488AE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560E1BCA1D953F7F00B488AE /* HealthKit.framework */; };
+		560E95C81DE573020028F2A4 /* StepDetailViewController_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 560E95C71DE573020028F2A4 /* StepDetailViewController_OC.m */; };
 		56130D881D9AB4FC005334FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56130D871D9AB4FC005334FF /* MapKit.framework */; };
 		562379C51DA128C200525B7C /* MainInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562379C41DA128C200525B7C /* MainInformationView.swift */; };
 		5626DB791DC4805A00F90708 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626DB781DC4805A00F90708 /* Theme.swift */; };
@@ -128,6 +129,8 @@
 		560E1BBF1D953D3700B488AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		560E1BC81D953F7E00B488AE /* HealthyDay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthyDay.entitlements; sourceTree = "<group>"; };
 		560E1BCA1D953F7F00B488AE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		560E95C61DE573020028F2A4 /* StepDetailViewController_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepDetailViewController_OC.h; sourceTree = "<group>"; };
+		560E95C71DE573020028F2A4 /* StepDetailViewController_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepDetailViewController_OC.m; sourceTree = "<group>"; };
 		56130D871D9AB4FC005334FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		562379C41DA128C200525B7C /* MainInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInformationView.swift; sourceTree = "<group>"; };
 		5626DB781DC4805A00F90708 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -185,6 +188,7 @@
 		567E83BF1DA52AEA00BBD133 /* StepCountLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCountLabel.swift; sourceTree = "<group>"; };
 		56914B6E1DAFBE6E00C6163E /* DistanceDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceDetailTableViewCell.swift; sourceTree = "<group>"; };
 		569202591DA0F7C500D9DA33 /* StepBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
+		56ADCFF31DE48C70003D4F17 /* MainInfoViewTapGestureDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainInfoViewTapGestureDelegate.h; sourceTree = "<group>"; };
 		56B03C861DA1FB6A0071CBB4 /* StepDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepDetailViewController.swift; sourceTree = "<group>"; };
 		56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBarChartView.swift; sourceTree = "<group>"; };
 		56BF22641DD9F8CB008CA28C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -452,6 +456,7 @@
 			children = (
 				56408BF31DE3EB400059CE8B /* MainInfomationView_OC.h */,
 				56408BF41DE3EB400059CE8B /* MainInfomationView_OC.m */,
+				56ADCFF31DE48C70003D4F17 /* MainInfoViewTapGestureDelegate.h */,
 				56408C021DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.h */,
 				56408C031DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m */,
 				56408BFF1DE3EBB80059CE8B /* StepCountLabel_OC.h */,
@@ -533,6 +538,8 @@
 		56EE647B1DE1CA85005A14A1 /* StepDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				560E95C61DE573020028F2A4 /* StepDetailViewController_OC.h */,
+				560E95C71DE573020028F2A4 /* StepDetailViewController_OC.m */,
 			);
 			name = StepDetailViewController;
 			sourceTree = "<group>";
@@ -832,6 +839,7 @@
 				56408BE91DE3EABF0059CE8B /* StepBarChartView_OC.m in Sources */,
 				56EE64731DE1C5A4005A14A1 /* LocationManager.m in Sources */,
 				56FC39291DE06118000E2F74 /* NSDate+NSDate_formatDescription.m in Sources */,
+				560E95C81DE573020028F2A4 /* StepDetailViewController_OC.m in Sources */,
 				56408BEF1DE3EAF40059CE8B /* StartRunningButton_OC.m in Sources */,
 				56EE64701DE18A82005A14A1 /* DistanceDetailItem.m in Sources */,
 				56FC39231DE03AE9000E2F74 /* Define.m in Sources */,

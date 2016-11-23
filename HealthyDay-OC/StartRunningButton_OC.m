@@ -10,13 +10,14 @@
 
 @interface StartRunningButton_OC ()
 
-@property CGFloat buttonDiameter;
-@property CGFloat ringGap;
+
 
 @end
 
 
 @implementation StartRunningButton_OC
+CGFloat _buttonDiameter = 100;
+CGFloat _ringGap = 5;
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];

@@ -21,6 +21,10 @@
     [self addStepBars];
 }
 
+- (int)distinationStepCount{
+    return 10000;
+}
+
 - (void)setStepCounts:(NSArray<NSNumber *> *)stepCounts{
     _stepCounts = stepCounts;
     NSAssert(stepCounts.count == 7, @"");
@@ -34,11 +38,12 @@
 #pragma mark Private func
 - (NSArray<NSString *> *)getDateLabelTexts{
     NSDate *currentDate = [NSDate date];
-    NSMutableArray<NSString *> *texts;
+    NSMutableArray<NSString *> *texts = [NSMutableArray array];
     for (NSInteger day=0; day < 7; day++) {
         NSDate *date = [[[Define sharedDefine] calendar] dateByAddingUnit:NSCalendarUnitDay value:-day toDate:currentDate options:NSCalendarMatchStrictly];
         [texts addObject:[NSString stringWithFormat:@"%ld 日",(long)[[[Define sharedDefine] calendar] component:NSCalendarUnitDay fromDate:date]]];
     }
+    
     NSAssert(texts.count == 7, @"");
     return texts;
 }
@@ -51,7 +56,7 @@
         CGFloat barInterval = self.frame.size.width / 7;
         CGFloat barWidth = 6;
         for (NSInteger barNumber=1; barNumber < 8; barNumber++) {
-            StepBar_OC *stepBar = [[StepBar_OC alloc] initWithFrame:CGRectMake(barInterval*barNumber-barInterval/2-barWidth/2, 0, barWidth, self.frame.size.height) distinationStepCount:distinationStepCount];
+            StepBar_OC *stepBar = [[StepBar_OC alloc] initWithFrame:CGRectMake(barInterval*barNumber-barInterval/2-barWidth/2, 0, barWidth, self.frame.size.height) distinationStepCount:_distinationStepCount];
             stepBar.day = barTexts[7-barNumber];
             [_stepBars addObject:stepBar];
             [self addSubview:stepBar];

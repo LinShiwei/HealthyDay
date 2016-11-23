@@ -10,4 +10,8 @@
 
 @interface StepRingView_OC : UIView
 
+@property double percent;
+
+- (id)initWithSize:(CGSize)size center:(CGPoint)center precent:(double)precent;
+
 @end

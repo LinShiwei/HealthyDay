@@ -11,6 +11,6 @@
 
 enum BarBtnItemType{
     Left,
-    right
+    Right
 };
 #endif /* BarBtnItemTypeEnum_h */

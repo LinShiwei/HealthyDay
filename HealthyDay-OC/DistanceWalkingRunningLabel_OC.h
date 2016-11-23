@@ -10,4 +10,9 @@
 
 @interface DistanceWalkingRunningLabel_OC : UILabel
 
+
+@property (nonatomic) CGFloat subviewsAlpha;
+
+- (id)initWithFrame:(CGRect)frame;
+
 @end

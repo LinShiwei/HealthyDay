@@ -10,4 +10,8 @@
 
 @interface BottomDecorativeCurve_OC : UIView
 
+- (id)initWithMainInfoViewFrame:(CGRect)frame andBottomDecorativeViewSize:(CGSize)size;
+
+- (void)refreshAnimation;
+
 @end

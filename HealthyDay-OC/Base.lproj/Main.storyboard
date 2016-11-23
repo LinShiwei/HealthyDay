@@ -11,7 +11,7 @@
         <!--Main View ControllerOC-->
         <scene sceneID="3oe-I6-8Yt">
             <objects>
-                <viewController id="LZF-ip-YVN" customClass="MainViewController_OC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" id="LZF-ip-YVN" customClass="MainViewController_OC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rbO-V6-264"/>
                         <viewControllerLayoutGuide type="bottom" id="vvV-IP-FcY"/>
@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UC2-Nk-fwL">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UC2-Nk-fwL" customClass="StepBarChartView_OC">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -30,7 +30,7 @@
                                     <outletCollection property="gestureRecognizers" destination="a27-Rx-cXe" appends="YES" id="ybL-ZN-Eth"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLI-X3-BR7">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLI-X3-BR7" customClass="StartRunningButton_OC">
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
                                 </accessibility>
@@ -41,12 +41,15 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="开始"/>
                                 <connections>
-                                    <segue destination="nrN-vp-hld" kind="show" id="qFr-td-j9h"/>
+                                    <segue destination="nrN-vp-hld" kind="show" identifier="ShowRunningVC" id="qFr-td-j9h"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgi-53-YIt">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgi-53-YIt" customClass="MainInfomationView_OC">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="sxd-Ag-rZ5" appends="YES" id="2sD-Ga-2qe"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,23 +70,30 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="egc-TS-6Hj"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="csI-Og-oey" kind="show" id="KL3-N2-Ot6"/>
+                        <outlet property="mainInfoView" destination="xgi-53-YIt" id="UYI-Fk-9jR"/>
+                        <outlet property="startRunningBtn" destination="VLI-X3-BR7" id="xny-bR-I0S"/>
+                        <outlet property="stepBarChartView" destination="UC2-Nk-fwL" id="H4T-lZ-g2o"/>
+                        <segue destination="csI-Og-oey" kind="show" identifier="ShowDistanceDetailVC" id="KL3-N2-Ot6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMV-PL-bYn" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="a27-Rx-cXe">
                     <connections>
-                        <segue destination="xRe-Rj-cR1" kind="show" id="Reu-5Q-CkN"/>
+                        <segue destination="xRe-Rj-cR1" kind="show" identifier="ShowStepDetailVC" id="h54-Af-900"/>
                     </connections>
                 </tapGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="sxd-Ag-rZ5"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="sxd-Ag-rZ5">
+                    <connections>
+                        <action selector="didPanInMainInfoView:" destination="LZF-ip-YVN" id="wtC-vq-Cnh"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1873" y="377"/>
         </scene>
         <!--历史记录-->
         <scene sceneID="apz-RK-Yso">
             <objects>
-                <viewController title="历史记录" automaticallyAdjustsScrollViewInsets="NO" id="csI-Og-oey" customClass="DistanceDetailViewController_OC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DistanceDetailVC" title="历史记录" automaticallyAdjustsScrollViewInsets="NO" id="csI-Og-oey" customClass="DistanceDetailViewController_OC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NpD-Qq-ilv"/>
                         <viewControllerLayoutGuide type="bottom" id="U6k-dk-fYU"/>
@@ -249,7 +259,7 @@
         <!--运动统计-->
         <scene sceneID="Heh-rm-jgI">
             <objects>
-                <viewController title="运动统计" id="m71-I2-Elo" customClass="DistanceStatisticsViewController_OC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DistanceStatisticsVC" title="运动统计" id="m71-I2-Elo" customClass="DistanceStatisticsViewController_OC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fHN-EF-7Pe"/>
                         <viewControllerLayoutGuide type="bottom" id="j8c-HA-NTG"/>
@@ -511,12 +521,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xbk-Su-Htw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3492" y="-457.42128935532236"/>
+            <point key="canvasLocation" x="3473" y="-448"/>
         </scene>
-        <!--View Controller-->
+        <!--Step Detail View ControllerOC-->
         <scene sceneID="MT6-AH-jPr">
             <objects>
-                <viewController id="xRe-Rj-cR1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StepDetailVC" id="xRe-Rj-cR1" customClass="StepDetailViewController_OC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MS6-cu-Cle"/>
                         <viewControllerLayoutGuide type="bottom" id="0LP-c9-Ftc"/>
@@ -534,7 +544,7 @@
         <!--户外跑步-->
         <scene sceneID="wMe-Ob-lcb">
             <objects>
-                <viewController title="户外跑步" id="nrN-vp-hld" customClass="RunningViewController_OC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RunningVC" title="户外跑步" id="nrN-vp-hld" customClass="RunningViewController_OC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dyy-ke-PSi"/>
                         <viewControllerLayoutGuide type="bottom" id="ftZ-V2-TrL"/>
@@ -736,7 +746,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sw8-bX-7B3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935" y="378"/>
+            <point key="canvasLocation" x="1039" y="262"/>
         </scene>
     </scenes>
     <resources>

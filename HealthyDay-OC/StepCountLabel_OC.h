@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StepRingView_OC.h"
 
 @interface StepCountLabel_OC : UILabel
+
+@property (nonatomic) int stepCount;
+@property (nonatomic) CGFloat subviewsAlpha;
+
+- (id)initWithSize:(CGSize)size center:(CGPoint)center;
+
 
 @end
