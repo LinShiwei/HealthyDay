@@ -16,13 +16,31 @@
 		560E1BB31D953D3600B488AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560E1BB11D953D3600B488AE /* LaunchScreen.storyboard */; };
 		560E1BBE1D953D3700B488AE /* HealthyDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E1BBD1D953D3700B488AE /* HealthyDayTests.swift */; };
 		560E1BCB1D953F7F00B488AE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560E1BCA1D953F7F00B488AE /* HealthKit.framework */; };
+		560E95C81DE573020028F2A4 /* StepDetailViewController_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 560E95C71DE573020028F2A4 /* StepDetailViewController_OC.m */; };
 		56130D881D9AB4FC005334FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56130D871D9AB4FC005334FF /* MapKit.framework */; };
 		562379C51DA128C200525B7C /* MainInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562379C41DA128C200525B7C /* MainInformationView.swift */; };
 		5626DB791DC4805A00F90708 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626DB781DC4805A00F90708 /* Theme.swift */; };
 		562ACB301DBE4670003BC042 /* DistanceStatisticsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ACB2F1DBE4670003BC042 /* DistanceStatisticsDataManager.swift */; };
 		563B6D001DD9A1050038E704 /* DataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B6CFF1DD9A1050038E704 /* DataSourceManager.swift */; };
 		563E06561D98B04000B18DAE /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E06551D98B04000B18DAE /* HealthManager.swift */; };
+		56408BDA1DE3D6CE0059CE8B /* DistanceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BD91DE3D6CE0059CE8B /* DistanceInfo.m */; };
+		56408BE61DE3EAA40059CE8B /* StepBar_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BE51DE3EAA40059CE8B /* StepBar_OC.m */; };
+		56408BE91DE3EABF0059CE8B /* StepBarChartView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BE81DE3EABF0059CE8B /* StepBarChartView_OC.m */; };
+		56408BEC1DE3EADC0059CE8B /* CustomBarBtnItem_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BEB1DE3EADC0059CE8B /* CustomBarBtnItem_OC.m */; };
+		56408BEF1DE3EAF40059CE8B /* StartRunningButton_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BEE1DE3EAF40059CE8B /* StartRunningButton_OC.m */; };
+		56408BF21DE3EB290059CE8B /* BottomDecorativeCurve_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BF11DE3EB290059CE8B /* BottomDecorativeCurve_OC.m */; };
+		56408BF51DE3EB400059CE8B /* MainInfomationView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BF41DE3EB400059CE8B /* MainInfomationView_OC.m */; };
+		56408BF81DE3EB590059CE8B /* StepRingView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408BF71DE3EB590059CE8B /* StepRingView_OC.m */; };
+		56408C011DE3EBB80059CE8B /* StepCountLabel_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408C001DE3EBB80059CE8B /* StepCountLabel_OC.m */; };
+		56408C041DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56408C031DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m */; };
 		56492F931DB65F43009CDEEB /* BottomDecorativeCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */; };
+		564B89641DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B89631DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m */; };
+		564B896A1DE2AD8E00D68770 /* DistanceDetailViewController_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B89691DE2AD8E00D68770 /* DistanceDetailViewController_OC.m */; };
+		564B896D1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B896C1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.m */; };
+		564B89701DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B896F1DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m */; };
+		564B89761DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B89751DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.m */; };
+		564B89781DE2AE6200D68770 /* DistanceStatisticsChartBar_OC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 564B89771DE2AE6200D68770 /* DistanceStatisticsChartBar_OC.xib */; };
+		564B897B1DE2AE8400D68770 /* DistanceStatisticsDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B897A1DE2AE8400D68770 /* DistanceStatisticsDataManager.m */; };
 		564F2ACC1DB9BBEE00BB3135 /* DistanceStatisticsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564F2ACB1DB9BBEE00BB3135 /* DistanceStatisticsChartView.swift */; };
 		564FF90B1DA6203E008AC31E /* StepRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FF90A1DA6203E008AC31E /* StepRingView.swift */; };
 		5655AF251DBA47CF00849A5C /* DistanceStatisticsChartBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5655AF241DBA47CF00849A5C /* DistanceStatisticsChartBar.swift */; };
@@ -46,6 +64,25 @@
 		56BF22671DD9F8D4008CA28C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BF22661DD9F8D4008CA28C /* Alamofire.framework */; };
 		56D631E91D98ECE7008232FA /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D631E81D98ECE7008232FA /* Define.swift */; };
 		56DDFAA11DAF28A700A71405 /* DistanceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DDFAA01DAF28A700A71405 /* DistanceDetailViewController.swift */; };
+		56EE64691DE17DAD005A14A1 /* DataSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE64681DE17DAD005A14A1 /* DataSourceManager.m */; };
+		56EE64701DE18A82005A14A1 /* DistanceDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE646F1DE18A82005A14A1 /* DistanceDetailItem.m */; };
+		56EE64731DE1C5A4005A14A1 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE64721DE1C5A4005A14A1 /* LocationManager.m */; };
+		56EE64811DE1CB74005A14A1 /* RunningViewController_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE64801DE1CB74005A14A1 /* RunningViewController_OC.m */; };
+		56EE64841DE1CB8F005A14A1 /* GPSNotationView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE64831DE1CB8F005A14A1 /* GPSNotationView_OC.m */; };
+		56EE64871DE1CBB8005A14A1 /* RunningInfomationView_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EE64861DE1CBB8005A14A1 /* RunningInfomationView_OC.m */; };
+		56F670A11DDD54200035FF01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F670A01DDD54200035FF01 /* main.m */; };
+		56F670A41DDD54200035FF01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F670A31DDD54200035FF01 /* AppDelegate.m */; };
+		56F670AA1DDD54200035FF01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56F670A81DDD54200035FF01 /* Main.storyboard */; };
+		56F670AD1DDD54200035FF01 /* HealthyDay_OC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56F670AB1DDD54200035FF01 /* HealthyDay_OC.xcdatamodeld */; };
+		56F670B21DDD54200035FF01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56F670B01DDD54200035FF01 /* LaunchScreen.storyboard */; };
+		56F670B71DDD5EF10035FF01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 560E1BAF1D953D3600B488AE /* Assets.xcassets */; };
+		56F670B81DDD68BF0035FF01 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56130D871D9AB4FC005334FF /* MapKit.framework */; };
+		56F670BA1DDD68C10035FF01 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560E1BCA1D953F7F00B488AE /* HealthKit.framework */; };
+		56F670BD1DDD86390035FF01 /* MainViewController_OC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F670BC1DDD86390035FF01 /* MainViewController_OC.m */; };
+		56FC391F1DE01E59000E2F74 /* HealthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FC391E1DE01E59000E2F74 /* HealthManager.m */; };
+		56FC39231DE03AE9000E2F74 /* Define.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FC39221DE03AE9000E2F74 /* Define.m */; };
+		56FC39261DE03CC3000E2F74 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FC39251DE03CC3000E2F74 /* Theme.m */; };
+		56FC39291DE06118000E2F74 /* NSDate+NSDate_formatDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FC39281DE06118000E2F74 /* NSDate+NSDate_formatDescription.m */; };
 		56FF26911DAA2816001E04C6 /* GPSNotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF26901DAA2816001E04C6 /* GPSNotationView.swift */; };
 		56FF26931DAA3979001E04C6 /* RunningInfomationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF26921DAA3979001E04C6 /* RunningInfomationView.swift */; };
 		726354651DB1376200D18E52 /* StepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726354641DB1376200D18E52 /* StepDetailView.swift */; };
@@ -92,13 +129,50 @@
 		560E1BBF1D953D3700B488AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		560E1BC81D953F7E00B488AE /* HealthyDay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthyDay.entitlements; sourceTree = "<group>"; };
 		560E1BCA1D953F7F00B488AE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		560E95C61DE573020028F2A4 /* StepDetailViewController_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepDetailViewController_OC.h; sourceTree = "<group>"; };
+		560E95C71DE573020028F2A4 /* StepDetailViewController_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepDetailViewController_OC.m; sourceTree = "<group>"; };
 		56130D871D9AB4FC005334FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		562379C41DA128C200525B7C /* MainInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInformationView.swift; sourceTree = "<group>"; };
 		5626DB781DC4805A00F90708 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		562ACB2F1DBE4670003BC042 /* DistanceStatisticsDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceStatisticsDataManager.swift; sourceTree = "<group>"; };
 		563B6CFF1DD9A1050038E704 /* DataSourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceManager.swift; sourceTree = "<group>"; };
 		563E06551D98B04000B18DAE /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		56408BD81DE3D6CE0059CE8B /* DistanceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceInfo.h; sourceTree = "<group>"; };
+		56408BD91DE3D6CE0059CE8B /* DistanceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceInfo.m; sourceTree = "<group>"; };
+		56408BE41DE3EAA40059CE8B /* StepBar_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepBar_OC.h; sourceTree = "<group>"; };
+		56408BE51DE3EAA40059CE8B /* StepBar_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepBar_OC.m; sourceTree = "<group>"; };
+		56408BE71DE3EABF0059CE8B /* StepBarChartView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepBarChartView_OC.h; sourceTree = "<group>"; };
+		56408BE81DE3EABF0059CE8B /* StepBarChartView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepBarChartView_OC.m; sourceTree = "<group>"; };
+		56408BEA1DE3EADC0059CE8B /* CustomBarBtnItem_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBarBtnItem_OC.h; sourceTree = "<group>"; };
+		56408BEB1DE3EADC0059CE8B /* CustomBarBtnItem_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBarBtnItem_OC.m; sourceTree = "<group>"; };
+		56408BED1DE3EAF40059CE8B /* StartRunningButton_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartRunningButton_OC.h; sourceTree = "<group>"; };
+		56408BEE1DE3EAF40059CE8B /* StartRunningButton_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartRunningButton_OC.m; sourceTree = "<group>"; };
+		56408BF01DE3EB290059CE8B /* BottomDecorativeCurve_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomDecorativeCurve_OC.h; sourceTree = "<group>"; };
+		56408BF11DE3EB290059CE8B /* BottomDecorativeCurve_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomDecorativeCurve_OC.m; sourceTree = "<group>"; };
+		56408BF31DE3EB400059CE8B /* MainInfomationView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainInfomationView_OC.h; sourceTree = "<group>"; };
+		56408BF41DE3EB400059CE8B /* MainInfomationView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainInfomationView_OC.m; sourceTree = "<group>"; };
+		56408BF61DE3EB590059CE8B /* StepRingView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepRingView_OC.h; sourceTree = "<group>"; };
+		56408BF71DE3EB590059CE8B /* StepRingView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepRingView_OC.m; sourceTree = "<group>"; };
+		56408BFF1DE3EBB80059CE8B /* StepCountLabel_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepCountLabel_OC.h; sourceTree = "<group>"; };
+		56408C001DE3EBB80059CE8B /* StepCountLabel_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepCountLabel_OC.m; sourceTree = "<group>"; };
+		56408C021DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceWalkingRunningLabel_OC.h; sourceTree = "<group>"; };
+		56408C031DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceWalkingRunningLabel_OC.m; sourceTree = "<group>"; };
+		56408C061DE3FA060059CE8B /* MainVCStateEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVCStateEnum.h; sourceTree = "<group>"; };
+		56408C071DE3FF2D0059CE8B /* BarBtnItemTypeEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarBtnItemTypeEnum.h; sourceTree = "<group>"; };
 		56492F921DB65F43009CDEEB /* BottomDecorativeCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomDecorativeCurve.swift; sourceTree = "<group>"; };
+		564B89621DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceDetailTableViewCell_OC.h; sourceTree = "<group>"; };
+		564B89631DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDetailTableViewCell_OC.m; sourceTree = "<group>"; };
+		564B89681DE2AD8E00D68770 /* DistanceDetailViewController_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceDetailViewController_OC.h; sourceTree = "<group>"; };
+		564B89691DE2AD8E00D68770 /* DistanceDetailViewController_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDetailViewController_OC.m; sourceTree = "<group>"; };
+		564B896B1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceStatisticsViewController_OC.h; sourceTree = "<group>"; };
+		564B896C1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceStatisticsViewController_OC.m; sourceTree = "<group>"; };
+		564B896E1DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceStatisticsChartView_OC.h; sourceTree = "<group>"; };
+		564B896F1DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceStatisticsChartView_OC.m; sourceTree = "<group>"; };
+		564B89741DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceStatisticsChartBar_OC.h; sourceTree = "<group>"; };
+		564B89751DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceStatisticsChartBar_OC.m; sourceTree = "<group>"; };
+		564B89771DE2AE6200D68770 /* DistanceStatisticsChartBar_OC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceStatisticsChartBar_OC.xib; sourceTree = "<group>"; };
+		564B89791DE2AE8400D68770 /* DistanceStatisticsDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceStatisticsDataManager.h; sourceTree = "<group>"; };
+		564B897A1DE2AE8400D68770 /* DistanceStatisticsDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceStatisticsDataManager.m; sourceTree = "<group>"; };
 		564F2ACB1DB9BBEE00BB3135 /* DistanceStatisticsChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceStatisticsChartView.swift; sourceTree = "<group>"; };
 		564FF90A1DA6203E008AC31E /* StepRingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepRingView.swift; sourceTree = "<group>"; };
 		5655AF241DBA47CF00849A5C /* DistanceStatisticsChartBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceStatisticsChartBar.swift; sourceTree = "<group>"; };
@@ -114,12 +188,44 @@
 		567E83BF1DA52AEA00BBD133 /* StepCountLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCountLabel.swift; sourceTree = "<group>"; };
 		56914B6E1DAFBE6E00C6163E /* DistanceDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceDetailTableViewCell.swift; sourceTree = "<group>"; };
 		569202591DA0F7C500D9DA33 /* StepBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
+		56ADCFF31DE48C70003D4F17 /* MainInfoViewTapGestureDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainInfoViewTapGestureDelegate.h; sourceTree = "<group>"; };
 		56B03C861DA1FB6A0071CBB4 /* StepDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepDetailViewController.swift; sourceTree = "<group>"; };
 		56BC4F4B1D9FF2B80074B498 /* StepBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepBarChartView.swift; sourceTree = "<group>"; };
 		56BF22641DD9F8CB008CA28C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		56BF22661DD9F8D4008CA28C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		56D631E81D98ECE7008232FA /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		56DDFAA01DAF28A700A71405 /* DistanceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceDetailViewController.swift; sourceTree = "<group>"; };
+		56EE64671DE17DAD005A14A1 /* DataSourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceManager.h; sourceTree = "<group>"; };
+		56EE64681DE17DAD005A14A1 /* DataSourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceManager.m; sourceTree = "<group>"; };
+		56EE646E1DE18A82005A14A1 /* DistanceDetailItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceDetailItem.h; sourceTree = "<group>"; };
+		56EE646F1DE18A82005A14A1 /* DistanceDetailItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDetailItem.m; sourceTree = "<group>"; };
+		56EE64711DE1C5A4005A14A1 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		56EE64721DE1C5A4005A14A1 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		56EE647F1DE1CB74005A14A1 /* RunningViewController_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningViewController_OC.h; sourceTree = "<group>"; };
+		56EE64801DE1CB74005A14A1 /* RunningViewController_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningViewController_OC.m; sourceTree = "<group>"; };
+		56EE64821DE1CB8F005A14A1 /* GPSNotationView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSNotationView_OC.h; sourceTree = "<group>"; };
+		56EE64831DE1CB8F005A14A1 /* GPSNotationView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSNotationView_OC.m; sourceTree = "<group>"; };
+		56EE64851DE1CBB8005A14A1 /* RunningInfomationView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningInfomationView_OC.h; sourceTree = "<group>"; };
+		56EE64861DE1CBB8005A14A1 /* RunningInfomationView_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningInfomationView_OC.m; sourceTree = "<group>"; };
+		56F6709D1DDD54200035FF01 /* HealthyDay-OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HealthyDay-OC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56F670A01DDD54200035FF01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		56F670A21DDD54200035FF01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		56F670A31DDD54200035FF01 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		56F670A91DDD54200035FF01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		56F670AC1DDD54200035FF01 /* HealthyDay_OC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HealthyDay_OC.xcdatamodel; sourceTree = "<group>"; };
+		56F670B11DDD54200035FF01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		56F670B31DDD54200035FF01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56F670B91DDD68C10035FF01 /* HealthyDay-OC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HealthyDay-OC.entitlements"; sourceTree = "<group>"; };
+		56F670BB1DDD86390035FF01 /* MainViewController_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController_OC.h; sourceTree = "<group>"; };
+		56F670BC1DDD86390035FF01 /* MainViewController_OC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController_OC.m; sourceTree = "<group>"; };
+		56FC391D1DE01E59000E2F74 /* HealthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthManager.h; sourceTree = "<group>"; };
+		56FC391E1DE01E59000E2F74 /* HealthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthManager.m; sourceTree = "<group>"; };
+		56FC39211DE03AE9000E2F74 /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		56FC39221DE03AE9000E2F74 /* Define.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Define.m; sourceTree = "<group>"; };
+		56FC39241DE03CC3000E2F74 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
+		56FC39251DE03CC3000E2F74 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
+		56FC39271DE06118000E2F74 /* NSDate+NSDate_formatDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NSDate_formatDescription.h"; sourceTree = "<group>"; };
+		56FC39281DE06118000E2F74 /* NSDate+NSDate_formatDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDate_formatDescription.m"; sourceTree = "<group>"; };
 		56FF26901DAA2816001E04C6 /* GPSNotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPSNotationView.swift; sourceTree = "<group>"; };
 		56FF26921DAA3979001E04C6 /* RunningInfomationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningInfomationView.swift; sourceTree = "<group>"; };
 		726354641DB1376200D18E52 /* StepDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepDetailView.swift; sourceTree = "<group>"; };
@@ -149,6 +255,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		56F6709A1DDD54200035FF01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56F670B81DDD68BF0035FF01 /* MapKit.framework in Frameworks */,
+				56F670BA1DDD68C10035FF01 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -156,9 +271,10 @@
 			isa = PBXGroup;
 			children = (
 				560E1BA71D953D3600B488AE /* HealthyDay */,
-				560E1BBC1D953D3700B488AE /* HealthyDayTests */,
+				56F6709E1DDD54200035FF01 /* HealthyDay-OC */,
 				560E1BA61D953D3600B488AE /* Products */,
 				560E1BC91D953F7F00B488AE /* Frameworks */,
+				560E1BBC1D953D3700B488AE /* HealthyDayTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,6 +283,7 @@
 			children = (
 				560E1BA51D953D3600B488AE /* HealthyDay.app */,
 				560E1BB91D953D3700B488AE /* HealthyDayTests.xctest */,
+				56F6709D1DDD54200035FF01 /* HealthyDay-OC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -306,6 +423,169 @@
 			name = DistanceDetailViewController;
 			sourceTree = "<group>";
 		};
+		56EE646D1DE18A43005A14A1 /* PublicDefine */ = {
+			isa = PBXGroup;
+			children = (
+				56FC39211DE03AE9000E2F74 /* Define.h */,
+				56FC39221DE03AE9000E2F74 /* Define.m */,
+				56FC39241DE03CC3000E2F74 /* Theme.h */,
+				56FC39251DE03CC3000E2F74 /* Theme.m */,
+				56FC39271DE06118000E2F74 /* NSDate+NSDate_formatDescription.h */,
+				56FC39281DE06118000E2F74 /* NSDate+NSDate_formatDescription.m */,
+				56EE646E1DE18A82005A14A1 /* DistanceDetailItem.h */,
+				56EE646F1DE18A82005A14A1 /* DistanceDetailItem.m */,
+			);
+			name = PublicDefine;
+			sourceTree = "<group>";
+		};
+		56EE64741DE1C9DF005A14A1 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				56F670BB1DDD86390035FF01 /* MainViewController_OC.h */,
+				56F670BC1DDD86390035FF01 /* MainViewController_OC.m */,
+				56408C061DE3FA060059CE8B /* MainVCStateEnum.h */,
+				56EE64751DE1C9F1005A14A1 /* MainInfoView */,
+				56EE64761DE1CA0E005A14A1 /* StepBarChart */,
+				56EE64771DE1CA2D005A14A1 /* BarItem */,
+			);
+			name = MainViewController;
+			sourceTree = "<group>";
+		};
+		56EE64751DE1C9F1005A14A1 /* MainInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				56408BF31DE3EB400059CE8B /* MainInfomationView_OC.h */,
+				56408BF41DE3EB400059CE8B /* MainInfomationView_OC.m */,
+				56ADCFF31DE48C70003D4F17 /* MainInfoViewTapGestureDelegate.h */,
+				56408C021DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.h */,
+				56408C031DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m */,
+				56408BFF1DE3EBB80059CE8B /* StepCountLabel_OC.h */,
+				56408C001DE3EBB80059CE8B /* StepCountLabel_OC.m */,
+				56408BF61DE3EB590059CE8B /* StepRingView_OC.h */,
+				56408BF71DE3EB590059CE8B /* StepRingView_OC.m */,
+				56408BF01DE3EB290059CE8B /* BottomDecorativeCurve_OC.h */,
+				56408BF11DE3EB290059CE8B /* BottomDecorativeCurve_OC.m */,
+			);
+			name = MainInfoView;
+			sourceTree = "<group>";
+		};
+		56EE64761DE1CA0E005A14A1 /* StepBarChart */ = {
+			isa = PBXGroup;
+			children = (
+				56408BE71DE3EABF0059CE8B /* StepBarChartView_OC.h */,
+				56408BE81DE3EABF0059CE8B /* StepBarChartView_OC.m */,
+				56408BE41DE3EAA40059CE8B /* StepBar_OC.h */,
+				56408BE51DE3EAA40059CE8B /* StepBar_OC.m */,
+			);
+			name = StepBarChart;
+			sourceTree = "<group>";
+		};
+		56EE64771DE1CA2D005A14A1 /* BarItem */ = {
+			isa = PBXGroup;
+			children = (
+				56408BEA1DE3EADC0059CE8B /* CustomBarBtnItem_OC.h */,
+				56408BEB1DE3EADC0059CE8B /* CustomBarBtnItem_OC.m */,
+				56408C071DE3FF2D0059CE8B /* BarBtnItemTypeEnum.h */,
+				56408BED1DE3EAF40059CE8B /* StartRunningButton_OC.h */,
+				56408BEE1DE3EAF40059CE8B /* StartRunningButton_OC.m */,
+			);
+			name = BarItem;
+			sourceTree = "<group>";
+		};
+		56EE64781DE1CA4B005A14A1 /* RunningViewController */ = {
+			isa = PBXGroup;
+			children = (
+				56EE647F1DE1CB74005A14A1 /* RunningViewController_OC.h */,
+				56EE64801DE1CB74005A14A1 /* RunningViewController_OC.m */,
+				56EE64821DE1CB8F005A14A1 /* GPSNotationView_OC.h */,
+				56EE64831DE1CB8F005A14A1 /* GPSNotationView_OC.m */,
+				56EE64851DE1CBB8005A14A1 /* RunningInfomationView_OC.h */,
+				56EE64861DE1CBB8005A14A1 /* RunningInfomationView_OC.m */,
+			);
+			name = RunningViewController;
+			sourceTree = "<group>";
+		};
+		56EE64791DE1CA58005A14A1 /* DistanceDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				564B89681DE2AD8E00D68770 /* DistanceDetailViewController_OC.h */,
+				564B89691DE2AD8E00D68770 /* DistanceDetailViewController_OC.m */,
+				56408BD81DE3D6CE0059CE8B /* DistanceInfo.h */,
+				56408BD91DE3D6CE0059CE8B /* DistanceInfo.m */,
+				564B89621DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.h */,
+				564B89631DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m */,
+				56EE647A1DE1CA69005A14A1 /* DistanceStatisticsViewController */,
+			);
+			name = DistanceDetailViewController;
+			sourceTree = "<group>";
+		};
+		56EE647A1DE1CA69005A14A1 /* DistanceStatisticsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				564B896B1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.h */,
+				564B896C1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.m */,
+				564B896E1DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.h */,
+				564B896F1DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m */,
+				564B89741DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.h */,
+				564B89751DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.m */,
+				564B89771DE2AE6200D68770 /* DistanceStatisticsChartBar_OC.xib */,
+				564B89791DE2AE8400D68770 /* DistanceStatisticsDataManager.h */,
+				564B897A1DE2AE8400D68770 /* DistanceStatisticsDataManager.m */,
+			);
+			name = DistanceStatisticsViewController;
+			sourceTree = "<group>";
+		};
+		56EE647B1DE1CA85005A14A1 /* StepDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				560E95C61DE573020028F2A4 /* StepDetailViewController_OC.h */,
+				560E95C71DE573020028F2A4 /* StepDetailViewController_OC.m */,
+			);
+			name = StepDetailViewController;
+			sourceTree = "<group>";
+		};
+		56F6709E1DDD54200035FF01 /* HealthyDay-OC */ = {
+			isa = PBXGroup;
+			children = (
+				56EE64741DE1C9DF005A14A1 /* MainViewController */,
+				56EE64781DE1CA4B005A14A1 /* RunningViewController */,
+				56EE64791DE1CA58005A14A1 /* DistanceDetailViewController */,
+				56EE647B1DE1CA85005A14A1 /* StepDetailViewController */,
+				56FC391B1DE00990000E2F74 /* HelpManager */,
+				56F6709F1DDD54200035FF01 /* Supporting Files */,
+				56EE646D1DE18A43005A14A1 /* PublicDefine */,
+			);
+			path = "HealthyDay-OC";
+			sourceTree = "<group>";
+		};
+		56F6709F1DDD54200035FF01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				56F670A81DDD54200035FF01 /* Main.storyboard */,
+				56F670AB1DDD54200035FF01 /* HealthyDay_OC.xcdatamodeld */,
+				56F670B01DDD54200035FF01 /* LaunchScreen.storyboard */,
+				56F670B91DDD68C10035FF01 /* HealthyDay-OC.entitlements */,
+				56F670A21DDD54200035FF01 /* AppDelegate.h */,
+				56F670A31DDD54200035FF01 /* AppDelegate.m */,
+				56F670A01DDD54200035FF01 /* main.m */,
+				56F670B31DDD54200035FF01 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		56FC391B1DE00990000E2F74 /* HelpManager */ = {
+			isa = PBXGroup;
+			children = (
+				56FC391D1DE01E59000E2F74 /* HealthManager.h */,
+				56FC391E1DE01E59000E2F74 /* HealthManager.m */,
+				56EE64671DE17DAD005A14A1 /* DataSourceManager.h */,
+				56EE64681DE17DAD005A14A1 /* DataSourceManager.m */,
+				56EE64711DE1C5A4005A14A1 /* LocationManager.h */,
+				56EE64721DE1C5A4005A14A1 /* LocationManager.m */,
+			);
+			name = HelpManager;
+			sourceTree = "<group>";
+		};
 		726354631DB1370D00D18E52 /* StepDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +637,23 @@
 			productReference = 560E1BB91D953D3700B488AE /* HealthyDayTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		56F6709C1DDD54200035FF01 /* HealthyDay-OC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56F670B61DDD54200035FF01 /* Build configuration list for PBXNativeTarget "HealthyDay-OC" */;
+			buildPhases = (
+				56F670991DDD54200035FF01 /* Sources */,
+				56F6709A1DDD54200035FF01 /* Frameworks */,
+				56F6709B1DDD54200035FF01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HealthyDay-OC";
+			productName = "HealthyDay-OC";
+			productReference = 56F6709D1DDD54200035FF01 /* HealthyDay-OC.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -389,6 +686,19 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 560E1BA41D953D3600B488AE;
 					};
+					56F6709C1DDD54200035FF01 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 4F6NMKB449;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = 560E1BA01D953D3600B488AE /* Build configuration list for PBXProject "HealthyDay" */;
@@ -406,6 +716,7 @@
 			targets = (
 				560E1BA41D953D3600B488AE /* HealthyDay */,
 				560E1BB81D953D3700B488AE /* HealthyDayTests */,
+				56F6709C1DDD54200035FF01 /* HealthyDay-OC */,
 			);
 		};
 /* End PBXProject section */
@@ -426,6 +737,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56F6709B1DDD54200035FF01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				564B89781DE2AE6200D68770 /* DistanceStatisticsChartBar_OC.xib in Resources */,
+				56F670B71DDD5EF10035FF01 /* Assets.xcassets in Resources */,
+				56F670B21DDD54200035FF01 /* LaunchScreen.storyboard in Resources */,
+				56F670AA1DDD54200035FF01 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +817,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		56F670991DDD54200035FF01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				564B89641DE2AD5100D68770 /* DistanceDetailTableViewCell_OC.m in Sources */,
+				564B89761DE2AE4400D68770 /* DistanceStatisticsChartBar_OC.m in Sources */,
+				56408BDA1DE3D6CE0059CE8B /* DistanceInfo.m in Sources */,
+				564B896D1DE2ADB300D68770 /* DistanceStatisticsViewController_OC.m in Sources */,
+				56FC39261DE03CC3000E2F74 /* Theme.m in Sources */,
+				56F670BD1DDD86390035FF01 /* MainViewController_OC.m in Sources */,
+				56408BF21DE3EB290059CE8B /* BottomDecorativeCurve_OC.m in Sources */,
+				564B897B1DE2AE8400D68770 /* DistanceStatisticsDataManager.m in Sources */,
+				564B89701DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m in Sources */,
+				56EE64871DE1CBB8005A14A1 /* RunningInfomationView_OC.m in Sources */,
+				56408C041DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m in Sources */,
+				56408C011DE3EBB80059CE8B /* StepCountLabel_OC.m in Sources */,
+				56408BF51DE3EB400059CE8B /* MainInfomationView_OC.m in Sources */,
+				56F670AD1DDD54200035FF01 /* HealthyDay_OC.xcdatamodeld in Sources */,
+				56408BEC1DE3EADC0059CE8B /* CustomBarBtnItem_OC.m in Sources */,
+				56408BE91DE3EABF0059CE8B /* StepBarChartView_OC.m in Sources */,
+				56EE64731DE1C5A4005A14A1 /* LocationManager.m in Sources */,
+				56FC39291DE06118000E2F74 /* NSDate+NSDate_formatDescription.m in Sources */,
+				560E95C81DE573020028F2A4 /* StepDetailViewController_OC.m in Sources */,
+				56408BEF1DE3EAF40059CE8B /* StartRunningButton_OC.m in Sources */,
+				56EE64701DE18A82005A14A1 /* DistanceDetailItem.m in Sources */,
+				56FC39231DE03AE9000E2F74 /* Define.m in Sources */,
+				56EE64691DE17DAD005A14A1 /* DataSourceManager.m in Sources */,
+				56F670A41DDD54200035FF01 /* AppDelegate.m in Sources */,
+				56F670A11DDD54200035FF01 /* main.m in Sources */,
+				56408BE61DE3EAA40059CE8B /* StepBar_OC.m in Sources */,
+				56EE64811DE1CB74005A14A1 /* RunningViewController_OC.m in Sources */,
+				56408BF81DE3EB590059CE8B /* StepRingView_OC.m in Sources */,
+				56EE64841DE1CB8F005A14A1 /* GPSNotationView_OC.m in Sources */,
+				564B896A1DE2AD8E00D68770 /* DistanceDetailViewController_OC.m in Sources */,
+				56FC391F1DE01E59000E2F74 /* HealthManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -518,6 +878,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				560E1BB21D953D3600B488AE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		56F670A81DDD54200035FF01 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56F670A91DDD54200035FF01 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		56F670B01DDD54200035FF01 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56F670B11DDD54200035FF01 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -690,6 +1066,32 @@
 			};
 			name = Release;
 		};
+		56F670B41DDD54200035FF01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "HealthyDay-OC/HealthyDay-OC.entitlements";
+				DEVELOPMENT_TEAM = 4F6NMKB449;
+				INFOPLIST_FILE = "HealthyDay-OC/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.HealthyDay-OC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		56F670B51DDD54200035FF01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "HealthyDay-OC/HealthyDay-OC.entitlements";
+				DEVELOPMENT_TEAM = 4F6NMKB449;
+				INFOPLIST_FILE = "HealthyDay-OC/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.HealthyDay-OC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -720,6 +1122,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		56F670B61DDD54200035FF01 /* Build configuration list for PBXNativeTarget "HealthyDay-OC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56F670B41DDD54200035FF01 /* Debug */,
+				56F670B51DDD54200035FF01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
@@ -730,6 +1141,16 @@
 			);
 			currentVersion = 5603168D1DAF974000C04B8A /* HealthyDay.xcdatamodel */;
 			path = HealthyDay.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		56F670AB1DDD54200035FF01 /* HealthyDay_OC.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				56F670AC1DDD54200035FF01 /* HealthyDay_OC.xcdatamodel */,
+			);
+			currentVersion = 56F670AC1DDD54200035FF01 /* HealthyDay_OC.xcdatamodel */;
+			path = HealthyDay_OC.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
