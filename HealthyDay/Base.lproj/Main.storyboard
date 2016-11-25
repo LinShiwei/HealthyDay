@@ -73,7 +73,6 @@
                         <outlet property="mainInfoView" destination="3xe-nk-yIO" id="5sX-OR-pJ8"/>
                         <outlet property="startRunningBtn" destination="Nue-GV-2fS" id="C3R-dE-YZt"/>
                         <outlet property="stepBarChartView" destination="Jlp-qb-dme" id="Yng-gv-DmL"/>
-                        <outlet property="stepBarChartViewTapGesture" destination="Ser-bM-Fwk" id="TDC-za-kYQ"/>
                         <segue destination="shk-6F-WeU" kind="show" identifier="ShowDistanceDetailVC" id="MFs-MI-NZ7"/>
                     </connections>
                 </viewController>
@@ -107,10 +106,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceDetailTableViewCell" rowHeight="88" id="PqW-if-Jdn" customClass="DistanceDetailTableViewCell" customModule="HealthyDay" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="88"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PqW-if-Jdn" id="qoA-dh-p3g">
-                                            <frame key="frameInset" width="1000" height="88"/>
+                                            <frame key="frameInset" width="320" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgY-n2-9yr">

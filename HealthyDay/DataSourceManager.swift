@@ -59,7 +59,7 @@ internal final class DataSourceManager{
             let managedContext = self.getManagedContext()
             let entity = NSEntityDescription.entity(forEntityName: "Running", in:managedContext)
             let distanceObject = NSManagedObject(entity: entity!, insertInto: managedContext)
-            distanceObject.setValue(Date().addingTimeInterval(-(Double)(dataItem.duration)), forKey: "date")
+            distanceObject.setValue(dataItem.date, forKey: "date")
             distanceObject.setValue(dataItem.duration, forKey: "duration")
             distanceObject.setValue(dataItem.distance, forKey: "distance")
             distanceObject.setValue(dataItem.durationPerKilometer, forKey: "durationPerKilometer")

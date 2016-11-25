@@ -47,7 +47,7 @@ internal class GPSNotationView: UIView {
         infoLabel.textAlignment = .center
         infoLabel.textColor = UIColor.black
         infoLabel.font = UIFont.systemFont(ofSize: 14)
-        infoLabel.text = "GPS不可用"
+        infoLabel.text = "初始化GPS"
         addSubview(infoLabel)
         self.hasEnabled = hasEnabled
     }

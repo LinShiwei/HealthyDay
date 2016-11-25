@@ -18,22 +18,22 @@ internal class StepRingView: UIView {
     private let strokeLayer = CAShapeLayer()
     private let ringLayer = CALayer()
     
-    internal var precent : Double = 0{
+    internal var percent : Double = 0{
         didSet{
-            precent = precent > 1 ? 1 : precent
-            precent = precent < 0 ? 0 : precent
+            percent = percent > 1 ? 1 : percent
+            percent = percent < 0 ? 0 : percent
             let strokeEnd = CABasicAnimation(keyPath: "strokeEnd")
-            strokeLayer.strokeEnd = CGFloat(precent)
+            strokeLayer.strokeEnd = CGFloat(percent)
             strokeEnd.fromValue = 1
-            strokeEnd.duration = (1-precent)*1
+            strokeEnd.duration = (1-percent)*1
             strokeLayer.add(strokeEnd, forKey: "strokeEnd")
         }
     }
     
-    internal init(size:CGSize, center:CGPoint, precent:Double) {
+    internal init(size:CGSize, center:CGPoint, percent:Double) {
         let frame = CGRect(origin: CGPoint(x:center.x-size.width/2,y:center.y-size.height/2), size: size)
         super.init(frame:frame)
-        self.precent = precent
+        self.percent = percent
         
         let dot = CALayer()
         dot.frame = CGRect(x: -dotRadius, y: 0, width: 2*dotRadius, height: 2*dotRadius)

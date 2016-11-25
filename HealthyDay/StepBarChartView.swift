@@ -29,6 +29,7 @@ internal class StepBarChartView: UIView {
     }
   
     override func draw(_ rect: CGRect) {
+        super.draw(rect)
         addStepBars()
     }
     

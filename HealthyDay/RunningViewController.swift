@@ -93,6 +93,7 @@ internal class RunningViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         if startRunning == true {
             startRunning = false
         }

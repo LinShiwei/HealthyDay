@@ -24,7 +24,7 @@ class DistanceStatisticsChartView: UIView {
     internal var type = StatisticsPeriod.Week
     
     private var maxDistance = 0.0
-    private let statisticeManager = DistanceStatisticsDataManager.shared
+    private let statisticsManager = DistanceStatisticsDataManager.shared
 //MARK: init func
     private func initStatisticsChart(withStatisticsData data:[Double]){
         var barCount = 0
@@ -36,7 +36,7 @@ class DistanceStatisticsChartView: UIView {
         for view in self.subviews where view is DistanceStatisticsChartBar {
             view.removeFromSuperview()
         }
-        let titles = statisticeManager.getPeriodDescriptionText()
+        let titles = statisticsManager.getPeriodDescriptionText()
         assert(titles.count == data.count)
         
         var barWidth : CGFloat

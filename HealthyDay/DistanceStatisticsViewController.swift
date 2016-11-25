@@ -25,12 +25,12 @@ class DistanceStatisticsViewController: UIViewController {
 //MARK: Property
     internal var distanceDetailItem = [DistanceDetailItem](){
         didSet{
-            statisticeManager.distances = distanceDetailItem
+            statisticsManager.distances = distanceDetailItem
             
 //            let mock1 = DistanceDetailItem(date: Date().addingTimeInterval(-60), distance: 1000, duration: 200, durationPerKilometer: 200)
 //            let mock2 = DistanceDetailItem(date: Date().addingTimeInterval(-3600*24), distance: 500, duration: 100, durationPerKilometer: 200)
 //            let mock3 = DistanceDetailItem(date: Date().addingTimeInterval(-3600*24*4), distance: 500, duration: 100, durationPerKilometer: 200)
-//            statisticeManager.distances = [mock3,mock2,mock1]
+//            statisticsManager.distances = [mock3,mock2,mock1]
         }
     }
     
@@ -83,7 +83,7 @@ class DistanceStatisticsViewController: UIViewController {
         }
     }
 
-    private let statisticeManager = DistanceStatisticsDataManager.shared
+    private let statisticsManager = DistanceStatisticsDataManager.shared
 //MARK: View
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,32 +95,34 @@ class DistanceStatisticsViewController: UIViewController {
         statisticsPeriodChanged(statisticsPeriodSegmentedControl)
     }
 //MARK: func
+    
+    private func refreshData(){
+        totalDistance = statisticsManager.getTotalDistance()
+        totalDuration = statisticsManager.getTotalDuration()
+        averageDurationPerKilometer = statisticsManager.getAverageDurationPerKilometer()
+        averageSpeed = statisticsManager.getAverageSpeed()
+    }
+    
     @IBAction func statisticsPeriodChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            statisticeManager.type = .Week
+            statisticsManager.type = .Week
             currentPeriodDescription = "本周"
         case 1:
-            statisticeManager.type = .Month
+            statisticsManager.type = .Month
             currentPeriodDescription = "\(calendar.component(.year, from: Date())+1911)年\(calendar.component(.month, from: Date()))月"
         case 2:
-            statisticeManager.type = .Year
+            statisticsManager.type = .Year
             currentPeriodDescription = "\(calendar.component(.year, from: Date())+1911)年"
         case 3:
-            statisticeManager.type = .All
+            statisticsManager.type = .All
             currentPeriodDescription = "全部"
         default:
             fatalError("SegmentedControl only has 4 segments")
         }
-        distanceStatisticsChart.type = statisticeManager.type
-        distanceStatisticsChart.distanceStatistics = statisticeManager.getDistanceStatistics()
+        distanceStatisticsChart.type = statisticsManager.type
+        distanceStatisticsChart.distanceStatistics = statisticsManager.getDistanceStatistics()
         refreshData()
     }
     
-    private func refreshData(){
-        totalDistance = statisticeManager.getTotalDistance()
-        totalDuration = statisticeManager.getTotalDuration()
-        averageDurationPerKilometer = statisticeManager.getAverageDurationPerKilometer()
-        averageSpeed = statisticeManager.getAverageSpeed()
-    }
 }

@@ -111,7 +111,7 @@ internal final class DistanceStatisticsDataManager {
         if durationPerKilometer == 0{
             return 0.0
         }else{
-            return 1000.0/Double(getAverageDurationPerKilometer())
+            return 1000.0/Double(durationPerKilometer)
         }
     }
     

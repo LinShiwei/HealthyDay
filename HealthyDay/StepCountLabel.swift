@@ -18,7 +18,7 @@ internal class StepCountLabel: UILabel {
     internal var stepCount : Int = 0 {
         didSet{
             text = "\(stepCount)"
-            ringView.precent = Double(stepCount)/Double(targetCount)
+            ringView.percent = Double(stepCount)/Double(targetCount)
         }
     }
     
@@ -59,7 +59,7 @@ internal class StepCountLabel: UILabel {
         addSubview(targetLabel)
         
 
-        ringView = StepRingView(size: CGSize(width:frame.height,height:frame.height), center: CGPoint(x:frame.width/2, y:frame.height/2), precent: 0.3)
+        ringView = StepRingView(size: CGSize(width:frame.height,height:frame.height), center: CGPoint(x:frame.width/2, y:frame.height/2), percent: 0.3)
 
         addSubview(ringView)
     

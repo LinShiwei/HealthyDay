@@ -36,6 +36,7 @@ class DistanceStatisticsChartBar: UIView {
     }
 //MARK: View
     override func awakeFromNib() {
+        super.awakeFromNib()
         bar.backgroundColor = theme.lightThemeColor
     }
 }

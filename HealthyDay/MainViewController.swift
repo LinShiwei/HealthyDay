@@ -26,9 +26,6 @@ internal class MainViewController: UIViewController {
     @IBOutlet weak var stepBarChartView: StepBarChartView!
     @IBOutlet weak var startRunningBtn: StartRunningButton!
 
-    @IBOutlet var mainInfoViewDistanceLabelTapGesture: UITapGestureRecognizer!
-    @IBOutlet var stepBarChartViewTapGesture: UITapGestureRecognizer!
-    
 //MARK: View cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,10 +71,7 @@ internal class MainViewController: UIViewController {
         updateCurrentDistance()
         updateCurrentStepCount()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
+
 //MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowStepDetailVC"{
