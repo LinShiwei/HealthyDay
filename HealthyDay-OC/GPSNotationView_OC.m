@@ -25,7 +25,7 @@
         [self.layer setCornerRadius:frame.size.height/2];
         
         CGFloat gap = 2;
-        _gpsNotation.frame = CGRectMake(0, gap, 30, frame.size.height-gap*2);
+        _gpsNotation = [[UILabel alloc] initWithFrame:CGRectMake(0, gap, 30, frame.size.height-gap*2)];
         _gpsNotation.layer.cornerRadius = frame.size.height/2;
         _gpsNotation.layer.backgroundColor = [[UIColor redColor] CGColor];
         _gpsNotation.text = @"GPS";
@@ -35,15 +35,25 @@
         [self addSubview:_gpsNotation];
         
         CGFloat maxX = _gpsNotation.frame.origin.x + _gpsNotation.frame.size.width;
-        _infoLabel.frame = CGRectMake(maxX, gap, frame.size.width-maxX, frame.size.height-gap*2);
+        _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(maxX, gap, frame.size.width-maxX, frame.size.height-gap*2)];
         _infoLabel.textAlignment = NSTextAlignmentCenter;
         _infoLabel.textColor = [UIColor blackColor];
         _infoLabel.font = [UIFont systemFontOfSize:14];
-        _infoLabel.text = @"GPS不可用";
+        _infoLabel.text = @"初始化GPS";
         [self addSubview:_infoLabel];
         self.hasEnabled = enable;
     }
     return self;
+}
+
+- (void)setHasEnabled:(BOOL)hasEnabled{
+    if (hasEnabled) {
+        _gpsNotation.layer.backgroundColor = [[UIColor greenColor] CGColor];
+        _infoLabel.text = [self getCurrentDateDescription];
+    }else{
+        _gpsNotation.layer.backgroundColor = [[UIColor redColor] CGColor];
+        _infoLabel.text = @"GPS不可用";
+    }
 }
 
 - (void)refreshCurrentTime{

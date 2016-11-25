@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    statisticsManager = [DistanceStatisticsDataManager sharedStatisticsDataManager];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -46,10 +46,14 @@
 
 - (void)setDistanceDetailItem:(NSArray<DistanceDetailItem *> *)distanceDetailItem{
     _distanceDetailItem = distanceDetailItem;
+    if (!statisticsManager) {
+        statisticsManager = [DistanceStatisticsDataManager sharedStatisticsDataManager];
+    }
     statisticsManager.distances = distanceDetailItem;
 }
 
 - (void)setTotalDistance:(double)totalDistance{
+    _totalDistance = totalDistance;
     NSMutableAttributedString *text = (NSMutableAttributedString *)_totalDistanceLabel.attributedText;
     NSRange range = NSMakeRange(0, text.length-2);
     NSAttributedString *attributeString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.2f",_totalDistance/1000.0] attributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:@"DINCondensed-Bold" size:37] forKey:NSFontAttributeName]];
@@ -80,13 +84,13 @@
 
 - (void)setAverageSpeed:(double)averageSpeed{
     _averageSpeed = averageSpeed;
-    _averageDurationPerKilometerLabel.text = [NSString stringWithFormat:@"%.2f公里/时",(double)averageSpeed*3600/1000.0];
+    _averageSpeedLabel.text = [NSString stringWithFormat:@"%.2f公里/时",(double)averageSpeed*3600/1000.0];
 }
 - (void)refreshData{
-    _totalDistance = [statisticsManager getTotalDistance];
-    _totalDuration = [statisticsManager getTotalDuration];
-    _averageDurationPerKilometer = [statisticsManager getAverageDurationPerKilometer];
-    _averageSpeed = [statisticsManager getAverageSpeed];
+    self.totalDistance = [statisticsManager getTotalDistance];
+    self.totalDuration = [statisticsManager getTotalDuration];
+    self.averageDurationPerKilometer = [statisticsManager getAverageDurationPerKilometer];
+    self.averageSpeed = [statisticsManager getAverageSpeed];
 }
 
 - (IBAction)statisticsPeriodChanged:(UISegmentedControl *)sender {
@@ -94,19 +98,19 @@
     switch ([sender selectedSegmentIndex]) {
         case 0:
             statisticsManager.type = Week;
-            _currentPeriodDescription = @"本周";
+            self.currentPeriodDescription = @"本周";
             break;
         case 1:
             statisticsManager.type = Month;
-            _currentPeriodDescription = [NSString stringWithFormat:@"%ld年%ld月",[calendar component:NSCalendarUnitYear fromDate:[NSDate date]]+1991,[calendar component:NSCalendarUnitMonth fromDate:[NSDate date]]+1991];
+            self.currentPeriodDescription = [NSString stringWithFormat:@"%ld年%ld月",[calendar component:NSCalendarUnitYear fromDate:[NSDate date]]+1911,[calendar component:NSCalendarUnitMonth fromDate:[NSDate date]]];
             break;
         case 2:
             statisticsManager.type = Year;
-            _currentPeriodDescription = [NSString stringWithFormat:@"%ld年",[calendar component:NSCalendarUnitYear fromDate:[NSDate date]]+1991];
+            self.currentPeriodDescription = [NSString stringWithFormat:@"%ld年",[calendar component:NSCalendarUnitYear fromDate:[NSDate date]]+1911];
             break;
         case 3:
             statisticsManager.type = All;
-            _currentPeriodDescription = @"全部";
+            self.currentPeriodDescription = @"全部";
             break;
         default:
             break;

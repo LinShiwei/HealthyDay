@@ -105,7 +105,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WzX-MG-czv">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceDetailTableViewCell" rowHeight="88" id="193-ry-g2n" customClass="DistanceDetailTableViewCell_OC" customModule="HealthyDay">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceDetailTableViewCell_OC" rowHeight="88" id="193-ry-g2n" customClass="DistanceDetailTableViewCell_OC">
                                         <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="193-ry-g2n" id="X7r-CG-2kI">
@@ -219,10 +219,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="dateLabel" destination="zv1-97-VZ0" id="n9x-xf-whk"/>
-                                            <outlet property="distanceLabel" destination="wsr-Yp-On5" id="u5A-hq-jd0"/>
-                                            <outlet property="durationLabel" destination="8zM-2b-Mmb" id="ocJ-XM-sLs"/>
-                                            <outlet property="durationPerKilometerLabel" destination="fnr-hl-DKd" id="IEN-M2-8GU"/>
+                                            <outlet property="dateLabel" destination="zv1-97-VZ0" id="TbI-gw-l2R"/>
+                                            <outlet property="distanceLabel" destination="wsr-Yp-On5" id="AHw-Zd-I0k"/>
+                                            <outlet property="durationLabel" destination="8zM-2b-Mmb" id="hlP-kh-0Vo"/>
+                                            <outlet property="durationPerKilometerLabel" destination="fnr-hl-DKd" id="pQf-Al-aPE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

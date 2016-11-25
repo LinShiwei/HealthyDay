@@ -33,7 +33,7 @@
     int seconds = duration%60;
     int minutes = (duration%3600)/60;
     int hours = duration/3600;
-    return [NSString stringWithFormat:@"%02d:%02d:%02d/公里",hours,minutes,seconds];
+    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours,minutes,seconds];
 }
 
 - (NSString*)durationPerKilometerFormatterWithDuration:(int)duration{

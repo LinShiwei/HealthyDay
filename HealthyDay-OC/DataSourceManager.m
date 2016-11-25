@@ -46,12 +46,12 @@
 }
 
 - (void)deleteOneRunningDataItem:(DistanceDetailItem *)dataItem withCompletion:(void (^ _Nullable )(BOOL))completion{
-    [self deleteOneRunningDataItem:dataItem withCompletion:completion];
+    [self deleteInCoreDataWithOneDataItem:dataItem withCompletion:completion];
 }
 
 #pragma mark Private CoreData data API
 - (void)getDataFromCoreDataWithCompletion:(void(^)(BOOL,NSArray<DistanceDetailItem *> * _Nullable))completion{
-    NSMutableArray<DistanceDetailItem *> *distances;
+    NSMutableArray<DistanceDetailItem *> *distances = [NSMutableArray array];
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Running"];
     fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
     NSError *error = nil;
@@ -61,7 +61,6 @@
         abort();
     }else{
         _objects = [NSMutableArray arrayWithArray:results];
-//        _objects = (NSArray<NSManagedObject *> *)results;
         if ([_objects count] > 0){
             for (NSManagedObject *object in _objects){
                 NSDate *date = [object valueForKey:@"date"];
@@ -77,7 +76,9 @@
             [self saveToCoreDataWithDistances:distances];
         }
     }
-    
+    if (completion) {
+        completion(YES,distances);
+    }
 }
 
 - (void)saveToCoreDataWithOneDataItem:(DistanceDetailItem *)dataItem withCompletion:(void(^ _Nullable)(BOOL))completion{
@@ -91,10 +92,14 @@
         [distanceObject setValue:[[NSNumber alloc] initWithInt:dataItem.durationPerKilometer] forKey:@"durationPerKilometer"];
         NSError *error = nil;
         if ([managedContext save:&error] == NO) {
-            completion(false);
+            if (completion) {
+                completion(false);
+            }
             NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
         }else{
-            completion(true);
+            if (completion) {
+                completion(true);
+            }
         }
     });
 }
@@ -124,7 +129,7 @@
 
 - (NSArray<DistanceDetailItem *> *)mockDistancesData{
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:-3600*24*100];
-    NSMutableArray<DistanceDetailItem *> *items;
+    NSMutableArray<DistanceDetailItem *> *items = [NSMutableArray array];
     for (int i=0; i<20; i++) {
         double secondOffset = (double)arc4random_uniform(3600*24*2)+3600*24*3;
         double distance = (double)(arc4random_uniform(2000)+9000);

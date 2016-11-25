@@ -10,7 +10,7 @@
 
 @interface DistanceStatisticsDataManager ()
 
-@property NSDate *currentDate;
+@property (nonatomic) NSDate *currentDate;
 @property NSDateInterval *dateInterval;
 
 
@@ -32,9 +32,13 @@
 - (id)init{
     self = [super init];
     if (self){
-//        self.type = Week;
+
     }
     return self;
+}
+
+- (NSDate *)currentDate{
+    return [NSDate date];
 }
 
 - (void)setType:(enum StatisticsPeriod)type{
@@ -50,8 +54,8 @@
             return [NSArray arrayWithObjects:@"日",@"一",@"二",@"三",@"四",@"五",@"六", nil];
             break;
         case Month:{
-            NSMutableArray<NSString *> *dayOfMonth;
-            NSRange range = [[[Define sharedDefine] calendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:_currentDate];
+            NSMutableArray<NSString *> *dayOfMonth = [NSMutableArray array];
+            NSRange range = [[[Define sharedDefine] calendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:self.currentDate];
             for (NSUInteger day=range.location; day<range.location+range.length; day++) {
                 if (day ==1 || day%5 == 0) {
                     [dayOfMonth addObject:[NSString stringWithFormat:@"%lu",(unsigned long)day]];
@@ -73,7 +77,7 @@
                 NSInteger firstYear = [calendar component:NSCalendarUnitYear fromDate:[_distances firstObject].date];
                 NSInteger lastYear = [calendar component:NSCalendarUnitYear fromDate:[_distances lastObject].date];
                 NSAssert(firstYear <= lastYear, @"firstYear should less than lastYear");
-                NSMutableArray<NSString *> *years;
+                NSMutableArray<NSString *> *years = [NSMutableArray array];
                 for (NSInteger year = firstYear; year <= lastYear; year++) {
                     [years addObject:[NSString stringWithFormat:@"%ld",year+1911]];
                 }
@@ -154,13 +158,14 @@
 
 - (NSDateInterval *)getDateIntervalWithType:(enum StatisticsPeriod)type{
     NSCalendar *calendar = [[Define sharedDefine] calendar];
+    NSDate *currentDate = self.currentDate;
     NSDate *startDate;
     switch (type) {
         case Week:{
-            if ([calendar component:NSCalendarUnitWeekday fromDate:_currentDate]==1) {
-                startDate = [calendar dateByAddingUnit:NSCalendarUnitWeekOfMonth value:-1 toDate:_currentDate options:NSCalendarMatchStrictly];
+            if ([calendar component:NSCalendarUnitWeekday fromDate:currentDate]==1) {
+                startDate = [calendar dateByAddingUnit:NSCalendarUnitWeekOfMonth value:-1 toDate:currentDate options:NSCalendarMatchStrictly];
             }else{
-                NSDate *tempDate = [calendar dateBySettingUnit:NSCalendarUnitWeekday value:1 ofDate:_currentDate options:NSCalendarSearchBackwards];
+                NSDate *tempDate = [calendar dateBySettingUnit:NSCalendarUnitWeekday value:1 ofDate:currentDate options:NSCalendarSearchBackwards];
                 startDate = [calendar dateByAddingUnit:NSCalendarUnitWeekOfMonth value:-1 toDate:tempDate options:NSCalendarMatchStrictly];
             }
             return [[NSDateInterval alloc] initWithStartDate:startDate duration:24*3600*7];
@@ -168,23 +173,23 @@
         }
         case Month:{
             NSDateComponents *components = [[NSDateComponents alloc] init];
-            components.year = [calendar component:NSCalendarUnitYear fromDate:_currentDate];
-            components.month = [calendar component:NSCalendarUnitMonth fromDate:_currentDate];
+            components.year = [calendar component:NSCalendarUnitYear fromDate:currentDate];
+            components.month = [calendar component:NSCalendarUnitMonth fromDate:currentDate];
             startDate = [calendar dateFromComponents:components];
-            NSRange range = [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:_currentDate];
+            NSRange range = [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:currentDate];
             return [[NSDateInterval alloc] initWithStartDate:startDate duration:24*3600*range.length];
             break;
         }
         case Year:{
             NSDateComponents *components = [[NSDateComponents alloc] init];
-            components.year = [calendar component:NSCalendarUnitYear fromDate:_currentDate];
+            components.year = [calendar component:NSCalendarUnitYear fromDate:currentDate];
             startDate = [calendar dateFromComponents:components];
             NSDate *endDate = [calendar dateByAddingUnit:NSCalendarUnitYear value:1 toDate:startDate options:NSCalendarSearchBackwards];
             return [[NSDateInterval alloc] initWithStartDate:startDate endDate:endDate];
             break;
         }
         case All:{
-            return [[NSDateInterval alloc] initWithStartDate:[NSDate dateWithTimeIntervalSinceReferenceDate:0] endDate:_currentDate];
+            return [[NSDateInterval alloc] initWithStartDate:[NSDate dateWithTimeIntervalSinceReferenceDate:0] endDate:currentDate];
             break;
         }
         default:
@@ -193,7 +198,7 @@
 }
 
 - (NSArray<NSNumber *> *)getWeekDistanceStatistics{
-    NSMutableArray<NSNumber *> *results;
+    NSMutableArray<NSNumber *> *results = [NSMutableArray array];
     double distance = 0.0;
     NSDate *focusDay = [_dateInterval startDate];
     for (DistanceDetailItem *item in _distances) {
@@ -206,7 +211,7 @@
                     [results addObject:[NSNumber numberWithDouble:distance]];
                     distance = 0.0;
                     focusDay = [focusDay dateByAddingTimeInterval:3600*24];
-                } while ([calendar isDate:item.date inSameDayAsDate:focusDay]);
+                } while (![calendar isDate:item.date inSameDayAsDate:focusDay]);
                 distance += item.distance;
             }
         }
@@ -220,8 +225,10 @@
 }
 
 - (NSArray<NSNumber *> *)getMonthDistanceStatistics{
-    NSMutableArray<NSNumber *> *results;
+    NSMutableArray<NSNumber *> *results = [NSMutableArray array];
     NSCalendar *calendar = [[Define sharedDefine] calendar];
+    NSDate *currentDate = self.currentDate;
+
     double distance = 0.0;
     NSDate *focusDay = [_dateInterval startDate];
     for (DistanceDetailItem *item in _distances) {
@@ -233,21 +240,21 @@
                     [results addObject:[NSNumber numberWithDouble:distance]];
                     distance = 0.0;
                     focusDay = [focusDay dateByAddingTimeInterval:3600*24];
-                } while ([calendar isDate:item.date inSameDayAsDate:focusDay]);
+                } while (![calendar isDate:item.date inSameDayAsDate:focusDay]);
                 distance += item.distance;
             }
         }
     }
     [results addObject:[NSNumber numberWithDouble:distance]];
-    while (results.count < [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:_currentDate].length) {
+    while (results.count < [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:currentDate].length) {
         [results addObject:[NSNumber numberWithDouble:0.0]];
     }
-    NSAssert(results.count == [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:_currentDate].length, @"");
+    NSAssert(results.count == [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:currentDate].length, @"");
     return results;
 }
 
 - (NSArray<NSNumber *> *)getYearDistanceStatistics{
-    NSMutableArray<NSNumber *> *results;
+    NSMutableArray<NSNumber *> *results = [NSMutableArray array];
     double distance = 0.0;
     NSDate *focusMonth = [_dateInterval startDate];
     for (DistanceDetailItem *item in _distances) {
@@ -260,7 +267,7 @@
                     [results addObject:[NSNumber numberWithDouble:distance]];
                     distance = 0.0;
                     focusMonth = [calendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:focusMonth options:NSCalendarSearchBackwards];
-                } while ([calendar isDate:item.date equalToDate:focusMonth toUnitGranularity:NSCalendarUnitMonth]);
+                } while (![calendar isDate:item.date equalToDate:focusMonth toUnitGranularity:NSCalendarUnitMonth]);
                 distance += item.distance;
             }
         }
@@ -277,7 +284,7 @@
     if (_distances.count == 0) {
         return [NSArray arrayWithObject:[NSNumber numberWithDouble:0.0]];
     }else{
-        NSMutableArray<NSNumber *> *results;
+        NSMutableArray<NSNumber *> *results = [NSMutableArray array];
         NSCalendar *calendar = [[Define sharedDefine] calendar];
         double distance = 0.0;
         NSInteger year = [calendar component:NSCalendarUnitYear fromDate:_distances.firstObject.date];
@@ -291,7 +298,7 @@
                         [results addObject:[NSNumber numberWithDouble:distance]];
                         distance = 0.0;
                         focusYear = [calendar dateByAddingUnit:NSCalendarUnitYear value:1 toDate:focusYear options:NSCalendarSearchBackwards];
-                    } while ([calendar isDate:item.date equalToDate:focusYear toUnitGranularity:NSCalendarUnitYear]);
+                    } while (![calendar isDate:item.date equalToDate:focusYear toUnitGranularity:NSCalendarUnitYear]);
                     distance += item.distance;
                 }
             }

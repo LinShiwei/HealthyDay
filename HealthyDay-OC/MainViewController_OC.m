@@ -54,13 +54,13 @@
     self.navigationItem.rightBarButtonItem = _stepBarItem;
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [_mainInfoView refreshAnimation];
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self updateCurrentDistance];
     [self updateCurrentStepCount];
 }

@@ -11,7 +11,7 @@
 
 @interface GPSNotationView_OC : UIView
 
-@property BOOL hasEnabled;
+@property (nonatomic) BOOL hasEnabled;
 
 - (id)initWithFrame:(CGRect)frame hasEnable:(BOOL)enable;
 - (void)refreshCurrentTime;

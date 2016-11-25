@@ -11,7 +11,7 @@
 @implementation NSDate (NSDate_formatDescription)
 
 - (NSString*)formatDescription{
-    NSDateFormatter *formatter = [NSDateFormatter init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     return [formatter stringFromDate:self];
 }

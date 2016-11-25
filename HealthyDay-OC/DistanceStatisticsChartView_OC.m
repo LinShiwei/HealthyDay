@@ -18,7 +18,27 @@
 
 @implementation DistanceStatisticsChartView_OC
 
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        statisticsManager = [DistanceStatisticsDataManager sharedStatisticsDataManager];
+    }
+    return self;
+}
+
+- (void)setDistanceStatistics:(NSArray<NSNumber *> *)distanceStatistics{
+    _distanceStatistics = distanceStatistics;
+    maxDistance = 0.0;
+    for (NSNumber *value in distanceStatistics) {
+        if (maxDistance < value.doubleValue) {
+            maxDistance = value.doubleValue;
+        }
+    }
+    [self initStatisticsChartWithStatisticsData:distanceStatistics];
+}
+
 - (void)initStatisticsChartWithStatisticsData:(NSArray<NSNumber *> *)data{
+    
     int barCount = 0;
     for (UIView *view in self.subviews) {
         if ([view isKindOfClass:[DistanceStatisticsChartBar_OC class]]) {
@@ -39,7 +59,7 @@
         CGFloat startXPosition;
         if (_type == All) {
             barWidth = self.frame.size.width/(CGFloat)(data.count + 4);
-            startXPosition = barWidth/2;
+            startXPosition = barWidth*2;
         }else{
             barWidth = self.frame.size.width/(CGFloat)data.count;
             startXPosition = 0;

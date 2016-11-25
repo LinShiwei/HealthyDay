@@ -12,7 +12,7 @@
 
 @interface DistanceStatisticsChartView_OC : UIView
 
-@property NSArray<NSNumber *> *distanceStatistics;
+@property (nonatomic) NSArray<NSNumber *> *distanceStatistics;
 @property enum StatisticsPeriod type;
 
 @end

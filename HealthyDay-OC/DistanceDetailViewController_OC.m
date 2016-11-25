@@ -22,6 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    dataSourceManager = [DataSourceManager sharedDataSourceManager];
+    _distances = [NSMutableArray array];
+    
     [dataSourceManager getAllRunningDataWithCompletion:^(BOOL success,NSArray<DistanceDetailItem *> *items){
         if (success&&items) {
             self.distances = [NSMutableArray arrayWithArray: items];
@@ -42,7 +45,7 @@
 }
 
 - (NSArray<DistanceInfo *> *)classifyDistanes:(NSArray<DistanceDetailItem *> *)distances{
-    NSMutableArray<DistanceInfo *> *info;
+    NSMutableArray<DistanceInfo *> *info = [NSMutableArray array];
     if (distances.count > 0) {
         NSString *dateDescription = [distances[0].date formatDescription];
         NSString *month = [dateDescription substringToIndex:7];
@@ -112,7 +115,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DistanceDetailTableViewCell_OC *cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceDetailTableViewCell" forIndexPath:indexPath];
+    DistanceDetailTableViewCell_OC *cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceDetailTableViewCell_OC" forIndexPath:indexPath];
     NSInteger index = [self indexInDistancesArrayWithIndexPath:indexPath];
     cell.date = _distances[index].date;
     cell.distance = _distances[index].distance;

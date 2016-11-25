@@ -41,8 +41,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    dataSourceManager = [DataSourceManager sharedDataSourceManager];
+    locationManager = [LocationManager sharedLocationManager];
+    _runningLocations = [NSMutableArray array];
+    
     locationManager.delegate = self;
     [locationManager authorizeWithCompletion:^(BOOL success){
+        if (success) {
+            ;
+        } else {
+            ;
+        }
         _gpsNotationView = [[GPSNotationView_OC alloc] initWithFrame:CGRectMake(20, 20, 200, 20) hasEnable:success];
         [_mapView addSubview:_gpsNotationView];
     }];
@@ -54,7 +63,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     if (_startRunning) {
-        _startRunning = NO;
+        self.startRunning = NO;
     }
     _hasLocated = NO;
 }
@@ -64,11 +73,12 @@
     [_runningLocations removeAllObjects];
     if (startRunning) {
         [self initTimer];
-        _runningDistance = 0;
-        _runningDuration = 0;
+        self.runningDistance = 0;
+        self.runningDuration = 0;
         [locationManager startUpdate];
     }else{
         [_timer invalidate];
+        _timer = nil;
         [self saveRunningData];
         [locationManager stopUpdate];
     }
@@ -97,18 +107,9 @@
     _durationPerKilometer = durationPerKilometer;
     _durationPerKilometerLabel.text = [[Define sharedDefine] durationPerKilometerFormatterWithDuration:durationPerKilometer];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void)initTimer{
-    if (_timer.isValid == NO) {
+    if (_timer == nil || _timer.isValid == NO) {
         _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateDurationAndAverageSpeed:) userInfo:NULL repeats:YES];
     }
 }
@@ -132,7 +133,7 @@
 - (void)updateRunningDistanceWithNewLocations:(NSArray<CLLocation *> *)locations{
     if (_oldLocation != nil && [_oldLocation distanceFromLocation:[locations lastObject]] >= 1) {
         for (CLLocation * location in locations) {
-            _runningDistance += [location distanceFromLocation:_oldLocation];
+            self.runningDistance += [location distanceFromLocation:_oldLocation];
             _oldLocation = location;
         }
     }
@@ -145,9 +146,9 @@
 
 - (void)updateDurationAndAverageSpeed:(NSTimer *)sender{
     NSAssert(_timer != nil, @"timer should not be nil");
-    _runningDuration += (int)_timer.timeInterval;
+    self.runningDuration += (int)_timer.timeInterval;
     if (_runningDistance != 0) {
-        _durationPerKilometer = (int)((double)_runningDuration/_runningDistance*1000);
+        self.durationPerKilometer = (int)((double)_runningDuration/_runningDistance*1000);
     }
     [_gpsNotationView refreshCurrentTime];
 }
@@ -155,7 +156,7 @@
 
 
 - (IBAction)tapToStartRunning:(UIButton *)sender {
-    _startRunning = !_startRunning;
+    self.startRunning = !_startRunning;
     [sender setTitle:_startRunning ? @"暂停" : @"开始" forState:UIControlStateNormal];
     NSLog(@"running start == %d",_startRunning);
 }
@@ -192,7 +193,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     if (_hasLocated && _startRunning) {
-        [self drawRouteWithLocations:locations];
+        [self drawRouteWithLocations:_runningLocations];
         if (_oldLocation == nil){
             _oldLocation = [locations lastObject];
         }else{
