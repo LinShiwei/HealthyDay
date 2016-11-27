@@ -8,6 +8,7 @@
 
 #import "DataSourceManager.h"
 #import <CoreData/CoreData.h>
+#import <AFNetworking/AFNetworking.h>
 
 @interface DataSourceManager ()
 
@@ -30,22 +31,25 @@
 - (id)init{
     self = [super init];
     if (self) {
-        self.dataSource = CoreData;
+        //Setting dataSource to change HealthyDay's data source
+        self.dataSource = Linshiwei_win;
         self.objects = [NSMutableArray array];
     }
     return self;
 }
 #pragma mark Public API
 - (void)getAllRunningDataWithCompletion:(void(^)(BOOL,NSArray<DistanceDetailItem *> * _Nullable))completion{
-//    _dataSource == Linshiwei_win ?
+    _dataSource == Linshiwei_win ? [self getDataFromWebServerWithCompletion:completion] :
     [self getDataFromCoreDataWithCompletion:completion];
 }
 
 - (void)saveOneRunningDataItem:(DistanceDetailItem *)dataItem withCompletion:(void(^ _Nullable)(BOOL))completion{
+    _dataSource == Linshiwei_win ? [self saveToWebServerWithOneDataItem:dataItem withCompletion:completion] :
     [self saveToCoreDataWithOneDataItem:dataItem withCompletion:completion];
 }
 
 - (void)deleteOneRunningDataItem:(DistanceDetailItem *)dataItem withCompletion:(void (^ _Nullable )(BOOL))completion{
+    _dataSource == Linshiwei_win ? [self deleteInWebServerWithOneDataItem:dataItem withCompletion:completion] :
     [self deleteInCoreDataWithOneDataItem:dataItem withCompletion:completion];
 }
 
@@ -93,12 +97,12 @@
         NSError *error = nil;
         if ([managedContext save:&error] == NO) {
             if (completion) {
-                completion(false);
+                completion(NO);
             }
             NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
         }else{
             if (completion) {
-                completion(true);
+                completion(YES);
             }
         }
     });
@@ -112,10 +116,15 @@
             [managedContext deleteObject:object];
             NSError *error = nil;
             if ([managedContext save:&error] == NO) {
-                completion(false);
+                if (completion) {
+                    completion(NO);
+                }
                 NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
             }else{
                 [_objects removeObject:object];
+                if (completion) {
+                    completion(YES);
+                }
             }
         }
     }];
@@ -127,6 +136,7 @@
     return delegete.persistentContainer.viewContext;
 }
 
+#pragma mark Private Core Data helper
 - (NSArray<DistanceDetailItem *> *)mockDistancesData{
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:-3600*24*100];
     NSMutableArray<DistanceDetailItem *> *items = [NSMutableArray array];
@@ -160,5 +170,98 @@
     });
 }
 
+#pragma mark Private Web server API
 
+NSString *serverAPIAddress = @"http://www.linshiwei.win/healthyday.php?key=lsw";
+
+- (void)getDataFromWebServerWithCompletion:(void(^)(BOOL,NSArray<DistanceDetailItem *> * _Nullable))completion{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSDictionary *parameters = @{@"query": @"get"};
+    [manager GET:serverAPIAddress parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject){
+//        NSLog(@"aaaaa%@",responseObject);
+        NSDictionary *responseDic = (NSDictionary *)responseObject;
+        if ([[responseDic objectForKey:@"status"] intValue] == 1) {
+            NSMutableArray<DistanceDetailItem *> *items = [NSMutableArray array];
+            NSArray<NSDictionary *> *itemData = [responseDic objectForKey:@"runningdata"];
+            for (NSDictionary *data in itemData) {
+                NSDate *date = [NSDate dateFromFormatString:data[@"date"]];
+                double distance = [data[@"distance"] doubleValue];
+                int duration = [data[@"duration"] intValue];
+                int durationPerKilometer = [data[@"durationPerKilometer"] intValue];
+                if (date&&distance&&duration&&durationPerKilometer) {
+                    DistanceDetailItem *item = [[DistanceDetailItem alloc] initWithDate:date distance:distance duration:duration durationPerKilometer:durationPerKilometer];
+                    [items addObject:item];
+                }else{
+                    NSLog(@"linshiwei.win invalid data");
+                }
+            }
+            completion(YES,items);
+        }else{
+            NSLog(@"linshiwei.win status == 0, fail to fetch data");
+            completion(NO,NULL);
+            
+        }
+    } failure:^(NSURLSessionTask *operation, NSError *error){
+        NSLog(@"Error: %@", error);
+        completion(NO,NULL);
+    }];
+}
+
+- (void)saveToWebServerWithOneDataItem:(DistanceDetailItem *)dataItem withCompletion:(void(^ _Nullable)(BOOL))completion{
+    NSString *dateString = [[dataItem.date formatDescription] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    NSString *distanceString = [NSString stringWithFormat:@"%.2f",dataItem.distance];
+    NSString *durationString = [NSString stringWithFormat:@"%d",dataItem.duration];
+    NSString *durationPerKilometerString = [NSString stringWithFormat:@"%d",dataItem.durationPerKilometer];
+    NSDictionary *parameters = @{@"query": @"set",
+                                 @"date": dateString,
+                                 @"distance":distanceString,
+                                 @"duration":durationString,
+                                 @"durationperkilometer":durationPerKilometerString};
+//    NSLog(@"%@&query=set&date=%@&distance=%@&duration=%@&durationPerKilometer=%@",serverAPIAddress,dateString,distanceString,durationString,durationPerKilometerString);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:serverAPIAddress parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject){
+        NSDictionary *responseDic = (NSDictionary *)responseObject;
+        if ([[responseDic objectForKey:@"status"] intValue] == 1) {
+            if (completion) {
+                completion(YES);
+            }
+        }else{
+            NSLog(@"fail to save to web server, status == 0");
+            if (completion) {
+                completion(NO);
+            }
+        }
+    }failure:^(NSURLSessionTask *operation, NSError *error){
+        NSLog(@"Error: %@", error);
+        if (completion) {
+            completion(NO);
+        }
+    }];
+    
+}
+
+- (void)deleteInWebServerWithOneDataItem:(DistanceDetailItem *)dataItem withCompletion:(void(^ _Nullable)(BOOL))completion{
+    NSString *dateString = [[dataItem.date formatDescription] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    NSDictionary *parameters = @{@"query": @"delete",
+                                 @"date":dateString};
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:serverAPIAddress parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject){
+        NSDictionary *responseDic = (NSDictionary *)responseObject;
+        if ([[responseDic objectForKey:@"status"] intValue] == 1) {
+            if (completion) {
+                completion(YES);
+            }
+        }else{
+            NSLog(@"fail to delete in web server, status == 0");
+            if (completion) {
+                completion(NO);
+            }
+        }
+    }failure:^(NSURLSessionTask *operation, NSError *error){
+        NSLog(@"Error: %@", error);
+        if (completion) {
+            completion(NO);
+        }
+    }];
+}
 @end

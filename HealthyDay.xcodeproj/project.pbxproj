@@ -45,6 +45,8 @@
 		564FF90B1DA6203E008AC31E /* StepRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FF90A1DA6203E008AC31E /* StepRingView.swift */; };
 		5655AF251DBA47CF00849A5C /* DistanceStatisticsChartBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5655AF241DBA47CF00849A5C /* DistanceStatisticsChartBar.swift */; };
 		5655AF271DBA48D600849A5C /* DistanceStatisticsChartBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5655AF261DBA48D600849A5C /* DistanceStatisticsChartBar.xib */; };
+		565D3A931DEACD2700405412 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 565D3A921DEACD2700405412 /* AFNetworking.framework */; };
+		565D3A971DEB180B00405412 /* NSDate+NSDate_dateFromFormatString.m in Sources */ = {isa = PBXBuildFile; fileRef = 565D3A961DEB180B00405412 /* NSDate+NSDate_dateFromFormatString.m */; };
 		56629EA81D9B877000720F0A /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56629EA71D9B877000720F0A /* RunningViewController.swift */; };
 		56629EB71D9B8D8300720F0A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56629EB61D9B8D8300720F0A /* Quick.framework */; };
 		56629EB91D9B8D8900720F0A /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56629EB81D9B8D8900720F0A /* Nimble.framework */; };
@@ -177,6 +179,9 @@
 		564FF90A1DA6203E008AC31E /* StepRingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepRingView.swift; sourceTree = "<group>"; };
 		5655AF241DBA47CF00849A5C /* DistanceStatisticsChartBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceStatisticsChartBar.swift; sourceTree = "<group>"; };
 		5655AF261DBA48D600849A5C /* DistanceStatisticsChartBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceStatisticsChartBar.xib; sourceTree = "<group>"; };
+		565D3A921DEACD2700405412 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		565D3A951DEB180B00405412 /* NSDate+NSDate_dateFromFormatString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NSDate_dateFromFormatString.h"; sourceTree = "<group>"; };
+		565D3A961DEB180B00405412 /* NSDate+NSDate_dateFromFormatString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDate_dateFromFormatString.m"; sourceTree = "<group>"; };
 		56629EA71D9B877000720F0A /* RunningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
 		56629EB61D9B8D8300720F0A /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		56629EB81D9B8D8900720F0A /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -261,6 +266,7 @@
 			files = (
 				56F670B81DDD68BF0035FF01 /* MapKit.framework in Frameworks */,
 				56F670BA1DDD68C10035FF01 /* HealthKit.framework in Frameworks */,
+				565D3A931DEACD2700405412 /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +319,7 @@
 		560E1BC91D953F7F00B488AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				565D3A921DEACD2700405412 /* AFNetworking.framework */,
 				56BF22661DD9F8D4008CA28C /* Alamofire.framework */,
 				56BF22641DD9F8CB008CA28C /* SwiftyJSON.framework */,
 				5603168A1DAF96F500C04B8A /* CoreData.framework */,
@@ -434,6 +441,8 @@
 				56FC39281DE06118000E2F74 /* NSDate+NSDate_formatDescription.m */,
 				56EE646E1DE18A82005A14A1 /* DistanceDetailItem.h */,
 				56EE646F1DE18A82005A14A1 /* DistanceDetailItem.m */,
+				565D3A951DEB180B00405412 /* NSDate+NSDate_dateFromFormatString.h */,
+				565D3A961DEB180B00405412 /* NSDate+NSDate_dateFromFormatString.m */,
 			);
 			name = PublicDefine;
 			sourceTree = "<group>";
@@ -576,12 +585,12 @@
 		56FC391B1DE00990000E2F74 /* HelpManager */ = {
 			isa = PBXGroup;
 			children = (
+				56EE64711DE1C5A4005A14A1 /* LocationManager.h */,
+				56EE64721DE1C5A4005A14A1 /* LocationManager.m */,
 				56FC391D1DE01E59000E2F74 /* HealthManager.h */,
 				56FC391E1DE01E59000E2F74 /* HealthManager.m */,
 				56EE64671DE17DAD005A14A1 /* DataSourceManager.h */,
 				56EE64681DE17DAD005A14A1 /* DataSourceManager.m */,
-				56EE64711DE1C5A4005A14A1 /* LocationManager.h */,
-				56EE64721DE1C5A4005A14A1 /* LocationManager.m */,
 			);
 			name = HelpManager;
 			sourceTree = "<group>";
@@ -644,6 +653,7 @@
 				56F670991DDD54200035FF01 /* Sources */,
 				56F6709A1DDD54200035FF01 /* Frameworks */,
 				56F6709B1DDD54200035FF01 /* Resources */,
+				565D3A941DEACD3A00405412 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -715,8 +725,8 @@
 			projectRoot = "";
 			targets = (
 				560E1BA41D953D3600B488AE /* HealthyDay */,
-				560E1BB81D953D3700B488AE /* HealthyDayTests */,
 				56F6709C1DDD54200035FF01 /* HealthyDay-OC */,
+				560E1BB81D953D3700B488AE /* HealthyDayTests */,
 			);
 		};
 /* End PBXProject section */
@@ -754,6 +764,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		565D3A941DEACD3A00405412 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		56BF22681DD9F8E2008CA28C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -830,6 +854,7 @@
 				56408BF21DE3EB290059CE8B /* BottomDecorativeCurve_OC.m in Sources */,
 				564B897B1DE2AE8400D68770 /* DistanceStatisticsDataManager.m in Sources */,
 				564B89701DE2ADDB00D68770 /* DistanceStatisticsChartView_OC.m in Sources */,
+				565D3A971DEB180B00405412 /* NSDate+NSDate_dateFromFormatString.m in Sources */,
 				56EE64871DE1CBB8005A14A1 /* RunningInfomationView_OC.m in Sources */,
 				56408C041DE3EBCB0059CE8B /* DistanceWalkingRunningLabel_OC.m in Sources */,
 				56408C011DE3EBB80059CE8B /* StepCountLabel_OC.m in Sources */,
@@ -1072,6 +1097,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "HealthyDay-OC/HealthyDay-OC.entitlements";
 				DEVELOPMENT_TEAM = 4F6NMKB449;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "HealthyDay-OC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.HealthyDay-OC";
@@ -1085,6 +1114,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "HealthyDay-OC/HealthyDay-OC.entitlements";
 				DEVELOPMENT_TEAM = 4F6NMKB449;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "HealthyDay-OC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lsw.self.HealthyDay-OC";
