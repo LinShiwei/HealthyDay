@@ -47,11 +47,6 @@
     
     locationManager.delegate = self;
     [locationManager authorizeWithCompletion:^(BOOL success){
-        if (success) {
-            ;
-        } else {
-            ;
-        }
         _gpsNotationView = [[GPSNotationView_OC alloc] initWithFrame:CGRectMake(20, 20, 200, 20) hasEnable:success];
         [_mapView addSubview:_gpsNotationView];
     }];
@@ -188,12 +183,13 @@
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
     if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         _gpsNotationView.hasEnabled = YES;
+    }else{
+        _gpsNotationView.hasEnabled = NO;
     }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     if (_hasLocated && _startRunning) {
-        [self drawRouteWithLocations:_runningLocations];
         if (_oldLocation == nil){
             _oldLocation = [locations lastObject];
         }else{
@@ -202,6 +198,7 @@
         for (CLLocation *location in locations) {
             [_runningLocations addObject:location];
         }
+        [self drawRouteWithLocations:_runningLocations];
     }
 }
 

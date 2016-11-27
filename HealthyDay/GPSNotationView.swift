@@ -49,7 +49,9 @@ internal class GPSNotationView: UIView {
         infoLabel.font = UIFont.systemFont(ofSize: 14)
         infoLabel.text = "初始化GPS"
         addSubview(infoLabel)
-        self.hasEnabled = hasEnabled
+        defer {
+            self.hasEnabled = hasEnabled
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

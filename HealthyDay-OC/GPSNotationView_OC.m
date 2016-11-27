@@ -47,6 +47,7 @@
 }
 
 - (void)setHasEnabled:(BOOL)hasEnabled{
+    _hasEnabled = hasEnabled;
     if (hasEnabled) {
         _gpsNotation.layer.backgroundColor = [[UIColor greenColor] CGColor];
         _infoLabel.text = [self getCurrentDateDescription];

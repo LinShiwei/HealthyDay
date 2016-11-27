@@ -171,12 +171,13 @@ extension RunningViewController:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             gpsNotationView.hasEnabled = true
+        }else{
+            gpsNotationView.hasEnabled = false
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard hasLocated && startRunning else{return}
-        drawRoute(withCoordiantes: runningCoordiantes)
         if oldLocation == nil{
             oldLocation = locations.last
         }else{
@@ -185,5 +186,6 @@ extension RunningViewController:CLLocationManagerDelegate{
         for location in locations {
             runningCoordiantes.append(location.coordinate)
         }
+        drawRoute(withCoordiantes: runningCoordiantes)
     }
 }
