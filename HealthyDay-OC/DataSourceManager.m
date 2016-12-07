@@ -62,6 +62,9 @@
     NSArray *results = [[self getManagedContext] executeFetchRequest:fetchRequest error:&error];
     if (!results) {
         NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+        if (completion) {
+            completion(NO,NULL);
+        }
         abort();
     }else{
         _objects = [NSMutableArray arrayWithArray:results];
@@ -131,12 +134,13 @@
     NSAssert([_objects count] == count - 1, @"after delete, object count should -1");
 }
 
+#pragma mark Private Core Data helper
+
 - (NSManagedObjectContext *)getManagedContext{
     AppDelegate *delegete = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     return delegete.persistentContainer.viewContext;
 }
 
-#pragma mark Private Core Data helper
 - (NSArray<DistanceDetailItem *> *)mockDistancesData{
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:-3600*24*100];
     NSMutableArray<DistanceDetailItem *> *items = [NSMutableArray array];

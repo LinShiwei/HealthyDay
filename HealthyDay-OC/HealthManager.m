@@ -42,7 +42,7 @@
                                                ]];
     if (![HKHealthStore isHealthDataAvailable]){
 //        NSError *error = [NSError errorWithDomain:[@"com.linshiwei.healthkit" code:2 userInfo:@{NSLocalizedDescriptionKey:@"HealthKit is not available in this Device"}];
-        completion(NO,nil);
+        completion(NO,NULL);
         return;
     }
     [_store requestAuthorizationToShareTypes:nil readTypes:typesToRead completion:^(BOOL success, NSError *error){
@@ -57,9 +57,9 @@
     HKSampleQuery *sampleQuery = [self createQuantitySampleQueryInDate:date typeIdentifier:HKQuantityTypeIdentifierStepCount periodDataType:type withCompletion:^(HKSampleQuery *query,NSArray<HKSample *> *samples,NSError *error){
         if (error == nil && samples != nil) {
             stepCounts = [self calculatePerDayDataFromAscendingSamples:samples typeIdentifier:HKQuantityTypeIdentifierStepCount periodDataType:type];
-            completion(stepCounts,nil);
+            completion(stepCounts,NULL);
         }else{
-            completion(nil,error);
+            completion(NULL,error);
         }
     }];
     [_store executeQuery:sampleQuery];
@@ -74,9 +74,9 @@
     HKSampleQuery * sampleQuery = [self createQuantitySampleQueryInDate:date typeIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning periodDataType:type withCompletion:^(HKSampleQuery *query,NSArray<HKSample *> * samples,NSError * error){
         if (error == nil && samples != nil) {
             distances = [self calculatePerDayDataFromAscendingSamples:samples typeIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning periodDataType:type];
-            completion(distances,nil);
+            completion(distances,NULL);
         }else{
-            completion(nil,error);
+            completion(NULL,error);
 
         }
     }];
@@ -91,9 +91,9 @@
 -(void)readDetailStepCountInDate:(NSDate*)date withCompletion:(void(^)(NSArray<HKSample *> * _Nullable,NSError* _Nullable))completion{
     HKSampleQuery *detailSampleQuery = [self createQuantitySampleQueryInDate:date typeIdentifier:HKQuantityTypeIdentifierStepCount periodDataType:Specified withCompletion:^(HKSampleQuery *query,NSArray<HKSample *> *samples,NSError *error){
         if (error == nil && samples != nil) {
-            completion(samples,nil);
+            completion(samples,NULL);
         }else{
-            completion(nil,error);
+            completion(NULL,error);
         }
     }];
     [_store executeQuery:detailSampleQuery];

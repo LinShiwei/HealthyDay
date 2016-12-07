@@ -437,10 +437,10 @@
 				56FC39221DE03AE9000E2F74 /* Define.m */,
 				56FC39241DE03CC3000E2F74 /* Theme.h */,
 				56FC39251DE03CC3000E2F74 /* Theme.m */,
-				56FC39271DE06118000E2F74 /* NSDate+NSDate_formatDescription.h */,
-				56FC39281DE06118000E2F74 /* NSDate+NSDate_formatDescription.m */,
 				56EE646E1DE18A82005A14A1 /* DistanceDetailItem.h */,
 				56EE646F1DE18A82005A14A1 /* DistanceDetailItem.m */,
+				56FC39271DE06118000E2F74 /* NSDate+NSDate_formatDescription.h */,
+				56FC39281DE06118000E2F74 /* NSDate+NSDate_formatDescription.m */,
 				565D3A951DEB180B00405412 /* NSDate+NSDate_dateFromFormatString.h */,
 				565D3A961DEB180B00405412 /* NSDate+NSDate_dateFromFormatString.m */,
 			);

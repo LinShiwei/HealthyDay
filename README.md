@@ -10,7 +10,7 @@ An app for walking and running using HealthKit.
 
 ## Features
 
-1. Can choose data source between www.linshiwei.win(a  web server built by myself) and CoreData.
+1. Can choose data source between [www.linshiwei.win](www.linshiwei.win) (a  web server built by myself) and CoreData.
 2. Show step count and distance of walking and running.
 3. Support devices of different size.
 4. Elaborate UI and animation.
