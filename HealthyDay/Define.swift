@@ -13,8 +13,8 @@ internal let calendar = Calendar(identifier: .republicOfChina)
 internal let theme = Theme.shared
 
 //Determine the running data source, can choose between web server:linshiwei.win and CoreData.
-//internal let dataSource = DataSource.coreData
-internal let dataSource = DataSource.linshiwei_win
+internal let dataSource = DataSource.coreData
+//internal let dataSource = DataSource.linshiwei_win
 
 
 enum DataSource {
